@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Rapport de stage – ADEFI (Février 2025)</title>
+  <style>
+    :root{
+      color-scheme: light;
+      --bg:#f5f7fb;
+      --surface:#ffffff;
+      --text:#0f172a;
+      --muted:#4d5567;
+      --line:#e2e8f0;
+      --accent:#d02d51;
+      --shadow:0 18px 46px rgba(15,23,42,.12);
+      --code-bg:#f1f5f9;
+      --code-border:#d8dee9;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;margin:0;padding:32px;background:var(--bg);color:var(--text)}
+    h1,h2,h3{color:var(--text);font-weight:700;margin-top:0}
+    p{margin:0 0 12px;color:var(--muted)}
+    ul{padding-left:20px;margin:0 0 12px;color:var(--muted)}
+    .section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:18px;box-shadow:var(--shadow)}
+    .grid{display:grid;gap:14px;margin:0;padding:0;list-style:none}
+    .badge{display:inline-block;padding:6px 10px;border-radius:999px;background:rgba(208,45,81,.12);color:var(--accent);border:1px solid rgba(208,45,81,.26);font-weight:600;font-size:.9rem;margin-right:8px}
+    code,pre{background:var(--code-bg);border:1px solid var(--code-border);border-radius:10px;padding:10px;display:block;color:var(--text);font-size:.95rem}
+    pre{overflow:auto;line-height:1.5;margin:0 0 12px}
+  </style>
+</head>
+<body>
+  <h1>Rapport de stage – ADEFI (Beaugency)</h1>
+  <p><strong>Durée :</strong> Février 2025 — Stage technique en informatique (BTS SIO SISR).</p>
+  <div class="section">
+    <h2>1. Objectifs et contexte</h2>
+    <ul>
+      <li>Moderniser l’infrastructure réseau (segmentation, supervision légère).</li>
+      <li>Fiabiliser le stockage avec un NAS Synology et des sauvegardes automatisées.</li>
+      <li>Produire une documentation exploitable par les équipes internes.</li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>2. Réalisations principales</h2>
+    <ul>
+      <li><strong>Switching et VLANs :</strong> configuration de switches Zyxel, plan d’adressage, tests ICMP/DNS/ARP via Wireshark.</li>
+      <li><strong>NAS Synology :</strong> création de volumes RAID, quotas, partages SMB, utilisateurs/groupes et snapshots.</li>
+      <li><strong>Automatisation :</strong> scripts Bash pour sauvegardes planifiées et vérifications d’espace disque (crontab + journalisation).</li>
+      <li><strong>Continuité de service :</strong> procédures de rétablissement documentées pour les équipes.</li>
+    </ul>
+  </div>
+  <div class="section">
+    <h2>3. Exemples de commandes</h2>
+    <pre><code># Vérifier la connectivité et l’ARP sur un VLAN
+ping -c 4 192.168.10.1
+arp -a | grep 192.168.10
+
+# Sauvegarde planifiée sur le NAS (extrait de script)
+rsync -avz /srv/datas/ admin@nas:/volume1/backups/ --delete
+logger "Backup NAS terminé"</code></pre>
+  </div>
+  <div class="section">
+    <h2>4. Bilan</h2>
+    <ul class="grid">
+      <li><span class="badge">Réseau</span>VLAN opérationnels et cartographie des équipements.</li>
+      <li><span class="badge">Stockage</span>Volumes RAID créés, snapshots et quotas appliqués.</li>
+      <li><span class="badge">Scripts</span>Planification des sauvegardes + logs de contrôle.</li>
+      <li><span class="badge">Docs</span>Procédures et modes opératoires remis au client.</li>
+    </ul>
+  </div>
+</body>
+</html>

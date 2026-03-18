@@ -1,0 +1,713 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Compte-rendu de Stage – BTS SIO (2ᵉ année)</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+/* Override strong tags inside headings to maintain consistent weight */
+h1 strong,
+h2 strong,
+h3 strong {
+	font-weight: 600;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", "Noto Sans Arabic", "Noto Sans Hebrew", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="3213c9e0-ab45-800a-a31b-d04c2a9893d9" class="page sans"><header><h1 class="page-title" dir="auto">Compte-rendu de Stage – BTS SIO (2ᵉ année)</h1><p class="page-description" dir="auto"></p></header><div class="page-body"><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8064-b26a-eeb56ddc1207" class=""><strong>Entreprise :</strong> Adefi</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8094-8c10-c30b4116c0dc" class=""><strong>Tuteur :</strong> M. Cédric Duval</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8081-9133-d8ec07240119" class=""><strong>Durée :</strong> 6 semaines</p></div><div style="display:contents" dir="auto"><hr id="3213c9e0-ab45-80ff-ba77-f2055431d3c8"/></div><div style="display:contents" dir="auto"><h1 id="3213c9e0-ab45-80de-a6cf-d3fa3ee68d93" class="">🎯 Objectifs du stage</h1></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8039-8a96-f11675cec022" class="bulleted-list"><li style="list-style-type:disc">Approfondir les compétences en <strong>administration systèmes et réseaux</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8059-96f4-c5861e1f8953" class="bulleted-list"><li style="list-style-type:disc">Participer à la <strong>mise en place et maintenance d’infrastructures serveurs</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8004-888f-e8cf185a5cc9" class="bulleted-list"><li style="list-style-type:disc">Découvrir les <strong>solutions de virtualisation et de sauvegarde professionnelles</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80e1-a1db-fdebe8c3977d" class="bulleted-list"><li style="list-style-type:disc">Intervenir sur des <strong>problématiques réelles d’entreprise (sécurité, réseau, stockage)</strong>.</li></ul></div><div style="display:contents" dir="auto"><hr id="3213c9e0-ab45-80fd-b080-c7de05091049"/></div><div style="display:contents" dir="auto"><h1 id="3213c9e0-ab45-8033-9b1a-c147ca3af95c" class="">📅 Semaine 1 – Infrastructure serveur et stockage</h1></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-8009-97f8-fb5960d3bd2d" class="">🔧 Activités principales</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-806a-aeb3-fbddbdfedb06" class="bulleted-list"><li style="list-style-type:disc">Analyse d’un problème de <strong>scan réseau sur imprimante OKI</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80e5-8bb8-c85fd5ab3592" class="bulleted-list"><li style="list-style-type:disc">Vérification du <strong>chemin de stockage des scans sur le serveur</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80ed-9214-c66d2ddb2bad" class="bulleted-list"><li style="list-style-type:disc">Contrôle de la <strong>configuration réseau de l’imprimante</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80f4-80df-ccc0220478cd" class="bulleted-list"><li style="list-style-type:disc">Vérification de <strong>l’espace disque du serveur</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80a3-9f78-e94bf76f4b7e" class="bulleted-list"><li style="list-style-type:disc">Tests avec <strong>activation et désactivation du pare-feu Windows Server</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80a1-b060-dac1f89658df" class="bulleted-list"><li style="list-style-type:disc">Mise en place de <strong>deux volumes RAID 1 (miroir)</strong> sur un serveur.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80af-b2fd-c5c144cfe8e9" class="bulleted-list"><li style="list-style-type:disc">Installation d’une <strong>clé HPE pour l’hyperviseur</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80e6-8bf8-cb1cb1bdbfbb" class="bulleted-list"><li style="list-style-type:disc">Installation et configuration de <strong>VMware ESXi</strong> sur le serveur.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-80c8-bd5d-cfa3a9b1ffbe" class="">🧩 Difficultés rencontrées / Solutions</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8047-8c7f-fc4132304abf" class=""><strong>Problème :</strong></p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80c6-a16f-c2591965bc50" class="">Le scan réseau de l’imprimante ne fonctionnait plus.</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8048-857a-c1b1b832f779" class=""><strong>Solution :</strong></p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80b9-b4b8-cfbbf99c2200" class="bulleted-list"><li style="list-style-type:disc">Analyse du message <em>“Erreur de stockage”</em>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-807c-9aec-e89afd050bb5" class="bulleted-list"><li style="list-style-type:disc">Vérification des <strong>droits utilisateurs sur le dossier de stockage</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80c9-9992-d6f88df3c2ff" class="bulleted-list"><li style="list-style-type:disc">Tests avec <strong>pare-feu activé / désactivé</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-804c-a283-dd84951b4305" class="bulleted-list"><li style="list-style-type:disc">Identification d’une <strong>incompatibilité de sécurité entre l’imprimante et le serveur</strong>.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-809e-bdbb-c003ec92aa49" class="">✅ Ce que j’ai appris</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80a6-bb31-e4479fa4f3bd" class="bulleted-list"><li style="list-style-type:disc">Fonctionnement du <strong>scan vers dossier réseau</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8052-8b4e-d2eef3bcd4f5" class="bulleted-list"><li style="list-style-type:disc">Gestion du <strong>stockage RAID sur serveur</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80ab-ad9f-cf8ae95fd980" class="bulleted-list"><li style="list-style-type:disc">Installation d’un <strong>hyperviseur VMware ESXi</strong>.</li></ul></div><div style="display:contents" dir="auto"><hr id="3213c9e0-ab45-803d-9eb2-e17886dc7623"/></div><div style="display:contents" dir="auto"><h1 id="3213c9e0-ab45-80b8-9bcc-d52339d822b8" class="">📅 Semaine 2 – Tests matériels et messagerie</h1></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-8072-9892-d849907724f4" class="">🔧 Activités principales</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8002-b170-ed4ac0792363" class="bulleted-list"><li style="list-style-type:disc">Présentation d’un <strong>onduleur professionnel Nitram</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-801b-b051-cadee339e7a6" class="bulleted-list"><li style="list-style-type:disc">Tests de l’onduleur dans l’infrastructure serveur :<div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80db-8e11-e03b5559ca7e" class="bulleted-list"><li style="list-style-type:circle">alimentation</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8090-b6bc-cb26f6e59f8a" class="bulleted-list"><li style="list-style-type:circle">supervision locale</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-803d-9db5-e2c583b441c8" class="bulleted-list"><li style="list-style-type:circle">remontée d’informations.</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80ad-94cb-c0da92a67b65" class="bulleted-list"><li style="list-style-type:disc">Configuration de la <strong>messagerie POP / IMAP</strong> sur serveur et postes utilisateurs.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80ce-98aa-c26ec836168c" class="bulleted-list"><li style="list-style-type:disc">Diagnostic d’un <strong>ralentissement d’Outlook au démarrage</strong> sur certains postes.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-8037-8290-f0173f097930" class="">🧩 Difficultés rencontrées / Solutions</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8047-b5f8-d08658519d3d" class=""><strong>Problème :</strong></p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8025-8be6-daf1fffc4a32" class="">La carte réseau SNMP de l’onduleur était <strong>très coûteuse</strong> pour les besoins de l’entreprise.</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80b8-8534-e32dce2e224b" class=""><strong>Solution :</strong></p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-808a-a2e2-f8329c9249be" class="bulleted-list"><li style="list-style-type:disc">Analyse technique du matériel.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80e4-9c55-ebb3c42fcea7" class="bulleted-list"><li style="list-style-type:disc">Avis technique transmis à l’entreprise.</li></ul></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8037-ad92-f047fdf833f2" class="">Conclusion :</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-800d-894b-efb2ffa538d2" class="">Solution très complète mais <strong>non adaptée au budget d’une petite structure</strong>.</p></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-80f1-b3dc-e28fa61ecf16" class="">✅ Ce que j’ai appris</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-800a-8a6d-f62e27db9ade" class="bulleted-list"><li style="list-style-type:disc">Fonctionnement d’un <strong>onduleur professionnel</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8008-aebc-dd247e4b0a47" class="bulleted-list"><li style="list-style-type:disc">Paramétrage <strong>POP / IMAP et Outlook</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8047-b02c-f388967c0fa3" class="bulleted-list"><li style="list-style-type:disc">Analyse <strong>coût / performance d’une solution IT</strong>.</li></ul></div><div style="display:contents" dir="auto"><hr id="3213c9e0-ab45-8080-adc1-eee55559eb52"/></div><div style="display:contents" dir="auto"><h1 id="3213c9e0-ab45-808c-8d21-f9ad9e550a4b" class="">📅 Semaine 3 – VPN et préparation de postes</h1></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-808d-87e8-f2318f9ff04c" class="">🔧 Activités principales</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8084-ac7c-dd5dac21c16a" class="bulleted-list"><li style="list-style-type:disc">Création d’un <strong>compte utilisateur VPN sur routeur Zyxel</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80f9-abb3-d83f6c209fb4" class="bulleted-list"><li style="list-style-type:disc">Configuration des accès pour <strong>TSE (Terminal Server)</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80b1-9fe6-c82e733cb49d" class="bulleted-list"><li style="list-style-type:disc">Test de la <strong>connexion VPN + accès Bureau à distance</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8039-96df-d1731aab93b3" class="bulleted-list"><li style="list-style-type:disc">Montage complet d’un <strong>ordinateur (assemblage matériel)</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8041-8172-ce9354708ccf" class="bulleted-list"><li style="list-style-type:disc">Installation de <strong>Windows 11 Pro avec activation licence</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-809c-8731-d0f222c119bd" class="bulleted-list"><li style="list-style-type:disc">Transfert de fichiers entre machines via <strong>Linux Mint</strong>.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-801c-920b-f89a89cb29a1" class="">🧩 Difficultés rencontrées / Solutions</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8089-bfec-e46718dbc79a" class=""><strong>Problème :</strong></p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80cb-bca7-fd1855e120db" class="">Contraintes de <strong>permissions de transfert de fichiers sous Windows</strong>.</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8018-96b3-db141610203f" class=""><strong>Solution :</strong></p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-805a-8190-df1c64efd8d9" class="">Utilisation de <strong>Linux Mint</strong> pour faciliter les transferts sans restrictions de permissions.</p></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-8038-8a1b-d7526d7b2382" class="">✅ Ce que j’ai appris</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80fc-b80f-de10d7099d0e" class="bulleted-list"><li style="list-style-type:disc">Configuration d’un <strong>VPN sur routeur Zyxel</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-806b-b256-c6bcb5054654" class="bulleted-list"><li style="list-style-type:disc">Installation et déploiement de <strong>Windows 11 Pro</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-806b-bf37-e22e1bc6d514" class="bulleted-list"><li style="list-style-type:disc">Utilisation de <strong>Linux pour les transferts de données</strong>.</li></ul></div><div style="display:contents" dir="auto"><hr id="3213c9e0-ab45-8031-baf0-e348a3151c47"/></div><div style="display:contents" dir="auto"><h1 id="3213c9e0-ab45-80c5-91fb-e9dcf53ac999" class="">📅 Semaine 4 – Administration Linux et sécurité réseau</h1></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-804e-8c7c-cbee90cbbf3d" class="">🔧 Activités principales</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8025-8d2c-c40e71e82e84" class="">Administration d’une <strong>machine Linux</strong> :</p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-803c-aeb5-ed98a45071ed" class="bulleted-list"><li style="list-style-type:disc">Création d’un utilisateur principal <strong>adefi</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8056-8579-d95d8c159b79" class="bulleted-list"><li style="list-style-type:disc">Suppression du compte temporaire <strong>OEM</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80a9-a4e0-ed49931feba4" class="bulleted-list"><li style="list-style-type:disc">Configuration d’un environnement Linux sécurisé.</li></ul></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-805f-b838-daf84844f584" class="">Audit du réseau :</p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80b2-bbf5-fd157e5cae2a" class="bulleted-list"><li style="list-style-type:disc">Audit réseau avec <strong>GEPRECIA</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-807c-b01d-f0144806a511" class="bulleted-list"><li style="list-style-type:disc">Connexion à un <strong>Raspberry Pi en SSH</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80c6-83a3-de5003d394a2" class="bulleted-list"><li style="list-style-type:disc">Analyse des <strong>requêtes DNS du réseau</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-802d-9f8b-fa07870b1404" class="bulleted-list"><li style="list-style-type:disc">Observation du comportement de <strong>l’antivirus ESET</strong>.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-8016-bb53-e92916914843" class="">🧩 Difficultés rencontrées / Solutions</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8022-9203-c003eeef3357" class=""><strong>Problème :</strong></p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-801a-ad4f-e86c6d36d356" class="">L’utilisateur <strong>adefi</strong> ne disposait pas de droits administrateur.</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80c7-91f5-de0ba883d29f" class=""><strong>Solution :</strong></p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8055-b1f1-eb5a82918e8f" class="bulleted-list"><li style="list-style-type:disc">Ajout au groupe <strong>sudo</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80d5-ad75-c63fdd336789" class="bulleted-list"><li style="list-style-type:disc">Vérification des privilèges administrateur.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80cb-8380-e707a32d9c68" class="bulleted-list"><li style="list-style-type:disc">Suppression sécurisée du compte <strong>OEM</strong>.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-80d4-b1f3-ea158edbe2cf" class="">✅ Ce que j’ai appris</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80ba-a402-de97675206da" class="bulleted-list"><li style="list-style-type:disc">Gestion des <strong>droits Linux et sudo</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8085-867b-ed39e457435f" class="bulleted-list"><li style="list-style-type:disc">Administration <strong>SSH</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80b1-a7cc-cb3ba4bda8ea" class="bulleted-list"><li style="list-style-type:disc">Analyse de <strong>sécurité réseau et DNS</strong>.</li></ul></div><div style="display:contents" dir="auto"><hr id="3213c9e0-ab45-8023-bacd-fb000a7b6368"/></div><div style="display:contents" dir="auto"><h1 id="3213c9e0-ab45-800a-a3b8-de81005ff6c5" class="">📅 Semaine 5 – Mise en place d’un serveur Active Directory</h1></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-80a7-baf8-fc70d2fee0bc" class="">🔧 Activités principales</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80b4-afd0-de07e5e443f9" class="">Mise en service d’un <strong>nouveau serveur</strong> :</p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8055-933e-d9737fc08390" class="bulleted-list"><li style="list-style-type:disc">Passage du réseau en <strong>profil entreprise</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80b7-b4ee-d39d081143d9" class="bulleted-list"><li style="list-style-type:disc">Scan réseau pour identifier <strong>l’adresse iLO du serveur</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-805e-bb76-f5e912a0e999" class="bulleted-list"><li style="list-style-type:disc">Désactivation du <strong>Secure Boot</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80c0-9d44-d2c3eaf7c47b" class="bulleted-list"><li style="list-style-type:disc">Ajout du serveur au <strong>domaine Active Directory</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80df-beb6-dc79eb085c04" class="bulleted-list"><li style="list-style-type:disc">Promotion du serveur en <strong>contrôleur de domaine (DC)</strong>.</li></ul></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80a5-978d-f39fc615b3b7" class="">Configuration des services réseau :</p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80aa-b06f-f1dac332a3f0" class="bulleted-list"><li style="list-style-type:disc">Installation des rôles <strong>DNS et DHCP</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80ea-a087-ef801b008d0d" class="bulleted-list"><li style="list-style-type:disc">Vérification de la <strong>réplication Active Directory</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-804d-ac6e-f3bef4ae1fa9" class="bulleted-list"><li style="list-style-type:disc">Contrôle des <strong>GPO et scripts</strong>.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-8084-9b56-ef831f199ad0" class="">🧩 Difficultés rencontrées / Solutions</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80c0-a115-ea0708850314" class=""><strong>Problème :</strong></p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80d9-9668-f6f25ed802f6" class="">Vérifier que la réplication AD fonctionne correctement.</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-806a-b350-d8b633bec239" class=""><strong>Solution :</strong></p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8012-8041-eb41a8a42c6e" class="bulleted-list"><li style="list-style-type:disc">Tests de réplication entre <strong>contrôleurs de domaine</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8074-a5b0-ef6d07b28f3f" class="bulleted-list"><li style="list-style-type:disc">Vérification des <strong>services DNS et DHCP</strong>.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-80cb-8da6-e6b5dc7b5053" class="">✅ Ce que j’ai appris</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-801a-bdfa-da237959f93c" class="bulleted-list"><li style="list-style-type:disc">Installation d’un <strong>contrôleur de domaine Active Directory</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8031-b3a5-ecc23eccfe73" class="bulleted-list"><li style="list-style-type:disc">Fonctionnement de la <strong>réplication AD</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80a7-9a64-c00a4180a6d5" class="bulleted-list"><li style="list-style-type:disc">Gestion des <strong>services DNS / DHCP</strong>.</li></ul></div><div style="display:contents" dir="auto"><hr id="3213c9e0-ab45-8033-8c95-de8a28af694d"/></div><div style="display:contents" dir="auto"><h1 id="3213c9e0-ab45-80bb-8a57-f33f250325b3" class="">📅 Semaine 6 – Migration de données et sauvegardes</h1></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-8051-b022-efa6cb4b8315" class="">🔧 Activités principales</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80db-a537-e5accc223060" class="">Migration de données :</p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8053-a743-d9ea56d855ca" class="bulleted-list"><li style="list-style-type:disc">Transfert des <strong>rôles FSMO</strong> vers le nouveau serveur.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-803a-b2fa-e1368a9c3691" class="bulleted-list"><li style="list-style-type:disc">Migration d’environ <strong>182 Go de données</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80eb-8bb9-eb7c440ee190" class="bulleted-list"><li style="list-style-type:disc">Montage et formatage d’un <strong>disque 1 To</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80bd-866a-d24ce73dd8bd" class="bulleted-list"><li style="list-style-type:disc">Hébergement des données sur le <strong>nouveau serveur Data</strong>.</li></ul></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-809b-8fcc-da96a46594e7" class="">Services utilisateurs :</p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80bd-a6b1-c0f74a9b18d1" class="bulleted-list"><li style="list-style-type:disc">Mise en place du <strong>TSE (Terminal Services)</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8049-a69d-dfd5e0608f81" class="bulleted-list"><li style="list-style-type:disc">Configuration <strong>RDP / Bureau à distance</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8070-82c7-ea9d85117688" class="bulleted-list"><li style="list-style-type:disc">Tests d’accès distants.</li></ul></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80f1-ad41-fbc2f523f9c6" class="">Sauvegarde et virtualisation :</p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8011-82d0-c4784a91ac8e" class="bulleted-list"><li style="list-style-type:disc">Mise en place de <strong>Veeam Backup</strong> :<div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8093-92d6-ec1ffbdfc11a" class="bulleted-list"><li style="list-style-type:circle">sauvegarde complète</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80fb-9ddb-c212303271f4" class="bulleted-list"><li style="list-style-type:circle">réplication des machines</li></ul></div></li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8049-89c7-ef7bb0c41fd7" class="bulleted-list"><li style="list-style-type:disc">Virtualisation d’un poste avec <strong>OpenBee</strong>.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-80fc-9a72-d5cc4fc7890b" class="">🧩 Difficultés rencontrées / Solutions</h2></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8027-a71a-dca4cf2129e1" class=""><strong>Problème :</strong></p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-8018-9bea-d11104bfc35d" class="">Assurer la <strong>continuité de service lors de la migration des données</strong>.</p></div><div style="display:contents" dir="auto"><p id="3213c9e0-ab45-80bd-b74c-fa5ddd552663" class=""><strong>Solution :</strong></p></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8014-801f-c897b5d9e064" class="bulleted-list"><li style="list-style-type:disc">Vérification de l’intégrité des données transférées.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80c5-b68f-fa6a2594f8c9" class="bulleted-list"><li style="list-style-type:disc">Tests de fonctionnement des services utilisateurs.</li></ul></div><div style="display:contents" dir="auto"><h2 id="3213c9e0-ab45-80a2-8ef1-e6a81ff41c84" class="">✅ Ce que j’ai appris</h2></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-80be-842c-f3e63bd4abe8" class="bulleted-list"><li style="list-style-type:disc">Migration de données serveur.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-8097-9965-e7a3fdce3da1" class="bulleted-list"><li style="list-style-type:disc">Mise en place de <strong>sauvegardes professionnelles avec Veeam</strong>.</li></ul></div><div style="display:contents" dir="auto"><ul id="3213c9e0-ab45-802c-a186-f7d71ac8e325" class="bulleted-list"><li style="list-style-type:disc">Utilisation de la <strong>virtualisation en entreprise</strong>.</li></ul></div></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>

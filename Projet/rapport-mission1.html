@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission 1 - Segmentation réseau et sécurisation d’un switch Cisco</title>
+  <link rel="stylesheet" href="rapport-mission1.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <span class="eyebrow">BTS SIO SISR • Projet réseau • GSB</span>
+      <h1>Mission 1 - Segmentation réseau et sécurisation d’un switch Cisco</h1>
+      <p class="lead">
+        Dans le cadre de mon atelier de professionnalisation, j’ai préparé l’intégration du
+        commutateur Cisco MUTLAB dans l’infrastructure du laboratoire GSB. Cette mission
+        consistait à structurer le réseau avec des VLAN, affecter les ports correctement,
+        sécuriser l’administration locale et distante, puis fournir une documentation complète.
+      </p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <p class="section-label">Contexte</p>
+      <h2>Une infrastructure segmentée à rendre exploitable</h2>
+      <p>
+        Le contexte GSB décrit une architecture réseau organisée par services métier, avec des VLAN dédiés
+        à l’administration, au développement, aux visiteurs, à la direction, aux services métiers et aux serveurs.
+        Le commutateur MUTLAB n’était pas encore configuré, alors qu’il devait permettre cette segmentation
+        et l’administration sécurisée du réseau.
+      </p>
+      <p>
+        L’objectif de la mission était donc de rendre ce switch opérationnel, conforme au cahier des charges,
+        et prêt à être intégré dans une infrastructure plus large avec Active Directory, DNS, DHCP et services web.
+      </p>
+    </section>
+
+    <section class="card">
+      <p class="section-label">Objectif</p>
+      <h2>Répondre à un besoin technique concret</h2>
+      <ul class="list">
+        <li>créer les VLAN correspondant aux différents services de l’entreprise ;</li>
+        <li>affecter les ports du switch aux bons réseaux ;</li>
+        <li>configurer une IP de management sur le VLAN 250 ;</li>
+        <li>sécuriser l’administration locale et distante avec SSH ;</li>
+        <li>justifier le fonctionnement avec une procédure et une fiche de recette.</li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <p class="section-label">Travail réalisé</p>
+      <h2>Configuration et sécurisation du switch</h2>
+      <div class="steps">
+        <div class="step"><span>1</span><div><h3>Analyse du contexte GSB</h3><p>Étude du cahier des charges, du plan de câblage et de l’organisation des VLAN afin d’identifier précisément les besoins de configuration.</p></div></div>
+        <div class="step"><span>2</span><div><h3>Création des VLAN</h3><p>Mise en place des VLAN 1, 10, 50, 99, 150, 200, 201, 202, 203, 204, 205, 206 et 250 pour segmenter logiquement les services.</p></div></div>
+        <div class="step"><span>3</span><div><h3>Affectation des ports</h3><p>Association des interfaces FastEthernet aux VLAN définis dans le plan de câblage, avec une séparation claire des usages.</p></div></div>
+        <div class="step"><span>4</span><div><h3>Administration sécurisée</h3><p>Mise en place du mot de passe privilégié, du chiffrement des mots de passe, d’une bannière légale, d’un compte local et de l’accès SSH.</p></div></div>
+        <div class="step"><span>5</span><div><h3>Validation</h3><p>Contrôle du fonctionnement avec show vlan brief, show ip interface brief, un test ping sur l’IP de management et une connexion SSH.</p></div></div>
+      </div>
+    </section>
+
+    <section class="grid">
+      <article class="card">
+        <p class="section-label">Plan VLAN</p>
+        <h2>Segmentation retenue</h2>
+        <table>
+          <thead>
+            <tr><th>VLAN</th><th>Nom</th><th>Ports</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>VLAN par défaut</td><td>Fa0/1 à Fa0/2</td></tr>
+            <tr><td>10</td><td>Réseau &amp; Système</td><td>Fa0/3 à Fa0/4</td></tr>
+            <tr><td>50</td><td>Développement</td><td>Fa0/5 à Fa0/6</td></tr>
+            <tr><td>99</td><td>Admin</td><td>Fa0/7 à Fa0/8</td></tr>
+            <tr><td>150</td><td>Visiteurs</td><td>Fa0/9 à Fa0/10</td></tr>
+            <tr><td>200 à 206</td><td>Services métiers</td><td>Fa0/11 à Fa0/17</td></tr>
+            <tr><td>250</td><td>Serveurs</td><td>Fa0/21 à Fa0/22</td></tr>
+          </tbody>
+        </table>
+        <p>
+          Cette organisation permet de séparer les flux, de clarifier l’administration réseau
+          et de préparer l’application des futures règles de sécurité et de routage.
+        </p>
+      </article>
+
+      <article class="card">
+        <p class="section-label">Configuration</p>
+        <h2>Éléments clés retenus</h2>
+        <div class="note">
+          <p><strong>IP de management :</strong> 192.168.250.70/24</p>
+          <p><strong>Passerelle :</strong> 192.168.250.254</p>
+          <p><strong>Accès distant :</strong> SSH uniquement</p>
+          <p><strong>Matériel :</strong> Cisco 2960</p>
+          <p><strong>Contexte :</strong> GSB, atelier de professionnalisation BTS SIO</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="card">
+      <p class="section-label">Exemple</p>
+      <h2>Commandes utilisées</h2>
+<pre><code>conf t
+hostname MUTLAB
+no ip domain-lookup
+service password-encryption
+banner motd # Accès réservé – Connexions non autorisées interdites #
+enable secret NetMSISR
+username admin secret NetMSISR
+
+vlan 10
+ name Réseau &amp; Système
+vlan 50
+ name Développement
+vlan 99
+ name Admin (Management)
+
+interface fa0/7
+ switchport mode access
+ switchport access vlan 99
+ spanning-tree portfast
+
+interface vlan 250
+ ip address 192.168.250.70 255.255.255.0
+ no shutdown
+ip default-gateway 192.168.250.254
+ip domain-name gsb.local
+crypto key generate rsa
+ip ssh version 2
+end
+write memory</code></pre>
+    </section>
+
+    <section class="card">
+      <p class="section-label">Résultat</p>
+      <h2>Compétences démontrées</h2>
+      <div class="skills">
+        <div><h3>Administration réseau</h3><p>Création de VLAN, affectation des ports et logique de segmentation.</p></div>
+        <div><h3>Sécurisation</h3><p>Protection de l’administration avec mots de passe, bannière et SSH.</p></div>
+        <div><h3>Documentation</h3><p>Production d’un rapport, d’une procédure, d’un plan de câblage et d’une fiche de recette.</p></div>
+        <div><h3>Méthodologie</h3><p>Analyse du besoin, déploiement, validation puis formalisation des preuves.</p></div>
+      </div>
+    </section>
+
+    <section class="card">
+      <p class="section-label">Pièces jointes</p>
+      <h2>Documents associés</h2>
+      <div class="docs">
+        <a href="docs/Rapport Final Mission1 GSB (2).pdf" target="_blank" rel="noopener">Rapport final PDF</a>
+        <a href="docs/Mission Mise en place de infrasctructure Segmentation reseau.pdf" target="_blank" rel="noopener">Cahier des charges PDF</a>
+        <a href="docs/GSB Contexte.pdf" target="_blank" rel="noopener">Contexte GSB PDF</a>
+        <a href="docs/Plan Cablage VLAN Ports GSB.docx" target="_blank" rel="noopener">Plan de câblage DOCX</a>
+        <a href="docs/Fiche Procedure MUTLAB VLAN SSH.docx" target="_blank" rel="noopener">Fiche de procédure DOCX</a>
+        <a href="docs/Fiche Recette MUTLAB VLAN SSH.docx" target="_blank" rel="noopener">Fiche de recette DOCX</a>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

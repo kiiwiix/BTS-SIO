@@ -1,0 +1,304 @@
+:root {
+  --akatsuki-sky-gradient:
+    radial-gradient(circle at 18% 18%, rgba(184, 26, 52, 0.28), transparent 58%),
+    radial-gradient(circle at 82% 2%, rgba(237, 80, 105, 0.18), transparent 52%),
+    radial-gradient(circle at 50% 100%, rgba(118, 21, 35, 0.34), transparent 48%),
+    linear-gradient(180deg, rgba(8, 7, 12, 0.94), rgba(14, 11, 18, 0.98));
+
+  --akatsuki-cloud: rgba(191, 23, 52, 0.92);
+  --akatsuki-cloud-border: rgba(255, 255, 255, 0.72);
+  --akatsuki-cloud-shadow: rgba(0, 0, 0, 0.28);
+  --akatsuki-cloud-inner-glow: rgba(255, 255, 255, 0.08);
+  --akatsuki-cloud-highlight: rgba(255, 255, 255, 0.12);
+}
+
+html[data-theme="light"] {
+  --akatsuki-sky-gradient:
+    radial-gradient(circle at 18% 18%, rgba(245, 101, 118, 0.24), transparent 58%),
+    radial-gradient(circle at 82% 2%, rgba(250, 128, 114, 0.16), transparent 52%),
+    radial-gradient(circle at 50% 100%, rgba(224, 72, 96, 0.14), transparent 50%),
+    linear-gradient(180deg, rgba(248, 230, 233, 0.94), rgba(255, 255, 255, 0.96));
+
+  --akatsuki-cloud: rgba(224, 49, 78, 0.88);
+  --akatsuki-cloud-border: rgba(255, 255, 255, 0.82);
+  --akatsuki-cloud-shadow: rgba(141, 26, 42, 0.18);
+  --akatsuki-cloud-inner-glow: rgba(255, 255, 255, 0.12);
+  --akatsuki-cloud-highlight: rgba(255, 255, 255, 0.18);
+}
+
+.akatsuki-sky {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: var(--akatsuki-sky-gradient);
+  transition: background 0.5s ease;
+}
+
+.akatsuki-sky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.025), transparent 60%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.02), transparent 35%, rgba(0, 0, 0, 0.08));
+  opacity: 0.8;
+}
+
+.akatsuki-cloud {
+  position: absolute;
+  width: 240px;
+  height: 130px;
+  border-radius: 50% 45% 50% 45% / 50% 55% 45% 50%;
+  background: linear-gradient(
+    180deg,
+    var(--akatsuki-cloud-highlight) 0%,
+    var(--akatsuki-cloud) 22%,
+    var(--akatsuki-cloud) 100%
+  );
+  border: 2px solid var(--akatsuki-cloud-border);
+  box-shadow:
+    0 10px 30px var(--akatsuki-cloud-shadow),
+    inset 0 1px 0 var(--akatsuki-cloud-inner-glow),
+    inset 0 -10px 18px rgba(0, 0, 0, 0.1);
+  filter: drop-shadow(0 18px 24px rgba(0, 0, 0, 0.22));
+  opacity: 0.9;
+  will-change: transform;
+  animation: akatsuki-float var(--akatsuki-duration, 20s) ease-in-out infinite;
+}
+
+.akatsuki-cloud::before,
+.akatsuki-cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border: inherit;
+  border-radius: inherit;
+  box-shadow: inherit;
+}
+
+.akatsuki-cloud::before {
+  width: 180px;
+  height: 110px;
+  top: -40px;
+  left: 30px;
+}
+
+.akatsuki-cloud::after {
+  width: 150px;
+  height: 90px;
+  bottom: -30px;
+  right: 40px;
+}
+
+.akatsuki-cloud--1 {
+  top: 12%;
+  left: -6%;
+  --akatsuki-duration: 24s;
+  animation-delay: -3s;
+  opacity: 0.86;
+}
+
+.akatsuki-cloud--2 {
+  top: 30%;
+  left: 55%;
+  --akatsuki-duration: 27s;
+  animation-delay: -9s;
+  opacity: 0.78;
+  transform: scale(0.92);
+}
+
+.akatsuki-cloud--3 {
+  top: 63%;
+  left: 15%;
+  --akatsuki-duration: 30s;
+  animation-delay: -15s;
+  opacity: 0.82;
+  transform: scale(1.04);
+}
+
+.akatsuki-cloud--4 {
+  top: 78%;
+  left: 70%;
+  --akatsuki-duration: 32s;
+  animation-delay: -6s;
+  opacity: 0.72;
+  transform: scale(0.88);
+}
+
+.akatsuki-cloud--5 {
+  top: -8%;
+  left: 35%;
+  --akatsuki-duration: 34s;
+  animation-delay: -12s;
+  opacity: 0.68;
+  transform: scale(1.08);
+}
+
+@keyframes akatsuki-float {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(var(--cloud-scale, 1));
+  }
+  25% {
+    transform: translate3d(14px, -8px, 0) scale(calc(var(--cloud-scale, 1) * 1.015));
+  }
+  50% {
+    transform: translate3d(38px, 8px, 0) scale(calc(var(--cloud-scale, 1) * 0.985));
+  }
+  75% {
+    transform: translate3d(16px, 14px, 0) scale(calc(var(--cloud-scale, 1) * 1.02));
+  }
+}
+
+.akatsuki-cloud--1 { --cloud-scale: 1; }
+.akatsuki-cloud--2 { --cloud-scale: 0.92; }
+.akatsuki-cloud--3 { --cloud-scale: 1.04; }
+.akatsuki-cloud--4 { --cloud-scale: 0.88; }
+.akatsuki-cloud--5 { --cloud-scale: 1.08; }
+
+@media (max-width: 900px) {
+  .akatsuki-cloud {
+    width: 180px;
+    height: 100px;
+    border-width: 2px;
+    opacity: 0.72;
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.18));
+  }
+
+  .akatsuki-cloud::before {
+    width: 140px;
+    height: 90px;
+    top: -34px;
+    left: 22px;
+  }
+
+  .akatsuki-cloud::after {
+    width: 120px;
+    height: 70px;
+    bottom: -24px;
+    right: 32px;
+  }
+
+  .akatsuki-cloud--4,
+  .akatsuki-cloud--5 {
+    display: none;
+  }
+}
+
+@media (max-width: 560px) {
+  .akatsuki-cloud {
+    width: 150px;
+    height: 84px;
+    opacity: 0.62;
+  }
+
+  .akatsuki-cloud::before {
+    width: 114px;
+    height: 72px;
+    top: -28px;
+    left: 18px;
+  }
+
+  .akatsuki-cloud::after {
+    width: 96px;
+    height: 58px;
+    bottom: -20px;
+    right: 26px;
+  }
+
+  .akatsuki-cloud--3 {
+    opacity: 0.55;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .akatsuki-cloud {
+    animation: none;
+    transform: none;
+  }
+}
+
+
+.akatsuki-crows {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.akatsuki-crow {
+  position: absolute;
+  top: var(--top, 50%);
+  left: 0;
+  width: 28px;
+  height: 12px;
+  opacity: .20;
+  will-change: transform;
+  animation: akatsuki-crow-flight var(--duration, 24s) linear infinite;
+  animation-delay: var(--delay, 0s);
+}
+
+.akatsuki-crow__wing {
+  position: absolute;
+  top: 2px;
+  width: 16px;
+  height: 8px;
+  border-top: 2px solid rgba(15, 23, 42, .45);
+  border-radius: 100% 100% 0 0;
+  transform-origin: bottom center;
+  animation: akatsuki-wing-flap var(--wing-speed, 1.2s) ease-in-out infinite;
+}
+
+.akatsuki-crow__wing:first-child {
+  left: -1px;
+  transform: rotate(18deg);
+}
+
+.akatsuki-crow__wing:last-child {
+  right: -1px;
+  transform: rotate(-18deg);
+  animation-name: akatsuki-wing-flap-right;
+}
+
+html:not([data-theme="light"]) .akatsuki-crow {
+  opacity: .28;
+}
+
+html:not([data-theme="light"]) .akatsuki-crow__wing {
+  border-top-color: rgba(255, 255, 255, .36);
+}
+
+@keyframes akatsuki-crow-flight {
+  0% {
+    transform: translate3d(var(--start-x), 0, 0) scale(var(--scale, .6)) scaleX(var(--direction, 1));
+  }
+  50% {
+    transform: translate3d(var(--mid-x), var(--drift, 0), 0) scale(calc(var(--scale, .6) * 1.06)) scaleX(var(--direction, 1));
+  }
+  100% {
+    transform: translate3d(var(--end-x), 0, 0) scale(var(--scale, .6)) scaleX(var(--direction, 1));
+  }
+}
+
+@keyframes akatsuki-wing-flap {
+  0%, 100% { transform: rotate(18deg); }
+  50% { transform: rotate(-10deg); }
+}
+
+@keyframes akatsuki-wing-flap-right {
+  0%, 100% { transform: rotate(-18deg); }
+  50% { transform: rotate(10deg); }
+}
+
+@media (max-width: 900px) {
+  .akatsuki-crow { opacity: .14; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .akatsuki-crows {
+    display: none;
+  }
+}

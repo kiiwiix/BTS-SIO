@@ -1,0 +1,95 @@
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(310px, 360px));
+  gap: 24px;
+  align-items: start;
+}
+
+.project-card {
+  background: #ffffff;
+  border: 1px solid #e8dfe5;
+  border-radius: 24px;
+  padding: 24px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.project-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.project-card-header h3 {
+  margin: 0;
+  font-size: 1.8rem;
+  line-height: 1.35;
+  color: #1f2430;
+}
+
+.project-badge {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.project-badge.reseau {
+  background: #ffe8ee;
+  color: #d94b72;
+  border: 1px solid #f3bfd0;
+}
+
+.project-card p {
+  color: #4e5565;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.project-card ul {
+  margin: 0 0 18px 18px;
+  padding: 0;
+  color: #5a6170;
+  line-height: 1.7;
+}
+
+.project-card li + li {
+  margin-top: 8px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+
+.project-tags span {
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: #f7f3f6;
+  border: 1px solid #eadde5;
+  font-size: 0.85rem;
+  color: #6a7283;
+}
+
+.project-button {
+  display: inline-block;
+  padding: 14px 18px;
+  border-radius: 16px;
+  text-decoration: none;
+  font-weight: 700;
+  color: #1f2430;
+  background: #f3f5f8;
+  border: 1px solid #d9dee8;
+  transition: 0.2s ease;
+}
+
+.project-button:hover {
+  background: #e9eef5;
+  transform: translateY(-1px);
+}

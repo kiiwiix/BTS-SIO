@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Veille technologique — Noé Chami</title>
+  <meta name="description" content="Veille technologique BTS SIO SISR de septembre 2025 à mars 2026, classée par ordre chronologique et reliée à des sources accessibles." />
+  <style>
+    :root {
+      color-scheme: light;
+      --bg: #eef3f9;
+      --surface: #ffffff;
+      --surface-2: #f8fbff;
+      --text: #0f172a;
+      --muted: #506178;
+      --accent: #cf2f55;
+      --accent-2: #ff5f7f;
+      --line: rgba(207,47,85,.14);
+      --line-strong: rgba(207,47,85,.28);
+      --shadow: 0 22px 60px rgba(15,23,42,.10);
+      --hero: linear-gradient(145deg, #fff6f8, #ffffff 48%, #f5f8ff);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      padding: 28px;
+      min-height: 100vh;
+      font: 16px/1.72 Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3, p { margin: 0; }
+    .wrapper {
+      width: min(1180px, 100%);
+      margin: 0 auto;
+      background: var(--surface);
+      border: 1px solid rgba(15,23,42,.06);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+    .hero {
+      display: grid;
+      grid-template-columns: 1.45fr auto;
+      gap: 18px;
+      align-items: end;
+      background: var(--hero);
+      border: 1px solid var(--line-strong);
+      border-radius: 24px;
+      padding: 24px;
+      margin-bottom: 24px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(207,47,85,.08);
+      border: 1px solid var(--line-strong);
+      color: var(--accent);
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 12px;
+    }
+    .hero h1 { font-size: clamp(1.9rem, 3.4vw, 2.7rem); line-height: 1.08; margin-bottom: 8px; }
+    .hero p { color: var(--muted); max-width: 72ch; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 11px 14px; border-radius: 14px; border: 1px solid var(--line-strong);
+      background: #fff; color: var(--text); font-weight: 700; box-shadow: 0 10px 24px rgba(207,47,85,.10);
+    }
+    .btn:hover { text-decoration: none; }
+    .intro-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 16px; margin-bottom: 24px; }
+    .mini-card, .article-card { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 10px 28px rgba(15,23,42,.06); }
+    .mini-card { padding: 18px; background: var(--surface-2); }
+    .mini-card strong { display: block; margin-bottom: 6px; color: var(--accent); }
+    .mini-card span { color: var(--muted); }
+    .article-list { display: grid; gap: 18px; }
+    .article-card { padding: 22px; }
+    .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 11px; border-radius: 999px;
+      background: rgba(207,47,85,.08); border: 1px solid var(--line-strong); color: #8f1231;
+      font-size: .8rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em;
+    }
+    .meta { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+    .meta span { padding: 6px 11px; border-radius: 999px; background: #fff; border: 1px solid var(--line); color: #25324b; font-size: .9rem; }
+    .article-card p { color: var(--muted); }
+    .article-card p + p { margin-top: 10px; }
+    .article-card .source-link { margin-top: 14px; display: inline-flex; align-items: center; gap: 8px; padding: 11px 14px; border-radius: 14px; background: linear-gradient(135deg, #d93763, #ff6f91); color: #fff; font-weight: 700; }
+    .article-card .source-link:hover { text-decoration: none; transform: translateY(-1px); }
+    @media (max-width: 900px) {
+      body { padding: 18px; }
+      .wrapper { padding: 22px; }
+      .hero, .intro-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="wrapper">
+    <header class="hero">
+      <div>
+        <span class="eyebrow">Portfolio BTS SIO — Noé Chami</span>
+        <h1>Veille technologique</h1>
+        <p>Veille BTS SIO SISR organisée sur l’année scolaire, de septembre 2025 à mars 2026. Les articles sont classés dans l’ordre chronologique et chaque fiche renvoie vers une source accessible.</p>
+      </div>
+      <a class="btn" href="index.html">⬅️ Retour au portfolio</a>
+    </header>
+
+    <section class="intro-grid" aria-label="Méthode de veille">
+      <article class="mini-card">
+        <strong>Période couverte</strong>
+        <span>Septembre 2025 à mars 2026, soit un article par mois de l’année scolaire.</span>
+      </article>
+      <article class="mini-card">
+        <strong>Sources privilégiées</strong>
+        <span>CERT-FR, LeMagIT et The Hacker News pour garder une veille crédible, utile et exploitable à l’oral.</span>
+      </article>
+      <article class="mini-card">
+        <strong>Angle BTS SISR</strong>
+        <span>Failles, correctifs, équipements exposés, sécurité des postes, systèmes Linux et résilience réseau.</span>
+      </article>
+    </section>
+
+    <section class="article-list" aria-label="Articles de veille mensuels">
+      <article class="article-card">
+        <div class="head">
+          <h2>CERT-FR : vulnérabilités critiques dans Cisco ASA et FTD</h2>
+          <span class="badge">Septembre 2025</span>
+        </div>
+        <div class="meta">
+          <span><strong>Date :</strong> 25 septembre 2025</span>
+          <span><strong>Source :</strong> CERT-FR</span>
+          <span><strong>Thème :</strong> Réseau / pare-feu</span>
+        </div>
+        <p><strong>Résumé :</strong> le CERT-FR alerte sur plusieurs vulnérabilités affectant le serveur VPN Web de Cisco ASA et Secure Firewall Threat Defense, avec des risques de contournement d’authentification et d’exécution de code. </p>
+        <p><strong>Analyse BTS :</strong> cet article illustre parfaitement l’importance de la veille sécurité sur les équipements réseau exposés, du suivi des correctifs et de la réaction rapide face à une alerte critique.</p>
+        <a class="source-link" href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-013/" target="_blank" rel="noopener noreferrer">Lire l’article source</a>
+      </article>
+
+      <article class="article-card">
+        <div class="head">
+          <h2>Cyberéco 2025 : montée en puissance des menaces hybrides</h2>
+          <span class="badge">Octobre 2025</span>
+        </div>
+        <div class="meta">
+          <span><strong>Date :</strong> 22 octobre 2025</span>
+          <span><strong>Source :</strong> LeMagIT</span>
+          <span><strong>Thème :</strong> Menaces / cybersécurité</span>
+        </div>
+        <p><strong>Résumé :</strong> l’article explique que les menaces hybrides mêlent cyberattaques, déstabilisation informationnelle, géopolitique et effets amplifiés par l’IA générative.</p>
+        <p><strong>Analyse BTS :</strong> utile pour montrer qu’un administrateur systèmes et réseaux participe à la résilience globale d’une organisation, au-delà des seules tâches techniques locales.</p>
+        <a class="source-link" href="https://www.lemagit.fr/actualites/366633533/Cybereco-2025-fait-le-constat-de-la-montee-en-puissance-des-menaces-hybrides" target="_blank" rel="noopener noreferrer">Lire l’article source</a>
+      </article>
+
+      <article class="article-card">
+        <div class="head">
+          <h2>Opération ENDGAME de novembre 2025</h2>
+          <span class="badge">Novembre 2025</span>
+        </div>
+        <div class="meta">
+          <span><strong>Date :</strong> 13 novembre 2025</span>
+          <span><strong>Source :</strong> CERT-FR</span>
+          <span><strong>Thème :</strong> Malware / réponse à incident</span>
+        </div>
+        <p><strong>Résumé :</strong> le CERT-FR décrit une opération internationale visant des infrastructures liées à plusieurs malwares et à des activités cybercriminelles persistantes.</p>
+        <p><strong>Analyse BTS :</strong> bon support pour parler d’IOC, de supervision, de remédiation et de coopération internationale dans la lutte contre les campagnes malveillantes.</p>
+        <a class="source-link" href="https://www.cert.ssi.gouv.fr/cti/CERTFR-2025-CTI-011/" target="_blank" rel="noopener noreferrer">Lire l’article source</a>
+      </article>
+
+      <article class="article-card">
+        <div class="head">
+          <h2>Vulnérabilité dans React Server Components (React2Shell)</h2>
+          <span class="badge">Décembre 2025</span>
+        </div>
+        <div class="meta">
+          <span><strong>Date :</strong> 5 décembre 2025</span>
+          <span><strong>Source :</strong> CERT-FR</span>
+          <span><strong>Thème :</strong> Développement / web</span>
+        </div>
+        <p><strong>Résumé :</strong> le CERT-FR signale une vulnérabilité dans React Server Components pouvant permettre une exécution de code arbitraire à distance sur des applications vulnérables.</p>
+        <p><strong>Analyse BTS :</strong> intéressant pour relier l’administration des serveurs à la sécurité des frameworks web et à la nécessité de maintenir aussi la couche applicative.</p>
+        <a class="source-link" href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-014/" target="_blank" rel="noopener noreferrer">Lire l’article source</a>
+      </article>
+
+      <article class="article-card">
+        <div class="head">
+          <h2>Fake Moltbot AI Coding Assistant sur VS Code Marketplace</h2>
+          <span class="badge">Janvier 2026</span>
+        </div>
+        <div class="meta">
+          <span><strong>Date :</strong> 28 janvier 2026</span>
+          <span><strong>Source :</strong> The Hacker News</span>
+          <span><strong>Thème :</strong> Poste de travail / supply chain</span>
+        </div>
+        <p><strong>Résumé :</strong> une fausse extension Visual Studio Code se présentait comme un assistant IA et installait en réalité un accès distant persistant sur les machines compromises.</p>
+        <p><strong>Analyse BTS :</strong> très bon exemple pour parler de sécurité du poste de travail, des extensions non vérifiées et de la chaîne d’outils de développement.</p>
+        <a class="source-link" href="https://thehackernews.com/2026/01/fake-moltbot-ai-coding-assistant-on-vs.html" target="_blank" rel="noopener noreferrer">Lire l’article source</a>
+      </article>
+
+      <article class="article-card">
+        <div class="head">
+          <h2>CVE-2025-68686 : vulnérabilité dans Fortinet FortiOS</h2>
+          <span class="badge">Février 2026</span>
+        </div>
+        <div class="meta">
+          <span><strong>Date :</strong> 6 février 2026</span>
+          <span><strong>Source :</strong> CERT-FR</span>
+          <span><strong>Thème :</strong> VPN SSL / sécurité</span>
+        </div>
+        <p><strong>Résumé :</strong> le CERT-FR relaie une vulnérabilité affectant les VPN SSL de FortiOS et pouvant porter atteinte à la confidentialité des données.</p>
+        <p><strong>Analyse BTS :</strong> cet article montre pourquoi les accès distants doivent être surveillés, corrigés rapidement et considérés comme des points d’exposition majeurs d’un SI.</p>
+        <a class="source-link" href="https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-007/" target="_blank" rel="noopener noreferrer">Lire l’article source</a>
+      </article>
+
+      <article class="article-card">
+        <div class="head">
+          <h2>Multiples vulnérabilités dans le noyau Linux d’Ubuntu</h2>
+          <span class="badge">Mars 2026</span>
+        </div>
+        <div class="meta">
+          <span><strong>Date :</strong> 13 mars 2026</span>
+          <span><strong>Source :</strong> CERT-FR</span>
+          <span><strong>Thème :</strong> Linux / systèmes</span>
+        </div>
+        <p><strong>Résumé :</strong> plusieurs vulnérabilités affectent le noyau Linux d’Ubuntu, avec des impacts potentiels sur la confidentialité, les privilèges et la politique de sécurité.</p>
+        <p><strong>Analyse BTS :</strong> parfait pour parler de maintenance système, de gestion des mises à jour sur Linux et de l’importance d’une veille régulière sur les serveurs d’entreprise.</p>
+        <a class="source-link" href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0289/" target="_blank" rel="noopener noreferrer">Lire l’article source</a>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

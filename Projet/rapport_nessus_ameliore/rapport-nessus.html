@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rapport d'activité — Scan de vulnérabilités avec Nessus</title>
+  <meta name="description" content="Rapport BTS SIO SISR : scan de vulnérabilités avec Nessus, analyse de la faille UnrealIRCd et synthèse des contre-mesures.">
+  <link rel="stylesheet" href="rapport-nessus.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container hero-grid">
+      <div>
+        <span class="badge-top">BTS SIO SISR • Cybersécurité • Laboratoire pédagogique</span>
+        <h1>Scan de vulnérabilités avec Nessus et analyse de la faille UnrealIRCd</h1>
+        <p>
+          Cette activité montre comment passer d’un <strong>constat de vulnérabilité</strong> à une
+          <strong>analyse structurée du risque</strong>. Le travail a été mené dans un laboratoire de test
+          afin d’identifier des faiblesses sur une machine cible, d’interpréter les résultats du scan,
+          puis d’étudier l’impact d’une vulnérabilité critique dans un cadre strictement pédagogique.
+        </p>
+        <div class="hero-actions">
+          <a class="btn primary" href="docs/activite6_scan_vulnerabilites_nessus.pdf">Ouvrir le support PDF</a>
+          <a class="btn" href="#bilan">Voir le bilan</a>
+        </div>
+      </div>
+      <aside class="hero-panel">
+        <p class="mini-label">Points clés</p>
+        <ul>
+          <li>Scanner utilisé : Nessus Essentials</li>
+          <li>Cible : machine de laboratoire de type Metasploitable</li>
+          <li>Faille étudiée : backdoor UnrealIRCd 3.2.8.1</li>
+          <li>Livrables : captures, analyse, preuves techniques et remédiations</li>
+        </ul>
+      </aside>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card intro-card">
+      <div class="section-heading">
+        <p class="section-label">1. Introduction</p>
+        <h2>Contexte, objectif et démarche</h2>
+      </div>
+      <div class="grid-2 text-grid">
+        <div>
+          <p>
+            L’activité a été réalisée avec <strong>Kali Linux</strong> comme poste d’analyse et une machine
+            <strong>Metasploitable</strong> comme cible de laboratoire. L’objectif n’était pas de « lancer une attaque »
+            en situation réelle, mais de comprendre le cycle complet d’un contrôle de sécurité :
+            <strong>détection, priorisation, analyse, preuve technique et remédiation</strong>.
+          </p>
+          <p>
+            Nessus a servi de point de départ pour repérer les vulnérabilités présentes. Une fois les résultats obtenus,
+            l’analyse s’est concentrée sur la faille <strong>UnrealIRCd</strong>, car elle apparaissait comme critique dans le scan.
+          </p>
+        </div>
+        <div class="callout info">
+          <h3>Démarche suivie</h3>
+          <ol>
+            <li>Préparer le laboratoire et identifier la cible.</li>
+            <li>Lancer un scan de vulnérabilités avec Nessus.</li>
+            <li>Lire les résultats par niveau de criticité.</li>
+            <li>Zoomer sur la faille UnrealIRCd détectée.</li>
+            <li>Vérifier l’impact dans un cadre pédagogique contrôlé.</li>
+            <li>Formuler des mesures correctives et une synthèse de risque.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="grid-2 media-grid">
+      <article class="card">
+        <p class="section-label">2. Mise en œuvre</p>
+        <h2>Interface Nessus</h2>
+        <img src="assets/interface-nessus.png" alt="Interface principale de Nessus Essentials utilisée dans le laboratoire.">
+        <p class="caption">Tableau de bord Nessus utilisé pour créer et piloter le scan.</p>
+      </article>
+      <article class="card">
+        <p class="section-label">2. Mise en œuvre</p>
+        <h2>Création du scan</h2>
+        <img src="assets/scan-modele.png" alt="Sélection du modèle de scan dans Nessus.">
+        <p class="caption">Choix du modèle de scan avant lancement de l’analyse.</p>
+      </article>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <p class="section-label">3. Résultats</p>
+        <h2>Lecture des résultats du scan Nessus</h2>
+      </div>
+      <p>
+        Le scan met en évidence plusieurs vulnérabilités classées par niveau de criticité. Cette phase est essentielle,
+        car elle permet de séparer les informations secondaires des failles qui présentent un impact direct sur la sécurité.
+        Ici, l’attention se porte sur <strong>UnrealIRCd Backdoor Detection</strong>, identifiée comme vulnérabilité critique.
+      </p>
+      <img src="assets/resultats-nessus.png" alt="Résultats du scan Nessus avec répartition par criticité.">
+      <p class="caption">Vue d’ensemble des vulnérabilités détectées et hiérarchisation par sévérité.</p>
+    </section>
+
+    <section class="grid-2 media-grid">
+      <article class="card">
+        <p class="section-label">4. Analyse ciblée</p>
+        <h2>Pourquoi la faille UnrealIRCd est critique</h2>
+        <p>
+          La faille identifiée concerne une version compromise d’<strong>UnrealIRCd 3.2.8.1</strong>. D’après le NVD,
+          cette version distribuée sur certains miroirs entre novembre 2009 et juin 2010 contenait une
+          <strong>modification malveillante</strong> permettant l’exécution de commandes à distance. citeturn457196search0
+        </p>
+        <p>
+          Rapid7 documente également un module Metasploit associé à cette backdoor, ce qui confirme l’existence
+          d’un scénario d’exploitation connu dans les environnements de test et de démonstration. citeturn457196search2turn457196search4
+        </p>
+        <p>
+          Dans le contexte du rapport, l’intérêt n’est donc pas de détailler une procédure offensive, mais de montrer
+          qu’une vulnérabilité détectée par un scanner peut correspondre à un risque concret si elle n’est pas corrigée.
+        </p>
+      </article>
+      <article class="card">
+        <img src="assets/solution-unrealircd.png" alt="Capture Nessus présentant le détail et la remédiation de la faille UnrealIRCd.">
+        <p class="caption">Nessus fournit le détail de la vulnérabilité et une première piste de remédiation.</p>
+      </article>
+    </section>
+
+    <section class="card">
+      <img src="assets/detail-unrealircd.png" alt="Détail complémentaire de la détection de la faille UnrealIRCd dans Nessus.">
+      <p class="caption">Capture complémentaire confirmant la présence du service vulnérable sur la cible de laboratoire.</p>
+    </section>
+
+    <section class="card">
+      <div class="section-heading">
+        <p class="section-label">5. Vérification d’impact</p>
+        <h2>Validation pédagogique dans Metasploit</h2>
+      </div>
+      <p>
+        Après la phase de détection, une vérification d’impact a été réalisée dans le laboratoire avec Metasploit.
+        Cette étape sert à relier le résultat du scanner à une <strong>preuve technique observable</strong> :
+        si une vulnérabilité critique est détectée, il faut être capable d’estimer ce qu’elle permettrait à un attaquant.
+      </p>
+      <p>
+        Le rapport se limite volontairement à une description générale de la démonstration : recherche du module,
+        observation des options disponibles, lancement dans l’environnement de test et validation du résultat obtenu.
+      </p>
+      <div class="callout warning">
+        <h3>Point méthodologique</h3>
+        <p>
+          Cette démonstration a été effectuée uniquement dans un laboratoire pédagogique isolé. En contexte professionnel,
+          ce type de vérification doit être autorisé, encadré et documenté.
+        </p>
+      </div>
+    </section>
+
+    <section class="gallery-grid">
+      <article class="card">
+        <img src="assets/msfconsole.png" alt="Ouverture de Metasploit Framework sur la machine Kali Linux.">
+        <p class="caption">Lancement de Metasploit Framework.</p>
+      </article>
+      <article class="card">
+        <img src="assets/recherche-module.png" alt="Recherche du module UnrealIRCd dans Metasploit.">
+        <p class="caption">Recherche du module correspondant à la vulnérabilité.</p>
+      </article>
+      <article class="card">
+        <img src="assets/show-payloads.png" alt="Affichage des options et payloads disponibles dans Metasploit.">
+        <p class="caption">Étude des possibilités offertes par le module dans le laboratoire.</p>
+      </article>
+      <article class="card">
+        <img src="assets/exploitation.png" alt="Validation de la démonstration technique dans Metasploit.">
+        <p class="caption">Validation pédagogique de l’impact de la faille en environnement contrôlé.</p>
+      </article>
+    </section>
+
+    <section class="grid-2 media-grid">
+      <article class="card">
+        <p class="section-label">6. Preuves techniques</p>
+        <h2>Éléments de validation</h2>
+        <p>
+          Les captures ci-dessous servent de preuves techniques : elles montrent qu’après la démonstration,
+          un accès de type shell a pu être observé sur la machine cible de laboratoire, avec récupération d’informations
+          système et réseau. L’objectif du rapport est de prouver l’impact potentiel de la faille, pas de détailler
+          une chaîne d’attaque réutilisable.
+        </p>
+        <img src="assets/reverse-shell.png" alt="Capture montrant l’obtention d’un shell distant sur la cible de laboratoire.">
+        <p class="caption">Preuve d’un accès shell obtenu dans le laboratoire de test.</p>
+      </article>
+      <article class="card">
+        <img src="assets/final.png" alt="Validation finale du shell avec plusieurs commandes système.">
+        <p class="caption">Vérification finale par l’exécution de commandes système sur la cible pédagogique.</p>
+      </article>
+    </section>
+
+    <section class="card">
+      <p class="section-label">7. Comparaison</p>
+      <h2>Accès administrateur légitime et exposition du service</h2>
+      <p>
+        Une capture SSH a également été intégrée au rapport pour distinguer un accès administrateur normal d’un accès obtenu
+        via une vulnérabilité. Cette comparaison met en évidence l’importance du durcissement des services exposés,
+        de la segmentation réseau et de la surveillance des accès.
+      </p>
+      <img src="assets/connexion-ssh.png" alt="Connexion SSH utilisée comme comparaison avec un accès administrateur légitime.">
+      <p class="caption">Accès SSH légitime observé dans le laboratoire, utilisé comme point de comparaison.</p>
+    </section>
+
+    <section class="card" id="bilan">
+      <div class="section-heading">
+        <p class="section-label">8. Remédiation</p>
+        <h2>Contre-mesures recommandées</h2>
+      </div>
+      <div class="grid-2 text-grid">
+        <div>
+          <ul class="checklist">
+            <li>mettre à jour ou remplacer immédiatement tout service vulnérable ;</li>
+            <li>supprimer les versions obsolètes et contrôler la provenance des logiciels installés ;</li>
+            <li>limiter l’exposition réseau des services non indispensables ;</li>
+            <li>filtrer les ports inutiles et appliquer le principe du moindre privilège ;</li>
+            <li>journaliser les accès et superviser régulièrement les événements système ;</li>
+            <li>réaliser des scans périodiques pour suivre l’état de sécurité du parc.</li>
+          </ul>
+        </div>
+        <div class="callout success">
+          <h3>Bilan professionnel</h3>
+          <p>
+            Cette activité montre qu’un scan de vulnérabilités est utile seulement si l’on sait
+            <strong>interpréter les résultats</strong>, <strong>prioriser les remédiations</strong> et
+            <strong>documenter les preuves</strong>. C’est précisément cette logique qui est attendue dans un contexte BTS SIO SISR.
+          </p>
+          <p>
+            Tenable présente Nessus Essentials comme un outil d’apprentissage et d’évaluation adapté aux petits laboratoires,
+            ce qui correspond bien au cadre pédagogique de cette activité. citeturn457196search1turn457196search9
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="card docs-card">
+      <p class="section-label">9. Documents</p>
+      <h2>Pièce jointe conservée</h2>
+      <div class="docs single-doc">
+        <a href="docs/activite6_scan_vulnerabilites_nessus.pdf">Support PDF de l’activité</a>
+      </div>
+      <p class="footnote">L’ancienne version HTML jointe a été retirée pour garder un seul support source et éviter les doublons dans le portfolio.</p>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>TP Keepalived – Haute Disponibilité VRRP</title>
+  <style>
+    :root{
+      color-scheme: light;
+      --bg:#f5f7fb;
+      --surface:#ffffff;
+      --text:#0f172a;
+      --muted:#4d5567;
+      --line:#e2e8f0;
+      --line-strong:#d02d51;
+      --shadow:0 18px 46px rgba(15,23,42,.12);
+      --code-bg:#f1f5f9;
+      --code-border:#d8dee9;
+    }
+    *{box-sizing:border-box}
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;margin:0;padding:32px;background:var(--bg);color:var(--text)}
+    h1,h2,h3{color:var(--text);font-weight:700}
+    h1{margin-top:0}
+    code,pre{background:var(--code-bg);border:1px solid var(--code-border);border-radius:10px;padding:10px;display:block;color:#0f172a;font-size:0.95rem}
+    pre{overflow:auto;line-height:1.5}
+    ul{padding-left:20px;color:var(--muted)}
+    .note{background:#fff9fb;border:1px solid rgba(208,45,81,.22);border-radius:12px;padding:14px;margin:16px 0;color:var(--muted);box-shadow:0 16px 32px rgba(208,45,81,.12)}
+    .section{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:18px;margin-bottom:18px;box-shadow:var(--shadow)}
+  </style>
+</head>
+<body>
+  <h1>TP Keepalived – Haute Disponibilité avec VRRP</h1>
+  <p>Objectif : assurer la continuité d’accès à l’adresse virtuelle d’un service en cas de panne d’un routeur principal.</p>
+
+  <div class="section">
+    <h2>1. Rôle de Keepalived</h2>
+    <ul>
+      <li>Publie une <strong>adresse IP virtuelle</strong> (VIP) partagée entre plusieurs routeurs.</li>
+      <li>S’appuie sur le protocole <strong>VRRP</strong> (Virtual Router Redundancy Protocol).</li>
+      <li>Assure une <strong>bascule automatique</strong> si le routeur principal n’est plus joignable.</li>
+    </ul>
+  </div>
+
+  <div class="section">
+    <h2>2. Installation de Keepalived (Debian)</h2>
+    <pre><code>sudo apt update && sudo apt upgrade -y
+sudo apt install keepalived -y
+
+# Vérifier l’installation
+keepalived --version
+sudo systemctl status keepalived
+</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>3. Configuration réseau préalable</h2>
+    <p>Exemple d’adressage sur deux routeurs :</p>
+    <ul>
+      <li><strong>routeur1</strong> : 192.168.20.10/24</li>
+      <li><strong>routeur2</strong> : 192.168.20.20/24</li>
+      <li><strong>VIP</strong> : 192.168.20.30/24</li>
+      <li>Passerelle pour les clients : 192.168.20.30</li>
+    </ul>
+    <p>Activer le routage IPv4 :</p>
+    <pre><code>sudo nano /etc/sysctl.conf
+net.ipv4.ip_forward=1
+sudo sysctl -p</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>4. Exemple de configuration Keepalived</h2>
+    <pre><code>sudo nano /etc/keepalived/keepalived.conf
+
+vrrp_instance VI_1 {
+  state MASTER            # BACKUP sur le second nœud
+  interface ens33         # adapter à l’interface réseau
+  virtual_router_id 51
+  priority 150            # 100 sur le nœud backup
+  advert_int 1
+  authentication {
+    auth_type PASS
+    auth_pass vrrp123
+  }
+  virtual_ipaddress {
+    192.168.20.30/24
+  }
+}
+</code></pre>
+    <p>Redémarrer le service pour appliquer les changements :</p>
+    <pre><code>sudo systemctl restart keepalived
+sudo systemctl enable keepalived</code></pre>
+  </div>
+
+  <div class="section">
+    <h2>5. Tests de bascule</h2>
+    <ul>
+      <li>Depuis un poste client, <code>ping 192.168.20.30</code> pour vérifier la VIP.</li>
+      <li>Simuler une panne du maître (<code>sudo systemctl stop keepalived</code>) et vérifier la continuité du ping.</li>
+      <li>Relancer le service et confirmer le retour automatique du maître (<code>ip a</code> pour visualiser la VIP).</li>
+    </ul>
+  </div>
+
+  <p class="note">Astuce : ajouter un <strong>track_script</strong> pour surveiller un service critique (ex. <code>nginx</code>) et déclencher la bascule si le service est indisponible.</p>
+</body>
+</html>

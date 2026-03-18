@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="color-scheme" content="light" />
+<title>Compte-rendu de Stage – BTS SIO</title><style>
+:root{
+  color-scheme: light;
+}
+
+body{
+  background:#f5f7fb;
+  color:rgb(55, 53, 47);
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial,sans-serif;
+}
+
+.page{
+  background:#ffffff;
+  border-radius:18px;
+  border:1px solid #e2e8f0;
+  box-shadow:0 18px 48px rgba(15,23,42,.08);
+  padding:32px;
+}
+
+
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 10px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.collection-content td {
+	white-space: pre-wrap;
+	word-break: break-word;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+	margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.callout img.notion-static-icon {
+	width: 1em;
+	height: 1em;
+}
+
+.callout p {
+	margin: 0;
+}
+
+.callout h1,
+.callout h2,
+.callout h3 {
+	margin: 0 0 0.6rem;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+blockquote.quote-large {
+	font-size: 1.25em;
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI Variable Display", "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.highlight-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.highlight-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.highlight-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.highlight-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.highlight-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.highlight-default_background {
+	color: rgba(44, 44, 43, 1);
+}
+.highlight-gray_background {
+	background: rgba(42, 28, 0, 0.07);
+}
+.highlight-brown_background {
+	background: rgba(139, 46, 0, 0.086);
+}
+.highlight-orange_background {
+	background: rgba(224, 101, 1, 0.129);
+}
+.highlight-yellow_background {
+	background: rgba(211, 168, 0, 0.137);
+}
+.highlight-teal_background {
+	background: rgba(0, 100, 45, 0.09);
+}
+.highlight-blue_background {
+	background: rgba(0, 124, 215, 0.094);
+}
+.highlight-purple_background {
+	background: rgba(102, 0, 178, 0.078);
+}
+.highlight-pink_background {
+	background: rgba(197, 0, 93, 0.086);
+}
+.highlight-red_background {
+	background: rgba(223, 22, 0, 0.094);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(125, 122, 117, 1);
+	fill: rgba(125, 122, 117, 1);
+}
+.block-color-brown {
+	color: rgba(159, 118, 90, 1);
+	fill: rgba(159, 118, 90, 1);
+}
+.block-color-orange {
+	color: rgba(210, 123, 45, 1);
+	fill: rgba(210, 123, 45, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 148, 52, 1);
+	fill: rgba(203, 148, 52, 1);
+}
+.block-color-teal {
+	color: rgba(80, 148, 110, 1);
+	fill: rgba(80, 148, 110, 1);
+}
+.block-color-blue {
+	color: rgba(56, 125, 201, 1);
+	fill: rgba(56, 125, 201, 1);
+}
+.block-color-purple {
+	color: rgba(154, 107, 180, 1);
+	fill: rgba(154, 107, 180, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(207, 81, 72, 1);
+	fill: rgba(207, 81, 72, 1);
+}
+.block-color-default_background {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray_background {
+	background: rgba(240, 239, 237, 1);
+}
+.block-color-brown_background {
+	background: rgba(245, 237, 233, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 235, 222, 1);
+}
+.block-color-yellow_background {
+	background: rgba(249, 243, 220, 1);
+}
+.block-color-teal_background {
+	background: rgba(232, 241, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(229, 242, 252, 1);
+}
+.block-color-purple_background {
+	background: rgba(243, 235, 249, 1);
+}
+.block-color-pink_background {
+	background: rgba(250, 233, 241, 1);
+}
+.block-color-red_background {
+	background: rgba(252, 233, 231, 1);
+}
+.select-value-color-default { background-color: rgba(42, 28, 0, 0.07); }
+.select-value-color-gray { background-color: rgba(28, 19, 1, 0.11); }
+.select-value-color-brown { background-color: rgba(127, 51, 0, 0.156); }
+.select-value-color-orange { background-color: rgba(196, 88, 0, 0.203); }
+.select-value-color-yellow { background-color: rgba(209, 156, 0, 0.282); }
+.select-value-color-green { background-color: rgba(0, 96, 38, 0.156); }
+.select-value-color-blue { background-color: rgba(0, 118, 217, 0.203); }
+.select-value-color-purple { background-color: rgba(92, 0, 163, 0.141); }
+.select-value-color-pink { background-color: rgba(183, 0, 78, 0.152); }
+.select-value-color-red { background-color: rgba(206, 24, 0, 0.164); }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="2bc3c9e0-ab45-8016-97ae-f02172d8b434" class="page sans"><header><h1 class="page-title"><strong>Compte-rendu de Stage – BTS SIO</strong></h1><p class="page-description"></p></header><div class="page-body"><p id="2bc3c9e0-ab45-80e0-a6ef-df0a09530c1a" class=""><strong>Entreprise : Adefi Informatique</strong></p><p id="2bc3c9e0-ab45-808f-8bb9-ead59f27e59d" class=""><strong>Tuteur : M. Cédric Duval</strong></p><p id="2bc3c9e0-ab45-80cb-b997-dfcc78b38be1" class=""><strong>Durée : 6 semaines</strong></p><h2 id="2bc3c9e0-ab45-80f2-95eb-e5e5ea9d2f34" class="">🎯 <strong>Objectifs du stage</strong></h2><ul id="2bc3c9e0-ab45-8039-a499-feed5ea3da24" class="bulleted-list"><li style="list-style-type:disc">Découvrir le métier de technicien informatique et administrateur système/réseau.</li></ul><ul id="2bc3c9e0-ab45-806d-ba1a-f306f7ea7d82" class="bulleted-list"><li style="list-style-type:disc">Intervenir sur du matériel, des postes clients, des serveurs et du réseau.</li></ul><ul id="2bc3c9e0-ab45-809d-8293-cc9d45956834" class="bulleted-list"><li style="list-style-type:disc">Acquérir des réflexes de diagnostic et de résolution d’incidents.</li></ul><ul id="2bc3c9e0-ab45-8051-b6fe-f231b3a09436" class="bulleted-list"><li style="list-style-type:disc">Participer à des missions réelles chez les clients professionnels de l’entreprise.</li></ul><hr id="2bc3c9e0-ab45-80e3-a88e-d6fac61a38cf"/><h1 id="2bc3c9e0-ab45-8069-8a12-d406f6bd5023" class="">🗓️ <strong>Semaine 1 – Découverte &amp; premières interventions</strong></h1><h3 id="2bc3c9e0-ab45-8026-9288-f4690089f1df" class="">🔧 Activités principales</h3><ul id="2bc3c9e0-ab45-80ae-8a88-c073f85ece6e" class="bulleted-list"><li style="list-style-type:disc">Remplacement de disques et mise en place d’un <strong>RAID 1</strong> sur un serveur.</li></ul><ul id="2bc3c9e0-ab45-80f2-8fec-d966df471527" class="bulleted-list"><li style="list-style-type:disc">Élaboration de devis pour renouvellement de postes obsolètes.</li></ul><ul id="2bc3c9e0-ab45-8054-9e06-c119f36490f5" class="bulleted-list"><li style="list-style-type:disc">Accueil clientèle &amp; diagnostic rapide.</li></ul><ul id="2bc3c9e0-ab45-80f2-a22c-fa5e5b6f4569" class="bulleted-list"><li style="list-style-type:disc">Migration d’un poste <strong>Windows 10 vers Ubuntu</strong>.</li></ul><ul id="2bc3c9e0-ab45-8067-962f-c34b6b773605" class="bulleted-list"><li style="list-style-type:disc">Configuration d’un <strong>NAS Synology (RAID SHR)</strong>.</li></ul><ul id="2bc3c9e0-ab45-8095-8041-f45153161de9" class="bulleted-list"><li style="list-style-type:disc">Installation complète de <strong>Windows 11</strong> (+ pilotes, nettoyage, restauration).</li></ul><h3 id="2bc3c9e0-ab45-8052-b0d7-d4d22a431370" class="">🧩 Difficultés rencontrées / Solutions</h3><ul id="2bc3c9e0-ab45-80eb-b1f0-e860929d7aff" class="bulleted-list"><li style="list-style-type:disc">Performances insuffisantes d’un disque → <strong>remplacement par SSD</strong>.</li></ul><h3 id="2bc3c9e0-ab45-8073-899e-f2264541cf83" class="">✔️ Ce que j’ai appris</h3><ul id="2bc3c9e0-ab45-8080-a835-e64914988ff9" class="bulleted-list"><li style="list-style-type:disc">Bases du diagnostic matériel.</li></ul><ul id="2bc3c9e0-ab45-80f2-a107-dc2758f06683" class="bulleted-list"><li style="list-style-type:disc">Découverte des environnements Linux et Synology.</li></ul><ul id="2bc3c9e0-ab45-802b-aaad-f0ea6fce5bbc" class="bulleted-list"><li style="list-style-type:disc">Importance du RAID et des sauvegardes pour les entreprises.</li></ul><hr id="2bc3c9e0-ab45-8024-95f6-d6440887f895"/><h1 id="2bc3c9e0-ab45-8038-b7fb-c6192f2c3e31" class="">🗓️ <strong>Semaine 2 – Infrastructure réseau &amp; pare-feu</strong></h1><h3 id="2bc3c9e0-ab45-80a9-bf68-f5429c52724f" class="">🔧 Activités principales</h3><ul id="2bc3c9e0-ab45-806d-a317-f6d0a2a25227" class="bulleted-list"><li style="list-style-type:disc">Étude &amp; utilisation d’<strong>iptables</strong> (pare-feu Linux).</li></ul><ul id="2bc3c9e0-ab45-801c-95e2-c87eb31e5f6a" class="bulleted-list"><li style="list-style-type:disc">Configuration d’un <strong>pare-feu matériel</strong>, d’un switch Zyxel et d’un routeur.</li></ul><ul id="2bc3c9e0-ab45-80a9-87f8-d70bb098952c" class="bulleted-list"><li style="list-style-type:disc">Déploiement d’une <strong>infrastructure réseau</strong> dans un bâtiment professionnel.</li></ul><ul id="2bc3c9e0-ab45-808f-b8f9-fb5f2050bc88" class="bulleted-list"><li style="list-style-type:disc">Déménagement de la baie informatique et brassage complet.</li></ul><ul id="2bc3c9e0-ab45-8008-9c25-f30baa9a6b9d" class="bulleted-list"><li style="list-style-type:disc">Réparation d’un PC instable (diagnostic alimentation).</li></ul><h3 id="2bc3c9e0-ab45-807e-8a88-e053ee2d120d" class="">✔️ Compétences acquises</h3><ul id="2bc3c9e0-ab45-80ca-a1e5-ffa2e4324980" class="bulleted-list"><li style="list-style-type:disc">Mise en place de VLAN, DNS, IP fixes.</li></ul><ul id="2bc3c9e0-ab45-8031-a192-f2726b8c18d7" class="bulleted-list"><li style="list-style-type:disc">Gestion des conflits réseau (ports téléphonie/data).</li></ul><ul id="2bc3c9e0-ab45-8073-aa6f-c528c35ca325" class="bulleted-list"><li style="list-style-type:disc">Techniques de test matériel.</li></ul><hr id="2bc3c9e0-ab45-809a-a5c3-e4a93e954d8f"/><h1 id="2bc3c9e0-ab45-809c-ae7b-ec0da2bba102" class="">🗓️ <strong>Semaine 3 – Ateliers techniques &amp; dépannage avancé</strong></h1><h3 id="2bc3c9e0-ab45-8025-b111-e3c763350c58" class="">🔧 Activités principales</h3><ul id="2bc3c9e0-ab45-801e-ae68-e964f9b2f471" class="bulleted-list"><li style="list-style-type:disc">Récupération de données d’un PC bloqué via <strong>machine virtuelle Fedora</strong>.</li></ul><ul id="2bc3c9e0-ab45-805e-a368-cfae5167054b" class="bulleted-list"><li style="list-style-type:disc">Réinitialisation complète d’un téléphone Samsung.</li></ul><ul id="2bc3c9e0-ab45-80ad-aadf-f183c30500d7" class="bulleted-list"><li style="list-style-type:disc">Recherche et installation manuelle de pilotes inconnus.</li></ul><ul id="2bc3c9e0-ab45-80fb-bb45-d09b75090ff4" class="bulleted-list"><li style="list-style-type:disc">Suppression d’un mot de passe Windows via <strong>outil bootable</strong>.</li></ul><ul id="2bc3c9e0-ab45-806f-b8ed-e3a3efb412d9" class="bulleted-list"><li style="list-style-type:disc">Prise en main à distance d’un serveur (TeamViewer).</li></ul><ul id="2bc3c9e0-ab45-801d-a010-e5e51d2722a4" class="bulleted-list"><li style="list-style-type:disc">Montage d’un <strong>PC Gamer (2400 €)</strong> avec watercooling.</li></ul><ul id="2bc3c9e0-ab45-809b-a3a7-f8bc91a0eead" class="bulleted-list"><li style="list-style-type:disc">Intervention en entreprise sur un NAS défaillant.</li></ul><h3 id="2bc3c9e0-ab45-8068-89bc-fb693017445e" class="">✔️ Compétences acquises</h3><ul id="2bc3c9e0-ab45-808c-9935-ea0b72decb27" class="bulleted-list"><li style="list-style-type:disc">Analyse de droits Windows.</li></ul><ul id="2bc3c9e0-ab45-8013-bc86-c5ae727eec06" class="bulleted-list"><li style="list-style-type:disc">Boot sécurisé, outils USB, VM Linux.</li></ul><ul id="2bc3c9e0-ab45-80cc-a115-f00bd9046d42" class="bulleted-list"><li style="list-style-type:disc">Montage avancé (watercooling, câblage propre).</li></ul><ul id="2bc3c9e0-ab45-8023-b199-e3641900454b" class="bulleted-list"><li style="list-style-type:disc">Diagnostic alimentation, RAM, stockage.</li></ul><hr id="2bc3c9e0-ab45-8039-a9b5-d06502284b66"/><h1 id="2bc3c9e0-ab45-80ea-aba7-e82f9213b49e" class="">🗓️ <strong>Semaine 4 – Interventions en mairie &amp; compétences réseau</strong></h1><h3 id="2bc3c9e0-ab45-8004-a661-d7c78af7f371" class="">🔧 Activités principales</h3><ul id="2bc3c9e0-ab45-80e2-bdc9-e83c712ad448" class="bulleted-list"><li style="list-style-type:disc">Installation de postes en mairie &amp; partage réseau.</li></ul><ul id="2bc3c9e0-ab45-8042-9e51-eb85660a7eb7" class="bulleted-list"><li style="list-style-type:disc">Utilisation de <code>arp -a</code>, <code>ipconfig</code>, scan réseau.</li></ul><ul id="2bc3c9e0-ab45-8052-8d11-e79dfa777b75" class="bulleted-list"><li style="list-style-type:disc">Remplacement d’un serveur NAS et corrections d’erreurs BSOD.</li></ul><ul id="2bc3c9e0-ab45-80ac-8ed3-f9d8a78a81dd" class="bulleted-list"><li style="list-style-type:disc">Participation à un salon professionnel (nouveautés Asus &amp; équipement réseau).</li></ul><ul id="2bc3c9e0-ab45-80a9-ab35-ef04a01628ef" class="bulleted-list"><li style="list-style-type:disc">Réorganisation d’un poste informatique et tri de matériel.</li></ul><h3 id="2bc3c9e0-ab45-807a-807d-c91c82c7cea9" class="">✔️ Ce que j’ai perfectionné</h3><ul id="2bc3c9e0-ab45-80bf-a065-f610c46aabb8" class="bulleted-list"><li style="list-style-type:disc">Commandes réseau &amp; analyse ARP.</li></ul><ul id="2bc3c9e0-ab45-8066-b7fc-eb673b3c4c9b" class="bulleted-list"><li style="list-style-type:disc">Dépannage Windows 10/11 (pilotes, erreurs BSOD).</li></ul><ul id="2bc3c9e0-ab45-805f-bcaf-f162286ca62d" class="bulleted-list"><li style="list-style-type:disc">Diagnostic d’imprimantes et périphériques.</li></ul><hr id="2bc3c9e0-ab45-8080-8f30-ffeb525a14c4"/><h1 id="2bc3c9e0-ab45-80b7-b368-c166e30b22bb" class="">🗓️ <strong>Semaine 5 – RAID, log système &amp; dépannage réseau</strong></h1><h3 id="2bc3c9e0-ab45-803e-b321-dcb3ffde196f" class="">🔧 Activités principales</h3><ul id="2bc3c9e0-ab45-80d7-97dc-d4d20686e9c4" class="bulleted-list"><li style="list-style-type:disc">Réparation d’un ancien disque FAT32.</li></ul><ul id="2bc3c9e0-ab45-8080-94ba-d0f07cbaabf9" class="bulleted-list"><li style="list-style-type:disc">Gestion d’un serveur NAS (accès à distance).</li></ul><ul id="2bc3c9e0-ab45-8069-8519-cf8014f34a12" class="bulleted-list"><li style="list-style-type:disc">Configuration d’un <strong>serveur RAID 10</strong>.</li></ul><ul id="2bc3c9e0-ab45-806a-9549-d1227457a5de" class="bulleted-list"><li style="list-style-type:disc">Analyse des logs Windows (Power Kernel, TPM).</li></ul><ul id="2bc3c9e0-ab45-8051-bf63-d6944c6ec586" class="bulleted-list"><li style="list-style-type:disc">Intervention sur panne réseau totale dans une commune.</li></ul><ul id="2bc3c9e0-ab45-807f-8b58-e2fd687c5558" class="bulleted-list"><li style="list-style-type:disc">Reconfiguration complète des switchs et imprimantes.</li></ul><h3 id="2bc3c9e0-ab45-8078-b23f-d6fa0b401436" class="">✔️ Compétences acquises</h3><ul id="2bc3c9e0-ab45-80e9-a341-d5c6b4351728" class="bulleted-list"><li style="list-style-type:disc">RAID matériel &amp; software.</li></ul><ul id="2bc3c9e0-ab45-8090-b763-d40ca1126fab" class="bulleted-list"><li style="list-style-type:disc">Lecture et analyse de journaux système pour diagnostiquer des arrêts brutaux.</li></ul><ul id="2bc3c9e0-ab45-8072-9c0a-d7cc0a9975c3" class="bulleted-list"><li style="list-style-type:disc">Dépannage réseau complet (switch, câblage, AD, imprimantes).</li></ul><hr id="2bc3c9e0-ab45-807f-a38d-e6ac45af9689"/><h1 id="2bc3c9e0-ab45-8090-8f8b-c2ed73fbb553" class="">🗓️ <strong>Semaine 6 – Administration système avancée &amp; projet majeur</strong></h1><h3 id="2bc3c9e0-ab45-8032-b36a-c2279bc792a4" class="">🔧 Activités principales</h3><ul id="2bc3c9e0-ab45-801c-b6fc-dcef829ba7fc" class="bulleted-list"><li style="list-style-type:disc">Mise en maintenance d’un serveur (déplacement de baie).</li></ul><ul id="2bc3c9e0-ab45-8058-9e54-c419b5b080cb" class="bulleted-list"><li style="list-style-type:disc">Ajout d’imprimantes dans le domaine.</li></ul><ul id="2bc3c9e0-ab45-8022-9a96-ea1c6210eb66" class="bulleted-list"><li style="list-style-type:disc">Supervision de serveurs distants &amp; analyse erreurs TPM.</li></ul><ul id="2bc3c9e0-ab45-809d-b196-da8409293767" class="bulleted-list"><li style="list-style-type:disc">Intervention mairie (police + école) pour résoudre problèmes réseau.</li></ul><ul id="2bc3c9e0-ab45-803c-88c9-ffe5ab190c89" class="bulleted-list"><li style="list-style-type:disc"><strong>Grand projet : transfert complet d’un serveur d’entreprise</strong><ul id="2bc3c9e0-ab45-80e3-98d6-c350947a7043" class="bulleted-list"><li style="list-style-type:circle">Configuration des VM</li></ul><ul id="2bc3c9e0-ab45-8017-abf9-c3f285db5424" class="bulleted-list"><li style="list-style-type:circle">DNS, passerelles, réseau</li></ul><ul id="2bc3c9e0-ab45-8098-a1f2-e1b4deef0b79" class="bulleted-list"><li style="list-style-type:circle">Migration AD + données</li></ul><ul id="2bc3c9e0-ab45-8017-91ad-cac5da97d5fa" class="bulleted-list"><li style="list-style-type:circle">Déplacement roles <strong>FSMO</strong></li></ul><ul id="2bc3c9e0-ab45-8038-b8a7-e5e3d760af0f" class="bulleted-list"><li style="list-style-type:circle">Travail de nuit pour la bascule</li></ul><ul id="2bc3c9e0-ab45-8010-a128-fe3058267ccf" class="bulleted-list"><li style="list-style-type:circle">Création d’un script d’intégration automatique au domaine</li></ul></li></ul><h3 id="2bc3c9e0-ab45-80d3-95dc-f6356d880d1d" class="">✔️ Ce que j’ai appris</h3><ul id="2bc3c9e0-ab45-8072-ab62-f2d6f6519b05" class="bulleted-list"><li style="list-style-type:disc">Organisation d’une migration serveur réelle.</li></ul><ul id="2bc3c9e0-ab45-801b-bae1-d14bc56abeb2" class="bulleted-list"><li style="list-style-type:disc">Gestion de l’Active Directory à grande échelle.</li></ul><ul id="2bc3c9e0-ab45-80da-b09c-ee861da8ba47" class="bulleted-list"><li style="list-style-type:disc">Équilibrage de charge DNS, transfert de rôles FSMO.</li></ul><ul id="2bc3c9e0-ab45-8019-ba2b-c760ab4fcb62" class="bulleted-list"><li style="list-style-type:disc">Automatisation de tâches avec scripts.</li></ul><hr id="2bc3c9e0-ab45-80d4-bacd-d425df60c893"/><h1 id="2bc3c9e0-ab45-80b8-90b9-e91cb67d1840" class="">⭐ <strong>Bilan du stage</strong></h1><p id="2bc3c9e0-ab45-8095-8cda-d5ee90eaad37" class="">Ce stage m’a permis à la fois d’acquérir des compétences techniques et de comprendre les réalités du métier d’un technicien/administrateur système :</p><h3 id="2bc3c9e0-ab45-809d-8f3f-c58a850d76b2" class="">🔥 Compétences gagnées</h3><ul id="2bc3c9e0-ab45-8087-9d2e-fe58f32fa62c" class="bulleted-list"><li style="list-style-type:disc">Administration Windows Server / Active Directory.</li></ul><ul id="2bc3c9e0-ab45-8075-9914-d95382a8bed9" class="bulleted-list"><li style="list-style-type:disc">Migration de serveurs et gestion RAID (1, SHR, RAID10).</li></ul><ul id="2bc3c9e0-ab45-8032-943c-ea65b9591b48" class="bulleted-list"><li style="list-style-type:disc">Déploiement réseau complet (switch, routeur, VLAN, DNS).</li></ul><ul id="2bc3c9e0-ab45-807a-b6f1-ecb0c0aba07c" class="bulleted-list"><li style="list-style-type:disc">Montage et dépannage matériel (PC standard &amp; gamer).</li></ul><ul id="2bc3c9e0-ab45-8093-8a2e-e7dae64131b5" class="bulleted-list"><li style="list-style-type:disc">Utilisation d’outils professionnels : Synology, TeamViewer, outils de diagnostic, VM Linux.</li></ul><h3 id="2bc3c9e0-ab45-80bf-ac08-c48e1ce39b7a" class="">🙌 Reconnaissance</h3><p id="2bc3c9e0-ab45-8007-8a6b-edd399d2ce7a" class="">Mon travail a été très apprécié.</p><p id="2bc3c9e0-ab45-808e-ac7a-e53e528941e7" class="">Le responsable, M. Duval, m’a :</p><ul id="2bc3c9e0-ab45-80a4-83c8-cfd7a195d4a6" class="bulleted-list"><li style="list-style-type:disc">invité au restaurant</li></ul><ul id="2bc3c9e0-ab45-8074-828f-edb4d97a0138" class="bulleted-list"><li style="list-style-type:disc">offert 200 €</li></ul><ul id="2bc3c9e0-ab45-808f-93af-e751c8c58dd0" class="bulleted-list"><li style="list-style-type:disc">proposé de revenir l’année suivante<p id="2bc3c9e0-ab45-8034-b931-f209c45b0645" class="">📌 <em>Infos issues de la dernière page du document</em></p></li></ul><p id="2bc3c9e0-ab45-8070-b090-e9cd14e21ed9" class="">Cela m’a motivé et conforté dans ma voie SIO.</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
