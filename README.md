@@ -10,7 +10,7 @@ Ce site a été réalisé dans le cadre de ma formation **BTS SIO (Services Info
 - **Formation :** BTS SIO option SISR  
 - **Objectif professionnel :** Rejoindre Saint-Maixent afin d’intégrer l’école des transmissions  
 - 📄 [Mon CV interactif](./cv.html) — prêt à être exporté en PDF (A4)
-- 📎 [Attestation ANSSI](./Documents/attestation-anssi.pdf) — à remplacer par l’originale placée dans le dossier `Documents/`
+- 📎 [Attestation ANSSI](./Documents/attestation-anssi.pdf) — attestation directement consultable
 - 🔗 [Mon LinkedIn](https://www.linkedin.com/in/no%C3%A9-chami/)
 - ✨ Statistiques clés visibles sur la page d’accueil pour présenter mes infrastructures, projets et stages.
 - 🌓 Le site s’ouvre en mode clair par défaut et un bouton permet de passer au thème sombre si besoin.
@@ -56,7 +56,6 @@ Voici l’inventaire actuel des fichiers suivis dans ce dépôt :
 - `README.md`
 - `Documents/DHCPavecWAMP.pdf`
 - `Documents/attestation-anssi.pdf`
-- `Documents/cv-noe-chami.pdf`
 - `assets/7a99c842-cb92-4b22-83bc-245656196c60.jpg`
 - `assets/avatar-placeholder.svg`
 - `assets/Compte-rendu de Stage – BTS SIO 2bc3c9e0ab45801697aef02172d8b434.html`
@@ -67,11 +66,9 @@ Voici l’inventaire actuel des fichiers suivis dans ce dépôt :
 
 ## 🚀 Hébergement
 Ce portfolio est hébergé en ligne pour être accessible lors de l’épreuve et aux recruteurs.  
-👉 [Accéder au portfolio en ligne](https://kiiwiix.github.io/chami.noe/)
+👉 [Accéder au portfolio en ligne](https://kiiwiix.github.io/BTS-SIO/)
 
 ---
 
 ## 📬 Contact
-- 📍 Orléans · Lycée Benjamin Franklin
 - ✉️ Email : chaminoe0@gmail.com
-- 📱 Téléphone : 07 81 36 83 26
