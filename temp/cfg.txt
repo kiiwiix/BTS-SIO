@@ -1,0 +1,224 @@
+Current configuration : 4885 bytes
+!
+version 12.2
+no service pad
+service timestamps debug datetime msec
+service timestamps log datetime msec
+service password-encryption
+!
+hostname SwitchB2
+!
+boot-start-marker
+boot-end-marker
+!
+enable password 7 080F495A242A2C2420
+!
+username admin secret 5 $1$/ZON$yewtiFz6iV7tjWr4Y70Tg.
+no aaa new-model
+system mtu routing 1500
+ip subnet-zero
+!
+!
+ip domain-name gsb.local
+!
+!
+crypto pki trustpoint TP-self-signed-404507520
+ enrollment selfsigned
+ subject-name cn=IOS-Self-Signed-Certificate-404507520
+ revocation-check none
+ rsakeypair TP-self-signed-404507520
+!
+!
+crypto pki certificate chain TP-self-signed-404507520
+ certificate self-signed 01
+  30820248 308201B1 A0030201 02020101 300D0609 2A864886 F70D0101 04050030
+  30312E30 2C060355 04031325 494F532D 53656C66 2D536967 6E65642D 43657274
+  69666963 6174652D 34303435 30373532 30301E17 0D393330 33303130 30303131
+  305A170D 32303031 30313030 30303030 5A303031 2E302C06 03550403 1325494F
+  532D5365 6C662D53 69676E65 642D4365 72746966 69636174 652D3430 34353037
+  35323030 819F300D 06092A86 4886F70D 01010105 0003818D 00308189 02818100
+  A3B05ECD FFE65F53 8CBD6192 AE064292 F8E006C3 B30BDB49 529135D5 058AA26B
+  2E1FDAE0 8C5EA1FB 3259EB05 8431DBB4 3608D3FD D8D02929 332FAD26 7CC142F8
+  6080C079 68F9B92D 037131F2 6B462D5B F5381A79 221BFDE5 5C42B5A8 36CFACE9
+  7F4CABB2 2DDE4FCC 8C91290F 7BF3A0CE F1A12844 55CC86C7 62B62832 FF2A9961
+  02030100 01A37230 70300F06 03551D13 0101FF04 05300301 01FF301D 0603551D
+  11041630 14821253 77697463 6842322E 6773622E 6C6F6361 6C301F06 03551D23
+  04183016 80149E28 02325DCB D0E8884D 5701D542 F4A8DEB3 0082301D 0603551D
+  0E041604 149E2802 325DCBD0 E8884D57 01D542F4 A8DEB300 82300D06 092A8648
+  86F70D01 01040500 03818100 7617DBCC D45646CF 1CDD4A8C 7C125ED3 FBD877DC
+  A74B9F53 CDC9AFC8 3BA697F5 9056D697 851C3ECC B11A5D28 F18DEEF0 36AD38C4
+  0AFEAB50 2B3BE2EB 284374ED B1D0B2D4 3697F077 D6C57DA4 99E229C4 30468DF6
+  5372E909 F8825A6A 39E2A476 899C8CAD 5533E38D 660611CA 50802E34 AA4E16D7
+  BA711A86 3B8164C5 BFC792B4
+  quit
+!
+!
+!
+!
+!
+spanning-tree mode pvst
+spanning-tree extend system-id
+!
+vlan internal allocation policy ascending
+!
+ip ssh version 2
+!
+interface FastEthernet0/1
+ switchport mode access
+!
+interface FastEthernet0/2
+ switchport mode access
+!
+interface FastEthernet0/3
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/4
+ switchport access vlan 10
+ switchport mode access
+!
+interface FastEthernet0/5
+ switchport access vlan 50
+ switchport mode access
+!
+interface FastEthernet0/6
+ switchport access vlan 50
+ switchport mode access
+!
+interface FastEthernet0/7
+ switchport access vlan 99
+ switchport mode access
+!
+interface FastEthernet0/8
+ switchport access vlan 99
+ switchport mode access
+!
+interface FastEthernet0/9
+ switchport access vlan 150
+ switchport mode access
+!
+interface FastEthernet0/10
+ switchport access vlan 150
+ switchport mode access
+!
+interface FastEthernet0/11
+ switchport access vlan 200
+ switchport mode access
+!
+interface FastEthernet0/12
+ switchport access vlan 201
+ switchport mode access
+!
+interface FastEthernet0/13
+ switchport access vlan 202
+ switchport mode access
+!
+interface FastEthernet0/14
+ switchport access vlan 203
+ switchport mode access
+!
+interface FastEthernet0/15
+ switchport access vlan 204
+ switchport mode access
+!
+interface FastEthernet0/16
+ switchport access vlan 205
+ switchport mode access
+!
+interface FastEthernet0/17
+ switchport access vlan 206
+ switchport mode access
+!
+interface FastEthernet0/18
+!
+interface FastEthernet0/19
+!
+interface FastEthernet0/20
+!
+interface FastEthernet0/21
+ switchport access vlan 250
+ switchport mode access
+!
+interface FastEthernet0/22
+ switchport access vlan 250
+ switchport mode access
+!
+interface FastEthernet0/23
+!
+interface FastEthernet0/24
+!
+interface GigabitEthernet0/1
+ switchport trunk allowed vlan 1,10,50,99,150,200-206,250
+ switchport mode trunk
+!
+interface GigabitEthernet0/2
+!
+interface Vlan1
+ ip address 192.168.1.254 255.255.255.0
+ no ip route-cache
+!
+interface Vlan10
+ no ip address
+ no ip route-cache
+!
+interface Vlan50
+ no ip address
+ no ip route-cache
+!
+interface Vlan99
+ no ip address
+ no ip route-cache
+!
+interface Vlan150
+ no ip address
+ no ip route-cache
+!
+interface Vlan200
+ no ip address
+ no ip route-cache
+!
+interface Vlan201
+ no ip address
+ no ip route-cache
+!
+interface Vlan202
+ no ip address
+ no ip route-cache
+!
+interface Vlan203
+ no ip address
+ no ip route-cache
+!
+interface Vlan204
+ no ip address
+ no ip route-cache
+!
+interface Vlan205
+ no ip address
+ no ip route-cache
+!
+interface Vlan206
+ no ip address
+ no ip route-cache
+!
+interface Vlan250
+ ip address 192.168.250.70 255.255.255.0
+ no ip route-cache
+!
+ip http server
+ip http secure-server
+!
+control-plane
+!
+banner motd ^CUniquement Noe et Matis^C
+!
+line con 0
+ password 7 080F495A242A2C2420
+ login
+line vty 0 4
+ login local
+ transport input ssh
+line vty 5 15
+ login
+!
+end
