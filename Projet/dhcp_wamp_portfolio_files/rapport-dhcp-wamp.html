@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projet indépendant · Déploiement d’un serveur DHCP avec WAMP</title>
-  <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Projet indépendant · Déploiement d’un serveur DHCP avec WAMP</title>
+<style>
     :root{--bg:#f7f8fc;--card:#fff;--text:#182132;--muted:#5f6f86;--accent:#d93b66;--line:rgba(217,59,102,.16);--shadow:0 18px 40px rgba(15,23,42,.10)}
     *{box-sizing:border-box} body{margin:0;font:16px/1.75 Inter,system-ui,sans-serif;background:linear-gradient(180deg,#fff7fa,#f7f8fc);color:var(--text)}
     .wrap{width:min(980px,calc(100% - 28px));margin:0 auto;padding:28px 0 56px}.hero,.card{background:rgba(255,255,255,.92);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
@@ -12,25 +13,148 @@
     h1,h2{margin:0 0 12px} h1{font-size:clamp(2rem,4vw,3rem);line-height:1.06}.lead{color:var(--muted);max-width:70ch}.actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
     .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid rgba(24,33,50,.08);background:#fff;color:var(--text);text-decoration:none;font-weight:700}.btn.primary{background:linear-gradient(135deg,#d93b66,#ff7094);color:#fff;border-color:transparent}
     .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:22px}.card{padding:22px}.muted{color:var(--muted)} ul{margin:0;padding-left:20px}.section{margin-top:22px}.back{margin-bottom:18px}
-  </style>
+  
+/* ===== Correspondance tableau BTS ===== */
+.bts-map{
+  margin:26px 0;
+  padding:24px;
+  border-radius:22px;
+  border:1px solid rgba(217,59,102,.16);
+  background:linear-gradient(180deg,#fff8fb,#ffffff);
+  box-shadow:0 18px 36px rgba(15,23,42,.08);
+}
+.bts-map h2,.bts-map h3{margin:0}
+.bts-map__lead{
+  margin:.65rem 0 0;
+  color:#5f6f86;
+}
+.bts-map__chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:16px 0 0;
+  padding:0;
+  list-style:none;
+}
+.bts-map__chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 13px;
+  border-radius:999px;
+  border:1px solid rgba(217,59,102,.20);
+  background:rgba(255,240,244,.95);
+  color:#b3254c;
+  font-weight:700;
+  font-size:.88rem;
+}
+.bts-map__chip::before{
+  content:"✓";
+  width:18px;
+  height:18px;
+  display:inline-grid;
+  place-items:center;
+  border-radius:50%;
+  background:rgba(217,59,102,.15);
+  font-size:.72rem;
+}
+.bts-map__cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:14px;
+  margin-top:18px;
+}
+.bts-map__card{
+  padding:16px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(217,59,102,.14);
+}
+.bts-map__card h3{
+  font-size:1rem;
+  margin-bottom:8px;
+}
+.bts-map__card p{
+  margin:0;
+  color:#526176;
+}
+.bts-map__muted{
+  margin-top:14px;
+  color:#6b7280;
+}
+.bts-map__rows{
+  display:grid;
+  gap:14px;
+  margin-top:18px;
+}
+.bts-map__row{
+  padding:16px 18px;
+  border-radius:18px;
+  background:#fff;
+  border:1px solid rgba(217,59,102,.14);
+}
+.bts-map__row h3{
+  font-size:1.02rem;
+  margin:0 0 8px;
+}
+.bts-map__row p{
+  margin:0 0 10px;
+  color:#526176;
+}
+.bts-map__actions{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top:18px;
+}
+.bts-map__btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:11px 15px;
+  border-radius:14px;
+  border:1px solid rgba(24,33,50,.10);
+  background:#fff;
+  color:#182132;
+  text-decoration:none;
+  font-weight:700;
+}
+.bts-map__btn.primary{
+  background:linear-gradient(135deg,#d93b66,#ff7094);
+  color:#fff;
+  border-color:transparent;
+}
+.bts-map__subtitle{
+  display:block;
+  margin-top:4px;
+  color:#d93b66;
+  font-size:.82rem;
+  font-weight:800;
+  letter-spacing:.04em;
+  text-transform:uppercase;
+}
+@media (max-width:720px){
+  .bts-map{padding:18px}
+}
+</style>
 </head>
 <body>
-  <div class="wrap">
-    <a class="btn back" href="../../index.html#projets">← Retour au portfolio</a>
-    <header class="hero">
-      <span class="eyebrow">Projet complémentaire · Services réseau</span>
-      <h1>Déploiement d’un serveur DHCP avec WAMP</h1>
-      <p class="lead">Projet indépendant ajouté au portfolio à part des missions GSB. Il présente la mise en place d’un service DHCP sous Windows Server 2019, les paramètres d’étendue, la configuration réseau des clients et la validation du bon fonctionnement avec tests et captures.</p>
-      <div class="actions">
-        <a class="btn primary" href="docs/DHCPavecWAMP.pdf">📄 Ouvrir le PDF complet</a>
-        <a class="btn" href="../../index.html#projets">🏠 Revenir aux projets</a>
-      </div>
-    </header>
-    <section class="section grid">
-      <article class="card"><span class="tag">Objectif</span><h2>Automatiser l’adressage</h2><p class="muted">Distribuer automatiquement les adresses IP, la passerelle, le DNS et le bail à un poste client dans un environnement Windows Server.</p></article>
-      <article class="card"><span class="tag">Travaux réalisés</span><h2>Configuration du service</h2><ul><li>Création de l’étendue DHCP.</li><li>Définition de la plage d’adresses.</li><li>Ajout de la passerelle et du serveur DNS.</li><li>Validation côté client.</li></ul></article>
-      <article class="card"><span class="tag">Compétences</span><h2>BTS SIO SISR</h2><ul><li>Administration Windows Server</li><li>Services réseau DHCP / DNS</li><li>Tests et recette</li><li>Documentation technique</li></ul></article>
-    </section>
-  </div>
+<div class="wrap">
+<a class="btn back" href="../../index.html#projets">← Retour au portfolio</a>
+<header class="hero">
+<span class="eyebrow">Projet complémentaire · Services réseau</span>
+<h1>Déploiement d’un serveur DHCP avec WAMP</h1>
+<p class="lead">Projet indépendant ajouté au portfolio à part des missions GSB. Il présente la mise en place d’un service DHCP sous Windows Server 2019, les paramètres d’étendue, la configuration réseau des clients et la validation du bon fonctionnement avec tests et captures.</p>
+<div class="actions">
+<a class="btn primary" href="docs/DHCPavecWAMP.pdf">📄 Ouvrir le PDF complet</a>
+<a class="btn" href="../../index.html#projets">🏠 Revenir aux projets</a>
+</div>
+</header>
+<section class="section grid">
+<article class="card"><span class="tag">Objectif</span><h2>Automatiser l’adressage</h2><p class="muted">Distribuer automatiquement les adresses IP, la passerelle, le DNS et le bail à un poste client dans un environnement Windows Server.</p></article>
+<article class="card"><span class="tag">Travaux réalisés</span><h2>Configuration du service</h2><ul><li>Création de l’étendue DHCP.</li><li>Définition de la plage d’adresses.</li><li>Ajout de la passerelle et du serveur DNS.</li><li>Validation côté client.</li></ul></article>
+<article class="card"><span class="tag">Compétences</span><h2>BTS SIO SISR</h2><ul><li>Administration Windows Server</li><li>Services réseau DHCP / DNS</li><li>Tests et recette</li><li>Documentation technique</li></ul></article>
+</section>
+</div>
 </body>
 </html>
