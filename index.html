@@ -401,6 +401,20 @@ html[data-theme="light"] .project-bts-map{
   font-size:.82rem;
   padding:7px 10px;
 }
+
+    .certs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;margin-top:18px}
+    .cert{display:flex;flex-direction:column;gap:14px;padding:18px;border-radius:18px;border:1px solid var(--line);background:rgba(255,255,255,.72);box-shadow:0 14px 28px rgba(15,23,42,.08)}
+    html:not([data-theme="light"]) .cert{background:rgba(16,18,28,.72)}
+    .cert strong{display:block;font-size:1.02rem;margin-bottom:6px}
+    .cert span{display:block;color:var(--muted)}
+    .cert-meta{display:flex;flex-wrap:wrap;gap:8px}
+    .cert-badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;font-size:.84rem;font-weight:600;background:rgba(208,45,81,.1);border:1px solid var(--line);color:var(--accent)}
+    .cert-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:auto}
+    .cert-links .btn{justify-content:center}
+    .cert-intro{margin:0 0 18px;color:var(--muted)}
+    .cert-list{margin:0;padding-left:18px;color:var(--muted)}
+    .cert-list li+li{margin-top:6px}
+
 </style>
 </head>
 <body>
@@ -777,32 +791,63 @@ html[data-theme="light"] .project-bts-map{
 <!-- Certifications -->
 <section id="certs">
 <h2>🎓 Certifications</h2>
-<ul>
-<li>PIX – Compétences numériques</li>
-<li>OpenClassrooms : Linux, TCP/IP, HTML5/CSS3</li>
+<p class="cert-intro">J’ai regroupé ici mes attestations et cours suivis en autonomie. Pour les formations OpenClassrooms, j’ai ajouté une page de synthèse distincte afin de montrer clairement les objectifs du cours, les notions principales étudiées et l’intérêt pour mon parcours BTS SIO SISR.</p>
+<ul class="cert-list">
+<li>PIX – compétences numériques</li>
 <li>ANSSI – MOOC SecNumacadémie</li>
+<li>OpenClassrooms – Administrez un système Linux</li>
+<li>OpenClassrooms – Administrez une architecture réseau avec Cisco</li>
+<li>OpenClassrooms – Déployez vos systèmes et réseaux dans le cloud avec AWS</li>
+<li>OpenClassrooms – Optimisez votre déploiement en créant des conteneurs avec Docker</li>
 </ul>
 <div class="certs">
 <div class="cert">
 <div>
 <strong>PIX – Compétences numériques</strong>
-<span>Résultat disponible sur demande</span>
+<span>Résultat disponible sur demande. Cette certification complète mon portfolio sur les usages numériques, la recherche d’information et les pratiques informatiques transversales.</span>
 </div>
-<a class="btn" href="mailto:chaminoe0@gmail.com?subject=Demande%20d%27attestation%20PIX">📨 Attestation sur demande</a>
-</div>
-<div class="cert">
-<div>
-<strong>OpenClassrooms – Linux, TCP/IP, HTML5/CSS3</strong>
-<span>Attestations de suivi disponibles sur demande</span>
-</div>
-<a class="btn" href="mailto:chaminoe0@gmail.com?subject=Demande%20d%27attestations%20OpenClassrooms">📨 Attestations sur demande</a>
+<div class="cert-meta"><span class="cert-badge">Certification</span><span class="cert-badge">Culture numérique</span></div>
+<div class="cert-links"><a class="btn" href="mailto:chaminoe0@gmail.com?subject=Demande%20d%27attestation%20PIX">📨 Attestation</a></div>
 </div>
 <div class="cert">
 <div>
 <strong>ANSSI – MOOC SecNumacadémie</strong>
-<span>Attestation disponible sur demande</span>
+<span>Attestation disponible sur demande. Formation utile pour consolider les fondamentaux SSI, les bonnes pratiques d’authentification et la protection du poste de travail.</span>
 </div>
-<a class="btn" href="mailto:chaminoe0@gmail.com?subject=Demande%20d%27attestation%20SecNumacademie">📘 Attestation sur demande</a>
+<div class="cert-meta"><span class="cert-badge">SSI</span><span class="cert-badge">Sensibilisation</span></div>
+<div class="cert-links"><a class="btn" href="mailto:chaminoe0@gmail.com?subject=Demande%20d%27attestation%20SecNumacademie">📘 Attestation</a></div>
+</div>
+<div class="cert">
+<div>
+<strong>OpenClassrooms – Administrez un système Linux</strong>
+<span>Cours centré sur l’administration Linux côté serveur : terminal, fichiers, réseau, supervision et analyse d’activité système.</span>
+</div>
+<div class="cert-meta"><span class="cert-badge">Linux</span><span class="cert-badge">10 h</span><span class="cert-badge">OpenClassrooms</span></div>
+<div class="cert-links"><a class="btn" href="assets/certif-linux.html">📄 Voir le rapport</a><a class="btn" href="https://openclassrooms.com/fr/courses/7274161-administrez-un-systeme-linux" rel="noopener" target="_blank">🌐 Voir le cours</a></div>
+</div>
+<div class="cert">
+<div>
+<strong>OpenClassrooms – Administrez une architecture réseau avec Cisco</strong>
+<span>Cours orienté équipements Cisco : configuration de switchs et routeurs, VLAN, NAT, DHCP, routage, ACL et sécurité réseau.</span>
+</div>
+<div class="cert-meta"><span class="cert-badge">Cisco</span><span class="cert-badge">10 h</span><span class="cert-badge">Réseau</span></div>
+<div class="cert-links"><a class="btn" href="assets/certif-cisco.html">📄 Voir le rapport</a><a class="btn" href="https://openclassrooms.com/fr/courses/2557196-administrez-une-architecture-reseau-avec-cisco" rel="noopener" target="_blank">🌐 Voir le cours</a></div>
+</div>
+<div class="cert">
+<div>
+<strong>OpenClassrooms – Déployez vos systèmes et réseaux dans le cloud avec AWS</strong>
+<span>Cours d’initiation au cloud AWS : VPC, automatisation, EC2, base de données, équilibrage de charge, supervision et sauvegarde.</span>
+</div>
+<div class="cert-meta"><span class="cert-badge">AWS</span><span class="cert-badge">10 h</span><span class="cert-badge">Cloud</span></div>
+<div class="cert-links"><a class="btn" href="assets/certif-aws.html">📄 Voir le rapport</a><a class="btn" href="https://openclassrooms.com/fr/courses/2035756-deployez-vos-systemes-et-reseaux-dans-le-cloud-avec-aws" rel="noopener" target="_blank">🌐 Voir le cours</a></div>
+</div>
+<div class="cert">
+<div>
+<strong>OpenClassrooms – Optimisez votre déploiement en créant des conteneurs avec Docker</strong>
+<span>Cours dédié à la conteneurisation et au déploiement : Docker, images, Docker Hub, Docker Compose, Docker Swarm, sécurité et optimisation.</span>
+</div>
+<div class="cert-meta"><span class="cert-badge">Docker</span><span class="cert-badge">10 h</span><span class="cert-badge">Déploiement</span></div>
+<div class="cert-links"><a class="btn" href="assets/certif-docker.html">📄 Voir le rapport</a><a class="btn" href="https://openclassrooms.com/courses/8431896-optimisez-votre-deploiement-en-creant-des-conteneurs-avec-docker" rel="noopener" target="_blank">🌐 Voir le cours</a></div>
 </div>
 </div>
 </section>
