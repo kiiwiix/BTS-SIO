@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fiche de justification des croix – Tableau de synthèse BTS SIO</title>
+  <style>
+    :root{
+      --bg:#f7f8fc; --card:#ffffff; --text:#182132; --muted:#5f6f86;
+      --accent:#d93b66; --accent2:#ff7094; --line:rgba(217,59,102,.16);
+      --shadow:0 18px 40px rgba(15,23,42,.10);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.7 Inter,system-ui,sans-serif;background:linear-gradient(180deg,#fff7fa,#f7f8fc);color:var(--text)}
+    .wrap{width:min(1180px,calc(100% - 28px));margin:0 auto;padding:28px 0 56px}
+    .hero,.card{background:rgba(255,255,255,.95);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+    .hero{padding:28px}
+    .card{padding:22px}
+    .eyebrow,.chip,.tag{display:inline-flex;align-items:center;padding:7px 12px;border-radius:999px;border:1px solid rgba(217,59,102,.24);background:rgba(255,240,244,.95);color:var(--accent);font-weight:800;font-size:.82rem;letter-spacing:.04em}
+    .chip::before{content:"✓";margin-right:8px;font-size:.74rem}
+    .tag{margin-bottom:10px}
+    h1,h2,h3{margin:0 0 12px}
+    h1{font-size:clamp(2rem,4vw,3rem);line-height:1.06}
+    h2{font-size:1.35rem}
+    .lead,.muted{color:var(--muted)}
+    .actions,.chips{display:flex;flex-wrap:wrap;gap:10px}
+    .actions{margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;border:1px solid rgba(24,33,50,.08);background:#fff;color:var(--text);text-decoration:none;font-weight:700}
+    .btn.primary{background:linear-gradient(135deg,#d93b66,#ff7094);color:#fff;border-color:transparent}
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:18px;margin-top:22px}
+    .reason-list,.not-list{margin:0;padding-left:20px}
+    .not-list li,.reason-list li{margin:0 0 6px}
+    .section{margin-top:22px}
+    .cols{display:grid;grid-template-columns:1.2fr .8fr;gap:18px}
+    .meta{display:grid;gap:10px}
+    .meta strong{color:var(--text)}
+    .note{padding:14px 16px;border-radius:16px;background:rgba(255,240,244,.9);border:1px solid rgba(217,59,102,.16)}
+    .footer-note{margin-top:24px;padding:16px 18px;border-radius:18px;background:#fff;border:1px solid var(--line)}
+    @media (max-width:860px){.cols{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <span class="eyebrow">Document d'appui oral · BTS SIO SISR</span>
+      <h1>Fiche de justification des croix du tableau de synthèse</h1>
+      <p class="lead">
+        Cette fiche explique, pour chaque projet et chaque stage retenus dans le tableau de synthèse,
+        pourquoi certaines compétences ont été cochées et pourquoi d’autres ne l’ont pas été.
+        L’objectif est d’avoir un support clair, cohérent avec le tableau Excel et facile à présenter au jury.
+      </p>
+      <div class="actions">
+        <a class="btn primary" href="../index.html#projets">🏠 Retour au portfolio</a>
+        <a class="btn" href="../index.html#stages">🚀 Aller aux stages</a>
+      </div>
+    </header>
+
+    <section class="section">
+      <div class="grid">
+        <article class="card">
+          <span class="tag">Projet</span>
+          <h2>GSB Mission 1 – Segmentation réseau et sécurisation d’un switch Cisco</h2>
+          <div class="chips">
+            <span class="chip">Gérer le patrimoine</span>
+            <span class="chip">Mode projet</span>
+            <span class="chip">Mise à disposition</span>
+          </div>
+          <div class="cols section">
+            <div>
+              <h3>Pourquoi ces croix</h3>
+              <ul class="reason-list">
+                <li><strong>Gérer le patrimoine</strong> : création des VLAN, affectation des ports, IP de management et sécurisation d’un équipement réseau.</li>
+                <li><strong>Mode projet</strong> : analyse du cahier des charges GSB, organisation des tâches, production d’un schéma, d’une procédure et d’une fiche de recette.</li>
+                <li><strong>Mise à disposition</strong> : configuration réellement mise en œuvre sur le switch puis validation par tests (ping, SSH, vérifications IOS).</li>
+              </ul>
+            </div>
+            <div class="note">
+              <h3>Pourquoi les autres croix ne sont pas retenues</h3>
+              <ul class="not-list">
+                <li><strong>Répondre aux incidents</strong> : ce n’est pas une réponse à incident, mais un déploiement initial.</li>
+                <li><strong>Présence en ligne</strong> : aucune évolution de site ou service web public.</li>
+                <li><strong>Dév. professionnel</strong> : projet technique, pas une action principale de veille/certification.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="tag">Projet</span>
+          <h2>GSB Mission 2 – Interconnexion VLAN et accès Internet via Stormshield</h2>
+          <div class="chips">
+            <span class="chip">Gérer le patrimoine</span>
+            <span class="chip">Mode projet</span>
+            <span class="chip">Mise à disposition</span>
+          </div>
+          <div class="cols section">
+            <div>
+              <h3>Pourquoi ces croix</h3>
+              <ul class="reason-list">
+                <li><strong>Gérer le patrimoine</strong> : configuration d’interfaces VLAN, routage, NAT et logique d’exploitation du pare-feu.</li>
+                <li><strong>Mode projet</strong> : continuité logique de la mission 1 avec plan d’adressage, étapes de configuration et preuves de validation.</li>
+                <li><strong>Mise à disposition</strong> : service réseau rendu opérationnel avec accès Internet et tests de connectivité réussis.</li>
+              </ul>
+            </div>
+            <div class="note">
+              <h3>Pourquoi les autres croix ne sont pas retenues</h3>
+              <ul class="not-list">
+                <li><strong>Répondre aux incidents</strong> : ici je mets en place une infrastructure, je ne traite pas un ticket ou une panne utilisateur.</li>
+                <li><strong>Présence en ligne</strong> : aucune présence en ligne à valoriser.</li>
+                <li><strong>Dév. professionnel</strong> : pas une activité de veille ou de projet professionnel.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="tag">Projet</span>
+          <h2>Déploiement d’un service DHCP sous Windows Server</h2>
+          <div class="chips">
+            <span class="chip">Gérer le patrimoine</span>
+            <span class="chip">Mode projet</span>
+            <span class="chip">Mise à disposition</span>
+          </div>
+          <div class="cols section">
+            <div>
+              <h3>Pourquoi ces croix</h3>
+              <ul class="reason-list">
+                <li><strong>Gérer le patrimoine</strong> : mise en place d’un service central du réseau, avec paramétrage d’étendue, DNS et passerelle.</li>
+                <li><strong>Mode projet</strong> : projet structuré avec objectif, mise en œuvre, validation côté client et documentation.</li>
+                <li><strong>Mise à disposition</strong> : le service DHCP est déployé puis testé dans un environnement Windows Server.</li>
+              </ul>
+            </div>
+            <div class="note">
+              <h3>Pourquoi les autres croix ne sont pas retenues</h3>
+              <ul class="not-list">
+                <li><strong>Répondre aux incidents</strong> : je ne corrige pas une panne, je mets en service un nouveau composant réseau.</li>
+                <li><strong>Présence en ligne</strong> : aucune dimension web ou référencement.</li>
+                <li><strong>Dév. professionnel</strong> : activité technique et non de veille.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <span class="tag">Projet</span>
+          <h2>Audit de vulnérabilités avec Nessus sur UnrealIRCd</h2>
+          <div class="chips">
+            <span class="chip">Gérer le patrimoine</span>
+            <span class="chip">Répondre aux incidents</span>
+            <span class="chip">Mode projet</span>
+          </div>
+          <div class="cols section">
+            <div>
+              <h3>Pourquoi ces croix</h3>
+              <ul class="reason-list">
+                <li><strong>Gérer le patrimoine</strong> : analyse de l’état de sécurité d’un service exposé et qualification du risque sur l’infrastructure.</li>
+                <li><strong>Répondre aux incidents</strong> : logique de diagnostic, d’identification d’une faille critique et de proposition de contre-mesures.</li>
+                <li><strong>Mode projet</strong> : démarche structurée avec laboratoire, scan, lecture des résultats, validation et restitution argumentée.</li>
+              </ul>
+            </div>
+            <div class="note">
+              <h3>Pourquoi les autres croix ne sont pas retenues</h3>
+              <ul class="not-list">
+                <li><strong>Mise à disposition</strong> : je n’installe pas un service pour des utilisateurs, j’évalue un risque de sécurité.</li>
+                <li><strong>Présence en ligne</strong> : pas de présence en ligne à développer.</li>
+                <li><strong>Dév. professionnel</strong> : le sujet fait progresser mes compétences, mais la finalité principale reste l’audit technique.</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <header class="hero" style="padding:22px">
+        <span class="eyebrow">Stage ADEFI – 1re année</span>
+        <h2>Justification des croix par réalisation</h2>
+        <p class="lead">Le rapport de stage 1re année couvre plusieurs interventions. Dans le tableau, j’ai séparé les réalisations pour montrer des compétences distinctes.</p>
+      </header>
+      <div class="grid">
+        <article class="card">
+          <h3>Support postes, stockage et interventions de proximité</h3>
+          <div class="chips"><span class="chip">Gérer le patrimoine</span><span class="chip">Répondre aux incidents</span><span class="chip">Mise à disposition</span></div>
+          <ul class="reason-list section">
+            <li><strong>Gérer le patrimoine</strong> : RAID 1, NAS Synology, remplacement de disques, installation système.</li>
+            <li><strong>Répondre aux incidents</strong> : diagnostics matériel et résolution de dysfonctionnements sur postes/stockage.</li>
+            <li><strong>Mise à disposition</strong> : remise en service des postes et équipements pour l’utilisateur final.</li>
+            <li><strong>Non retenus</strong> : pas de web, peu de mode projet formalisé, pas de veille/certification comme objectif principal.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Infrastructure réseau et interventions terrain</h3>
+          <div class="chips"><span class="chip">Gérer le patrimoine</span><span class="chip">Répondre aux incidents</span><span class="chip">Mode projet</span><span class="chip">Mise à disposition</span></div>
+          <ul class="reason-list section">
+            <li><strong>Gérer le patrimoine</strong> : switch Zyxel, routeur, pare-feu, VLAN, DNS, IP fixes, brassage de baie.</li>
+            <li><strong>Répondre aux incidents</strong> : dépannage terrain et diagnostic en mairie ou sur réseau local.</li>
+            <li><strong>Mode projet</strong> : déploiement organisé dans un bâtiment professionnel avec contraintes réelles.</li>
+            <li><strong>Mise à disposition</strong> : infrastructure rendue opérationnelle pour les utilisateurs.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Migration serveur, Active Directory et automatisation</h3>
+          <div class="chips"><span class="chip">Gérer le patrimoine</span><span class="chip">Répondre aux incidents</span><span class="chip">Mode projet</span><span class="chip">Mise à disposition</span></div>
+          <ul class="reason-list section">
+            <li><strong>Gérer le patrimoine</strong> : Active Directory, DNS/DHCP, FSMO, migration de données et continuité de service.</li>
+            <li><strong>Répondre aux incidents</strong> : contrôles, vérifications de réplication et résolution de points bloquants pendant la migration.</li>
+            <li><strong>Mode projet</strong> : organisation d’une migration serveur avec étapes et vérifications.</li>
+            <li><strong>Mise à disposition</strong> : nouveaux services AD rendus disponibles et opérationnels.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <header class="hero" style="padding:22px">
+        <span class="eyebrow">Stage ADEFI – 2e année</span>
+        <h2>Justification des croix par réalisation</h2>
+        <p class="lead">Le stage de 2e année montre davantage de responsabilités sur les serveurs, la sécurité réseau, l’administration distante et la sauvegarde.</p>
+      </header>
+      <div class="grid">
+        <article class="card">
+          <h3>Diagnostic serveur, stockage et virtualisation</h3>
+          <div class="chips"><span class="chip">Gérer le patrimoine</span><span class="chip">Répondre aux incidents</span><span class="chip">Mode projet</span><span class="chip">Mise à disposition</span></div>
+          <ul class="reason-list section">
+            <li><strong>Gérer le patrimoine</strong> : RAID 1, ESXi, serveur, messagerie et inventaire technique.</li>
+            <li><strong>Répondre aux incidents</strong> : diagnostic d’un problème de scan réseau et autres vérifications techniques.</li>
+            <li><strong>Mode projet</strong> : mise en service d’un environnement virtualisé avec étapes de contrôle.</li>
+            <li><strong>Mise à disposition</strong> : solution serveur/virtualisation installée puis validée.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>VPN, postes clients, Linux et sécurité réseau</h3>
+          <div class="chips"><span class="chip">Gérer le patrimoine</span><span class="chip">Répondre aux incidents</span><span class="chip">Mode projet</span><span class="chip">Mise à disposition</span></div>
+          <ul class="reason-list section">
+            <li><strong>Gérer le patrimoine</strong> : comptes VPN Zyxel, accès TSE/RDP, SSH, DNS, ESET et postes Windows 11 Pro.</li>
+            <li><strong>Répondre aux incidents</strong> : interventions de support, correction de blocages, résolution de problèmes réseau et clients.</li>
+            <li><strong>Mode projet</strong> : déploiements techniques structurés chez le client.</li>
+            <li><strong>Mise à disposition</strong> : accès distants et postes remis à disposition avec la bonne configuration.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Déploiement d’un contrôleur de domaine Active Directory</h3>
+          <div class="chips"><span class="chip">Gérer le patrimoine</span><span class="chip">Mode projet</span><span class="chip">Mise à disposition</span></div>
+          <ul class="reason-list section">
+            <li><strong>Gérer le patrimoine</strong> : ajout au domaine, promotion DC, installation DNS/DHCP, GPO et réplication.</li>
+            <li><strong>Mode projet</strong> : déploiement cadré avec étapes précises, contrôles et tests.</li>
+            <li><strong>Mise à disposition</strong> : nouveau service d’annuaire rendu disponible pour l’entreprise.</li>
+            <li><strong>Non retenu pour Répondre aux incidents</strong> : la dominante ici est le déploiement, pas la résolution d’un incident utilisateur.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Migration de données, continuité de service et sauvegardes</h3>
+          <div class="chips"><span class="chip">Gérer le patrimoine</span><span class="chip">Répondre aux incidents</span><span class="chip">Mode projet</span><span class="chip">Mise à disposition</span></div>
+          <ul class="reason-list section">
+            <li><strong>Gérer le patrimoine</strong> : migration de 182 Go, FSMO, serveur Data, Veeam Backup et réplication.</li>
+            <li><strong>Répondre aux incidents</strong> : contrôle de l’intégrité, tests d’accès et sécurisation de la continuité de service.</li>
+            <li><strong>Mode projet</strong> : migration pilotée avec plan d’action, vérifications et bascule.</li>
+            <li><strong>Mise à disposition</strong> : services utilisateurs TSE/RDP et sauvegardes opérationnelles après la migration.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="section">
+      <header class="hero" style="padding:22px">
+        <span class="eyebrow">Annexe utile</span>
+        <h2>Autres lignes du tableau</h2>
+        <p class="lead">Même si cette fiche est centrée sur les projets et les stages, voici le sens des croix pour les autres réalisations du tableau.</p>
+      </header>
+      <div class="grid">
+        <article class="card">
+          <h3>Portfolio BTS SIO</h3>
+          <div class="chips"><span class="chip">Présence en ligne</span><span class="chip">Mode projet</span><span class="chip">Dév. professionnel</span></div>
+          <p class="muted">Le portfolio valorise ma présence en ligne, il a été structuré comme un projet et il sert directement mon identité professionnelle.</p>
+        </article>
+        <article class="card">
+          <h3>Veille technologique</h3>
+          <div class="chips"><span class="chip">Présence en ligne</span><span class="chip">Dév. professionnel</span></div>
+          <p class="muted">La veille alimente le site et montre ma capacité à apprendre, sélectionner des sources et développer ma culture technique.</p>
+        </article>
+        <article class="card">
+          <h3>Certifications et autoformation</h3>
+          <div class="chips"><span class="chip">Dév. professionnel</span></div>
+          <p class="muted">Cette ligne correspond clairement à l’organisation de mon développement professionnel et à mon environnement d’apprentissage personnel.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="footer-note">
+      <strong>Conseil d’usage à l’oral :</strong> tu peux t’appuyer sur cette fiche uniquement si le jury te demande
+      pourquoi telle compétence a été cochée. Le plus efficace est de répondre avec un exemple concret de tâche,
+      un outil utilisé et une preuve disponible dans le portfolio.
+    </div>
+  </div>
+</body>
+</html>
