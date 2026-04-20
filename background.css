@@ -1,40 +1,40 @@
 :root{
-  --mist-base: rgba(120, 12, 24, 0.30);
-  --mist-secondary: rgba(163, 26, 44, 0.24);
-  --mist-highlight: rgba(248, 66, 82, 0.16);
-  --mist-glow: rgba(255, 110, 110, 0.10);
+  --mist-base: rgba(91, 28, 45, 0.24);
+  --mist-secondary: rgba(53, 72, 124, 0.16);
+  --mist-highlight: rgba(241, 112, 138, 0.14);
+  --mist-glow: rgba(255, 150, 176, 0.08);
 
-  --code-rain-color: rgba(211, 43, 43, 0.38);
+  --code-rain-color: rgba(255, 126, 154, 0.20);
   --code-rain-trail: rgba(5, 5, 5, 0.06);
 
-  --bg-radial-1: rgba(211, 43, 43, 0.14);
-  --bg-radial-2: rgba(124, 18, 32, 0.18);
-  --bg-radial-3: rgba(255, 92, 122, 0.08);
+  --bg-radial-1: rgba(224, 77, 111, 0.10);
+  --bg-radial-2: rgba(79, 103, 173, 0.10);
+  --bg-radial-3: rgba(255, 154, 177, 0.08);
 
-  --bg-dark-top: rgba(5, 5, 8, 0.94);
-  --bg-dark-bottom: rgba(9, 9, 12, 0.98);
+  --bg-dark-top: rgba(8, 12, 20, 0.96);
+  --bg-dark-bottom: rgba(11, 16, 26, 0.98);
 
-  --bg-vignette: rgba(0, 0, 0, 0.26);
+  --bg-vignette: rgba(0, 0, 0, 0.22);
   --bg-noise-opacity: 0.035;
 }
 
 html[data-theme="light"]{
-  --mist-base: rgba(233, 140, 150, 0.22);
-  --mist-secondary: rgba(209, 110, 120, 0.20);
-  --mist-highlight: rgba(255, 188, 188, 0.18);
-  --mist-glow: rgba(255, 215, 215, 0.10);
+  --mist-base: rgba(255, 185, 203, 0.24);
+  --mist-secondary: rgba(167, 193, 255, 0.18);
+  --mist-highlight: rgba(255, 240, 244, 0.24);
+  --mist-glow: rgba(255, 255, 255, 0.16);
 
-  --code-rain-color: rgba(214, 75, 98, 0.28);
-  --code-rain-trail: rgba(255, 255, 255, 0.05);
+  --code-rain-color: rgba(203, 47, 88, 0.16);
+  --code-rain-trail: rgba(255, 255, 255, 0.11);
 
-  --bg-radial-1: rgba(255, 132, 148, 0.16);
-  --bg-radial-2: rgba(227, 92, 114, 0.12);
-  --bg-radial-3: rgba(255, 205, 214, 0.16);
+  --bg-radial-1: rgba(255, 166, 188, 0.20);
+  --bg-radial-2: rgba(180, 205, 255, 0.20);
+  --bg-radial-3: rgba(255, 243, 247, 0.28);
 
-  --bg-dark-top: rgba(248, 238, 241, 0.96);
-  --bg-dark-bottom: rgba(255, 255, 255, 0.98);
+  --bg-dark-top: rgba(255, 248, 251, 0.98);
+  --bg-dark-bottom: rgba(243, 248, 255, 0.98);
 
-  --bg-vignette: rgba(120, 30, 45, 0.06);
+  --bg-vignette: rgba(164, 63, 95, 0.04);
   --bg-noise-opacity: 0.025;
 }
 

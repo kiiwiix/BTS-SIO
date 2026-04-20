@@ -14,17 +14,17 @@
 }
 
 html[data-theme="light"] {
-  --terminal-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 250, 255, 0.94));
+  --terminal-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(255, 245, 248, 0.96));
   --terminal-border: rgba(15, 23, 42, 0.10);
   --terminal-line: rgba(15, 23, 42, 0.05);
-  --terminal-shadow: 0 24px 48px rgba(15, 23, 42, 0.10);
+  --terminal-shadow: 0 26px 56px rgba(148, 163, 184, 0.18);
   --terminal-text: #122033;
   --terminal-muted: #5e6b83;
   --terminal-prompt: #c0264c;
   --terminal-command: #0f172a;
   --terminal-output: #334155;
   --terminal-cursor: #d02d51;
-  --terminal-headline: #7f1d36;
+  --terminal-headline: #8e1b3e;
   --terminal-chip: rgba(208, 45, 81, 0.10);
 }
 
