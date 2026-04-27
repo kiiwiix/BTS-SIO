@@ -10,8 +10,8 @@
 <header class="hero">
   <div class="container">
     <span class="eyebrow">GSB · Mission 3</span>
-    <h1>Mise en place d’une infrastructure Active Directory, DNS et DHCP</h1>
-    <p class="lead">Cette mission complète les missions 1 et 2 : après la segmentation VLAN et le routage via Stormshield, les services centraux du domaine GSB sont mis en place pour authentifier les utilisateurs, résoudre les noms et distribuer automatiquement les paramètres IP.</p>
+    <h1>Mise en place des services Active Directory, DNS et DHCP</h1>
+    <p class="lead">Cette mission complète la segmentation VLAN et le routage inter-VLAN du contexte GSB par la mise en place des services centraux nécessaires à l’exploitation du réseau : annuaire Active Directory, résolution DNS interne et attribution automatique des paramètres IP.</p>
   </div>
 </header>
 <main class="container">
@@ -20,20 +20,20 @@
   <section class="card">
     <p class="section-label">Contexte</p>
     <h2>Objectif de la mission</h2>
-    <p>Le réseau GSB dispose déjà de VLAN et d’une sortie Internet via le pare-feu. L’objectif de cette troisième mission est d’ajouter les services Windows Server nécessaires à un environnement professionnel : annuaire Active Directory, DNS interne et DHCP.</p>
-    <div class="callout success"><strong>Résultat attendu :</strong> un domaine fonctionnel, une résolution DNS interne opérationnelle et une configuration IP distribuée automatiquement aux postes clients.</div>
+    <p>Le réseau GSB dispose d’une segmentation en VLAN et d’un pare-feu Stormshield assurant le routage. L’objectif de cette mission est de rendre l’infrastructure exploitable par des postes Windows en centralisant l’authentification, la résolution de noms et la distribution des paramètres réseau.</p>
+    <div class="callout success"><strong>Résultat attendu :</strong> un domaine <strong>swiss-galaxyB2.com</strong> fonctionnel, des serveurs DNS internes opérationnels et des baux DHCP distribués automatiquement sur les VLAN du réseau.</div>
   </section>
 
   <section class="card grid">
     <div>
-      <p class="section-label">Problème</p>
-      <h2>Besoin identifié</h2>
-      <p>Sans Active Directory, la gestion des comptes et des postes reste locale. Sans DNS interne fiable, les machines ne retrouvent pas correctement les services du domaine. Sans DHCP, chaque client doit être configuré manuellement.</p>
+      <p class="section-label">Besoin</p>
+      <h2>Problématique technique</h2>
+      <p>Sans annuaire, les comptes utilisateurs et les postes restent gérés localement. Sans DNS interne, les services Active Directory ne peuvent pas être localisés correctement. Sans DHCP, les postes doivent être configurés manuellement, ce qui augmente les risques d’erreur d’adresse IP, de passerelle ou de DNS.</p>
     </div>
     <div>
       <p class="section-label">Solution</p>
-      <h2>Réponse technique</h2>
-      <p>Déploiement d’un socle Windows Server avec Active Directory, DNS intégré et DHCP. La validation est faite depuis un client Windows 10 connecté au réseau GSB.</p>
+      <h2>Réponse mise en œuvre</h2>
+      <p>La solution repose sur deux serveurs Windows Server 2019 : <strong>LABANNU</strong> comme contrôleur de domaine principal et <strong>LABANNUBIS</strong> comme contrôleur de domaine secondaire. Les services AD DS, DNS et DHCP sont configurés puis validés depuis un client Windows 10.</p>
     </div>
   </section>
 
@@ -41,11 +41,12 @@
     <p class="section-label">Réalisation</p>
     <h2>Étapes principales</h2>
     <div class="steps">
-      <div class="step"><span>1</span><div><h3>Préparation des serveurs</h3><p>Configuration réseau des serveurs, nommage cohérent et vérification de la connectivité avec le VLAN concerné.</p></div></div>
-      <div class="step"><span>2</span><div><h3>Installation d’Active Directory</h3><p>Ajout du rôle AD DS puis promotion du serveur en contrôleur de domaine pour le domaine <strong>swiss-galaxyB2.com</strong>.</p></div></div>
-      <div class="step"><span>3</span><div><h3>Configuration DNS</h3><p>Mise en place du DNS intégré à Active Directory. Le client utilise les serveurs DNS internes <strong>192.168.250.20</strong> et <strong>192.168.250.21</strong>.</p></div></div>
-      <div class="step"><span>4</span><div><h3>Configuration DHCP</h3><p>Le serveur DHCP distribue automatiquement l’adresse IP, la passerelle <strong>192.168.250.254</strong>, le suffixe DNS <strong>swiss-galaxyB2.com</strong> et les DNS internes.</p></div></div>
-      <div class="step"><span>5</span><div><h3>Tests client</h3><p>Validation depuis un client Windows 10 avec <code>ipconfig /all</code> : bail DHCP obtenu, passerelle correcte, DNS internes visibles et suffixe DNS du domaine présent.</p></div></div>
+      <div class="step"><span>1</span><div><h3>Préparation des serveurs</h3><p>Configuration réseau des serveurs dans le VLAN 250, renommage des machines et vérification de la connectivité avec la passerelle <strong>192.168.250.254</strong>.</p></div></div>
+      <div class="step"><span>2</span><div><h3>Déploiement Active Directory</h3><p>Installation du rôle AD DS, promotion du serveur <strong>LABANNU</strong> en contrôleur de domaine et création du domaine <strong>swiss-galaxyB2.com</strong>.</p></div></div>
+      <div class="step"><span>3</span><div><h3>Redondance du domaine</h3><p>Ajout du serveur <strong>LABANNUBIS</strong> au domaine puis promotion en contrôleur de domaine secondaire afin d’assurer une continuité de service minimale pour l’annuaire et le DNS.</p></div></div>
+      <div class="step"><span>4</span><div><h3>Configuration DNS</h3><p>Mise en place du DNS intégré à Active Directory, vérification de la zone du domaine et ajout d’un redirecteur DNS vers <strong>8.8.8.8</strong> pour la résolution externe.</p></div></div>
+      <div class="step"><span>5</span><div><h3>Configuration DHCP</h3><p>Création des étendues DHCP pour les VLAN du contexte GSB. Les options distribuées incluent la passerelle du VLAN, le suffixe DNS <strong>swiss-galaxyB2.com</strong> et les serveurs DNS internes.</p></div></div>
+      <div class="step"><span>6</span><div><h3>Validation client</h3><p>Contrôle depuis un client Windows 10 avec <code>ipconfig /all</code>, <code>nslookup</code>, tests de ping et vérification de l’accès au domaine.</p></div></div>
     </div>
   </section>
 
@@ -53,36 +54,38 @@
     <p class="section-label">Synthèse technique</p>
     <h2>Services configurés</h2>
     <table>
-      <thead><tr><th>Service</th><th>Rôle</th><th>Validation</th></tr></thead>
+      <thead><tr><th>Élément</th><th>Configuration retenue</th><th>Validation réalisée</th></tr></thead>
       <tbody>
-        <tr><td>Active Directory</td><td>Gestion centralisée des utilisateurs, groupes et postes</td><td>Domaine swiss-galaxyB2.com disponible</td></tr>
-        <tr><td>DNS</td><td>Résolution des noms internes du domaine</td><td>DNS internes 192.168.250.20 et 192.168.250.21 visibles côté client</td></tr>
-        <tr><td>DHCP</td><td>Attribution automatique des paramètres réseau</td><td>Bail obtenu par le client Windows 10</td></tr>
+        <tr><td>Contrôleur de domaine principal</td><td>LABANNU — IP : <strong>"IP_SERVEUR_PRINCIPAL"</strong></td><td>Domaine swiss-galaxyB2.com créé et disponible</td></tr>
+        <tr><td>Contrôleur de domaine secondaire</td><td>LABANNUBIS — IP : <strong>"IP_SERVEUR_SECONDAIRE"</strong></td><td>Réplication AD/DNS vérifiée</td></tr>
+        <tr><td>DNS interne</td><td>DNS intégré à Active Directory + redirecteur 8.8.8.8</td><td>Résolution interne et externe testée</td></tr>
+        <tr><td>DHCP</td><td>Étendues DHCP pour les VLAN du contexte GSB</td><td>Bail obtenu automatiquement par le client</td></tr>
+        <tr><td>Client de test</td><td>Windows 10 intégré au réseau GSB</td><td>Paramètres IP, passerelle, DNS et suffixe de domaine visibles</td></tr>
       </tbody>
     </table>
   </section>
 
   <section class="card grid two-col">
     <div>
-      <p class="section-label">Compétences BTS</p>
-      <h2>Compétences démontrées</h2>
+      <p class="section-label">Administration</p>
+      <h2>Éléments produits</h2>
       <ul class="list">
-        <li>Installer, tester et déployer une solution d’infrastructure réseau.</li>
-        <li>Administrer un service Windows Server.</li>
-        <li>Mettre à disposition des utilisateurs un service informatique.</li>
-        <li>Vérifier le fonctionnement par des tests techniques côté serveur et côté client.</li>
+        <li>Contrôleur de domaine principal pour le domaine GSB.</li>
+        <li>Contrôleur de domaine secondaire pour la redondance.</li>
+        <li>Serveur DNS interne associé au domaine Active Directory.</li>
+        <li>Serveur DHCP distribuant automatiquement les paramètres réseau.</li>
+        <li>Utilisateurs et groupes Active Directory de test.</li>
       </ul>
     </div>
     <div>
-      <p class="section-label">Outils</p>
-      <h2>Environnement utilisé</h2>
+      <p class="section-label">Tests</p>
+      <h2>Commandes de validation</h2>
       <ul class="list">
-        <li>Windows Server 2019</li>
-        <li>Active Directory Domain Services</li>
-        <li>DNS Manager</li>
-        <li>Console DHCP</li>
-        <li>Client Windows 10</li>
-        <li>Commandes ipconfig, nslookup, dcdiag et repadmin</li>
+        <li><code>ipconfig /all</code> : contrôle du bail DHCP et des DNS reçus.</li>
+        <li><code>nslookup</code> : test de résolution de noms.</li>
+        <li><code>ping</code> : vérification de la connectivité réseau.</li>
+        <li><code>dcdiag</code> : diagnostic du contrôleur de domaine.</li>
+        <li><code>repadmin /replsummary</code> : vérification de la réplication AD.</li>
       </ul>
     </div>
   </section>
@@ -90,15 +93,14 @@
   <section class="card">
     <p class="section-label">Preuve</p>
     <h2>Validation côté client</h2>
-    <p>La capture ci-dessous montre que le client <strong>ClientWin10</strong> reçoit bien ses paramètres réseau automatiquement : adresse IPv4 en 192.168.250.0/24, serveur DHCP, passerelle, suffixe DNS et serveurs DNS internes du domaine.</p>
+    <p>La capture ci-dessous montre la réception automatique des paramètres réseau sur le client Windows : adresse IPv4, serveur DHCP, passerelle, suffixe DNS du domaine et serveurs DNS internes.</p>
     <img class="proof" src="assets/preuveDNS.PNG" alt="Validation ipconfig du client Windows 10" />
   </section>
 
   <section class="card">
     <p class="section-label">Conclusion</p>
     <h2>Bilan</h2>
-    <p>La mission 3 ajoute le socle serveur indispensable au réseau GSB. Les postes peuvent utiliser le domaine, résoudre les noms internes et recevoir automatiquement leur configuration réseau.</p>
-    <div class="callout warn"><strong>À expliquer à l’oral :</strong> Active Directory centralise les identités, DNS permet au domaine de fonctionner correctement, et DHCP évite les erreurs de configuration manuelle sur les postes.</div>
+    <p>La mission met en place le socle serveur nécessaire au fonctionnement du réseau GSB. Les postes clients peuvent s’appuyer sur le domaine pour l’authentification, utiliser la résolution DNS interne et obtenir automatiquement une configuration IP cohérente avec leur VLAN.</p>
   </section>
 </main>
 </body>

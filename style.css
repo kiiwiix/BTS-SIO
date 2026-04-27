@@ -277,3 +277,19 @@ html[data-theme="light"] .terminal-line[data-category="security"] .terminal-badg
     display: none;
   }
 }
+
+/* Annexe BTS discrète : éléments tableau/croix regroupés et masqués par défaut */
+.annexe-bts details{
+  border:1px solid var(--border, rgba(148,163,184,.28));
+  border-radius:18px;
+  padding:18px 20px;
+  background:rgba(255,255,255,.04);
+}
+.annexe-bts summary{
+  cursor:pointer;
+  font-weight:700;
+  color:var(--text, inherit);
+}
+.annexe-bts details[open]{
+  box-shadow:0 14px 34px rgba(15,23,42,.08);
+}
