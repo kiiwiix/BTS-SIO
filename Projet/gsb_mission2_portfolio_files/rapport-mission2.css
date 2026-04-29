@@ -48,3 +48,13 @@ th{background:#f7f9fc;}
 .callout.warn{background:#fff9f4;border-color:#f5dfca;}
 code{background:#f2f4f8;padding:2px 6px;border-radius:8px;font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;}
 @media (max-width: 860px){.grid,.two-col,.skills,.docs{grid-template-columns:1fr;}.card{padding:22px;}}
+
+/* ===== Captures d'écran projet ===== */
+.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:18px}
+.evidence-grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+.evidence-card{background:#fbfcff;border:1px solid var(--line,#e4eaf2);border-radius:20px;overflow:hidden;box-shadow:0 12px 26px rgba(15,23,42,.06)}
+.evidence-card img{display:block;width:100%;height:260px;object-fit:contain;background:#101726;padding:10px}
+.evidence-card figcaption{padding:14px 16px;color:#2a3448;line-height:1.55;font-size:.95rem}
+.evidence-card figcaption strong{display:block;color:var(--accent-dark,#17356c);margin-bottom:4px}
+.evidence-note{margin-top:14px;padding:14px 16px;border-radius:16px;background:#fff8fb;border:1px solid rgba(217,75,114,.18);color:#435066;line-height:1.6}
+@media(max-width:900px){.evidence-grid,.evidence-grid.three{grid-template-columns:1fr}.evidence-card img{height:auto;max-height:320px}}

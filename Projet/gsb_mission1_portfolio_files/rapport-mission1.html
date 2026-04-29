@@ -253,6 +253,22 @@ end
 write memory</code></pre>
 </section>
 <section class="card">
+<p class="section-label">Preuves visuelles</p>
+<h2>Validation de la segmentation sur MUTLAB</h2>
+<p>Les captures ci-dessous permettent de comprendre rapidement le résultat obtenu : les VLAN sont créés, les ports sont affectés selon le plan de câblage et l’adresse de management du switch est configurée sur le VLAN 250.</p>
+<div class="evidence-grid">
+<figure class="evidence-card">
+<img src="assets/ecrans/showvlanbrief.PNG" alt="Commande show vlan brief sur le switch MUTLAB" />
+<figcaption><strong>VLAN et ports affectés</strong>La commande <code>show vlan brief</code> montre les VLAN du contexte GSB et les interfaces associées, notamment les ports Fa0/21 et Fa0/22 dans le VLAN 250.</figcaption>
+</figure>
+<figure class="evidence-card">
+<img src="assets/ecrans/ip%20interface.PNG" alt="Commande show ip interface brief sur le switch MUTLAB" />
+<figcaption><strong>Adresse de management</strong>La commande <code>show ip interface brief</code> confirme l’adresse de management du switch MUTLAB en <code>192.168.250.70</code> sur le VLAN 250.</figcaption>
+</figure>
+</div>
+</section>
+
+<section class="card">
 <p class="section-label">Résultat</p>
 <h2>Compétences démontrées</h2>
 <div class="skills">
@@ -266,6 +282,7 @@ write memory</code></pre>
 <p class="section-label">Pièces jointes</p>
 <h2>Documents associés</h2>
 <div class="docs">
+<a href="docs/Fiche descriptive E6 - Mission 1 et 2.pdf">Fiche descriptive E6 Mission 1-2</a>
 <a href="docs/Rapport Final Mission1 GSB (2).pdf">Rapport final PDF</a>
 <a href="docs/Mission Mise en place de infrasctructure Segmentation reseau.pdf">Cahier des charges PDF</a>
 <a href="docs/GSB Contexte.pdf">Contexte GSB PDF</a>
