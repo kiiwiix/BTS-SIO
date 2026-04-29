@@ -33,7 +33,7 @@
     <div>
       <p class="section-label">Solution</p>
       <h2>Réponse mise en œuvre</h2>
-      <p>La solution repose sur deux serveurs Windows Server 2025 : <strong>LABANNU</strong> comme contrôleur de domaine principal et <strong>LABANNUBIS</strong> comme contrôleur de domaine secondaire. Les services AD DS et DNS sont configurés sur Windows Server 2025, tandis que le service DHCP est assuré par un serveur Debian, puis l’ensemble est validé depuis un client Windows 10.</p>
+      <p>La solution repose sur deux serveurs Windows Server 2025 : <strong>LABANNU</strong> comme contrôleur de domaine principal et <strong>LABANNUBIS</strong> comme contrôleur de domaine secondaire. Les services AD DS, DNS et DHCP sont configurés puis validés depuis un client Windows 10.</p>
     </div>
   </section>
 
@@ -45,7 +45,7 @@
       <div class="step"><span>2</span><div><h3>Déploiement Active Directory</h3><p>Installation du rôle AD DS, promotion du serveur <strong>LABANNU</strong> en contrôleur de domaine et création du domaine <strong>swiss-galaxyB2.com</strong>.</p></div></div>
       <div class="step"><span>3</span><div><h3>Redondance du domaine</h3><p>Ajout du serveur <strong>LABANNUBIS</strong> au domaine puis promotion en contrôleur de domaine secondaire afin d’assurer une continuité de service minimale pour l’annuaire et le DNS.</p></div></div>
       <div class="step"><span>4</span><div><h3>Configuration DNS</h3><p>Mise en place du DNS intégré à Active Directory, vérification de la zone du domaine et ajout d’un redirecteur DNS vers <strong>8.8.8.8</strong> pour la résolution externe.</p></div></div>
-      <div class="step"><span>5</span><div><h3>Configuration DHCP</h3><p>Configuration du service DHCP sous Debian avec des étendues pour les VLAN du contexte GSB. Les options distribuées incluent la passerelle du VLAN, le suffixe DNS <strong>swiss-galaxyB2.com</strong> et les serveurs DNS internes.</p></div></div>
+      <div class="step"><span>5</span><div><h3>Configuration DHCP</h3><p>Configuration du service DHCP sous Debian avec des étendues adaptées aux VLAN du contexte GSB. Les options distribuées incluent la passerelle du VLAN, le suffixe DNS <strong>swiss-galaxyB2.com</strong> et les serveurs DNS internes.</p></div></div>
       <div class="step"><span>6</span><div><h3>Validation client</h3><p>Contrôle depuis un client Windows 10 avec <code>ipconfig /all</code>, <code>nslookup</code>, tests de ping et vérification de l’accès au domaine.</p></div></div>
     </div>
   </section>
@@ -59,11 +59,26 @@
         <tr><td>Contrôleur de domaine principal</td><td>LABANNU — IP : <strong>192.168.250.20</strong></td><td>Domaine swiss-galaxyB2.com créé et disponible</td></tr>
         <tr><td>Contrôleur de domaine secondaire</td><td>LABANNUBIS — IP : <strong>192.168.250.21</strong></td><td>Réplication AD/DNS vérifiée</td></tr>
         <tr><td>DNS interne</td><td>DNS intégré à Active Directory + redirecteur 8.8.8.8</td><td>Résolution interne et externe testée</td></tr>
-        <tr><td>DHCP</td><td>Serveur Debian — IP : <strong>192.168.250.19</strong>, étendues pour les VLAN du contexte GSB</td><td>Bail obtenu automatiquement par le client</td></tr>
+        <tr><td>DHCP</td><td>Serveur DHCP sous Debian — IP : <strong>192.168.250.19</strong></td><td>Bail obtenu automatiquement par le client</td></tr>
         <tr><td>Client de test</td><td>Windows 10 intégré au réseau GSB</td><td>Paramètres IP, passerelle, DNS et suffixe de domaine visibles</td></tr>
       </tbody>
     </table>
   </section>
+
+  <section class="card">
+<p class="section-label">Preuves de fonctionnement</p>
+<h2>Captures organisées par service</h2>
+<p>Les captures suivantes sont présentées dans l’ordre logique de validation : DNS, DHCP, client, résolution de noms, communication entre contrôleurs de domaine et diagnostic Active Directory.</p>
+<div class="proof-grid">
+  <article class="proof-row"><div><h3>1. Configuration DNS du domaine</h3><p>Cette capture montre la configuration DNS liée au domaine <strong>swiss-galaxyB2.com</strong>. Le DNS est indispensable au fonctionnement d’Active Directory, car les postes doivent localiser le domaine et les contrôleurs de domaine.</p><a class="proof-link" href="assets/ecrans/DNS.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/DNS.PNG" alt="Configuration DNS du domaine swiss-galaxyB2.com" loading="lazy"><figcaption>Preuve DNS : zone et résolution interne du domaine.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>2. Service DHCP sous Debian</h3><p>Le fichier de configuration DHCP montre les paramètres distribués aux clients : plage d’adresses, passerelle du VLAN, suffixe DNS et serveurs DNS internes.</p><ul><li>Serveur DHCP : <strong>192.168.250.19</strong>.</li><li>DNS distribués : <strong>192.168.250.20</strong> et <strong>192.168.250.21</strong>.</li><li>Passerelle distribuée : <strong>192.168.250.254</strong>.</li></ul><a class="proof-link" href="assets/ecrans/dhcpconf.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/dhcpconf.PNG" alt="Configuration du serveur DHCP Debian" loading="lazy"><figcaption>Preuve DHCP : options réseau distribuées aux clients.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>3. Client Windows sous DHCP</h3><p>La commande <code>ipconfig /all</code> confirme que le client reçoit automatiquement les paramètres attendus : adresse IPv4, serveur DHCP, passerelle, suffixe DNS et DNS internes.</p><a class="proof-link" href="assets/ecrans/clientsousDHCP.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/clientsousDHCP.PNG" alt="Client Windows recevant sa configuration DHCP" loading="lazy"><figcaption>Preuve client : configuration IP reçue automatiquement.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>4. Résolution DNS avec nslookup</h3><p>Le test <code>nslookup</code> permet de vérifier que le client utilise bien le DNS interne et que la résolution de noms fonctionne.</p><a class="proof-link" href="assets/ecrans/nslookup.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/nslookup.PNG" alt="Test nslookup depuis un client Windows" loading="lazy"><figcaption>Preuve DNS côté client : résolution de noms opérationnelle.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>5. Communication entre LABANNU et LABANNUBIS</h3><p>Les tests de ping montrent que les deux contrôleurs de domaine communiquent correctement sur le réseau, ce qui est nécessaire pour la réplication AD/DNS.</p><a class="proof-link" href="assets/ecrans/ping LabannuetLabannuBIS.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/ping LabannuetLabannuBIS.PNG" alt="Ping entre LABANNU et LABANNUBIS" loading="lazy"><figcaption>Preuve réseau : communication entre les deux contrôleurs de domaine.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>6. Diagnostic Active Directory</h3><p>La commande <code>dcdiag</code> vérifie l’état du contrôleur de domaine et permet de valider les services essentiels d’Active Directory.</p><a class="proof-link" href="assets/ecrans/dcdiag.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/dcdiag.PNG" alt="Diagnostic dcdiag du contrôleur de domaine" loading="lazy"><figcaption>Preuve AD : diagnostic du contrôleur de domaine.</figcaption></figure></article>
+</div>
+</section>
+
 
   <section class="card grid two-col">
     <div>
@@ -73,7 +88,7 @@
         <li>Contrôleur de domaine principal pour le domaine GSB.</li>
         <li>Contrôleur de domaine secondaire pour la redondance.</li>
         <li>Serveur DNS interne associé au domaine Active Directory.</li>
-        <li>Serveur DHCP sous Debian distribuant automatiquement les paramètres réseau.</li>
+        <li>Serveur DHCP distribuant automatiquement les paramètres réseau.</li>
         <li>Utilisateurs et groupes Active Directory de test.</li>
       </ul>
     </div>
@@ -90,50 +105,7 @@
     </div>
   </section>
 
-  <section class="card">
-    <p class="section-label">Preuves visuelles</p>
-    <h2>Captures de validation AD, DNS et DHCP</h2>
-    <p>Les captures suivantes résument les éléments les plus importants du projet : résolution DNS, configuration DHCP, obtention d’un bail client, connectivité avec les contrôleurs de domaine et diagnostic Active Directory.</p>
-    <div class="evidence-grid">
-      <figure class="evidence-card">
-        <img src="assets/ecrans/DNS.PNG" alt="Gestionnaire DNS du domaine swiss-galaxyB2.com" />
-        <figcaption><strong>Zone DNS du domaine</strong>La zone <code>swiss-galaxyB2.com</code> contient les enregistrements des contrôleurs de domaine LABANNU et LABANNUBIS.</figcaption>
-      </figure>
-      <figure class="evidence-card">
-        <img src="assets/ecrans/dhcpconf.PNG" alt="Configuration DHCP Debian dans dhcpd.conf" />
-        <figcaption><strong>DHCP sous Debian</strong>Le fichier <code>dhcpd.conf</code> définit le nom de domaine, les serveurs DNS internes et les étendues par VLAN.</figcaption>
-      </figure>
-      <figure class="evidence-card">
-        <img src="assets/ecrans/clientsousDHCP.PNG" alt="Client Windows recevant une adresse DHCP et ping 8.8.8.8" />
-        <figcaption><strong>Client configuré automatiquement</strong>Le poste reçoit une adresse du VLAN 250, le serveur DHCP <code>192.168.250.19</code>, les DNS <code>192.168.250.20</code> / <code>192.168.250.21</code> et valide l’accès Internet.</figcaption>
-      </figure>
-      <figure class="evidence-card">
-        <img src="assets/ecrans/nslookup.PNG" alt="Tests nslookup et ping google.com" />
-        <figcaption><strong>Résolution DNS interne et externe</strong><code>nslookup</code> valide la résolution de <code>swiss-galaxyB2.com</code> et la résolution externe via le DNS interne.</figcaption>
-      </figure>
-      <figure class="evidence-card">
-        <img src="assets/ecrans/ping%20LabannuetLabannuBIS.PNG" alt="Ping vers LABANNUBIS" />
-        <figcaption><strong>Connectivité entre serveurs</strong>Le ping vers LABANNUBIS confirme la communication avec le second contrôleur de domaine en <code>192.168.250.21</code>.</figcaption>
-      </figure>
-      <figure class="evidence-card">
-        <img src="assets/ecrans/dcdiag.PNG" alt="Résultat dcdiag réussi" />
-        <figcaption><strong>Diagnostic Active Directory</strong>La commande <code>dcdiag</code> valide les principaux tests du contrôleur de domaine et de la configuration AD/DNS.</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="card">
-    <p class="section-label">Pièces jointes</p>
-    <h2>Documents associés</h2>
-    <div class="docs">
-      <a href="docs/Fiche descriptive E6 - Mission 3.pdf">Fiche descriptive E6 Mission 3</a>
-      <a href="docs/Fiche procedure - Mission 3 AD DNS DHCP.html">Fiche de procédure AD / DNS / DHCP</a>
-      <a href="docs/Fiche recette - Mission 3 AD DNS DHCP.html">Fiche de recette AD / DNS / DHCP</a>
-      <a href="docs/DNS.PNG">Capture DNS</a>
-      <a href="docs/dhcpconf.PNG">Capture configuration DHCP Debian</a>
-      <a href="docs/clientsousDHCP.PNG">Capture client DHCP</a>
-    </div>
-  </section>
+  
 
   <section class="card">
     <p class="section-label">Conclusion</p>

@@ -261,18 +261,6 @@
 </article>
 </section>
 <section class="card">
-<p class="section-label">Preuve visuelle</p>
-<h2>Sortie Internet depuis un poste client</h2>
-<p>Cette capture complète les tests Stormshield : le client reçoit une configuration cohérente avec le VLAN 250, utilise la passerelle <code>192.168.250.254</code> et valide l’accès Internet par un ping vers <code>8.8.8.8</code>.</p>
-<div class="evidence-grid">
-<figure class="evidence-card">
-<img src="assets/ecrans/clientsousDHCP.PNG" alt="Client Windows avec passerelle Stormshield et ping Internet" />
-<figcaption><strong>Validation côté client</strong>Le poste client possède une adresse du VLAN 250, utilise le routeur Stormshield comme passerelle et communique avec Internet.</figcaption>
-</figure>
-</div>
-</section>
-
-<section class="card">
 <p class="section-label">Dépannage</p>
 <h2>Réflexes de vérification</h2>
 <ul class="list">
@@ -296,17 +284,19 @@
 <section class="card">
 <p class="section-label">Pièce jointe</p>
 <h2>Document associé</h2>
-<div class="docs">
-<a href="docs/Fiche descriptive E6 - Mission 1 et 2.pdf">Fiche descriptive E6 Mission 1-2</a>
+<div class="docs one-col">
 <a href="docs/Mission 2.pdf">Mission 2 - PDF complet</a>
-<a href="docs/Cahier des charges - Mission 2 Configuration routeur.pdf">Cahier des charges Mission 2</a>
-<a href="docs/Configuration Stormshield - regles filtrage.csv">Règles de filtrage Stormshield CSV</a>
-<a href="docs/Configuration Stormshield commentee.html">Configuration Stormshield commentée</a>
-<a href="docs/Fiche recette - Mission 2 Stormshield.html">Fiche de recette Mission 2</a>
-<a href="docs/Planning Trello - Mission 2.html">Découpage en lots / planning</a>
-<a href="docs/Plan Cablage VLAN Ports GSB.docx">Plan de câblage VLAN/ports</a>
 </div>
 </section>
+<section class="card">
+<p class="section-label">Preuve de validation</p>
+<h2>Contrôle réseau depuis un poste client</h2>
+<p>Cette capture vérifie la configuration reçue par un client du VLAN 250 et la cohérence avec l’architecture Stormshield.</p>
+<div class="proof-grid">
+  <article class="proof-row"><div><h3>Paramètres IP du client</h3><p>La commande <code>ipconfig /all</code> montre les informations réseau du poste : adresse IPv4, passerelle, serveur DHCP, suffixe DNS et serveurs DNS internes.</p><ul><li>Passerelle du VLAN 250 : <strong>192.168.250.254</strong>.</li><li>Serveur DHCP : <strong>192.168.250.19</strong>.</li><li>Serveurs DNS internes : <strong>192.168.250.20</strong> et <strong>192.168.250.21</strong>.</li></ul><p class="proof-note">Cette preuve montre aussi que le client reçoit les services réseau attendus dans le VLAN serveurs.</p><a class="proof-link" href="assets/ecrans/clientsousDHCP.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/clientsousDHCP.PNG" alt="ipconfig all d’un client Windows dans le VLAN 250" loading="lazy"><figcaption>Validation côté client : passerelle Stormshield, DHCP et DNS internes.</figcaption></figure></article>
+</div>
+</section>
+
 </main>
 </body>
 </html>

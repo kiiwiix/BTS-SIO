@@ -253,22 +253,6 @@ end
 write memory</code></pre>
 </section>
 <section class="card">
-<p class="section-label">Preuves visuelles</p>
-<h2>Validation de la segmentation sur MUTLAB</h2>
-<p>Les captures ci-dessous permettent de comprendre rapidement le résultat obtenu : les VLAN sont créés, les ports sont affectés selon le plan de câblage et l’adresse de management du switch est configurée sur le VLAN 250.</p>
-<div class="evidence-grid">
-<figure class="evidence-card">
-<img src="assets/ecrans/showvlanbrief.PNG" alt="Commande show vlan brief sur le switch MUTLAB" />
-<figcaption><strong>VLAN et ports affectés</strong>La commande <code>show vlan brief</code> montre les VLAN du contexte GSB et les interfaces associées, notamment les ports Fa0/21 et Fa0/22 dans le VLAN 250.</figcaption>
-</figure>
-<figure class="evidence-card">
-<img src="assets/ecrans/ip%20interface.PNG" alt="Commande show ip interface brief sur le switch MUTLAB" />
-<figcaption><strong>Adresse de management</strong>La commande <code>show ip interface brief</code> confirme l’adresse de management du switch MUTLAB en <code>192.168.250.70</code> sur le VLAN 250.</figcaption>
-</figure>
-</div>
-</section>
-
-<section class="card">
 <p class="section-label">Résultat</p>
 <h2>Compétences démontrées</h2>
 <div class="skills">
@@ -282,7 +266,6 @@ write memory</code></pre>
 <p class="section-label">Pièces jointes</p>
 <h2>Documents associés</h2>
 <div class="docs">
-<a href="docs/Fiche descriptive E6 - Mission 1 et 2.pdf">Fiche descriptive E6 Mission 1-2</a>
 <a href="docs/Rapport Final Mission1 GSB (2).pdf">Rapport final PDF</a>
 <a href="docs/Mission Mise en place de infrasctructure Segmentation reseau.pdf">Cahier des charges PDF</a>
 <a href="docs/GSB Contexte.pdf">Contexte GSB PDF</a>
@@ -291,6 +274,16 @@ write memory</code></pre>
 <a href="docs/Fiche Recette MUTLAB VLAN SSH.docx">Fiche de recette DOCX</a>
 </div>
 </section>
+<section class="card">
+<p class="section-label">Preuves de validation</p>
+<h2>Contrôles réalisés sur le commutateur MUTLAB</h2>
+<p>Ces captures sont intégrées directement dans le rapport afin de comprendre rapidement ce qui a été validé sur le switch.</p>
+<div class="proof-grid">
+  <article class="proof-row"><div><h3>VLAN créés et ports affectés</h3><p>La commande <code>show vlan brief</code> vérifie que les VLAN du contexte GSB existent et que les ports FastEthernet sont bien placés dans les bons réseaux.</p><ul><li>VLAN utilisateurs séparés par service.</li><li>VLAN 250 dédié aux serveurs.</li><li>Ports associés au plan de câblage.</li></ul><a class="proof-link" href="assets/ecrans/showvlanbrief.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/showvlanbrief.PNG" alt="Commande show vlan brief sur le switch MUTLAB" loading="lazy"><figcaption>Validation de la création des VLAN et de l’affectation des ports.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>Adresse de management du switch</h3><p>La commande <code>show ip interface brief</code> confirme l’état des interfaces et permet de contrôler l’interface de management utilisée pour administrer MUTLAB.</p><ul><li>Interface VLAN de management vérifiée.</li><li>Adresse de gestion attendue : <strong>192.168.250.70</strong>.</li><li>Base de validation pour l’accès SSH.</li></ul><a class="proof-link" href="assets/ecrans/ip interface.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/ip interface.PNG" alt="Commande show ip interface brief sur le switch MUTLAB" loading="lazy"><figcaption>Contrôle de l’interface de management du commutateur.</figcaption></figure></article>
+</div>
+</section>
+
 </main>
 </body>
 </html>
