@@ -1,0 +1,201 @@
+/* ══════════════════════════════════════════════════════════════
+   CYBER BACKGROUND — Brume, pluie de code, ambiance sombre
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  /* Brume */
+  --mist-base:      rgba(98, 22, 42,  0.28);
+  --mist-secondary: rgba(48, 68, 132, 0.18);
+  --mist-accent:    rgba(180, 30, 65, 0.14);
+  --mist-highlight: rgba(241,112,138, 0.13);
+  --mist-glow:      rgba(255,150,176, 0.09);
+
+  /* Code rain */
+  --code-rain-color: rgba(255,126,154, 0.22);
+  --code-rain-head:  rgba(255,220,232, 0.90);
+  --code-rain-trail: rgba(5,5,5, 0.058);
+
+  /* Radials de fond */
+  --bg-radial-1: rgba(226,75,106, 0.12);
+  --bg-radial-2: rgba(72,100,190, 0.10);
+  --bg-radial-3: rgba(255,154,177, 0.08);
+  --bg-radial-4: rgba(60, 20, 80,  0.08);
+
+  --bg-dark-top:    rgba(7,11,20,  0.97);
+  --bg-dark-bottom: rgba(10,15,26, 0.99);
+  --bg-vignette:    rgba(0,0,0,    0.26);
+  --bg-noise-opacity: 0.032;
+}
+
+html[data-theme="light"] {
+  --mist-base:      rgba(255,185,203, 0.26);
+  --mist-secondary: rgba(167,193,255, 0.18);
+  --mist-accent:    rgba(255,130,160, 0.14);
+  --mist-highlight: rgba(255,240,244, 0.22);
+  --mist-glow:      rgba(255,255,255, 0.16);
+
+  --code-rain-color: rgba(203,47,88, 0.16);
+  --code-rain-head:  rgba(180,30,65,  0.72);
+  --code-rain-trail: rgba(255,255,255, 0.12);
+
+  --bg-radial-1: rgba(255,166,188, 0.22);
+  --bg-radial-2: rgba(180,205,255, 0.20);
+  --bg-radial-3: rgba(255,243,247, 0.28);
+  --bg-radial-4: rgba(230,200,255, 0.14);
+
+  --bg-dark-top:    rgba(255,248,251, 0.98);
+  --bg-dark-bottom: rgba(243,248,255, 0.98);
+  --bg-vignette:    rgba(164,63,95,   0.04);
+  --bg-noise-opacity: 0.022;
+}
+
+/* ── Fond principal ────────────────────────────────────── */
+.cyber-background {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -2;
+  background:
+    radial-gradient(ellipse at 16% 12%,  var(--bg-radial-1), transparent 50%),
+    radial-gradient(ellipse at 84% 8%,   var(--bg-radial-2), transparent 54%),
+    radial-gradient(ellipse at 50% 112%, var(--bg-radial-3), transparent 60%),
+    radial-gradient(ellipse at 72% 56%,  var(--bg-radial-4), transparent 40%),
+    linear-gradient(175deg, var(--bg-dark-top), var(--bg-dark-bottom));
+  filter: saturate(115%) brightness(0.99);
+  isolation: isolate;
+}
+
+/* Couche de lumière douce + bruit */
+.cyber-background::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(190deg, rgba(255,255,255,.018), transparent 30%, rgba(0,0,0,.1)),
+    radial-gradient(ellipse at 50% 50%, rgba(255,255,255,var(--bg-noise-opacity)), transparent 70%);
+  opacity: 0.88;
+  mix-blend-mode: soft-light;
+}
+
+/* Vignette bords + lueur basse */
+.cyber-background::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 125%, rgba(211,43,43,.12), transparent 65%),
+    radial-gradient(ellipse at 50% 50%, transparent 55%, var(--bg-vignette) 100%);
+  mix-blend-mode: screen;
+  opacity: 0.76;
+}
+
+/* ── Couches de brume ──────────────────────────────────── */
+.mist-layer {
+  position: absolute;
+  inset: -28%;
+  background:
+    radial-gradient(ellipse at 18% 32%, var(--mist-base)      0%, transparent 55%),
+    radial-gradient(ellipse at 72% 42%, var(--mist-secondary)  0%, transparent 58%),
+    radial-gradient(ellipse at 44% 68%, var(--mist-highlight)  0%, transparent 62%),
+    radial-gradient(ellipse at 62% 18%, var(--mist-accent)     0%, transparent 40%);
+  filter: blur(76px) saturate(120%);
+  opacity: 0.44;
+  transform: translate3d(0,0,0);
+  animation: mist-drift-1 48s ease-in-out infinite;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.mist-layer--slow {
+  animation: mist-drift-2 66s ease-in-out infinite;
+  opacity: 0.28;
+  filter: blur(88px) saturate(108%);
+}
+
+.mist-layer--pulse {
+  animation: mist-pulse 40s ease-in-out infinite;
+  opacity: 0.22;
+  filter: blur(60px) saturate(130%);
+  background:
+    radial-gradient(ellipse at 30% 60%, var(--mist-base)      0%, transparent 50%),
+    radial-gradient(ellipse at 70% 30%, var(--mist-secondary)  0%, transparent 55%),
+    radial-gradient(ellipse at 50% 80%, var(--mist-glow)       0%, transparent 60%);
+}
+
+/* Lueur intérieure sur la couche principale */
+.mist-layer::after {
+  content: "";
+  position: absolute;
+  inset: 8% 14% 18% 12%;
+  background:
+    radial-gradient(ellipse at 64% 44%, rgba(255,145,145,.14), transparent 65%),
+    radial-gradient(ellipse at 28% 62%, var(--mist-glow),       transparent 60%),
+    radial-gradient(ellipse at 50% 20%, rgba(180,100,255,.06),  transparent 50%);
+  filter: blur(44px);
+  opacity: 0.55;
+}
+
+/* ── Canvas pluie de code ──────────────────────────────── */
+.code-rain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.26;
+  mix-blend-mode: screen;
+  filter: blur(0.12px);
+}
+
+/* ── Keyframes brume ───────────────────────────────────── */
+@keyframes mist-drift-1 {
+  0%   { transform: translate3d(-7%, -5%, 0) scale(1.04); opacity: 0.38; }
+  20%  { transform: translate3d( 2%, -1%, 0) scale(1.09); opacity: 0.48; }
+  48%  { transform: translate3d(-1%,  5%, 0) scale(1.03); opacity: 0.42; }
+  74%  { transform: translate3d( 5%,  2%, 0) scale(1.07); opacity: 0.44; }
+  100% { transform: translate3d(-7%, -5%, 0) scale(1.04); opacity: 0.38; }
+}
+
+@keyframes mist-drift-2 {
+  0%   { transform: translate3d( 7%,  5%, 0) scale(1.08); }
+  28%  { transform: translate3d(-4%,  6%, 0) scale(1.04); }
+  56%  { transform: translate3d( 3%, -6%, 0) scale(1.09); }
+  82%  { transform: translate3d(-2%,  3%, 0) scale(1.06); }
+  100% { transform: translate3d( 7%,  5%, 0) scale(1.08); }
+}
+
+@keyframes mist-pulse {
+  0%,100% { transform: translate3d(0,0,0) scale(1.00); opacity: 0.20; }
+  25%     { transform: translate3d( 3%, -4%, 0) scale(1.08); opacity: 0.30; }
+  50%     { transform: translate3d(-2%,  3%, 0) scale(1.12); opacity: 0.36; }
+  75%     { transform: translate3d( 1%, -2%, 0) scale(1.06); opacity: 0.26; }
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 900px) {
+  .mist-layer              { inset: -32%; filter: blur(64px) saturate(112%); opacity: 0.34; }
+  .mist-layer--slow        { opacity: 0.22; }
+  .mist-layer--pulse       { opacity: 0.17; }
+  .code-rain               { opacity: 0.17; }
+}
+
+@media (max-width: 560px) {
+  .mist-layer              { filter: blur(54px); }
+  .code-rain               { opacity: 0.10; }
+  .cyber-background::after { opacity: 0.58; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mist-layer,
+  .mist-layer--slow,
+  .mist-layer--pulse {
+    animation: none;
+    transform: none;
+  }
+  .code-rain { opacity: 0.12; }
+}
+
+@media print {
+  .cyber-background { display: none; }
+}
