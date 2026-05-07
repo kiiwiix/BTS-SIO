@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mission 1 · Schéma VLAN</title>
+  <style>
+    :root{--bg:#f6f7fb;--card:#fff;--text:#172033;--muted:#5d6b82;--accent:#d93763;--accent2:#ff6f91;--line:rgba(217,55,99,.16);--shadow:0 18px 40px rgba(15,23,42,.10);}
+    *{box-sizing:border-box}
+    body{margin:0;font:16px/1.7 Inter,system-ui,sans-serif;background:linear-gradient(180deg,#fff7fa,#f6f7fb);color:var(--text)}
+    .container{width:min(1100px,calc(100% - 32px));margin:0 auto;padding:32px 0 56px}
+    .hero,.card{background:var(--card);border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow)}
+    .hero{padding:32px;margin-bottom:24px}
+    .card{padding:24px;margin-top:20px}
+    .eyebrow{display:inline-block;padding:6px 12px;border:1px solid rgba(217,55,99,.24);border-radius:999px;color:var(--accent);font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.82rem;background:#fff3f7}
+    h1,h2,h3{margin:0 0 12px}
+    p{color:var(--muted)}
+    .back-link,.doc-link{display:inline-flex;align-items:center;gap:8px;padding:12px 16px;border-radius:14px;background:linear-gradient(135deg,#d93763,#ff6f91);color:#fff;font-weight:700;text-decoration:none}
+    .back-link{margin-bottom:18px}
+    .actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .doc-link.alt{background:#fff;color:var(--accent);border:1px solid var(--line)}
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:12px 10px;border-bottom:1px solid #e9edf5;text-align:left;vertical-align:top}
+    th{color:#1f2b42}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+    .badge-list{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+    .badge{padding:8px 12px;border-radius:999px;background:#fff3f7;border:1px solid rgba(217,55,99,.18);color:var(--accent);font-weight:700;font-size:.92rem}
+    @media (max-width:800px){.grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <main class="container">
+    <a class="back-link" href="../../index.html#projets">← Retour au portfolio</a>
+    <section class="hero">
+      <span class="eyebrow">Schéma VLAN</span>
+      <h1>Mission 1 GSB · Schéma VLAN et plan de câblage</h1>
+      <p>Cette page présente le schéma VLAN utilisé pour la mission 1. Elle te permet de rester dans le portfolio, puis de revenir directement à la section Projets.</p>
+      <div class="actions">
+        <a class="doc-link alt" href="docs/Plan Cablage VLAN Ports GSB.docx">📄 Ouvrir le plan source</a>
+      </div>
+    </section>
+    
+<section class="grid">
+  <article class="card">
+    <h2>Plan d’adressage et VLAN</h2>
+    <table>
+      <thead><tr><th>VLAN</th><th>Rôle</th><th>Réseau / usage</th></tr></thead>
+      <tbody>
+        <tr><td>1</td><td>Par défaut</td><td>VLAN natif du switch</td></tr>
+        <tr><td>10</td><td>Services internes</td><td>Postes / équipements du labo</td></tr>
+        <tr><td>50</td><td>Serveurs</td><td>Zone serveurs</td></tr>
+        <tr><td>99</td><td>Administration</td><td>Gestion intermédiaire</td></tr>
+        <tr><td>150</td><td>Invités / spécifique</td><td>Réseau dédié</td></tr>
+        <tr><td>200 à 206</td><td>Salles / segments</td><td>Segmentation métier</td></tr>
+        <tr><td>250</td><td>Management</td><td>192.168.250.0/24 · IP switch 192.168.250.70</td></tr>
+      </tbody>
+    </table>
+  </article>
+  <article class="card">
+    <h2>Ce que montre le schéma</h2>
+    <p>Le schéma VLAN de la mission 1 montre la segmentation logique du switch MUTLAB, l’affectation des ports FastEthernet selon les besoins, ainsi que le VLAN 250 utilisé pour l’administration du commutateur.</p>
+    <div class="badge-list">
+      <span class="badge">Cisco 2960</span>
+      <span class="badge">IP management 192.168.250.70</span>
+      <span class="badge">Passerelle 192.168.250.254</span>
+      <span class="badge">SSH v2</span>
+    </div>
+  </article>
+</section>
+<section class="card">
+  <h2>Lecture rapide</h2>
+  <p>Le port d’administration du switch est placé sur le VLAN 250. Les autres ports sont affectés aux VLAN selon le plan de câblage du laboratoire. L’objectif de cette organisation est d’isoler les flux, de mieux contrôler les accès et de préparer le routage inter-VLAN assuré plus loin par l’infrastructure GSB.</p>
+</section>
+
+  </main>
+</body>
+</html>

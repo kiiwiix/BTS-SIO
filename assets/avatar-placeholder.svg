@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Avatar de remplacement pour Noé Chami</title>
+  <desc id="desc">Illustration abstraite représentant le portrait de Noé Chami en attendant la photo définitive.</desc>
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1d2939" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" rx="24" fill="url(#g)" />
+  <path fill="#42b883" fill-opacity="0.85" d="M80 26a30 30 0 1 1 0 60a30 30 0 0 1 0-60z" />
+  <path fill="#2dd4bf" fill-opacity="0.7" d="M32 138c4-28 24-48 48-48s44 20 48 48c-14 8-32 12-48 12s-34-4-48-12z" />
+  <text x="80" y="150" text-anchor="middle" font-family="'Inter', system-ui, sans-serif" font-size="18" fill="#9ca3af">Noé Chami</text>
+</svg>

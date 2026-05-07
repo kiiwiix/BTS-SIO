@@ -1,0 +1,258 @@
+/* ══════════════════════════════════════════════════════════════
+   AKATSUKI SKY — Nuages & Corbeaux améliorés
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --akatsuki-sky-blend:
+    radial-gradient(ellipse at 14% 16%, rgba(242,75,100,.12) 0%, transparent 46%),
+    radial-gradient(ellipse at 86% 8%,  rgba(255,114,138,.09) 0%, transparent 42%),
+    radial-gradient(ellipse at 50% 118%, rgba(123,19,37,.20) 0%, transparent 52%),
+    radial-gradient(ellipse at 32% 54%, rgba(180,40,80,.06) 0%, transparent 36%);
+  --akatsuki-cloud-fill:   rgba(110,14,30,.30);
+  --akatsuki-cloud-edge:   rgba(255,235,242,.28);
+  --akatsuki-cloud-glow:   rgba(242,75,100,.12);
+  --akatsuki-cloud-shadow: rgba(0,0,0,.14);
+  --akatsuki-crow-color:   rgba(255,228,236,.92);
+}
+
+html[data-theme="light"] {
+  --akatsuki-sky-blend:
+    radial-gradient(ellipse at 14% 16%, rgba(214,75,98,.09) 0%, transparent 42%),
+    radial-gradient(ellipse at 86% 8%,  rgba(255,149,167,.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 118%, rgba(214,75,98,.10) 0%, transparent 46%),
+    radial-gradient(ellipse at 32% 54%, rgba(255,100,140,.04) 0%, transparent 34%);
+  --akatsuki-cloud-fill:   rgba(214,75,98,.14);
+  --akatsuki-cloud-edge:   rgba(255,255,255,.44);
+  --akatsuki-cloud-glow:   rgba(214,75,98,.08);
+  --akatsuki-cloud-shadow: rgba(133,26,45,.08);
+  --akatsuki-crow-color:   rgba(92,18,32,.74);
+}
+
+/* ── Sky container ──────────────────────────────────────── */
+.akatsuki-sky {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  overflow: hidden;
+  opacity: 0.96;
+}
+
+.akatsuki-sky::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--akatsuki-sky-blend);
+  opacity: 0.88;
+}
+
+/* Scanline ultra-subtil pour effet "écran CRT cyber" */
+.akatsuki-sky::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0,0,0,.022) 0px,
+    rgba(0,0,0,.022) 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  pointer-events: none;
+  opacity: 0.55;
+}
+html[data-theme="light"] .akatsuki-sky::after { opacity: 0.18; }
+
+.akatsuki-clouds,
+.akatsuki-crows {
+  position: absolute;
+  inset: 0;
+}
+
+/* ── Nuages ─────────────────────────────────────────────── */
+.akatsuki-cloud {
+  position: absolute;
+  top:  var(--cloud-top,  18%);
+  left: var(--cloud-left, 10%);
+  width: 240px;
+  height: 96px;
+  border-radius: 999px;
+  background: linear-gradient(
+    170deg,
+    rgba(255,255,255,.09) 0%,
+    var(--akatsuki-cloud-fill) 55%,
+    rgba(0,0,0,.06) 100%
+  );
+  border: 1px solid var(--akatsuki-cloud-edge);
+  box-shadow:
+    0 12px 28px var(--akatsuki-cloud-shadow),
+    0 0 40px var(--akatsuki-cloud-glow),
+    inset 0 2px 0 rgba(255,255,255,.12),
+    inset 0 -2px 4px rgba(0,0,0,.06);
+  filter: blur(0.3px);
+  opacity: var(--cloud-opacity, 0.24);
+  transform: translate3d(0,0,0) scale(var(--cloud-scale, 1));
+  animation:
+    akatsuki-cloud-float var(--cloud-duration, 32s) ease-in-out infinite,
+    akatsuki-cloud-breathe calc(var(--cloud-duration, 32s) * 0.62) ease-in-out infinite;
+  animation-delay: var(--cloud-delay, 0s);
+  will-change: transform, opacity;
+}
+
+/* Bosse principale (au-dessus) */
+.akatsuki-cloud::before {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border: inherit;
+  border-radius: inherit;
+  width: 130px;
+  height: 90px;
+  left: 22px;
+  top: -30px;
+  filter: blur(0.4px);
+  opacity: 0.88;
+}
+
+/* Bosse secondaire */
+.akatsuki-cloud::after {
+  content: "";
+  position: absolute;
+  background: inherit;
+  border: inherit;
+  border-radius: inherit;
+  width: 150px;
+  height: 84px;
+  right: 22px;
+  top: -20px;
+  filter: blur(0.6px);
+  opacity: 0.78;
+}
+
+/* ── Animations nuages ──────────────────────────────────── */
+@keyframes akatsuki-cloud-float {
+  0%   { transform: translate3d(0,0,0) scale(var(--cloud-scale, 1)); }
+  20%  { transform: translate3d(var(--cloud-drift-x, 18px), -10px, 0) scale(calc(var(--cloud-scale,1)*1.012)); }
+  45%  { transform: translate3d(var(--cloud-drift-x, 18px), 8px,  0) scale(calc(var(--cloud-scale,1)*0.992)); }
+  70%  { transform: translate3d(calc(var(--cloud-drift-x,18px)*0.4), 14px, 0) scale(calc(var(--cloud-scale,1)*1.018)); }
+  100% { transform: translate3d(0,0,0) scale(var(--cloud-scale, 1)); }
+}
+
+@keyframes akatsuki-cloud-breathe {
+  0%,100% { opacity: var(--cloud-opacity, 0.24); }
+  50%     { opacity: calc(var(--cloud-opacity, 0.24) * 1.18); }
+}
+
+/* ── Corbeaux ───────────────────────────────────────────── */
+.akatsuki-crow {
+  position: absolute;
+  top: var(--top, 50%);
+  width: 32px;
+  height: 13px;
+  opacity: var(--opacity, 0.18);
+  transform: translate3d(var(--start-x, -10vw), 0, 0) scale(var(--scale, 0.7));
+  animation: akatsuki-crow-flight var(--duration, 26s) linear infinite;
+  animation-delay: var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+.akatsuki-crow__wing {
+  position: absolute;
+  top: 50%;
+  width: 15px;
+  height: 6px;
+  border-top: 2px solid var(--akatsuki-crow-color);
+  border-radius: 100% 100% 0 0;
+  transform-origin: 100% 100%;
+  animation: akatsuki-wing-flap var(--wing-speed, 1.5s) cubic-bezier(0.45,0.05,0.55,0.95) infinite;
+  box-shadow: 0 0 4px var(--akatsuki-crow-color);
+}
+
+.akatsuki-crow__wing:first-child {
+  left: 0;
+  transform: translateY(-50%) rotate(10deg) scaleX(var(--direction, 1));
+}
+.akatsuki-crow__wing:last-child {
+  right: 0;
+  transform: translateY(-50%) rotate(-10deg) scaleX(calc(var(--direction, 1) * -1));
+}
+
+@keyframes akatsuki-crow-flight {
+  0%   {
+    transform: translate3d(var(--start-x,-10vw),0,0) translateY(0)             scale(var(--scale,.7));
+    opacity: 0;
+  }
+  10%  { opacity: var(--opacity,.18); }
+  50%  {
+    transform: translate3d(var(--mid-x,50vw),0,0)   translateY(var(--drift,0vh)) scale(var(--scale,.7));
+    opacity: calc(var(--opacity,.18) + 0.05);
+  }
+  90%  { opacity: var(--opacity,.18); }
+  100% {
+    transform: translate3d(var(--end-x,110vw),0,0)  translateY(0)             scale(var(--scale,.7));
+    opacity: 0;
+  }
+}
+
+/* Battement d'ailes : montée rapide / descente douce */
+@keyframes akatsuki-wing-flap {
+  0%,100% { transform: translateY(-50%) rotate(6deg)  scaleX(var(--direction,1)); }
+  35%     { transform: translateY(-50%) rotate(28deg) scaleX(var(--direction,1)); }
+  55%     { transform: translateY(-50%) rotate(22deg) scaleX(var(--direction,1)); }
+}
+
+/* ── Pause state ────────────────────────────────────────── */
+.akatsuki-sky[data-paused="true"] .akatsuki-cloud,
+.akatsuki-sky[data-paused="true"] .akatsuki-crow,
+.akatsuki-sky[data-paused="true"] .akatsuki-crow__wing {
+  animation-play-state: paused !important;
+}
+
+/* ── Responsive ─────────────────────────────────────────── */
+@media (max-width: 960px) {
+  .akatsuki-cloud { width: 190px; height: 78px; }
+  .akatsuki-cloud::before { width: 108px; height: 72px; }
+  .akatsuki-cloud::after  { width: 118px; height: 66px; }
+}
+
+@media (max-width: 560px) {
+  .akatsuki-sky { opacity: 0.80; }
+  .akatsuki-cloud { width: 148px; height: 60px; }
+  .akatsuki-cloud::before,
+  .akatsuki-cloud::after { display: none; }
+  .akatsuki-crow { width: 26px; }
+  .akatsuki-sky::after { display: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .akatsuki-crow { display: none; }
+  .akatsuki-cloud { animation: none; transform: scale(var(--cloud-scale,1)); }
+}
+
+@media print { .akatsuki-sky { display: none; } }
+
+/* ══════════════════════════════════════════════════════════════
+   TERMINAL — Couleurs de sortie améliorées
+   ══════════════════════════════════════════════════════════════ */
+
+.terminal-out-ok   { color: #4ade80; }
+.terminal-out-warn { color: #facc15; }
+.terminal-out-err  { color: #f87171; }
+.terminal-out-info { color: #60a5fa; }
+html[data-theme="light"] .terminal-out-ok   { color: #15803d; }
+html[data-theme="light"] .terminal-out-warn { color: #92400e; }
+html[data-theme="light"] .terminal-out-err  { color: #b91c1c; }
+html[data-theme="light"] .terminal-out-info { color: #1d4ed8; }
+
+.terminal-out-label {
+  font-weight: 800;
+  font-size: 0.78em;
+  letter-spacing: 0.04em;
+}
+
+/* Badge LIVE dans le header */
+#ts-live {
+  transition: opacity 0.5s ease;
+  color: #4ade80 !important;
+}
+html[data-theme="light"] #ts-live { color: #15803d !important; }
