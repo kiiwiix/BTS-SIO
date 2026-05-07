@@ -1,0 +1,1015 @@
+<!DOCTYPE html>
+
+<html data-theme="light" lang="fr">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Noé Chami · Portfolio BTS SIO</title>
+<meta content="Portfolio BTS SIO (SISR) – Projets, compétences, certifications, veille et contact – Noé Chami" name="description"/>
+<meta content="light dark" name="color-scheme"/>
+<meta content="Portfolio BTS SIO – Noé Chami" property="og:title"/>
+<meta content="Découvrir mes projets réseaux &amp; systèmes, mon expérience et mes certifications pour l'épreuve finale du BTS SIO." property="og:description"/>
+<meta content="fr_FR" property="og:locale"/>
+<meta content="website" property="og:type"/>
+<meta content="https://kiiwiix.github.io/BTS-SIO/" property="og:url"/>
+<script>
+    (function(){
+      try{
+        if(localStorage.getItem('preferred-theme')==='dark'){
+          document.documentElement.removeAttribute('data-theme');
+        }
+      }catch(e){}
+    })();
+  </script>
+<link href="background.css" rel="stylesheet"/>
+<link href="animations.css" rel="stylesheet"/>
+<link href="style.css" rel="stylesheet"/>
+<link href="enhancements.css" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet"/>
+<style>
+    :root{
+      color-scheme:dark;
+      --bg:rgba(6,9,13,.82);
+      --surface:rgba(17,19,27,.86);
+      --surface-active:rgba(34,20,28,.92);
+      --card:rgba(18,21,28,.85);
+      --muted:#9fa7ba;
+      --text:#f5f7ff;
+      --accent:#f24b64;
+      --accent2:#ff728a;
+      --line:rgba(255,114,138,.22);
+      --line-strong:rgba(255,114,138,.4);
+      --glow:rgba(242,75,100,.35);
+      --shadow:0 28px 80px rgba(0,0,0,.55);
+      --glass-border:1px solid rgba(255,255,255,.08);
+      --glass-backdrop:blur(18px) saturate(130%);
+      --section-gradient:linear-gradient(135deg,rgba(242,75,100,.12),rgba(14,15,23,.45));
+    }
+    html[data-theme="light"]{
+      color-scheme:light;
+      --bg:#f5f7fb;
+      --surface:#ffffff;
+      --surface-active:#ffe7ef;
+      --card:#ffffff;
+      --muted:#4d5567;
+      --text:#0f172a;
+      --accent:#d02d51;
+      --accent2:#ff5c7a;
+      --line:rgba(208,45,81,.16);
+      --line-strong:rgba(208,45,81,.32);
+      --glow:rgba(208,45,81,.18);
+      --shadow:0 24px 60px rgba(15,23,42,.12);
+      --glass-border:1px solid rgba(15,23,42,.06);
+      --glass-backdrop:blur(16px) saturate(140%);
+      --section-gradient:linear-gradient(140deg,#ffffff,rgba(236,239,249,.9));
+    }
+    @media (prefers-color-scheme: light){
+      :root:not([data-theme]){
+        color-scheme:light;
+        --bg:#f5f7fb;
+        --surface:#ffffff;
+        --surface-active:#ffe7ef;
+        --card:#ffffff;
+        --muted:#4d5567;
+        --text:#0f172a;
+        --accent:#d02d51;
+        --accent2:#ff5c7a;
+        --line:rgba(208,45,81,.16);
+        --line-strong:rgba(208,45,81,.32);
+        --glow:rgba(208,45,81,.18);
+        --shadow:0 24px 60px rgba(15,23,42,.12);
+        --glass-border:1px solid rgba(15,23,42,.06);
+        --glass-backdrop:blur(16px) saturate(140%);
+        --section-gradient:linear-gradient(140deg,#ffffff,rgba(236,239,249,.9));
+      }
+    }
+    *{box-sizing:border-box}
+    ::selection{background:rgba(242,75,100,.35)}
+    html{scroll-behavior:smooth; scroll-padding-top:2rem}
+    @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+    body{
+      margin:0;
+      font:16px/1.6 "Inter",system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Arial;
+      color:var(--text);
+      background:var(--bg);
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      position:relative;
+      isolation:isolate;
+    }
+    a{color:var(--accent2); text-decoration:none; transition:color .2s ease, text-decoration-color .2s ease}
+    a:hover{text-decoration:underline; color:#ffd0da}
+    a:focus-visible{outline:2px solid var(--accent2); outline-offset:4px}
+    h1,h2,h3{font-weight:600; letter-spacing:.3px; color:var(--text)}
+    .skip-link{
+      position:absolute;
+      left:-999px;
+      top:auto;
+      background:var(--accent2);
+      color:#021326;
+      padding:0.75rem 1rem;
+      border-radius:0.75rem;
+      font-weight:600;
+      z-index:999;
+      transition:transform .2s ease;
+    }
+    .skip-link:focus{left:1.5rem; top:1.5rem; transform:translateY(0)}
+    .layout{
+      display:grid;
+      grid-template-columns:320px 1fr;
+      gap:32px;
+      max-width:1220px;
+      width:100%;
+      margin:0 auto;
+      padding:32px;
+      position:relative;
+      z-index:1;
+    }
+    @media (max-width:1080px){.layout{grid-template-columns:1fr; padding:24px}}
+    .sidebar{
+      position:sticky;
+      top:24px;
+      height:calc(100dvh - 48px);
+      background:linear-gradient(160deg,rgba(10,11,18,.92),rgba(29,12,21,.9));
+      border:var(--glass-border);
+      border-radius:20px;
+      padding:26px;
+      display:flex;
+      flex-direction:column;
+      gap:22px;
+      box-shadow:var(--shadow);
+      backdrop-filter:var(--glass-backdrop);
+      border-image:linear-gradient(140deg,rgba(255,114,138,.6),rgba(255,255,255,.1)) 1;
+    }
+    @media (max-width:1080px){.sidebar{position:static; height:auto}}
+    .brand{display:flex; gap:16px; align-items:center; justify-content:space-between; flex-wrap:wrap}
+    .avatar{
+      width:76px; height:76px; border-radius:18px;
+      background:linear-gradient(140deg,rgba(242,75,100,.4),rgba(16,18,28,.9));
+      display:grid; place-items:center;
+      border:1px solid rgba(255,255,255,.18);
+      overflow:hidden;
+    }
+    .avatar picture{display:block; width:100%; height:100%}
+    .avatar img{width:100%; height:100%; object-fit:cover}
+    .brand-name{margin:0; font-size:1.6rem; font-weight:700; color:var(--text)}
+    .brand small{display:block; color:var(--muted); margin-top:4px}
+    .subtitle{color:var(--muted); font-size:.95rem; margin:0}
+    .theme-toggle{
+      margin-left:auto;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding:8px 12px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.24);
+      background:rgba(17,19,27,.65);
+      color:var(--text);
+      font:inherit;
+      cursor:pointer;
+      transition:background .2s ease, transform .2s ease;
+    }
+    .theme-toggle svg{width:18px; height:18px}
+    .theme-toggle:hover{transform:translateY(-1px)}
+    .theme-toggle:focus-visible{outline:2px solid var(--accent2); outline-offset:2px}
+    .sr-only{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0}
+    .nav{margin-top:12px; display:flex; flex-direction:column; gap:8px}
+    .nav a{
+      padding:12px 14px;
+      border-radius:12px;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      gap:10px;
+      border:1px solid rgba(255,255,255,.08);
+      background:rgba(16,18,28,.6);
+      transition:border-color .2s ease, transform .2s ease, background .2s ease;
+    }
+    html[data-theme="light"] .nav a{background:rgba(255,255,255,.92); border-color:rgba(15,23,42,.08); color:var(--text); box-shadow:0 16px 32px rgba(15,23,42,.08)}
+    html[data-theme="light"] .nav a:hover{background:#ffe7ef; color:var(--text); border-color:rgba(208,45,81,.32)}
+    .nav a:hover{background:rgba(242,75,100,.16); border-color:var(--line-strong); text-decoration:none; transform:translateX(2px)}
+    .nav a:focus-visible{outline:2px solid var(--accent2); outline-offset:2px; text-decoration:none}
+    .nav a[aria-current="true"]{
+      background:linear-gradient(135deg,rgba(242,75,100,.18),rgba(16,18,28,.7));
+      border-color:var(--line-strong);
+      font-weight:600;
+      box-shadow:0 0 20px rgba(242,75,100,.25);
+    }
+    html[data-theme="light"] .nav a:hover{background:rgba(214,75,98,.18)}
+    html[data-theme="light"] .nav a[aria-current="true"]{background:linear-gradient(135deg,rgba(214,75,98,.2),rgba(255,255,255,.82));}
+    .nav-cta{display:grid; gap:8px; margin-top:4px}
+    .nav-cta .btn{width:100%; justify-content:center; text-align:center}
+    .chips{display:flex; flex-wrap:wrap; gap:8px; padding:0; margin:0; list-style:none}
+    .chip{padding:6px 10px; border-radius:999px; background:rgba(16,18,28,.7); border:1px solid rgba(255,255,255,.12); color:var(--muted); font-size:.85rem; box-shadow:inset 0 0 10px rgba(242,75,100,.2)}
+    html[data-theme="light"] .chip{background:#f1f5fb; border-color:rgba(15,23,42,.08); color:#475569; box-shadow:none}
+    .socials{display:grid; gap:12px; margin-top:8px}
+    .socials .btn{display:flex; width:100%; justify-content:center; text-align:center}
+    .btn{display:inline-flex; align-items:center; gap:10px; padding:10px 14px; border-radius:12px; border:1px solid rgba(255,255,255,.12); background:linear-gradient(160deg,rgba(16,18,28,.9),rgba(40,15,26,.85)); color:var(--text); transition:background .2s ease, transform .2s ease, box-shadow .2s ease}
+    .btn:hover{background:linear-gradient(160deg,rgba(40,15,26,.92),rgba(16,18,28,.95)); transform:translateY(-1px); box-shadow:0 12px 24px rgba(242,75,100,.25)}
+    html[data-theme="light"] .btn{background:linear-gradient(160deg,#ffffff,#f3f4f6); border-color:rgba(15,23,42,.08); color:var(--text); box-shadow:0 16px 32px rgba(15,23,42,.08)}
+    html[data-theme="light"] .btn:hover{background:linear-gradient(160deg,#ffe7ef,#ffffff); box-shadow:0 18px 40px rgba(208,45,81,.2)}
+    .btn:focus-visible{outline:2px solid var(--accent2); outline-offset:2px}
+    .primary{background:linear-gradient(135deg,var(--accent),var(--accent2)); border-color:transparent; color:#18060b; font-weight:600; letter-spacing:.2px}
+    .primary:hover{filter:brightness(1.08)}
+    .content{display:flex; flex-direction:column; gap:32px}
+    section{background:var(--section-gradient); border:var(--glass-border); border-radius:20px; padding:28px; scroll-margin-top:2rem; position:relative; backdrop-filter:var(--glass-backdrop); box-shadow:0 22px 45px rgba(0,0,0,.24)}
+    section:before{content:""; position:absolute; inset:0; border-radius:inherit; border:1px solid rgba(255,255,255,.08); pointer-events:none; mix-blend-mode:screen; opacity:.4}
+    section:target{box-shadow:0 0 0 2px var(--accent2) inset,0 0 24px rgba(255,114,138,.4);}
+    h2{margin:0 0 12px; font-size:1.4rem; font-weight:700; letter-spacing:.4px; text-transform:uppercase; color:var(--text); position:relative}
+    h2::after{content:""; position:absolute; left:0; bottom:-6px; width:54px; height:2px; background:linear-gradient(90deg,var(--accent2),transparent); border-radius:999px}
+    .section-intro{margin:0 0 24px; color:var(--muted)}
+    .muted{color:var(--muted)}
+    .projects{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; padding:0; margin:0; list-style:none}
+    .card{background:rgba(10,11,18,.55); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:20px; height:100%; display:flex; flex-direction:column; gap:14px; backdrop-filter:blur(12px)}
+    .project h3{margin:.2rem 0 .4rem}
+    .project .tags{display:flex; flex-wrap:wrap; gap:6px; margin-top:4px}
+    .tag{font-size:.78rem; padding:4px 8px; border-radius:999px; background:rgba(242,75,100,.12); color:var(--text); border:1px solid rgba(255,255,255,.12); text-transform:uppercase; letter-spacing:.6px}
+    .card footer{margin-top:auto}
+    .stage-report-links{display:flex; flex-wrap:wrap; gap:10px; margin-top:2px}
+    .stage-report-links .btn{flex:1 1 220px; justify-content:center; text-align:center}
+    .timeline{padding:0 0 0 28px; margin:0; list-style:none; position:relative; border-left:2px solid rgba(255,114,138,.25)}
+    .timeline li{padding-left:18px; margin:18px 0; position:relative}
+    .timeline li:before{content:""; position:absolute; left:-34px; top:.4rem; width:12px; height:12px; border-radius:50%; background:var(--accent); box-shadow:0 0 0 6px rgba(10,11,18,.85)}
+    .timeline time{display:block; color:var(--muted); font-size:.9rem}
+    .impact-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:18px; padding:0; margin:0; list-style:none}
+    .impact{position:relative; overflow:hidden}
+    .impact .tag{position:absolute; top:12px; right:12px; background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.22); color:var(--text)}
+    .impact h3{margin:0 0 8px; font-size:1.1rem}
+    .impact ul{margin:0; padding-left:18px; color:var(--muted)}
+    .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px}
+    .skill{background:rgba(10,11,18,.55); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px; display:flex; flex-direction:column; gap:12px; backdrop-filter:blur(10px)}
+    .skill h3{margin:0; font-size:1.05rem}
+    .skill ul{margin:0; padding-left:18px; color:var(--muted)}
+    .metrics{display:grid; grid-template-columns:repeat(auto-fit,minmax(140px,1fr)); gap:12px; margin:0; padding:0; list-style:none}
+    .metric{background:rgba(10,11,18,.5); border:1px solid rgba(255,255,255,.1); border-radius:14px; padding:14px; text-align:center; box-shadow:0 10px 24px rgba(242,75,100,.16)}
+    .metric strong{display:block; font-size:1.4rem; color:var(--accent2)}
+    .hero-intro{display:flex; flex-direction:column; gap:16px}
+    .hero-title{margin:0; font-size:clamp(2rem,3.6vw,2.5rem); letter-spacing:.2px; line-height:1.1; text-transform:none}
+    .hero-title::after{display:none}
+    .hero-subtitle{margin:0; font-size:1.12rem; color:var(--accent); font-weight:700}
+    .hero-description{margin:0; color:var(--muted); max-width:74ch}
+    .hero-skill-grid{display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:18px; margin-top:20px}
+    .hero-skill-card{background:rgba(10,11,18,.55); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px; display:flex; flex-direction:column; gap:10px; backdrop-filter:blur(10px)}
+    .hero-skill-card h3{margin:0; font-size:1.05rem}
+    .hero-skill-card ul{margin:0; padding-left:18px; color:var(--muted)}
+    .terminal-shell{margin-top:18px}
+    .terminal-shell .muted{display:block}
+    @media (max-width:960px){.hero-skill-grid{grid-template-columns:1fr}}
+    .contact-actions{display:flex; flex-wrap:wrap; gap:12px; margin-top:16px}
+    address{font-style:normal; line-height:1.7}
+    .foot{opacity:.7; font-size:.9rem; text-align:center; padding:24px 0; margin:0}
+    footer{margin-top:auto; padding:0 0 32px}
+    html[data-theme="light"] .sidebar{background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(255,228,233,.92)); box-shadow:var(--shadow)}
+    html[data-theme="light"] .avatar{background:linear-gradient(140deg,rgba(255,95,122,.35),rgba(255,255,255,.85))}
+    html[data-theme="light"] .chip{background:rgba(255,255,255,.7); border-color:rgba(214,75,98,.35); color:#4a4f5b}
+    html[data-theme="light"] .btn{background:linear-gradient(160deg,rgba(255,255,255,.92),rgba(255,235,240,.92)); color:var(--text)}
+    html[data-theme="light"] .btn:hover{background:linear-gradient(160deg,rgba(255,235,240,.95),rgba(255,255,255,.95))}
+    html[data-theme="light"] .card,
+    html[data-theme="light"] .skill,
+    html[data-theme="light"] .hero-skill-card{background:rgba(255,255,255,.85); border-color:rgba(214,75,98,.22)}
+    html[data-theme="light"] .metric{background:rgba(255,255,255,.86); border-color:rgba(214,75,98,.25)}
+    @media print{
+      body{background:#fff; color:#000}
+      .cyber-background{display:none}
+      .sidebar{position:static; box-shadow:none; background:#fff; color:#000}
+      .btn{background:#fff; color:#000; border-color:#000}
+      section{background:#fff; color:#000; box-shadow:none}
+      a{color:#004aad}
+    }
+
+    .projects--compact {
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(260px, 1fr));
+      gap:18px;
+      list-style:none;
+      padding:0;
+      margin:14px 0 0;
+    }
+    .project-group + .project-group { margin-top: 22px; }
+    .project-group-head h3 { margin:8px 0 0; }
+    .project-footer { display:flex; gap:10px; flex-wrap:wrap; }
+    #projets .project h3 { margin-top: 6px; }
+    #projets .project p { margin-bottom: 0; }
+    #projets .project .list { margin: 0; }
+
+
+    .project-audit{display:grid; gap:20px; margin-top:16px}
+    .project-audit-card{display:flex; flex-direction:column; gap:18px; padding:22px; border-radius:18px; background:linear-gradient(160deg,rgba(10,11,18,.72),rgba(23,14,22,.78)); border:1px solid rgba(255,255,255,.08); box-shadow:0 18px 34px rgba(0,0,0,.24)}
+    html[data-theme="light"] .project-audit-card{background:linear-gradient(160deg,rgba(255,255,255,.94),rgba(255,240,244,.92)); border-color:rgba(208,45,81,.18)}
+    .project-headline{display:flex; flex-wrap:wrap; align-items:flex-start; justify-content:space-between; gap:14px}
+    .project-headline h3{margin:6px 0 0; font-size:1.18rem}
+    .project-summary{margin:0; color:var(--muted); max-width:72ch}
+    .project-meta{display:flex; flex-wrap:wrap; gap:8px}
+    .project-structure{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+    .project-block{padding:16px; border-radius:14px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08)}
+    html[data-theme="light"] .project-block{background:rgba(248,250,252,.92); border-color:rgba(15,23,42,.08)}
+    .project-block h4{margin:0 0 10px; font-size:.93rem; text-transform:uppercase; letter-spacing:.08em; color:var(--accent2)}
+    .project-block p{margin:0; color:var(--text)}
+    .project-block ul{margin:0; padding-left:18px; color:var(--muted)}
+    .project-block--full{grid-column:1 / -1}
+    .project-proof-list{display:grid; grid-template-columns:repeat(auto-fit,minmax(180px,1fr)); gap:10px; margin:0; padding:0; list-style:none}
+    .project-proof-list li{padding:10px 12px; border-radius:12px; background:rgba(242,75,100,.08); border:1px solid rgba(255,255,255,.08); color:var(--text)}
+    html[data-theme="light"] .project-proof-list li{background:rgba(208,45,81,.08); border-color:rgba(208,45,81,.12)}
+    .project-footer{display:flex; gap:10px; flex-wrap:wrap; margin-top:auto}
+    .project-footer .btn{justify-content:center}
+    @media (max-width:820px){.project-structure{grid-template-columns:1fr}}
+
+
+
+    /* ====== Overrides jury BTS / thème clair-sombre ====== */
+    :root{
+      color-scheme:dark;
+      --bg:#0a1018;
+      --surface:rgba(14,20,31,.90);
+      --surface-active:rgba(58,22,34,.94);
+      --card:rgba(13,19,29,.88);
+      --muted:#9ba9be;
+      --text:#edf3ff;
+      --accent:#e24b6a;
+      --accent2:#ff95a9;
+      --line:rgba(226,75,106,.20);
+      --line-strong:rgba(255,149,169,.40);
+      --glow:rgba(226,75,106,.26);
+      --shadow:0 28px 72px rgba(3,8,16,.52);
+      --glass-border:1px solid rgba(255,255,255,.08);
+      --glass-backdrop:blur(18px) saturate(122%);
+      --section-gradient:linear-gradient(145deg,rgba(18,25,38,.92),rgba(12,17,28,.90));
+    }
+    html[data-theme="light"]{
+      color-scheme:light;
+      --bg:#f7f1f5;
+      --surface:rgba(255,255,255,.92);
+      --surface-active:#fff0f4;
+      --card:rgba(255,255,255,.94);
+      --muted:#4f5d71;
+      --text:#101828;
+      --accent:#cb2f58;
+      --accent2:#f15d81;
+      --line:rgba(203,47,88,.15);
+      --line-strong:rgba(203,47,88,.28);
+      --glow:rgba(203,47,88,.16);
+      --shadow:0 24px 56px rgba(148,163,184,.18);
+      --glass-border:1px solid rgba(15,23,42,.06);
+      --glass-backdrop:blur(14px) saturate(118%);
+      --section-gradient:linear-gradient(145deg,rgba(255,255,255,.98),rgba(255,244,247,.96) 48%,rgba(245,248,255,.96));
+    }
+    body{
+      background:
+        radial-gradient(circle at 12% 0%, rgba(226,75,106,.14), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(87,117,255,.08), transparent 22%),
+        var(--bg);
+    }
+    html[data-theme="light"] body{
+      background:
+        radial-gradient(circle at 10% 0%, rgba(241,93,129,.18), transparent 26%),
+        radial-gradient(circle at 92% 8%, rgba(155,184,255,.16), transparent 22%),
+        linear-gradient(180deg,#fff8fb 0%,#f7f1f5 46%,#eef4ff 100%);
+    }
+    .sidebar{
+      background:linear-gradient(165deg,rgba(15,22,35,.96),rgba(28,16,26,.92));
+      border-image:none;
+    }
+    html[data-theme="light"] .sidebar{
+      background:linear-gradient(165deg,rgba(255,255,255,.96),rgba(255,242,246,.95));
+    }
+    .theme-toggle{
+      border-color:var(--line-strong);
+      background:rgba(255,255,255,.06);
+      box-shadow:0 10px 28px rgba(0,0,0,.15);
+    }
+    html[data-theme="light"] .theme-toggle{
+      background:#fff;
+      box-shadow:0 10px 24px rgba(148,163,184,.16);
+    }
+    section,.card,.skill,.hero-skill-card,.project-audit-card,.metric{
+      box-shadow:var(--shadow);
+    }
+    .card,.skill,.hero-skill-card,.project-audit-card{
+      background:var(--card);
+      border-color:var(--line);
+    }
+    .hero-dossier-grid,.summary-grid,.cert-grid,.veille-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:18px;
+      margin-top:18px;
+    }
+    .dossier-card,.summary-card,.cert-card,.veille-card{
+      background:var(--card);
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:18px;
+      box-shadow:var(--shadow);
+    }
+    .dossier-card h3,.summary-card h3,.cert-card h3,.veille-card h3{margin:8px 0 10px;font-size:1.06rem}
+    .dossier-card p,.summary-card p,.cert-card p,.veille-card p{margin:0;color:var(--muted)}
+    .cert-card__links{display:flex;flex-wrap:wrap;gap:10px;margin-top:14px}
+    .project-bts{
+      margin-top:2px;
+      padding:14px 16px;
+      border-radius:16px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.03);
+    }
+    html[data-theme="light"] .project-bts{background:rgba(255,248,250,.92)}
+    .project-bts__title{display:block;font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent2);font-weight:800;margin-bottom:10px}
+    .project-bts__note{margin:10px 0 0;color:var(--muted);font-size:.92rem}
+    .project-bts .chip,.cert-card .chip,.veille-card .chip,.summary-card .chip,.dossier-card .chip{
+      box-shadow:none;
+      color:var(--text);
+      border-color:var(--line);
+      background:rgba(226,75,106,.10);
+    }
+    html[data-theme="light"] .project-bts .chip,
+    html[data-theme="light"] .cert-card .chip,
+    html[data-theme="light"] .veille-card .chip,
+    html[data-theme="light"] .summary-card .chip,
+    html[data-theme="light"] .dossier-card .chip{color:#7f1d36}
+    .section-intro strong{color:var(--text)}
+    .muted a{color:var(--accent)}
+    @media (max-width:860px){
+      .hero-dossier-grid,.summary-grid,.cert-grid,.veille-grid{grid-template-columns:1fr}
+    }
+</style>
+</head>
+<body>
+<div id="scroll-progress" aria-hidden="true"></div>
+<div aria-hidden="true" class="cyber-background">
+<div class="mist-layer"></div>
+<div class="mist-layer mist-layer--slow"></div>
+<div class="mist-layer mist-layer--pulse"></div>
+<canvas class="code-rain" id="code-rain" role="presentation"></canvas>
+</div>
+<a class="skip-link" href="#contenu">Passer au contenu principal</a>
+<main class="layout" id="contenu">
+<!-- Sidebar -->
+<aside aria-label="Présentation rapide" class="sidebar">
+<div class="brand">
+<div class="avatar">
+<img alt="Portrait de Noé Chami" decoding="async" height="76" loading="lazy" onerror="this.src='assets/avatar-placeholder.svg'; this.removeAttribute('onerror');" src="assets/7a99c842-cb92-4b22-83bc-245656196c60.jpg" width="76"/>
+</div>
+<div>
+<p class="brand-name">Noé Chami</p>
+<small>BTS SIO – option SISR</small>
+<p class="subtitle">Administrateur systèmes &amp; réseaux</p>
+</div>
+<button aria-pressed="false" class="theme-toggle" data-theme-toggle="" type="button">
+<svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
+<path d="M12 3v2.5M12 18.5V21M4.22 4.22l1.77 1.77M17.99 17.99l1.79 1.79M3 12h2.5M18.5 12H21M6 18l-1.8 1.8M18 6l1.8-1.8" stroke-linecap="round"></path>
+<circle cx="12" cy="12" r="4.5"></circle>
+</svg>
+<span>Passer en mode sombre</span>
+</button>
+</div>
+<nav aria-label="Navigation principale" class="nav">
+<a aria-current="true" href="#apercu">✨ Aperçu</a>
+<a href="#stages">🚀 Stages</a>
+<a href="#projets">🧩 Projets</a>
+<a href="#xp">🛠️ Parcours</a>
+<a href="#skills">⚙️ Compétences</a>
+<a href="#certs">🎓 Certifications</a>
+<a href="veille.html" rel="noopener">🔍 Veille</a>
+<a href="#contact">📬 Contact</a>
+</nav>
+<div class="nav-cta">
+<a class="btn primary" href="cv.html" rel="noopener" target="_blank">📄 Voir mon CV</a>
+</div>
+<div class="muted">📍 Orléans · Lycée Benjamin Franklin<br/>✉️ <a href="mailto:chaminoe0@gmail.com">chaminoe0@gmail.com</a></div>
+</aside>
+<!-- Content -->
+<div class="content">
+<section aria-labelledby="hero-title" id="apercu">
+<p class="tag" style="display:inline-flex; margin:0 0 12px;">Accueil · Profil technique</p>
+<div class="hero-intro">
+<h1 class="hero-title" id="hero-title">Noé Chami</h1>
+<p class="hero-subtitle">Administrateur Systèmes &amp; Réseaux (BTS SIO SISR)</p>
+<p class="hero-description">Portfolio de professionnalisation pour le BTS SIO option SISR. Les stages, projets, certifications et travaux de veille sont regroupés avec des preuves exploitables : rapports, schémas, PDF, captures et documentations techniques.</p>
+</div>
+<div aria-label="Compétences clés" class="hero-skill-grid" role="list">
+<article class="hero-skill-card" role="listitem">
+<h3>🖥 Systèmes</h3>
+<ul>
+<li>Windows Server</li>
+<li>Linux</li>
+<li>Active Directory</li>
+<li>DNS / DHCP</li>
+</ul>
+</article>
+<article class="hero-skill-card" role="listitem">
+<h3>🌐 Réseaux</h3>
+<ul>
+<li>VLAN</li>
+<li>DHCP</li>
+<li>DNS</li>
+<li>NAT / PAT</li>
+<li>Cisco</li>
+</ul>
+</article>
+<article class="hero-skill-card" role="listitem">
+<h3>⚙️ Outils</h3>
+<ul>
+<li>PowerShell</li>
+<li>VirtualBox</li>
+<li>Nutanix</li>
+<li>GitHub</li>
+<li>Wireshark</li>
+</ul>
+</article>
+</div>
+
+<div class="hero-stats reveal" aria-label="Chiffres clés">
+  <div class="hero-stat">
+    <span class="hero-stat__number" data-count="5" data-suffix="">5</span>
+    <span class="hero-stat__label">Missions réalisées</span>
+  </div>
+  <div class="hero-stat">
+    <span class="hero-stat__number" data-count="5" data-suffix="+">5+</span>
+    <span class="hero-stat__label">Certifications</span>
+  </div>
+  <div class="hero-stat">
+    <span class="hero-stat__number" data-count="4" data-suffix="">4</span>
+    <span class="hero-stat__label">Stages &amp; immersions</span>
+  </div>
+  <div class="hero-stat">
+    <span class="hero-stat__number" data-count="2" data-suffix=" ans">2 ans</span>
+    <span class="hero-stat__label">Formation BTS SIO</span>
+  </div>
+</div>
+
+<div class="terminal-shell">
+<div aria-label="Simulation de terminal infrastructure" aria-live="polite" class="terminal" id="terminal" role="log"></div>
+</div>
+</section>
+<section id="stages">
+<h2>🚀 Stages</h2>
+<p class="section-intro">Les immersions professionnelles les plus significatives sont présentées avec les missions réalisées, les outils utilisés et les contraintes rencontrées. Les éléments liés à un contexte sensible restent volontairement synthétiques.</p>
+<ul class="projects" role="list">
+<li class="card project reveal reveal-delay-1">
+<span class="tag">ADEFI</span>
+<h3>Stages techniques en informatique · ADEFI (Meung-sur-Loire)</h3>
+<p>J’ai effectué mes stages de <strong>première</strong> et de <strong>deuxième année</strong> chez ADEFI. J’y ai travaillé sur le support, l’administration systèmes et réseaux, la virtualisation, la migration serveur, Active Directory, les sauvegardes et la documentation technique, avec un niveau de responsabilité plus élevé en deuxième année.</p>
+<div class="tags"><span class="tag">Zyxel</span><span class="tag">VLAN</span><span class="tag">Synology</span><span class="tag">Bash</span></div>
+<footer class="stage-report-links"><a class="btn" href="assets/stage-adefi-1ere-annee.html" target="_blank">📄 Voir rapport première année</a><a class="btn" href="assets/stage-adefi-2eme-annee.html" target="_blank">📄 Voir rapport deuxième année</a></footer>
+</li>
+<li class="card project reveal reveal-delay-2">
+<span class="tag">Défense</span>
+<h3>Stage cybersécurité · 807ᵉ Cie des Transmissions (Rennes)</h3>
+<p>J’ai participé à une étude fondée sur MITRE ATT&amp;CK dans un environnement classifié. Je conserve ici uniquement une présentation synthétique du contexte, des méthodes et des compétences développées, sans diffuser d’éléments sensibles.</p>
+<div class="tags"><span class="tag">Cybersécurité</span><span class="tag">MITRE ATT&amp;CK</span><span class="tag">Confidentiel</span></div>
+</li>
+<li class="card project reveal reveal-delay-3">
+<span class="tag">Armée de l’Air</span>
+<h3>Immersion BA 123 Orléans-Bricy</h3>
+<p>Découverte des opérations réseaux sur base aérienne : gestion d’infrastructures critiques, discipline opérationnelle et sensibilisation aux contraintes de sécurité.</p>
+<div class="tags"><span class="tag">Observation</span><span class="tag">Réseaux</span></div>
+</li>
+<li class="card project reveal reveal-delay-4">
+<span class="tag">Chambord</span>
+<h3>Stage d’observation – Domaine national</h3>
+<p>Suivi du support utilisateur et de la gestion de parc, mise en place de bonnes pratiques de sécurisation poste de travail.</p>
+<div class="tags"><span class="tag">Support</span><span class="tag">Parc</span></div>
+</li>
+</ul>
+</section>
+<section id="projets">
+<h2>🧩 Projets</h2>
+<p class="section-intro">Chaque projet est présenté selon une structure professionnelle : besoin identifié, réponse technique, outils mobilisés, résultat obtenu et preuves associées.</p>
+<div class="project-audit">
+<article class="project-audit-card reveal reveal-delay-1">
+<div class="project-headline">
+<div>
+<span class="tag">GSB · Mission 1</span>
+<h3>Segmentation réseau et sécurisation d’un switch Cisco</h3>
+</div>
+<div class="project-meta"><span class="tag">Cisco 2960</span><span class="tag">VLAN</span><span class="tag">SSH</span><span class="tag">Recette</span></div>
+</div>
+<p class="project-summary">Projet d’infrastructure visant à séparer les flux métiers, préparer l’administration sécurisée du commutateur et documenter le déploiement pour validation technique.</p>
+<div class="project-structure">
+<div class="project-block">
+<h4>Problème</h4>
+<p>Le réseau devait être segmenté par services afin d’isoler les postes, réduire les erreurs de brassage et préparer une administration propre du switch.</p>
+</div>
+<div class="project-block">
+<h4>Solution</h4>
+<p>Création des VLAN métiers, affectation des ports, mise en place du VLAN de management et activation d’un accès d’administration en SSH.</p>
+</div>
+<div class="project-block">
+<h4>Outils utilisés</h4>
+<ul><li>Switch Cisco 2960</li><li>CLI IOS</li><li>Plan de câblage</li><li>Fiche de recette</li></ul>
+</div>
+<div class="project-block">
+<h4>Résultat</h4>
+<p>Segmentation opérationnelle, configuration reproductible et validation documentée via schéma VLAN, procédure et recette.</p>
+</div>
+<div class="project-block project-block--full">
+<h4>Preuves techniques / compétences</h4>
+<ul class="project-proof-list"><li>Création et affectation de VLAN</li><li>Configuration d’une IP de management</li><li>Sécurisation de l’administration en SSH</li><li>Production de documents d’exploitation</li></ul>
+</div>
+</div>
+<footer class="project-footer"><a class="btn" href="Projet/gsb_mission1_portfolio_files/rapport-mission1.html">📄 Rapport</a><a class="btn" href="Projet/gsb_mission1_portfolio_files/schema-vlan-mission1.html">🗺️ Schéma VLAN</a></footer>
+</article>
+<article class="project-audit-card reveal reveal-delay-2">
+<div class="project-headline">
+<div>
+<span class="tag">GSB · Mission 2</span>
+<h3>Interconnexion VLAN et sortie Internet via pare-feu Stormshield</h3>
+</div>
+<div class="project-meta"><span class="tag">Stormshield</span><span class="tag">NAT</span><span class="tag">Filtrage</span><span class="tag">Routage</span></div>
+</div>
+<p class="project-summary">Extension logique de la mission 1 : permettre aux différents VLAN de communiquer correctement avec le pare-feu puis avec Internet tout en gardant une politique réseau maîtrisée.</p>
+<div class="project-structure">
+<div class="project-block">
+<h4>Problème</h4>
+<p>Les VLAN internes devaient accéder à Internet sans perdre la séparation logique du réseau ni la lisibilité de la configuration.</p>
+</div>
+<div class="project-block">
+<h4>Solution</h4>
+<p>Configuration des interfaces VLAN sur le firewall, ajout de la route par défaut et mise en place du NAT Masquerade avec vérification des flux.</p>
+</div>
+<div class="project-block">
+<h4>Outils utilisés</h4>
+<ul><li>Pare-feu Stormshield</li><li>Plan d’adressage</li><li>Tests de connectivité</li><li>Schéma réseau</li></ul>
+</div>
+<div class="project-block">
+<h4>Résultat</h4>
+<p>Communication VLAN ↔ pare-feu fonctionnelle, accès Internet validé et architecture réseau plus proche d’un contexte professionnel réel.</p>
+</div>
+<div class="project-block project-block--full">
+<h4>Preuves techniques / compétences</h4>
+<ul class="project-proof-list"><li>Configuration d’interfaces VLAN</li><li>Routage vers le WAN</li><li>Mise en œuvre du NAT</li><li>Tests et validation de connectivité</li></ul>
+</div>
+</div>
+<footer class="project-footer"><a class="btn" href="Projet/gsb_mission2_portfolio_files/rapport-mission2.html">📄 Rapport</a><a class="btn" href="Projet/gsb_mission2_portfolio_files/schema-vlan-mission2.html">🗺️ Schéma VLAN</a></footer>
+</article>
+<article class="project-audit-card reveal reveal-delay-3">
+<div class="project-headline">
+<div>
+<span class="tag">GSB · Mission 3</span>
+<h3>Mise en place d’une infrastructure Active Directory, DNS et DHCP</h3>
+</div>
+<div class="project-meta"><span class="tag">Windows Server</span><span class="tag">Active Directory</span><span class="tag">DNS</span><span class="tag">DHCP</span></div>
+</div>
+<p class="project-summary">Mise en place des services centraux du réseau GSB : domaine Active Directory, DNS interne redondant et attribution automatique des paramètres IP aux postes clients.</p>
+<div class="project-structure">
+<div class="project-block"><h4>Problème</h4><p>L’entreprise GSB devait centraliser la gestion des utilisateurs et des postes, résoudre les noms internes du domaine et éviter la configuration IP manuelle sur les clients.</p></div>
+<div class="project-block"><h4>Solution</h4><p>Déploiement de serveurs Windows pour l’annuaire Active Directory et le DNS, avec deux DNS internes visibles côté client, puis mise en place d’un service DHCP distribuant la passerelle, le domaine DNS et les serveurs DNS.</p></div>
+<div class="project-block"><h4>Outils utilisés</h4><ul><li>Windows Server 2019</li><li>Active Directory Domain Services</li><li>DNS Manager</li><li>Console DHCP</li><li>Client Windows 10 de test</li><li>Commandes ipconfig, nslookup, dcdiag et repadmin</li></ul></div>
+<div class="project-block"><h4>Résultat</h4><p>Le client Windows reçoit automatiquement sa configuration réseau. Les options DHCP fournissent la passerelle du VLAN, le suffixe DNS du domaine et les serveurs DNS internes associés à Active Directory.</p></div>
+<div class="project-block project-block--full"><h4>Preuves techniques / compétences</h4><ul class="project-proof-list"><li>Installation et promotion d’un contrôleur de domaine</li><li>Configuration du domaine swiss-galaxyB2.com</li><li>Mise en place du DNS intégré à Active Directory</li><li>Configuration d’un service DHCP pour les VLAN du contexte GSB</li><li>Validation côté client avec suffixe DNS, bail DHCP, passerelle et DNS internes</li></ul></div>
+</div>
+<footer class="project-footer"><a class="btn" href="Projet/gsb_mission3_portfolio_files/rapport-mission3.html">📄 Rapport</a><a class="btn" href="Projet/gsb_mission3_portfolio_files/assets/preuveDNS.PNG">🧪 Preuve DNS/DHCP</a></footer>
+</article>
+<article class="project-audit-card reveal reveal-delay-4">
+<div class="project-headline">
+<div>
+<span class="tag">Projet complémentaire</span>
+<h3>Audit de vulnérabilités avec Nessus sur UnrealIRCd</h3>
+</div>
+<div class="project-meta"><span class="tag">Nessus</span><span class="tag">Analyse</span><span class="tag">Risque</span><span class="tag">Contre-mesures</span></div>
+</div>
+<p class="project-summary">Travail orienté cybersécurité pour identifier une faille exploitable, qualifier son impact et produire un rapport clair avec preuves techniques et pistes de remédiation.</p>
+<div class="project-structure">
+<div class="project-block">
+<h4>Problème</h4>
+<p>Déterminer si un service exposé présente une vulnérabilité critique et mesurer le niveau de risque pour l’infrastructure ciblée.</p>
+</div>
+<div class="project-block">
+<h4>Solution</h4>
+<p>Scan de sécurité avec Nessus, analyse du cas UnrealIRCd, interprétation des résultats puis synthèse des risques et contre-mesures.</p>
+</div>
+<div class="project-block">
+<h4>Outils utilisés</h4>
+<ul><li>Nessus Essentials</li><li>Machine Linux de test</li><li>Captures d’écran de scan</li><li>Rapport d’analyse</li></ul>
+</div>
+<div class="project-block">
+<h4>Résultat</h4>
+<p>Vulnérabilité identifiée, impact expliqué, preuves intégrées au rapport et recommandations de correction proposées.</p>
+</div>
+<div class="project-block project-block--full">
+<h4>Preuves techniques / compétences</h4>
+<ul class="project-proof-list"><li>Lecture et qualification d’un scan</li><li>Analyse d’une faille de type RCE</li><li>Rédaction de contre-mesures</li><li>Restitution structurée pour un jury</li></ul>
+</div>
+</div>
+<footer class="project-footer"><a class="btn" href="Projet/rapport_nessus_ameliore/rapport-nessus.html">📄 Rapport</a></footer>
+</article>
+<article class="project-audit-card reveal reveal-delay-5">
+<div class="project-headline">
+<div>
+<span class="tag">Services réseau</span>
+<h3>Déploiement d’un service DHCP sous Windows Server avec validation client</h3>
+</div>
+<div class="project-meta"><span class="tag">Windows Server</span><span class="tag">DHCP</span><span class="tag">DNS</span><span class="tag">Validation</span></div>
+</div>
+<p class="project-summary">Projet centré sur la distribution automatique de paramètres réseau à des postes clients dans un environnement Windows, avec compte rendu et support PDF associés.</p>
+<div class="project-structure">
+<div class="project-block">
+<h4>Problème</h4>
+<p>Les postes devaient recevoir automatiquement leur configuration IP afin de limiter les erreurs manuelles et de standardiser la mise en service.</p>
+</div>
+<div class="project-block">
+<h4>Solution</h4>
+<p>Création d’une étendue DHCP, définition des options réseau utiles puis contrôle du bon renouvellement de bail côté client.</p>
+</div>
+<div class="project-block">
+<h4>Outils utilisés</h4>
+<ul><li>Windows Server</li><li>Console DHCP</li><li>Client de test</li><li>Documentation PDF</li></ul>
+</div>
+<div class="project-block">
+<h4>Résultat</h4>
+<p>Attribution automatique des paramètres réseau validée, avec documentation disponible à la fois en version web et en PDF.</p>
+</div>
+<div class="project-block project-block--full">
+<h4>Preuves techniques / compétences</h4>
+<ul class="project-proof-list"><li>Création d’étendue DHCP</li><li>Paramétrage DNS et passerelle</li><li>Vérification des baux côté client</li><li>Documentation d’exploitation</li></ul>
+</div>
+</div>
+<footer class="project-footer"><a class="btn" href="Projet/dhcp_wamp_portfolio_files/rapport-dhcp-wamp.html">📄 Rapport</a><a class="btn" href="Projet/dhcp_wamp_portfolio_files/docs/DHCPavecWAMP.pdf">📘 PDF</a></footer>
+</article>
+</div>
+</section>
+<!-- Expériences -->
+
+<section id="annexe-bts" class="annexe-bts">
+<h2>📎 Annexe BTS</h2>
+<details>
+<summary>Ouvrir les éléments liés au tableau de synthèse</summary>
+<p class="section-intro">Cette annexe regroupe les éléments de correspondance avec le tableau de synthèse. Elle reste séparée de la lecture principale du portfolio pour garder une présentation plus professionnelle.</p>
+<p class="contact-actions"><a class="btn primary" href="assets/fiche-justification-croix.html">📘 Ouvrir la fiche de justification</a><a class="btn" href="veille.html">🔍 Voir la veille complète</a></p>
+</details>
+</section>
+<section id="xp">
+<h2>🛠️ Parcours</h2>
+<ol class="timeline" role="list">
+<li class="reveal-left reveal-delay-1">
+<strong>2026 — Stage technique en informatique (2e année BTS SIO) · ADEFI (Meung-sur-Loire)</strong>
+<time datetime="2026">Deuxième année</time>
+<div class="muted">Approfondissement des missions d’administration réseau et systèmes : configuration VLAN, supervision, diagnostics avancés et administration NAS Synology avec procédures de sauvegarde et documentation technique.</div>
+</li>
+<li class="reveal-left reveal-delay-2">
+<strong>2025 — Stage technique en informatique (1re année BTS SIO) · ADEFI (Meung-sur-Loire)</strong>
+<time datetime="2025">Première année</time>
+<div class="muted">Première immersion professionnelle dans la même structure : mise en service de switches Zyxel, segmentation réseau, configuration de services et découverte des contraintes de production.</div>
+</li>
+<li class="reveal-left reveal-delay-3">
+<strong>2024 — Stage en cybersécurité · 807ᵉ Compagnie des Transmissions – Armée de Terre (Rennes)</strong>
+<time datetime="2024">Mai 2024</time>
+<div class="muted">Participation à une étude basée sur le framework MITRE ATT&amp;CK (analyse des menaces et typologies d’attaques) dans un cadre confidentiel de défense nécessitant rigueur, discipline et travail d’équipe.</div>
+</li>
+<li class="reveal-left reveal-delay-4">
+<strong>2022 — Stage volontaire · Base aérienne 123 Orléans-Bricy</strong>
+<time datetime="2022">Immersion 2022</time>
+<div class="muted">Immersion au sein d’équipes techniques pour découvrir la gestion d’infrastructures critiques, avec un accent sur la discipline et la confidentialité des opérations.</div>
+</li>
+<li class="reveal-left reveal-delay-5">
+<strong>2020 — Stage d’observation · Domaine national de Chambord</strong>
+<time datetime="2020">Observation 2020</time>
+<div class="muted">Découverte du service informatique interne : gestion du parc, support utilisateurs et sensibilisation à la sécurisation des postes.</div>
+</li>
+</ol>
+</section>
+<!-- Compétences -->
+<section id="skills">
+<h2>⚙️ Compétences</h2>
+<div class="skills-grid">
+<article class="skill reveal reveal-delay-1">
+<h3>Infrastructure &amp; Réseaux</h3>
+<ul class="skill-bar-list" aria-label="Niveaux de compétences Infrastructure">
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">VLAN / Cisco IOS</span><span class="skill-bar-pct">85%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:85%" aria-valuenow="85" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">Windows Server / AD</span><span class="skill-bar-pct">82%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:82%" aria-valuenow="82" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">DNS / DHCP</span><span class="skill-bar-pct">85%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:85%" aria-valuenow="85" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">NAT / PAT / Routage</span><span class="skill-bar-pct">75%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:75%" aria-valuenow="75" role="progressbar"></div></div>
+  </li>
+</ul>
+</article>
+<article class="skill reveal reveal-delay-2">
+<h3>Systèmes &amp; Automatisation</h3>
+<ul class="skill-bar-list" aria-label="Niveaux de compétences Systèmes">
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">Linux / Debian</span><span class="skill-bar-pct">76%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:76%" aria-valuenow="76" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">PowerShell / Bash</span><span class="skill-bar-pct">72%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:72%" aria-valuenow="72" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">Virtualisation (Nutanix / VBox)</span><span class="skill-bar-pct">78%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:78%" aria-valuenow="78" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">Services Apache2 / Postfix</span><span class="skill-bar-pct">68%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:68%" aria-valuenow="68" role="progressbar"></div></div>
+  </li>
+</ul>
+</article>
+<article class="skill reveal reveal-delay-3">
+<h3>Sécurité &amp; Documentation</h3>
+<ul class="skill-bar-list" aria-label="Niveaux de compétences Sécurité">
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">Stormshield / Filtrage</span><span class="skill-bar-pct">74%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:74%" aria-valuenow="74" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">Audit Nessus / MITRE ATT&amp;CK</span><span class="skill-bar-pct">65%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:65%" aria-valuenow="65" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">Rédaction de procédures E4/E6</span><span class="skill-bar-pct">88%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:88%" aria-valuenow="88" role="progressbar"></div></div>
+  </li>
+  <li class="skill-bar-item">
+    <div class="skill-bar-meta"><span class="skill-bar-name">Git / GitHub</span><span class="skill-bar-pct">72%</span></div>
+    <div class="skill-bar-track"><div class="skill-bar-fill" style="--level:72%" aria-valuenow="72" role="progressbar"></div></div>
+  </li>
+</ul>
+</article>
+</div>
+</section>
+<!-- Certifications -->
+<section id="certs">
+<h2>🎓 Certifications</h2>
+<p class="section-intro">J’ai retenu ici les formations les plus utiles pour étayer mon développement professionnel en SISR. Chaque page de certification résume les objectifs de la formation, ce que j’en retiens et le lien avec mes réalisations du portfolio.</p>
+<div class="cert-grid">
+<article class="cert-card reveal reveal-delay-1">
+<span class="tag">ANSSI</span>
+<h3>SecNumacadémie</h3>
+<p>Certification de sensibilisation à la sécurité numérique : authentification, protection du poste, sécurité sur Internet et bonnes pratiques SSI.</p>
+<div class="chips"><span class="chip">Cybersécurité</span><span class="chip">Hygiène numérique</span><span class="chip">Dév. professionnel</span></div>
+<div class="cert-card__links"><a class="btn" href="assets/certif-anssi.html">📄 Rapport</a><a class="btn" href="Documents/attestation-anssi.pdf" rel="noopener" target="_blank">📘 Attestation PDF</a></div>
+</article>
+<article class="cert-card reveal reveal-delay-2">
+<span class="tag">OpenClassrooms</span>
+<h3>Administrez un système Linux</h3>
+<p>Formation orientée terminal, droits, services, supervision et administration système sous Linux.</p>
+<div class="chips"><span class="chip">Linux</span><span class="chip">SSH</span><span class="chip">Système</span></div>
+<div class="cert-card__links"><a class="btn" href="assets/certif-linux.html">📄 Rapport</a></div>
+</article>
+<article class="cert-card reveal reveal-delay-3">
+<span class="tag">OpenClassrooms</span>
+<h3>Administrez une architecture réseau avec Cisco</h3>
+<p>CLI Cisco, VLAN, routage, ACL, services réseau et sécurisation d’une infrastructure.</p>
+<div class="chips"><span class="chip">Cisco</span><span class="chip">VLAN</span><span class="chip">Réseau</span></div>
+<div class="cert-card__links"><a class="btn" href="assets/certif-cisco.html">📄 Rapport</a></div>
+</article>
+<article class="cert-card reveal reveal-delay-4">
+<span class="tag">OpenClassrooms</span>
+<h3>Déployez vos systèmes et réseaux dans le cloud avec AWS</h3>
+<p>Découverte des architectures cloud, du VPC, d’EC2, de la supervision et du maintien en condition opérationnelle.</p>
+<div class="chips"><span class="chip">AWS</span><span class="chip">Cloud</span><span class="chip">Déploiement</span></div>
+<div class="cert-card__links"><a class="btn" href="assets/certif-aws.html">📄 Rapport</a></div>
+</article>
+<article class="cert-card reveal reveal-delay-5">
+<span class="tag">OpenClassrooms</span>
+<h3>Optimisez votre déploiement avec Docker</h3>
+<p>Conteneurisation, images, Docker Compose, Docker Swarm et sécurisation du déploiement.</p>
+<div class="chips"><span class="chip">Docker</span><span class="chip">Compose</span><span class="chip">Déploiement</span></div>
+<div class="cert-card__links"><a class="btn" href="assets/certif-docker.html">📄 Rapport</a></div>
+</article>
+</div>
+</section>
+<!-- Veille -->
+<section id="veille">
+<h2>🔍 Veille technologique</h2>
+<p class="section-intro">Je mène une veille régulière orientée cybersécurité, systèmes et infrastructures exposées. Je privilégie des sources complémentaires : institutionnelles françaises et internationales, presse spécialisée et retours opérationnels.</p>
+<div class="veille-grid">
+<article class="veille-card">
+<span class="tag">Octobre 2025</span>
+<h3>LeMagIT · Menaces hybrides</h3>
+<p>Article utile pour montrer que la résilience d’un SI dépasse la technique pure : cyberattaque, désinformation, géopolitique et IA peuvent se combiner.</p>
+<p class="muted"><strong>Intérêt BTS :</strong> je peux relier cet article à la gestion des risques et à la continuité de service.</p>
+</article>
+<article class="veille-card">
+<span class="tag">Novembre 2025</span>
+<h3>CERT-FR · Opération ENDGAME</h3>
+<p>Retour institutionnel sur une opération internationale visant des infrastructures liées à plusieurs malwares.</p>
+<p class="muted"><strong>Intérêt BTS :</strong> très utile pour parler d’IOC, de remédiation et de coopération entre acteurs de la réponse à incident.</p>
+</article>
+<article class="veille-card">
+<span class="tag">Avril 2026</span>
+<h3>CISA · Exposition d’automates industriels</h3>
+<p>Source très reconnue et nouvelle dans ma veille, centrée sur les accès distants, la surface d’attaque et le cloisonnement des infrastructures critiques.</p>
+<p class="muted"><strong>Intérêt BTS :</strong> cet article renforce mon discours sur la segmentation réseau, les accès distants et la supervision.</p>
+</article>
+</div>
+<p class="contact-actions"><a class="btn primary" href="veille.html" rel="noopener">📚 Ouvrir la veille mensuelle complète</a></p>
+</section>
+<section id="contact" aria-labelledby="contact-title">
+<h2 id="contact-title">📬 Contact</h2>
+<p class="section-intro">N'hésitez pas à me contacter pour toute question liée au portfolio, aux projets présentés ou à mon parcours.</p>
+<div class="contact-grid">
+  <a class="contact-item reveal reveal-delay-1" href="mailto:chaminoe0@gmail.com" aria-label="Envoyer un email">
+    <span class="contact-item__icon">✉️</span>
+    <div class="contact-item__info">
+      <span class="contact-item__label">E-mail</span>
+      <span class="contact-item__value">chaminoe0@gmail.com</span>
+    </div>
+  </a>
+  <a class="contact-item reveal reveal-delay-2" href="https://www.linkedin.com/in/no%C3%A9-chami/" rel="noopener" target="_blank" aria-label="Voir le profil LinkedIn">
+    <span class="contact-item__icon">🔗</span>
+    <div class="contact-item__info">
+      <span class="contact-item__label">LinkedIn</span>
+      <span class="contact-item__value">Noé Chami</span>
+    </div>
+  </a>
+  <a class="contact-item reveal reveal-delay-3" href="https://github.com/kiiwiix" rel="noopener" target="_blank" aria-label="Voir le profil GitHub">
+    <span class="contact-item__icon">💻</span>
+    <div class="contact-item__info">
+      <span class="contact-item__label">GitHub</span>
+      <span class="contact-item__value">kiiwiix</span>
+    </div>
+  </a>
+  <div class="contact-item reveal reveal-delay-4" aria-label="Localisation">
+    <span class="contact-item__icon">📍</span>
+    <div class="contact-item__info">
+      <span class="contact-item__label">Localisation</span>
+      <span class="contact-item__value">Orléans · Lycée Benjamin Franklin</span>
+    </div>
+  </div>
+</div>
+</section>
+<footer>
+<p class="foot">© 2024–2026 · Portfolio BTS SIO (SISR) — <strong>Noé Chami</strong> · <a href="mailto:chaminoe0@gmail.com">chaminoe0@gmail.com</a></p>
+</footer>
+</div>
+</main>
+<button class="back-to-top" aria-label="Retour en haut de page" title="Retour en haut">↑</button>
+<script defer="" src="akatsuki.js"></script>
+<script defer="" src="matrix.js"></script>
+<script defer="" src="terminal.js"></script>
+<script defer="" src="enhancements.js"></script>
+<script>
+    (function(){
+      const root=document.documentElement;
+      const toggle=document.querySelector('[data-theme-toggle]');
+      if(!toggle)return;
+      const storageKey='preferred-theme';
+      const systemQuery=window.matchMedia('(prefers-color-scheme: dark)');
+      const label=current=>current==='dark'?'Passer en mode clair':'Passer en mode sombre';
+      const applyTheme=theme=>{
+        if(theme==='dark'){
+          root.removeAttribute('data-theme');
+          toggle.setAttribute('aria-pressed','true');
+          theme='dark';
+        }else{
+          root.setAttribute('data-theme','light');
+          toggle.setAttribute('aria-pressed','false');
+          theme='light';
+        }
+        toggle.querySelector('span').textContent=label(theme);
+      };
+      let stored=null;
+      try{stored=localStorage.getItem(storageKey);}catch(e){stored=null;}
+      const initial=stored==='dark'?'dark':'light';
+      applyTheme(initial);
+      toggle.addEventListener('click',()=>{
+        const isLight=root.getAttribute('data-theme')==='light';
+        const next=isLight?'dark':'light';
+        applyTheme(next);
+        try{localStorage.setItem(storageKey,next);}catch(e){}
+      });
+      systemQuery.addEventListener('change',event=>{
+        let pref=null;
+        try{pref=localStorage.getItem(storageKey);}catch(e){pref=null;}
+        if(!pref){
+          applyTheme(event.matches?'dark':'light');
+        }
+      });
+      const navLinks=Array.from(document.querySelectorAll('.nav a[href^="#"]'));
+      const sections=navLinks.map(link=>document.querySelector(link.getAttribute('href'))).filter(Boolean);
+      const setActive=id=>{
+        navLinks.forEach(link=>{
+          if(link.getAttribute('href')===`#${id}`){
+            link.setAttribute('aria-current','true');
+          }else{
+            link.removeAttribute('aria-current');
+          }
+        });
+      };
+      if('IntersectionObserver'in window && sections.length){
+        const observer=new IntersectionObserver(entries=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting){
+              setActive(entry.target.id);
+            }
+          });
+        },{rootMargin:'-40% 0px -50% 0px',threshold:0.1});
+        sections.forEach(section=>observer.observe(section));
+      }
+    })();
+  </script>
+</body>
+</html>

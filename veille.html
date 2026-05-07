@@ -1,0 +1,579 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light" />
+  <title>Veille technologique — Noé Chami · BTS SIO SISR</title>
+  <meta name="description" content="Veille technologique BTS SIO SISR de septembre 2025 à avril 2026, classée par ordre chronologique et reliée à des sources accessibles." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    /* ── Tokens ─────────────────────────────────────────────── */
+    :root {
+      --bg:        #edf2f9;
+      --surface:   #ffffff;
+      --surface2:  #f7f9fd;
+      --text:      #0f172a;
+      --muted:     #4f617a;
+      --accent:    #c92e54;
+      --accent2:   #f05a7e;
+      --line:      rgba(201,46,84,.13);
+      --line-s:    rgba(201,46,84,.26);
+      --grad:      linear-gradient(135deg, #c92e54 0%, #f05a7e 100%);
+      --shadow:    0 28px 68px rgba(15,23,42,.11), 0 2px 8px rgba(15,23,42,.05);
+      --shadow-sm: 0 10px 30px rgba(15,23,42,.08);
+      --radius:    24px;
+      --spring:    cubic-bezier(0.34,1.56,0.64,1);
+      --ease:      cubic-bezier(0.25,0.46,0.45,0.94);
+    }
+
+    /* ── Reset ──────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      font-size: 16px;
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 12% 0%, rgba(201,46,84,.12), transparent 28%),
+        radial-gradient(circle at 88% 10%, rgba(100,140,255,.08), transparent 22%),
+        linear-gradient(180deg, #fff8fb 0%, #edf2f9 50%, #eef3ff 100%);
+      color: var(--text);
+      line-height: 1.7;
+      min-height: 100vh;
+      padding: 28px 20px 60px;
+    }
+
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    h1, h2, h3 { line-height: 1.15; }
+
+    /* ── Scroll progress ────────────────────────────────────── */
+    #progress {
+      position: fixed;
+      top: 0; left: 0;
+      height: 3px;
+      background: var(--grad);
+      z-index: 999;
+      width: 0%;
+      border-radius: 0 999px 999px 0;
+      box-shadow: 0 0 10px rgba(201,46,84,.5);
+      pointer-events: none;
+    }
+
+    /* ── Back to top ────────────────────────────────────────── */
+    .btt {
+      position: fixed;
+      bottom: 28px; right: 28px;
+      width: 48px; height: 48px;
+      border-radius: 14px;
+      background: #fff;
+      border: 1px solid var(--line-s);
+      display: grid; place-items: center;
+      font-size: 1.1rem; font-weight: 800;
+      color: var(--text);
+      cursor: pointer;
+      z-index: 200;
+      box-shadow: 0 8px 26px rgba(15,23,42,.12);
+      opacity: 0; visibility: hidden;
+      transition: opacity .3s, visibility .3s, transform .3s var(--spring),
+                  background .3s, color .3s, box-shadow .3s;
+    }
+    .btt.on { opacity: 1; visibility: visible; }
+    .btt:hover {
+      transform: translateY(-4px) scale(1.06);
+      background: var(--grad);
+      color: #fff;
+      border-color: transparent;
+      box-shadow: 0 14px 32px rgba(201,46,84,.38);
+    }
+
+    /* ── Wrapper ────────────────────────────────────────────── */
+    .wrap {
+      width: min(1160px, 100%);
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    /* ── Hero ───────────────────────────────────────────────── */
+    .hero {
+      background: var(--surface);
+      border: 1px solid var(--line-s);
+      border-radius: var(--radius);
+      padding: 32px 36px;
+      box-shadow: var(--shadow);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: end;
+      gap: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Top gradient bar */
+    .hero::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--grad);
+    }
+    /* Bottom-right decorative glow */
+    .hero::after {
+      content: "";
+      position: absolute;
+      bottom: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,46,84,.1), transparent 70%);
+      pointer-events: none;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(201,46,84,.08);
+      border: 1px solid var(--line-s);
+      color: var(--accent);
+      font-size: .73rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .09em;
+      margin-bottom: 14px;
+    }
+
+    .hero h1 {
+      font-size: clamp(1.9rem, 3.5vw, 2.8rem);
+      letter-spacing: -.03em;
+      font-weight: 900;
+      background: linear-gradient(130deg, #0f172a 40%, var(--accent) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .hero p {
+      color: var(--muted);
+      max-width: 68ch;
+      font-size: .97rem;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 11px 16px;
+      border-radius: 14px;
+      border: 1px solid var(--line-s);
+      background: var(--surface);
+      color: var(--text);
+      font-weight: 700;
+      font-size: .9rem;
+      box-shadow: var(--shadow-sm);
+      white-space: nowrap;
+      transition: transform .28s var(--spring), box-shadow .28s ease, background .22s ease;
+    }
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 32px rgba(15,23,42,.12);
+      background: rgba(201,46,84,.06);
+      text-decoration: none;
+    }
+
+    /* ── Method mini-cards ──────────────────────────────────── */
+    .method-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .method-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: transform .3s var(--spring), box-shadow .3s ease, border-color .3s ease;
+    }
+    .method-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: var(--grad);
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .method-card:hover { transform: translateY(-4px); border-color: var(--line-s); box-shadow: 0 16px 40px rgba(15,23,42,.1); }
+    .method-card:hover::before { opacity: 1; }
+
+    .method-card strong {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      font-size: .9rem;
+      font-weight: 800;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .method-card span { color: var(--muted); font-size: .88rem; line-height: 1.65; }
+
+    /* ── Article list ───────────────────────────────────────── */
+    .article-list { display: flex; flex-direction: column; gap: 18px; }
+
+    .article-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 26px 28px;
+      box-shadow: var(--shadow-sm);
+      position: relative;
+      overflow: hidden;
+      transition: transform .32s var(--spring), box-shadow .32s ease, border-color .32s ease;
+    }
+    /* Left gradient accent */
+    .article-card::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; bottom: 0;
+      width: 3px;
+      background: var(--grad);
+    }
+    .article-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(201,46,84,.025) 0%, transparent 55%);
+      pointer-events: none;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .article-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--line-s);
+      box-shadow: 0 28px 60px rgba(15,23,42,.11), 0 0 0 1px var(--line-s);
+    }
+    .article-card:hover::after { opacity: 1; }
+
+    /* Card header */
+    .card-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+
+    .article-card h2 {
+      font-size: 1.08rem;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -.01em;
+      flex: 1;
+      min-width: 220px;
+    }
+
+    /* Month badge */
+    .month-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 13px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, rgba(201,46,84,.13), rgba(240,90,126,.06));
+      border: 1px solid var(--line-s);
+      color: var(--accent);
+      font-size: .77rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* Meta chips */
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+    .meta-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 5px 11px;
+      border-radius: 999px;
+      background: var(--surface2);
+      border: 1px solid rgba(15,23,42,.08);
+      color: var(--muted);
+      font-size: .83rem;
+      font-weight: 500;
+    }
+    .meta-chip strong { color: var(--text); font-weight: 700; }
+
+    /* Paragraphs */
+    .article-card p { color: var(--muted); font-size: .94rem; }
+    .article-card p + p { margin-top: 10px; }
+    .article-card p strong { color: var(--text); }
+
+    /* Source link */
+    .source-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: var(--grad);
+      color: #fff !important;
+      font-weight: 700;
+      font-size: .88rem;
+      box-shadow: 0 4px 16px rgba(201,46,84,.32);
+      transition: transform .28s var(--spring), box-shadow .28s ease, filter .22s ease;
+    }
+    .source-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(201,46,84,.45);
+      filter: brightness(1.06);
+      text-decoration: none;
+    }
+
+    /* Reveal */
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .07s; }
+    .reveal-delay-2 { transition-delay: .14s; }
+    .reveal-delay-3 { transition-delay: .21s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+
+    /* ── Responsive ─────────────────────────────────────────── */
+    @media (max-width: 900px) {
+      body { padding: 18px 14px 50px; }
+      .hero { grid-template-columns: 1fr; padding: 24px 22px; }
+      .method-grid { grid-template-columns: 1fr; }
+      .back-btn { align-self: flex-start; }
+    }
+    @media (max-width: 600px) {
+      .hero h1 { font-size: 1.7rem; }
+      .article-card { padding: 20px 18px; }
+      .card-head { flex-direction: column; align-items: flex-start; }
+    }
+
+    /* ── Scrollbar ──────────────────────────────────────────── */
+    ::-webkit-scrollbar { width: 7px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(201,46,84,.25); border-radius: 999px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(201,46,84,.42); }
+
+    ::selection { background: rgba(201,46,84,.22); }
+  </style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<button class="btt" id="btt" aria-label="Retour en haut">↑</button>
+
+<main class="wrap">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div>
+      <div class="eyebrow">🔍 Portfolio BTS SIO — Noé Chami</div>
+      <h1>Veille technologique</h1>
+      <p>Veille BTS SIO SISR sur l'année scolaire 2025–2026, de septembre à avril. Chaque fiche résume un article, l'analyse dans une perspective SISR et renvoie vers la source d'origine.</p>
+    </div>
+    <a class="back-btn" href="index.html">← Retour au portfolio</a>
+  </header>
+
+  <!-- Method cards -->
+  <section class="method-grid" aria-label="Méthode de veille">
+    <article class="method-card reveal reveal-delay-1">
+      <strong>📅 Période couverte</strong>
+      <span>Septembre 2025 à avril 2026, avec un article sélectionné pour chaque mois présenté.</span>
+    </article>
+    <article class="method-card reveal reveal-delay-2">
+      <strong>📡 Sources privilégiées</strong>
+      <span>CERT-FR, LeMagIT, The Hacker News et CISA — croisement de sources institutionnelles françaises, internationales et presse spécialisée.</span>
+    </article>
+    <article class="method-card reveal reveal-delay-3">
+      <strong>🎯 Angle SISR</strong>
+      <span>Failles réseau, correctifs, équipements exposés, sécurité des systèmes Linux et résilience des infrastructures.</span>
+    </article>
+  </section>
+
+  <!-- Articles -->
+  <section class="article-list" aria-label="Articles de veille mensuels">
+
+    <article class="article-card reveal">
+      <div class="card-head">
+        <h2>CERT-FR : vulnérabilités critiques dans Cisco ASA et FTD</h2>
+        <span class="month-badge">Septembre 2025</span>
+      </div>
+      <div class="meta">
+        <span class="meta-chip"><strong>Date :</strong> 25 sept. 2025</span>
+        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip">🌐 Réseau / pare-feu</span>
+      </div>
+      <p><strong>Résumé :</strong> le CERT-FR alerte sur plusieurs vulnérabilités affectant le serveur VPN Web de Cisco ASA et Secure Firewall Threat Defense, avec des risques de contournement d'authentification et d'exécution de code.</p>
+      <p><strong>Analyse BTS :</strong> cet article illustre l'importance de la veille sécurité sur les équipements réseau exposés, du suivi des correctifs et de la réaction rapide face à une alerte critique touchant des équipements de filtrage.</p>
+      <a class="source-link" href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-013/" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+    </article>
+
+    <article class="article-card reveal reveal-delay-1">
+      <div class="card-head">
+        <h2>Cyberéco 2025 : montée en puissance des menaces hybrides</h2>
+        <span class="month-badge">Octobre 2025</span>
+      </div>
+      <div class="meta">
+        <span class="meta-chip"><strong>Date :</strong> 22 oct. 2025</span>
+        <span class="meta-chip"><strong>Source :</strong> LeMagIT</span>
+        <span class="meta-chip">⚔️ Menaces / cybersécurité</span>
+      </div>
+      <p><strong>Résumé :</strong> l'article explique que les menaces hybrides mêlent cyberattaques, déstabilisation informationnelle et enjeux géopolitiques, forçant les organisations à repenser leur posture défensive.</p>
+      <p><strong>Analyse BTS :</strong> utile pour montrer qu'un administrateur systèmes et réseaux participe à la résilience globale d'une organisation, au-delà des seules tâches techniques locales.</p>
+      <a class="source-link" href="https://www.lemagit.fr/actualites/366633533/Cybereco-2025-fait-le-constat-de-la-montee-en-puissance-des-menaces-hybrides" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+    </article>
+
+    <article class="article-card reveal reveal-delay-2">
+      <div class="card-head">
+        <h2>Opération ENDGAME — Retour du CERT-FR</h2>
+        <span class="month-badge">Novembre 2025</span>
+      </div>
+      <div class="meta">
+        <span class="meta-chip"><strong>Date :</strong> 13 nov. 2025</span>
+        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip">🦠 Malware / réponse à incident</span>
+      </div>
+      <p><strong>Résumé :</strong> le CERT-FR décrit une opération internationale visant des infrastructures liées à plusieurs malwares et à des activités cybercriminelles persistantes.</p>
+      <p><strong>Analyse BTS :</strong> excellent support pour parler d'IOC, de supervision, de remédiation et de coopération internationale dans la lutte contre les campagnes malveillantes persistantes.</p>
+      <a class="source-link" href="https://www.cert.ssi.gouv.fr/cti/CERTFR-2025-CTI-011/" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+    </article>
+
+    <article class="article-card reveal reveal-delay-1">
+      <div class="card-head">
+        <h2>Vulnérabilité dans React Server Components (React2Shell)</h2>
+        <span class="month-badge">Décembre 2025</span>
+      </div>
+      <div class="meta">
+        <span class="meta-chip"><strong>Date :</strong> 5 déc. 2025</span>
+        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip">💻 Développement / web</span>
+      </div>
+      <p><strong>Résumé :</strong> le CERT-FR signale une vulnérabilité dans React Server Components pouvant permettre une exécution de code arbitraire à distance sur des applications vulnérables.</p>
+      <p><strong>Analyse BTS :</strong> intéressant pour relier l'administration des serveurs à la sécurité des frameworks web et à la nécessité de maintenir aussi la couche applicative à jour.</p>
+      <a class="source-link" href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2025-ALE-014/" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+    </article>
+
+    <article class="article-card reveal reveal-delay-3">
+      <div class="card-head">
+        <h2>CERT-FR : campagne d'exploitation ciblant les accès distants — Ivanti Connect Secure</h2>
+        <span class="month-badge">Janvier 2026</span>
+      </div>
+      <div class="meta">
+        <span class="meta-chip"><strong>Date :</strong> 14 janv. 2026</span>
+        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip">🔐 VPN / Accès distant</span>
+      </div>
+      <p><strong>Résumé :</strong> le CERT-FR signale une campagne d'exploitation active ciblant des équipements Ivanti Connect Secure via des vulnérabilités permettant l'exécution de code à distance sans authentification (CVE-2025-0282 et CVE-2025-0283). Des acteurs malveillants déploient des webshells persistants sur les passerelles VPN compromises. L'alerte recommande une mise à jour immédiate et un audit complet des équipements exposés.</p>
+      <p><strong>Analyse BTS :</strong> directement en lien avec les compétences SISR : sécurisation des accès distants, gestion des correctifs sur équipements critiques, détection d'intrusion et réponse à incident. Il illustre pourquoi un accès VPN mal maintenu devient un vecteur d'attaque majeur — un point central dans mes travaux de segmentation et de sécurisation réseau.</p>
+      <a class="source-link" href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2026-ALE-001/" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+    </article>
+
+    <article class="article-card reveal reveal-delay-2">
+      <div class="card-head">
+        <h2>CVE-2025-68686 : vulnérabilité critique dans Fortinet FortiOS</h2>
+        <span class="month-badge">Février 2026</span>
+      </div>
+      <div class="meta">
+        <span class="meta-chip"><strong>Date :</strong> 6 fév. 2026</span>
+        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip">🔒 VPN SSL / sécurité</span>
+      </div>
+      <p><strong>Résumé :</strong> le CERT-FR relaie une vulnérabilité affectant les VPN SSL de FortiOS et pouvant porter atteinte à la confidentialité des données transmises.</p>
+      <p><strong>Analyse BTS :</strong> cet article illustre pourquoi les accès distants doivent être surveillés, corrigés rapidement et considérés comme des points d'exposition majeurs d'un SI.</p>
+      <a class="source-link" href="https://www.cert.ssi.gouv.fr/actualite/CERTFR-2026-ACT-007/" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+    </article>
+
+    <article class="article-card reveal reveal-delay-1">
+      <div class="card-head">
+        <h2>Multiples vulnérabilités dans le noyau Linux d'Ubuntu</h2>
+        <span class="month-badge">Mars 2026</span>
+      </div>
+      <div class="meta">
+        <span class="meta-chip"><strong>Date :</strong> 13 mars 2026</span>
+        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip">🐧 Linux / systèmes</span>
+      </div>
+      <p><strong>Résumé :</strong> plusieurs vulnérabilités affectent le noyau Linux d'Ubuntu, avec des impacts potentiels sur la confidentialité, les privilèges et la politique de sécurité du système.</p>
+      <p><strong>Analyse BTS :</strong> parfait pour parler de maintenance système, de gestion des mises à jour sur Linux et de l'importance d'une veille régulière sur les serveurs d'infrastructure.</p>
+      <a class="source-link" href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0289/" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+    </article>
+
+    <article class="article-card reveal reveal-delay-2">
+      <div class="card-head">
+        <h2>CISA : exploitation d'automates industriels dans des infrastructures critiques</h2>
+        <span class="month-badge">Avril 2026</span>
+      </div>
+      <div class="meta">
+        <span class="meta-chip"><strong>Date :</strong> 7 avr. 2026</span>
+        <span class="meta-chip"><strong>Source :</strong> CISA</span>
+        <span class="meta-chip">🏭 Infrastructures critiques / OT</span>
+      </div>
+      <p><strong>Résumé :</strong> la CISA publie une alerte sur des acteurs affiliés à l'Iran ayant exploité des automates programmables (PLC) dans des infrastructures critiques américaines. L'alerte insiste sur l'exposition d'équipements industriels, les accès distants non maîtrisés et la réduction de la surface d'attaque.</p>
+      <p><strong>Analyse BTS :</strong> cet article relie directement cybersécurité, segmentation réseau, contrôle des accès distants, supervision et protection d'équipements critiques — des thèmes clés pour un profil SISR.</p>
+      <a class="source-link" href="https://www.cisa.gov/news-events/cybersecurity-advisories/aa26-097a" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+    </article>
+
+  </section>
+
+</main>
+
+<script>
+(function(){
+  // Scroll progress
+  const bar = document.getElementById('progress');
+  window.addEventListener('scroll', () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    bar.style.width = h > 0 ? (window.scrollY / h * 100).toFixed(2) + '%' : '0%';
+  }, { passive: true });
+
+  // Back to top
+  const btt = document.getElementById('btt');
+  window.addEventListener('scroll', () => btt.classList.toggle('on', window.scrollY > 400), { passive: true });
+  btt.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  // Scroll reveal
+  const els = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -30px 0px' });
+    els.forEach(el => obs.observe(el));
+  } else {
+    els.forEach(el => el.classList.add('visible'));
+  }
+})();
+</script>
+</body>
+</html>

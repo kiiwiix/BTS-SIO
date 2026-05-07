@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mission 3 - Active Directory, DNS et DHCP</title>
+  <link href="rapport-mission3.css" rel="stylesheet" />
+</head>
+<body>
+<header class="hero">
+  <div class="container">
+    <span class="eyebrow">GSB · Mission 3</span>
+    <h1>Mise en place des services Active Directory, DNS et DHCP</h1>
+    <p class="lead">Cette mission complète la segmentation VLAN et le routage inter-VLAN du contexte GSB par la mise en place des services centraux nécessaires à l’exploitation du réseau : annuaire Active Directory, résolution DNS interne et attribution automatique des paramètres IP.</p>
+  </div>
+</header>
+<main class="container">
+  <a class="back" href="../../index.html#projets">← Retour au portfolio</a>
+
+  <section class="card">
+    <p class="section-label">Contexte</p>
+    <h2>Objectif de la mission</h2>
+    <p>Le réseau GSB dispose d’une segmentation en VLAN et d’un pare-feu Stormshield assurant le routage. L’objectif de cette mission est de rendre l’infrastructure exploitable par des postes Windows en centralisant l’authentification, la résolution de noms et la distribution des paramètres réseau.</p>
+    <div class="callout success"><strong>Résultat attendu :</strong> un domaine <strong>swiss-galaxyB2.com</strong> fonctionnel, des serveurs DNS internes opérationnels et des baux DHCP distribués automatiquement sur les VLAN du réseau.</div>
+  </section>
+
+  <section class="card grid">
+    <div>
+      <p class="section-label">Besoin</p>
+      <h2>Problématique technique</h2>
+      <p>Sans annuaire, les comptes utilisateurs et les postes restent gérés localement. Sans DNS interne, les services Active Directory ne peuvent pas être localisés correctement. Sans DHCP, les postes doivent être configurés manuellement, ce qui augmente les risques d’erreur d’adresse IP, de passerelle ou de DNS.</p>
+    </div>
+    <div>
+      <p class="section-label">Solution</p>
+      <h2>Réponse mise en œuvre</h2>
+      <p>La solution repose sur deux serveurs Windows Server 2025 : <strong>LABANNU</strong> comme contrôleur de domaine principal et <strong>LABANNUBIS</strong> comme contrôleur de domaine secondaire. Les services AD DS, DNS et DHCP sont configurés puis validés depuis un client Windows 10.</p>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="section-label">Réalisation</p>
+    <h2>Étapes principales</h2>
+    <div class="steps">
+      <div class="step"><span>1</span><div><h3>Préparation des serveurs</h3><p>Configuration réseau des serveurs dans le VLAN 250, renommage des machines et vérification de la connectivité avec la passerelle <strong>192.168.250.254</strong>.</p></div></div>
+      <div class="step"><span>2</span><div><h3>Déploiement Active Directory</h3><p>Installation du rôle AD DS, promotion du serveur <strong>LABANNU</strong> en contrôleur de domaine et création du domaine <strong>swiss-galaxyB2.com</strong>.</p></div></div>
+      <div class="step"><span>3</span><div><h3>Redondance du domaine</h3><p>Ajout du serveur <strong>LABANNUBIS</strong> au domaine puis promotion en contrôleur de domaine secondaire afin d’assurer une continuité de service minimale pour l’annuaire et le DNS.</p></div></div>
+      <div class="step"><span>4</span><div><h3>Configuration DNS</h3><p>Mise en place du DNS intégré à Active Directory, vérification de la zone du domaine et ajout d’un redirecteur DNS vers <strong>8.8.8.8</strong> pour la résolution externe.</p></div></div>
+      <div class="step"><span>5</span><div><h3>Configuration DHCP</h3><p>Configuration du service DHCP sous Debian avec des étendues adaptées aux VLAN du contexte GSB. Les options distribuées incluent la passerelle du VLAN, le suffixe DNS <strong>swiss-galaxyB2.com</strong> et les serveurs DNS internes.</p></div></div>
+      <div class="step"><span>6</span><div><h3>Validation client</h3><p>Contrôle depuis un client Windows 10 avec <code>ipconfig /all</code>, <code>nslookup</code>, tests de ping et vérification de l’accès au domaine.</p></div></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <p class="section-label">Synthèse technique</p>
+    <h2>Services configurés</h2>
+    <table>
+      <thead><tr><th>Élément</th><th>Configuration retenue</th><th>Validation réalisée</th></tr></thead>
+      <tbody>
+        <tr><td>Contrôleur de domaine principal</td><td>LABANNU — IP : <strong>192.168.250.20</strong></td><td>Domaine swiss-galaxyB2.com créé et disponible</td></tr>
+        <tr><td>Contrôleur de domaine secondaire</td><td>LABANNUBIS — IP : <strong>192.168.250.21</strong></td><td>Réplication AD/DNS vérifiée</td></tr>
+        <tr><td>DNS interne</td><td>DNS intégré à Active Directory + redirecteur 8.8.8.8</td><td>Résolution interne et externe testée</td></tr>
+        <tr><td>DHCP</td><td>Serveur DHCP sous Debian — IP : <strong>192.168.250.19</strong></td><td>Bail obtenu automatiquement par le client</td></tr>
+        <tr><td>Client de test</td><td>Windows 10 intégré au réseau GSB</td><td>Paramètres IP, passerelle, DNS et suffixe de domaine visibles</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="card">
+<p class="section-label">Preuves de fonctionnement</p>
+<h2>Captures organisées par service</h2>
+<p>Les captures suivantes sont présentées dans l’ordre logique de validation : DNS, DHCP, client, résolution de noms, communication entre contrôleurs de domaine et diagnostic Active Directory.</p>
+<div class="proof-grid">
+  <article class="proof-row"><div><h3>1. Configuration DNS du domaine</h3><p>Cette capture montre la configuration DNS liée au domaine <strong>swiss-galaxyB2.com</strong>. Le DNS est indispensable au fonctionnement d’Active Directory, car les postes doivent localiser le domaine et les contrôleurs de domaine.</p><a class="proof-link" href="assets/ecrans/DNS.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/DNS.PNG" alt="Configuration DNS du domaine swiss-galaxyB2.com" loading="lazy"><figcaption>Preuve DNS : zone et résolution interne du domaine.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>2. Service DHCP sous Debian</h3><p>Le fichier de configuration DHCP montre les paramètres distribués aux clients : plage d’adresses, passerelle du VLAN, suffixe DNS et serveurs DNS internes.</p><ul><li>Serveur DHCP : <strong>192.168.250.19</strong>.</li><li>DNS distribués : <strong>192.168.250.20</strong> et <strong>192.168.250.21</strong>.</li><li>Passerelle distribuée : <strong>192.168.250.254</strong>.</li></ul><a class="proof-link" href="assets/ecrans/dhcpconf.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/dhcpconf.PNG" alt="Configuration du serveur DHCP Debian" loading="lazy"><figcaption>Preuve DHCP : options réseau distribuées aux clients.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>3. Client Windows sous DHCP</h3><p>La commande <code>ipconfig /all</code> confirme que le client reçoit automatiquement les paramètres attendus : adresse IPv4, serveur DHCP, passerelle, suffixe DNS et DNS internes.</p><a class="proof-link" href="assets/ecrans/clientsousDHCP.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/clientsousDHCP.PNG" alt="Client Windows recevant sa configuration DHCP" loading="lazy"><figcaption>Preuve client : configuration IP reçue automatiquement.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>4. Résolution DNS avec nslookup</h3><p>Le test <code>nslookup</code> permet de vérifier que le client utilise bien le DNS interne et que la résolution de noms fonctionne.</p><a class="proof-link" href="assets/ecrans/nslookup.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/nslookup.PNG" alt="Test nslookup depuis un client Windows" loading="lazy"><figcaption>Preuve DNS côté client : résolution de noms opérationnelle.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>5. Communication entre LABANNU et LABANNUBIS</h3><p>Les tests de ping montrent que les deux contrôleurs de domaine communiquent correctement sur le réseau, ce qui est nécessaire pour la réplication AD/DNS.</p><a class="proof-link" href="assets/ecrans/ping LabannuetLabannuBIS.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/ping LabannuetLabannuBIS.PNG" alt="Ping entre LABANNU et LABANNUBIS" loading="lazy"><figcaption>Preuve réseau : communication entre les deux contrôleurs de domaine.</figcaption></figure></article>
+  <article class="proof-row"><div><h3>6. Diagnostic Active Directory</h3><p>La commande <code>dcdiag</code> vérifie l’état du contrôleur de domaine et permet de valider les services essentiels d’Active Directory.</p><a class="proof-link" href="assets/ecrans/dcdiag.PNG" target="_blank" rel="noopener">Ouvrir la capture en grand</a></div><figure class="proof-media"><img src="assets/ecrans/dcdiag.PNG" alt="Diagnostic dcdiag du contrôleur de domaine" loading="lazy"><figcaption>Preuve AD : diagnostic du contrôleur de domaine.</figcaption></figure></article>
+</div>
+</section>
+
+
+  <section class="card grid two-col">
+    <div>
+      <p class="section-label">Administration</p>
+      <h2>Éléments produits</h2>
+      <ul class="list">
+        <li>Contrôleur de domaine principal pour le domaine GSB.</li>
+        <li>Contrôleur de domaine secondaire pour la redondance.</li>
+        <li>Serveur DNS interne associé au domaine Active Directory.</li>
+        <li>Serveur DHCP distribuant automatiquement les paramètres réseau.</li>
+        <li>Utilisateurs et groupes Active Directory de test.</li>
+      </ul>
+    </div>
+    <div>
+      <p class="section-label">Tests</p>
+      <h2>Commandes de validation</h2>
+      <ul class="list">
+        <li><code>ipconfig /all</code> : contrôle du bail DHCP et des DNS reçus.</li>
+        <li><code>nslookup</code> : test de résolution de noms.</li>
+        <li><code>ping</code> : vérification de la connectivité réseau.</li>
+        <li><code>dcdiag</code> : diagnostic du contrôleur de domaine.</li>
+        <li><code>repadmin /replsummary</code> : vérification de la réplication AD.</li>
+      </ul>
+    </div>
+  </section>
+
+  
+
+  <section class="card">
+    <p class="section-label">Conclusion</p>
+    <h2>Bilan</h2>
+    <p>La mission met en place le socle serveur nécessaire au fonctionnement du réseau GSB. Les postes clients peuvent s’appuyer sur le domaine pour l’authentification, utiliser la résolution DNS interne et obtenir automatiquement une configuration IP cohérente avec leur VLAN.</p>
+  </section>
+</main>
+</body>
+</html>
