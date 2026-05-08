@@ -303,7 +303,8 @@
     .project-headline h3{margin:6px 0 0; font-size:1.18rem}
     .project-summary{margin:0; color:var(--muted); max-width:72ch}
     .project-meta{display:flex; flex-wrap:wrap; gap:8px}
-    .project-structure{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px}
+    .project-structure{display:none; grid-template-columns:repeat(2,minmax(0,1fr)); gap:14px; margin-top:14px}
+    .project-audit-card.is-open .project-structure{display:grid}
     .project-block{padding:16px; border-radius:14px; background:rgba(255,255,255,.03); border:1px solid rgba(255,255,255,.08)}
     html[data-theme="light"] .project-block{background:rgba(248,250,252,.92); border-color:rgba(15,23,42,.08)}
     .project-block h4{margin:0 0 10px; font-size:.93rem; text-transform:uppercase; letter-spacing:.08em; color:var(--accent2)}
@@ -448,8 +449,11 @@
 <!-- Sidebar -->
 <aside aria-label="Présentation rapide" class="sidebar">
 <div class="brand">
+<div class="avatar-wrapper">
 <div class="avatar">
 <img alt="Portrait de Noé Chami" decoding="async" height="76" loading="lazy" onerror="this.src='assets/avatar-placeholder.svg'; this.removeAttribute('onerror');" src="assets/7a99c842-cb92-4b22-83bc-245656196c60.jpg" width="76"/>
+</div>
+<span class="avatar-online" aria-hidden="true"></span>
 </div>
 <div>
 <p class="brand-name">Noé Chami</p>
@@ -465,14 +469,11 @@
 </button>
 </div>
 <nav aria-label="Navigation principale" class="nav">
-<a aria-current="true" href="#apercu">✨ Aperçu</a>
-<a href="#stages">🚀 Stages</a>
+<a aria-current="true" href="#apercu">✨ Accueil</a>
+<a href="#experiences">🚀 Expériences</a>
 <a href="#projets">🧩 Projets</a>
-<a href="#xp">🛠️ Parcours</a>
-<a href="#skills">⚙️ Compétences</a>
-<a href="#certs">🎓 Certifications</a>
+<a href="#competences">⚙️ Compétences</a>
 <a href="veille.html" rel="noopener">🔍 Veille</a>
-<a href="#contact">📬 Contact</a>
 </nav>
 <div class="nav-cta">
 <a class="btn primary" href="cv.html" rel="noopener" target="_blank">📄 Voir mon CV</a>
@@ -482,10 +483,10 @@
 <!-- Content -->
 <div class="content">
 <section aria-labelledby="hero-title" id="apercu">
-<p class="tag" style="display:inline-flex; margin:0 0 12px;">Accueil · Profil technique</p>
+<p class="hero-badge"><span class="hero-badge__dot" aria-hidden="true"></span>Portfolio BTS SIO · SISR · 2026</p>
 <div class="hero-intro">
 <h1 class="hero-title" id="hero-title">Noé Chami</h1>
-<p class="hero-subtitle">Administrateur Systèmes &amp; Réseaux (BTS SIO SISR)</p>
+<p class="hero-subtitle">Administrateur Systèmes &amp; Réseaux (BTS SIO SISR)<span class="hero-cursor" aria-hidden="true">_</span></p>
 <p class="hero-description">Portfolio de professionnalisation pour le BTS SIO option SISR. Les stages, projets, certifications et travaux de veille sont regroupés avec des preuves exploitables : rapports, schémas, PDF, captures et documentations techniques.</p>
 </div>
 <div aria-label="Compétences clés" class="hero-skill-grid" role="list">
@@ -539,13 +540,14 @@
   </div>
 </div>
 
+<div class="hero-divider" aria-hidden="true"></div>
 <div class="terminal-shell">
 <div aria-label="Simulation de terminal infrastructure" aria-live="polite" class="terminal" id="terminal" role="log"></div>
 </div>
 </section>
-<section id="stages">
-<h2>🚀 Stages</h2>
-<p class="section-intro">Les immersions professionnelles les plus significatives sont présentées avec les missions réalisées, les outils utilisés et les contraintes rencontrées. Les éléments liés à un contexte sensible restent volontairement synthétiques.</p>
+<section id="experiences">
+<h2>🚀 Expériences</h2>
+<p class="section-intro">Les immersions professionnelles les plus significatives, présentées avec les missions réalisées, les outils utilisés et les contraintes rencontrées.</p>
 <ul class="projects" role="list">
 <li class="card project reveal reveal-delay-1">
 <span class="tag">ADEFI</span>
@@ -573,6 +575,34 @@
 <div class="tags"><span class="tag">Support</span><span class="tag">Parc</span></div>
 </li>
 </ul>
+<div class="xp-subhead" aria-hidden="true">Parcours chronologique</div>
+<ol class="timeline" role="list">
+<li class="reveal-left reveal-delay-1">
+<strong>2026 — Stage technique en informatique (2e année BTS SIO) · ADEFI (Meung-sur-Loire)</strong>
+<time datetime="2026">Deuxième année</time>
+<div class="muted">Approfondissement des missions d'administration réseau et systèmes : configuration VLAN, supervision, diagnostics avancés et administration NAS Synology avec procédures de sauvegarde et documentation technique.</div>
+</li>
+<li class="reveal-left reveal-delay-2">
+<strong>2025 — Stage technique en informatique (1re année BTS SIO) · ADEFI (Meung-sur-Loire)</strong>
+<time datetime="2025">Première année</time>
+<div class="muted">Première immersion professionnelle dans la même structure : mise en service de switches Zyxel, segmentation réseau, configuration de services et découverte des contraintes de production.</div>
+</li>
+<li class="reveal-left reveal-delay-3">
+<strong>2024 — Stage en cybersécurité · 807ᵉ Compagnie des Transmissions – Armée de Terre (Rennes)</strong>
+<time datetime="2024">Mai 2024</time>
+<div class="muted">Participation à une étude basée sur le framework MITRE ATT&amp;CK (analyse des menaces et typologies d'attaques) dans un cadre confidentiel de défense nécessitant rigueur, discipline et travail d'équipe.</div>
+</li>
+<li class="reveal-left reveal-delay-4">
+<strong>2022 — Stage volontaire · Base aérienne 123 Orléans-Bricy</strong>
+<time datetime="2022">Immersion 2022</time>
+<div class="muted">Immersion au sein d'équipes techniques pour découvrir la gestion d'infrastructures critiques, avec un accent sur la discipline et la confidentialité des opérations.</div>
+</li>
+<li class="reveal-left reveal-delay-5">
+<strong>2020 — Stage d'observation · Domaine national de Chambord</strong>
+<time datetime="2020">Observation 2020</time>
+<div class="muted">Découverte du service informatique interne : gestion du parc, support utilisateurs et sensibilisation à la sécurisation des postes.</div>
+</li>
+</ol>
 </section>
 <section id="projets">
 <h2>🧩 Projets</h2>
@@ -732,46 +762,8 @@
 </section>
 <!-- Expériences -->
 
-<section id="annexe-bts" class="annexe-bts">
-<h2>📎 Annexe BTS</h2>
-<details>
-<summary>Ouvrir les éléments liés au tableau de synthèse</summary>
-<p class="section-intro">Cette annexe regroupe les éléments de correspondance avec le tableau de synthèse. Elle reste séparée de la lecture principale du portfolio pour garder une présentation plus professionnelle.</p>
-<p class="contact-actions"><a class="btn primary" href="assets/fiche-justification-croix.html">📘 Ouvrir la fiche de justification</a><a class="btn" href="veille.html">🔍 Voir la veille complète</a></p>
-</details>
-</section>
-<section id="xp">
-<h2>🛠️ Parcours</h2>
-<ol class="timeline" role="list">
-<li class="reveal-left reveal-delay-1">
-<strong>2026 — Stage technique en informatique (2e année BTS SIO) · ADEFI (Meung-sur-Loire)</strong>
-<time datetime="2026">Deuxième année</time>
-<div class="muted">Approfondissement des missions d’administration réseau et systèmes : configuration VLAN, supervision, diagnostics avancés et administration NAS Synology avec procédures de sauvegarde et documentation technique.</div>
-</li>
-<li class="reveal-left reveal-delay-2">
-<strong>2025 — Stage technique en informatique (1re année BTS SIO) · ADEFI (Meung-sur-Loire)</strong>
-<time datetime="2025">Première année</time>
-<div class="muted">Première immersion professionnelle dans la même structure : mise en service de switches Zyxel, segmentation réseau, configuration de services et découverte des contraintes de production.</div>
-</li>
-<li class="reveal-left reveal-delay-3">
-<strong>2024 — Stage en cybersécurité · 807ᵉ Compagnie des Transmissions – Armée de Terre (Rennes)</strong>
-<time datetime="2024">Mai 2024</time>
-<div class="muted">Participation à une étude basée sur le framework MITRE ATT&amp;CK (analyse des menaces et typologies d’attaques) dans un cadre confidentiel de défense nécessitant rigueur, discipline et travail d’équipe.</div>
-</li>
-<li class="reveal-left reveal-delay-4">
-<strong>2022 — Stage volontaire · Base aérienne 123 Orléans-Bricy</strong>
-<time datetime="2022">Immersion 2022</time>
-<div class="muted">Immersion au sein d’équipes techniques pour découvrir la gestion d’infrastructures critiques, avec un accent sur la discipline et la confidentialité des opérations.</div>
-</li>
-<li class="reveal-left reveal-delay-5">
-<strong>2020 — Stage d’observation · Domaine national de Chambord</strong>
-<time datetime="2020">Observation 2020</time>
-<div class="muted">Découverte du service informatique interne : gestion du parc, support utilisateurs et sensibilisation à la sécurisation des postes.</div>
-</li>
-</ol>
-</section>
 <!-- Compétences -->
-<section id="skills">
+<section id="competences">
 <h2>⚙️ Compétences</h2>
 <div class="skills-grid">
 <article class="skill reveal reveal-delay-1">
@@ -841,8 +833,7 @@
 </section>
 <!-- Certifications -->
 <section id="certs">
-<h2>🎓 Certifications</h2>
-<p class="section-intro">J’ai retenu ici les formations les plus utiles pour étayer mon développement professionnel en SISR. Chaque page de certification résume les objectifs de la formation, ce que j’en retiens et le lien avec mes réalisations du portfolio.</p>
+<div class="comp-subhead" aria-hidden="true">Certifications</div>
 <div class="cert-grid">
 <article class="cert-card reveal reveal-delay-1">
 <span class="tag">ANSSI</span>
@@ -882,34 +873,9 @@
 </div>
 </section>
 <!-- Veille -->
-<section id="veille">
-<h2>🔍 Veille technologique</h2>
-<p class="section-intro">Je mène une veille régulière orientée cybersécurité, systèmes et infrastructures exposées. Je privilégie des sources complémentaires : institutionnelles françaises et internationales, presse spécialisée et retours opérationnels.</p>
-<div class="veille-grid">
-<article class="veille-card">
-<span class="tag">Octobre 2025</span>
-<h3>LeMagIT · Menaces hybrides</h3>
-<p>Article utile pour montrer que la résilience d’un SI dépasse la technique pure : cyberattaque, désinformation, géopolitique et IA peuvent se combiner.</p>
-<p class="muted"><strong>Intérêt BTS :</strong> je peux relier cet article à la gestion des risques et à la continuité de service.</p>
-</article>
-<article class="veille-card">
-<span class="tag">Novembre 2025</span>
-<h3>CERT-FR · Opération ENDGAME</h3>
-<p>Retour institutionnel sur une opération internationale visant des infrastructures liées à plusieurs malwares.</p>
-<p class="muted"><strong>Intérêt BTS :</strong> très utile pour parler d’IOC, de remédiation et de coopération entre acteurs de la réponse à incident.</p>
-</article>
-<article class="veille-card">
-<span class="tag">Avril 2026</span>
-<h3>CISA · Exposition d’automates industriels</h3>
-<p>Source très reconnue et nouvelle dans ma veille, centrée sur les accès distants, la surface d’attaque et le cloisonnement des infrastructures critiques.</p>
-<p class="muted"><strong>Intérêt BTS :</strong> cet article renforce mon discours sur la segmentation réseau, les accès distants et la supervision.</p>
-</article>
-</div>
-<p class="contact-actions"><a class="btn primary" href="veille.html" rel="noopener">📚 Ouvrir la veille mensuelle complète</a></p>
-</section>
 <section id="contact" aria-labelledby="contact-title">
 <h2 id="contact-title">📬 Contact</h2>
-<p class="section-intro">N'hésitez pas à me contacter pour toute question liée au portfolio, aux projets présentés ou à mon parcours.</p>
+<p class="section-intro">N’hésitez pas à me contacter pour toute question liée au portfolio, aux projets présentés ou à mon parcours.</p>
 <div class="contact-grid">
   <a class="contact-item reveal reveal-delay-1" href="mailto:chaminoe0@gmail.com" aria-label="Envoyer un email">
     <span class="contact-item__icon">✉️</span>
@@ -942,13 +908,16 @@
 </div>
 </section>
 <footer>
+<div class="footer-links">
+  <a class="btn" href="veille.html" rel="noopener">🔍 Veille technologique</a>
+  <a class="btn" href="assets/fiche-justification-croix.html">📎 Annexe BTS</a>
+</div>
 <p class="foot">© 2024–2026 · Portfolio BTS SIO (SISR) — <strong>Noé Chami</strong> · <a href="mailto:chaminoe0@gmail.com">chaminoe0@gmail.com</a></p>
 </footer>
 </div>
 </main>
 <button class="back-to-top" aria-label="Retour en haut de page" title="Retour en haut">↑</button>
-<script defer="" src="akatsuki.js"></script>
-<script defer="" src="matrix.js"></script>
+<!-- akatsuki.js et matrix.js désactivés (style sobre) -->
 <script defer="" src="terminal.js"></script>
 <script defer="" src="enhancements.js"></script>
 <script>
