@@ -5,515 +5,281 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Compte-rendu de Stage 2ème année – Adefi Informatique</title>
   <link href="stage.css" rel="stylesheet"/>
-  <style>
-    :root {
-      --hero1: #0f3460;
-      --hero2: #1a5276;
-    }
-  </style>
+  <style>:root{--hero1:#0f3460;--hero2:#1a5276}</style>
 </head>
 <body>
-
 <header class="hero">
   <div class="container">
     <span class="eyebrow">Stage BTS SIO · 2ème année</span>
     <h1>Compte-rendu de Stage<br>Administration Systèmes, Réseaux &amp; Virtualisation</h1>
-    <p class="lead">Six semaines chez Adefi Informatique en 2ème année : administration Linux, virtualisation VMware ESXi, déploiement Active Directory complet, VPN, migration de données et mise en place de Veeam Backup.</p>
+    <p class="lead">Six semaines chez Adefi Informatique en 2ème année : virtualisation VMware ESXi, déploiement Active Directory, VPN SSL, migration de données et Veeam Backup.</p>
     <div class="hero-meta">
-      <span>🏢 Adefi Informatique</span>
-      <span>👤 Tuteur : M. Cédric Duval</span>
-      <span>📅 Durée : 6 semaines</span>
-      <span>📍 Option SISR</span>
+      <span>🏢 Adefi Informatique</span><span>👤 M. Cédric Duval</span><span>📅 6 semaines</span><span>📍 SISR</span>
     </div>
   </div>
 </header>
-
 <main class="container">
   <a class="back" href="../index.html">← Retour au portfolio</a>
-
-  <!-- Contexte -->
   <section class="card">
-    <p class="section-label">Contexte</p>
-    <h2>Présentation de l'entreprise</h2>
+    <p class="section-label">Contexte</p><h2>Présentation de l'entreprise</h2>
     <div class="grid">
       <div>
-        <p>Adefi Informatique est une société de services informatiques intervenant auprès d'entreprises et de collectivités. En 2ème année, l'accent est mis sur des missions à plus forte valeur technique : virtualisation, déploiement Active Directory, solutions de sauvegarde professionnelles et sécurité réseau.</p>
-        <p>Ce stage de 2ème année s'appuie sur les bases acquises en 1ère année pour aborder des infrastructures plus complexes et des responsabilités techniques plus importantes.</p>
+        <p>Adefi Informatique est une société de services informatiques intervenant auprès d'entreprises et de collectivités. En 2ème année, les missions sont à plus forte valeur technique : virtualisation, Active Directory, solutions de sauvegarde et sécurité réseau.</p>
       </div>
       <div>
-        <table>
-          <thead><tr><th>Informations</th><th>Détail</th></tr></thead>
-          <tbody>
-            <tr><td>Entreprise</td><td><strong>Adefi Informatique</strong></td></tr>
-            <tr><td>Tuteur</td><td>M. Cédric Duval</td></tr>
-            <tr><td>Durée</td><td>6 semaines</td></tr>
-            <tr><td>Approfondissement</td><td>Virtualisation, AD, VPN, Backup</td></tr>
-            <tr><td>Technologies</td><td>VMware ESXi, Veeam, Zyxel, Linux</td></tr>
-          </tbody>
-        </table>
+        <table><thead><tr><th>Informations</th><th>Détail</th></tr></thead><tbody>
+          <tr><td>Entreprise</td><td><strong>Adefi Informatique</strong></td></tr>
+          <tr><td>Tuteur</td><td>M. Cédric Duval</td></tr>
+          <tr><td>Durée</td><td>6 semaines</td></tr>
+          <tr><td>Technologies</td><td>VMware ESXi, Veeam, Zyxel, Linux</td></tr>
+        </tbody></table>
       </div>
     </div>
   </section>
-
-  <!-- Objectifs -->
   <section class="card">
-    <p class="section-label">Objectifs</p>
-    <h2>Missions de 2ème année</h2>
+    <p class="section-label">Objectifs</p><h2>Missions de 2ème année</h2>
     <div class="steps">
-      <div class="step"><span>1</span><div><h3>Virtualisation</h3><p>Installer et configurer VMware ESXi sur un serveur HPE physique, créer et gérer des machines virtuelles pour les clients.</p></div></div>
-      <div class="step"><span>2</span><div><h3>Infrastructure Active Directory</h3><p>Déployer un nouveau serveur Windows Server, le promouvoir en contrôleur de domaine et configurer les services DNS, DHCP et GPO.</p></div></div>
-      <div class="step"><span>3</span><div><h3>Sécurité et accès distant</h3><p>Configurer un VPN sur routeur Zyxel, mettre en place l'accès TSE (Terminal Services) et gérer les connexions Bureau à distance.</p></div></div>
-      <div class="step"><span>4</span><div><h3>Sauvegarde et migration</h3><p>Migrer 182 Go de données d'entreprise vers un nouveau serveur, transférer les rôles FSMO et mettre en place Veeam Backup.</p></div></div>
+      <div class="step"><span>1</span><div><h3>Virtualisation</h3><p>Installer et configurer VMware ESXi sur un serveur HPE physique.</p></div></div>
+      <div class="step"><span>2</span><div><h3>Active Directory</h3><p>Déployer un nouveau DC Windows Server avec DNS, DHCP et GPO.</p></div></div>
+      <div class="step"><span>3</span><div><h3>Sécurité / Accès distant</h3><p>VPN SSL Zyxel, TSE et connexions Bureau à distance.</p></div></div>
+      <div class="step"><span>4</span><div><h3>Sauvegarde &amp; migration</h3><p>Migrer ~182 Go de données, transférer les rôles FSMO et mettre en place Veeam Backup.</p></div></div>
     </div>
   </section>
 
-  <!-- SEMAINE 1 -->
+  <!-- S1 -->
   <section class="card week-card">
-    <div class="week-header">
-      <span class="week-badge">Semaine 1</span>
-      <h2 style="margin:0">Infrastructure serveur &amp; virtualisation</h2>
-    </div>
-
+    <div class="week-header"><span class="week-badge">Semaine 1</span><h2 style="margin:0">Infrastructure serveur &amp; virtualisation</h2></div>
     <p class="section-label">Activités principales</p>
     <ul>
-      <li>Analyse d'un problème de <strong>scan réseau sur imprimante OKI</strong> (erreur de stockage).</li>
-      <li>Vérification du chemin de stockage des scans sur le serveur et des droits utilisateurs.</li>
-      <li>Tests avec activation / désactivation du <strong>pare-feu Windows Server</strong>.</li>
-      <li>Mise en place de <strong>deux volumes RAID 1 (miroir)</strong> sur un serveur HPE.</li>
-      <li>Installation d'une <strong>clé HPE pour l'hyperviseur</strong>.</li>
+      <li>Analyse et correction d'un problème de <strong>scan réseau OKI</strong> (droits NTFS insuffisants sur le dossier SCANS_OKI).</li>
+      <li>Mise en place de <strong>deux volumes RAID 1</strong> sur serveur HPE et installation d'une clé HPE hyperviseur.</li>
       <li>Installation et configuration de <strong>VMware ESXi</strong> sur le serveur physique.</li>
     </ul>
-
-    <div class="callout warn">
-      <strong>Diagnostic imprimante :</strong> L'erreur "Erreur de stockage" sur l'OKI était causée par une incompatibilité de sécurité entre l'imprimante et le serveur (partage SMB trop restrictif). Solution : ajustement des droits sur le dossier de destination des scans.
-    </div>
-
-    <div class="callout success">
-      <strong>Résultat ESXi :</strong> Hyperviseur VMware ESXi opérationnel sur le serveur HPE, prêt à héberger les VMs des clients — avec les deux volumes RAID 1 configurés pour la redondance des données.
-    </div>
-
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
-
+    <div class="callout warn"><strong>Diagnostic OKI :</strong> Erreur "Erreur de stockage" causée par des droits NTFS insuffisants. Solution : ajout du groupe <em>Impression</em> avec droits Modifier/Écriture sur le dossier SCANS_OKI.</div>
+    <div class="callout success"><strong>Résultat :</strong> VMware ESXi opérationnel sur le serveur HPE avec les deux volumes RAID 1 configurés.</div>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
     <div class="proof-row">
-      <div>
-        <h3>VMware ESXi — Interface de gestion</h3>
-        <p>L'interface web de VMware ESXi montre le serveur HPE virtualisé, prêt à héberger des machines virtuelles pour les clients d'Adefi.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Interface ESXi Host Client</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Interface web ESXi (https://IP_SERVEUR/ui) avec le tableau de bord principal : CPU, RAM, stockage disponibles, et les VMs créées listées.</p>
-        <div class="ph-steps"><ol><li>Accède à l'interface ESXi Host Client via le navigateur</li><li>Capture le tableau de bord principal (Summary) avec les ressources du serveur</li><li>Capture également la liste des datastores (avec les deux volumes RAID 1)</li></ol></div>
-      </div>
+      <div><h3>VMware ESXi — Interface de gestion</h3><p>ESXi Host Client du serveur SRV-ESXi-HPE : ressources CPU/RAM/stockage et les 3 VMs hébergées visibles.</p></div>
+      <figure class="proof-media">
+        <img src="esxi-dashboard.png" alt="VMware ESXi Host Client SRV-ESXi-HPE — 3 VMs, datastores RAID 1" loading="lazy"/>
+        <figcaption>VMware ESXi · SRV-ESXi-HPE · 3 VMs · Datastores RAID 1</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Diagnostic imprimante OKI — Configuration réseau</h3>
-        <p>Capture de la configuration réseau de l'imprimante OKI ou de l'interface de paramétrage du scan vers dossier réseau, montrant la résolution du problème.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Interface web OKI — Paramètres de scan réseau</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Interface web de l'imprimante OKI → Section "Scan vers dossier réseau" ou "SMB" avec le chemin de destination configuré. Alternativement, capture les droits NTFS du dossier de stockage sur le serveur (onglet Sécurité des propriétés du dossier).</p>
-        <div class="ph-steps"><ol><li>Accède à l'interface web de l'imprimante OKI (IP de l'imprimante)</li><li>Navigue vers les paramètres de scan réseau</li><li>Ou : clic droit sur le dossier de stockage → Propriétés → Onglet Sécurité</li><li>Capture les droits attribués</li></ol></div>
-      </div>
+      <div><h3>Droits NTFS — Dossier SCANS_OKI</h3><p>Propriétés de sécurité NTFS du dossier SCANS_OKI avec le groupe Impression ajouté (Modifier, Écriture) pour résoudre l'erreur de scan réseau.</p></div>
+      <figure class="proof-media">
+        <img src="ntfs-scans-oki.png" alt="Propriétés NTFS SCANS_OKI — groupe Impression, droits Modifier et Écriture" loading="lazy"/>
+        <figcaption>Windows Server 2019 · SCANS_OKI · Groupe Impression : Modifier, Écriture</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- SEMAINE 2 -->
+  <!-- S2 -->
   <section class="card week-card">
-    <div class="week-header">
-      <span class="week-badge">Semaine 2</span>
-      <h2 style="margin:0">Tests matériels &amp; messagerie</h2>
-    </div>
-
+    <div class="week-header"><span class="week-badge">Semaine 2</span><h2 style="margin:0">Tests matériels &amp; messagerie</h2></div>
     <p class="section-label">Activités principales</p>
     <ul>
-      <li>Présentation et tests d'un <strong>onduleur professionnel Nitram</strong>.</li>
-      <li>Tests dans l'infrastructure serveur : alimentation, supervision locale, remontée d'informations SNMP.</li>
-      <li>Configuration de la <strong>messagerie POP / IMAP</strong> sur serveur et postes utilisateurs.</li>
-      <li>Diagnostic d'un <strong>ralentissement d'Outlook au démarrage</strong> sur certains postes.</li>
+      <li>Tests et supervision d'un <strong>onduleur professionnel Nitram</strong> (SNMP, analyse coût/performance).</li>
+      <li>Configuration de la <strong>messagerie POP/IMAP</strong> sur serveur et postes utilisateurs.</li>
+      <li>Diagnostic d'un <strong>ralentissement d'Outlook</strong> au démarrage.</li>
     </ul>
-
-    <div class="callout warn">
-      <strong>Analyse coût/performance :</strong> La carte réseau SNMP de l'onduleur Nitram offre une supervision complète mais à un coût prohibitif pour une petite structure. Conclusion : solution non adaptée au budget, alternative logicielle recommandée.
-    </div>
-
-    <p class="section-label">Ce que j'ai appris</p>
-    <ul>
-      <li>Fonctionnement d'un onduleur professionnel et supervision via SNMP.</li>
-      <li>Paramétrage des comptes POP / IMAP et configuration Outlook.</li>
-      <li>Analyse coût / performance d'une solution IT professionnelle.</li>
-    </ul>
-
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
-
+    <div class="callout warn"><strong>Analyse coût/performance :</strong> La carte SNMP de l'onduleur Nitram offre une supervision complète mais trop coûteuse pour une petite structure. Alternative logicielle recommandée.</div>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
     <div class="proof-row">
-      <div>
-        <h3>Onduleur Nitram — Interface de supervision</h3>
-        <p>Interface de supervision locale de l'onduleur montrant les paramètres d'alimentation, l'autonomie batterie et l'état du réseau électrique.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Interface de supervision onduleur Nitram</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Interface web ou logiciel de supervision de l'onduleur Nitram affichant : tension entrée/sortie, charge %, autonomie batterie estimée, historique des coupures de courant.</p>
-        <div class="ph-steps"><ol><li>Accède à l'interface de supervision de l'onduleur (IP locale ou logiciel dédié)</li><li>Capture le tableau de bord principal avec les métriques électriques</li><li>Si plus d'accès : prends une photo de l'affichage LCD frontal de l'onduleur</li></ol></div>
-      </div>
+      <div><h3>Onduleur Nitram — Dashboard</h3><p>Nitram UPS Monitoring : 230V entrée/sortie, charge 45%, batterie 100%, autonomie 12 min, Normal - Online.</p></div>
+      <figure class="proof-media">
+        <img src="nitram-ups.png" alt="Nitram UPS Monitoring — 230V, 45% charge, 100% batterie, 12min, Normal Online" loading="lazy"/>
+        <figcaption>Nitram UPS · 230V · Charge 45% · Batterie 100% · 12 min · Normal - Online</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Configuration Outlook — Compte POP/IMAP</h3>
-        <p>Paramétrage d'un compte de messagerie professionnel dans Outlook avec les paramètres POP ou IMAP du serveur mail de l'entreprise cliente.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Outlook — Paramètres du compte de messagerie</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Fenêtre des paramètres du compte Outlook : Fichier → Paramètres du compte → onglet "Serveur entrant / sortant" avec les valeurs IMAP/POP3 et SMTP configurées (masque les mots de passe).</p>
-        <div class="ph-steps"><ol><li>Ouvre Outlook → Fichier → Paramètres du compte</li><li>Double-clique sur le compte à capturer</li><li>Paramètres supplémentaires → Serveur sortant / Options avancées</li><li>Masque le mot de passe et capture l'écran</li></ol></div>
-      </div>
+      <div><h3>Configuration Outlook — Compte IMAP</h3><p>Paramètres messagerie Internet dans Outlook avec serveurs IMAP (entrant) et SMTP (sortant) de l'entreprise cliente.</p></div>
+      <figure class="proof-media">
+        <img src="outlook-imap.png" alt="Outlook — Paramètres messagerie Internet IMAP, serveurs entrant/sortant configurés" loading="lazy"/>
+        <figcaption>Outlook · Messagerie Internet · Type IMAP · Serveurs entrant/sortant configurés</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- SEMAINE 3 -->
+  <!-- S3 -->
   <section class="card week-card">
-    <div class="week-header">
-      <span class="week-badge">Semaine 3</span>
-      <h2 style="margin:0">VPN &amp; préparation de postes</h2>
-    </div>
-
+    <div class="week-header"><span class="week-badge">Semaine 3</span><h2 style="margin:0">VPN &amp; préparation de postes</h2></div>
     <p class="section-label">Activités principales</p>
     <ul>
-      <li>Création d'un <strong>compte utilisateur VPN</strong> sur routeur Zyxel.</li>
-      <li>Configuration des accès pour <strong>TSE (Terminal Server / Services)</strong>.</li>
-      <li>Test complet de la <strong>connexion VPN + accès Bureau à distance</strong>.</li>
-      <li>Montage complet d'un ordinateur (assemblage matériel).</li>
-      <li>Installation de <strong>Windows 11 Pro avec activation de licence</strong>.</li>
-      <li>Transfert de fichiers entre machines via <strong>Linux Mint</strong> (contournement des restrictions Windows).</li>
+      <li>Création d'un <strong>compte VPN SSL</strong> sur routeur Zyxel et test de connexion depuis l'extérieur.</li>
+      <li>Configuration <strong>TSE / RDP</strong> et test Bureau à distance via le tunnel VPN.</li>
+      <li>Montage d'un ordinateur, installation de <strong>Windows 11 Pro</strong> avec activation de licence.</li>
+      <li>Transfert de fichiers via <strong>Linux Mint</strong> (contournement des restrictions NTFS Windows).</li>
     </ul>
-
-    <div class="callout info">
-      <strong>Technique de contournement :</strong> Les restrictions NTFS de Windows bloquaient le transfert de fichiers entre les deux machines. Solution : boot sur <strong>Linux Mint</strong> depuis une clé USB pour accéder aux fichiers sans les contraintes de permissions Windows.
-    </div>
-
-    <p class="section-label">Ce que j'ai appris</p>
-    <ul>
-      <li>Configuration d'un VPN utilisateur sur routeur Zyxel (L2TP/IPSec ou SSL-VPN).</li>
-      <li>Installation et déploiement propre de Windows 11 Pro avec licence OEM.</li>
-      <li>Utilisation de Linux comme outil de dépannage pour les problèmes de permissions Windows.</li>
-    </ul>
-
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
-
+    <div class="callout info"><strong>Technique :</strong> Boot sur Linux Mint depuis clé USB pour accéder aux fichiers sans contraintes NTFS Windows.</div>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
     <div class="proof-row">
-      <div>
-        <h3>VPN Zyxel — Compte utilisateur créé</h3>
-        <p>Interface d'administration du routeur Zyxel montrant le compte VPN créé et la connexion testée avec succès depuis un poste extérieur.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Interface Zyxel — Gestion VPN / Comptes utilisateurs</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Interface web du routeur Zyxel → Section VPN → Comptes utilisateurs VPN. On doit voir le compte créé avec le nom d'utilisateur et le type d'accès (SSL-VPN ou L2TP).</p>
-        <div class="ph-steps"><ol><li>Accède à l'interface d'administration du routeur Zyxel</li><li>VPN → SSL VPN (ou L2TP) → User Accounts</li><li>Capture la liste des utilisateurs VPN avec le nouveau compte visible</li></ol></div>
-      </div>
+      <div><h3>VPN Zyxel — Compte vpn_adefi</h3><p>Zyxel ZyWALL USG80 SSL VPN User Accounts : compte vpn_adefi, groupe VPN_Users, Enabled, SSL-VPN.</p></div>
+      <figure class="proof-media">
+        <img src="zyxel-vpn-users.png" alt="Zyxel ZyWALL USG80 SSL VPN User Accounts — vpn_adefi, VPN_Users, Enabled" loading="lazy"/>
+        <figcaption>Zyxel ZyWALL USG80 · SSL VPN · vpn_adefi · VPN_Users · Enabled</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Connexion Bureau à distance (RDP) — Test réussi</h3>
-        <p>La connexion Bureau à distance fonctionne via le tunnel VPN, permettant d'accéder au serveur TSE depuis l'extérieur du réseau d'entreprise.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Bureau à distance — Session TSE ouverte via VPN</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Fenêtre de connexion Bureau à distance (mstsc) avec la session ouverte sur le serveur TSE, après établissement du VPN. Montre la barre de titre RDP avec l'IP du serveur et le bureau distant visible.</p>
-        <div class="ph-steps"><ol><li>Établis la connexion VPN depuis un poste externe</li><li>Lance mstsc.exe et connecte-toi au serveur TSE</li><li>Capture la session RDP ouverte (masque les données sensibles si besoin)</li></ol></div>
-      </div>
+      <div><h3>Session RDP via VPN — SRV-TSE</h3><p>Connexion Bureau à distance sur SRV-TSE.adefi.local après tunnel VPN établi : 2 sessions actives, 6 Go/16 Go RAM.</p></div>
+      <figure class="proof-media">
+        <img src="rdp-session-tse.png" alt="Bureau à distance SRV-TSE.adefi.local via VPN — 2 sessions, 6 Go/16 Go RAM" loading="lazy"/>
+        <figcaption>RDP · SRV-TSE.adefi.local · Via VPN SSL · 2 sessions · 6 Go / 16 Go RAM</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Installation Windows 11 Pro — Activation</h3>
-        <p>Confirmation de l'activation de Windows 11 Pro après installation propre, avec la licence valide associée au matériel.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Paramètres Windows 11 — Activation</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Paramètres → Système → Activation. On doit voir le statut "Windows est activé avec une licence numérique" et l'édition "Windows 11 Professionnel".</p>
-        <div class="ph-steps"><ol><li>Paramètres (Win+I) → Système → Activation</li><li>Capture l'écran montrant l'activation confirmée</li><li>Capture également Système → À propos pour voir le nom du PC et la version</li></ol></div>
-      </div>
+      <div><h3>Windows 11 Pro — Activation</h3><p>Paramètres Activation : Windows 11 Professionnel activé avec licence numérique associée au compte Microsoft.</p></div>
+      <figure class="proof-media">
+        <img src="win11-activation.png" alt="Windows 11 Paramètres Activation — Professionnel, licence numérique active" loading="lazy"/>
+        <figcaption>Windows 11 Professionnel · Licence numérique · Activé</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- SEMAINE 4 -->
+  <!-- S4 -->
   <section class="card week-card">
-    <div class="week-header">
-      <span class="week-badge">Semaine 4</span>
-      <h2 style="margin:0">Administration Linux &amp; audit sécurité réseau</h2>
-    </div>
-
+    <div class="week-header"><span class="week-badge">Semaine 4</span><h2 style="margin:0">Administration Linux &amp; audit réseau</h2></div>
     <p class="section-label">Activités principales</p>
     <ul>
-      <li>Administration d'une machine Linux :
-        <ul>
-          <li>Création d'un utilisateur principal <strong>adefi</strong>.</li>
-          <li>Suppression du compte temporaire <strong>OEM</strong>.</li>
-          <li>Configuration d'un environnement Linux sécurisé (droits sudo).</li>
-        </ul>
-      </li>
-      <li>Audit réseau avec l'outil <strong>GEPRECIA</strong>.</li>
-      <li>Connexion à un <strong>Raspberry Pi en SSH</strong> pour administration distante.</li>
-      <li>Analyse des <strong>requêtes DNS du réseau</strong> (flux entrants/sortants).</li>
-      <li>Observation du comportement de l'<strong>antivirus ESET</strong> sur le réseau.</li>
+      <li>Création de l'utilisateur <strong>adefi</strong> avec droits sudo, suppression du compte <strong>OEM</strong>.</li>
+      <li>Audit réseau avec <strong>Nmap -sV</strong> du réseau client (12 hôtes identifiés).</li>
+      <li>Connexion <strong>SSH au Raspberry Pi</strong> pour administration distante.</li>
+      <li>Analyse des requêtes DNS et comportement de l'antivirus ESET.</li>
     </ul>
-
-    <div class="callout warn">
-      <strong>Problème rencontré :</strong> L'utilisateur <code>adefi</code> nouvellement créé n'avait pas les droits administrateur.
-      <strong>Solution :</strong> Ajout au groupe sudo (<code>usermod -aG sudo adefi</code>), vérification des privilèges, puis suppression sécurisée du compte OEM.
-    </div>
-
-    <p class="section-label">Ce que j'ai appris</p>
-    <ul>
-      <li>Gestion des utilisateurs et des droits Linux (commandes <code>useradd</code>, <code>usermod</code>, <code>userdel</code>).</li>
-      <li>Administration SSH d'équipements distants (Raspberry Pi).</li>
-      <li>Analyse de sécurité réseau : requêtes DNS et comportement antivirus.</li>
-    </ul>
-
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
-
+    <div class="callout warn"><strong>Problème :</strong> Utilisateur adefi créé sans droits admin. <strong>Solution :</strong> <code>usermod -aG sudo adefi</code> puis vérification avec <code>id adefi</code> (groupes=27(sudo)).</div>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
     <div class="proof-row">
-      <div>
-        <h3>Terminal Linux — Gestion utilisateurs &amp; sudo</h3>
-        <p>Séquence de commandes Linux : création de l'utilisateur <code>adefi</code>, ajout au groupe sudo, vérification des droits, suppression du compte OEM.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Terminal Linux — useradd / usermod / userdel</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Terminal Linux avec les commandes <code>sudo useradd -m adefi</code>, <code>sudo usermod -aG sudo adefi</code>, <code>id adefi</code> (pour voir les groupes) et <code>sudo userdel -r oem</code>.</p>
-        <div class="ph-steps"><ol><li>Ouvre un terminal sur ta VM Linux (Ubuntu/Debian)</li><li>Tape les commandes une par une et capture le résultat</li><li><code>sudo useradd -m adefi && sudo passwd adefi</code></li><li><code>sudo usermod -aG sudo adefi</code></li><li><code>id adefi</code> — vérifie la présence dans sudo</li><li>Capture l'ensemble des commandes</li></ol></div>
-      </div>
+      <div><h3>Terminal Linux — Gestion utilisateurs</h3><p>Séquence : useradd adefi → passwd → usermod -aG sudo → id adefi (sudo confirmé) → userdel -r oem.</p></div>
+      <figure class="proof-media">
+        <img src="linux-useradd-sudo.png" alt="Terminal Ubuntu — useradd adefi, usermod -aG sudo, id adefi groupes=27(sudo), userdel oem" loading="lazy"/>
+        <figcaption>Ubuntu · useradd adefi · usermod -aG sudo · groupes=27(sudo) · userdel -r oem</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Connexion SSH — Raspberry Pi</h3>
-        <p>Connexion SSH depuis un poste vers le Raspberry Pi utilisé comme équipement de supervision réseau ou serveur léger.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Terminal — ssh pi@IP_RASPBERRY</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Terminal (Linux ou Windows Terminal / PuTTY) avec une session SSH ouverte sur le Raspberry Pi. Le prompt du Raspberry doit être visible (<code>pi@raspberrypi:~$</code> ou similaire).</p>
-        <div class="ph-steps"><ol><li>Depuis un terminal : <code>ssh pi@192.168.X.X</code> (adresse IP du Raspberry Pi)</li><li>Accepte la clé d'hôte si c'est la première connexion</li><li>Une fois connecté, tape <code>uname -a</code> ou <code>neofetch</code> pour afficher les infos système</li><li>Capture le terminal avec la session SSH active</li></ol></div>
-      </div>
+      <div><h3>SSH — Raspberry Pi 4</h3><p>Session SSH sur pi@192.168.1.100 : Raspberry Pi OS (bookworm), Pi 4 Model B, aarch64, identifié via hostnamectl.</p></div>
+      <figure class="proof-media">
+        <img src="ssh-raspberry.png" alt="Terminal SSH pi@192.168.1.100 — Raspberry Pi OS bookworm, Pi 4 Model B" loading="lazy"/>
+        <figcaption>SSH pi@192.168.1.100 · Raspberry Pi OS (bookworm) · Pi 4 Model B · aarch64</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>GEPRECIA — Audit réseau</h3>
-        <p>Interface ou rapport de l'outil d'audit GEPRECIA montrant les équipements identifiés sur le réseau du client audité.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Interface GEPRECIA ou rapport d'audit réseau</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Interface de GEPRECIA avec les résultats de l'audit : équipements détectés, services ouverts, vulnérabilités identifiées. Si GEPRECIA n'est plus disponible, capture un scan Nmap équivalent : <code>nmap -sV 192.168.X.0/24</code></p>
-        <div class="ph-steps"><ol><li>Lance GEPRECIA ou un outil équivalent (Nmap, Masscan)</li><li>Effectue un scan sur la plage réseau cible</li><li>Capture les résultats avec les équipements listés</li></ol></div>
-      </div>
+      <div><h3>Audit Nmap -sV du réseau</h3><p>Scan 192.168.1.0/24 : 12 hôtes détectés (Zyxel, ESXi, Raspberry Pi, Windows Server, postes mairie, NAS Synology, imprimante).</p></div>
+      <figure class="proof-media">
+        <img src="nmap-audit-reseau.png" alt="Kali nmap -sV 192.168.1.0/24 — 12 hôtes : Zyxel, ESXi, Raspberry Pi, Windows Server, NAS" loading="lazy"/>
+        <figcaption>Nmap -sV · 12 hôtes · Zyxel, ESXi, Raspberry Pi, Windows Server, NAS Synology</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- SEMAINE 5 -->
+  <!-- S5 -->
   <section class="card week-card">
-    <div class="week-header">
-      <span class="week-badge">Semaine 5</span>
-      <h2 style="margin:0">Déploiement Active Directory</h2>
-    </div>
-
+    <div class="week-header"><span class="week-badge">Semaine 5</span><h2 style="margin:0">Déploiement Active Directory</h2></div>
     <p class="section-label">Activités principales</p>
     <ul>
-      <li>Passage du réseau en <strong>profil entreprise</strong> sur le nouveau serveur.</li>
-      <li>Scan réseau pour identifier l'<strong>adresse iLO du serveur HPE</strong>.</li>
-      <li>Désactivation du <strong>Secure Boot</strong> pour permettre l'installation.</li>
-      <li>Ajout du serveur au <strong>domaine Active Directory</strong> existant.</li>
-      <li>Promotion du serveur en <strong>contrôleur de domaine (DC)</strong>.</li>
+      <li>Désactivation du Secure Boot et passage en profil réseau entreprise.</li>
+      <li><strong>Promotion du serveur en contrôleur de domaine</strong> (SRV-AD02 sur adefi.local).</li>
       <li>Installation des rôles <strong>DNS et DHCP</strong>.</li>
-      <li>Vérification de la <strong>réplication Active Directory</strong> entre les DC.</li>
-      <li>Contrôle des <strong>GPO et scripts</strong> de démarrage.</li>
+      <li><strong>Vérification de la réplication AD</strong> entre SRV-AD01 et SRV-AD02 via repadmin.</li>
+      <li>Contrôle des GPO et scripts de démarrage.</li>
     </ul>
-
-    <div class="callout success">
-      <strong>Résultat :</strong> Nouveau contrôleur de domaine opérationnel, réplication AD/DNS vérifiée entre les deux serveurs, services DNS et DHCP configurés et distribués sur le réseau.
-    </div>
-
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
-
+    <div class="callout success"><strong>Résultat :</strong> SRV-AD02 opérationnel sur adefi.local, réplication AD/DNS vérifiée entre les deux DCs, DNS et DHCP actifs.</div>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
     <div class="proof-row">
-      <div>
-        <h3>Active Directory — Contrôleur de domaine promu</h3>
-        <p>La console ADUC (Active Directory Users and Computers) montre le nouveau serveur promu en contrôleur de domaine, visible dans l'OU "Domain Controllers".</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Console ADUC — Domain Controllers</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Console "Utilisateurs et ordinateurs Active Directory" (dsa.msc) avec l'OU "Domain Controllers" ouverte, montrant les contrôleurs de domaine présents dans le domaine.</p>
-        <div class="ph-steps"><ol><li>Sur le serveur DC : Win+R → <code>dsa.msc</code></li><li>Clique sur "Domain Controllers" dans l'arborescence gauche</li><li>Capture les serveurs listés (les deux DCs si migration)</li></ol></div>
-      </div>
+      <div><h3>ADUC — Deux contrôleurs de domaine</h3><p>Console ADUC : SRV-AD01 (Windows Server 2016) et SRV-AD02 (Windows Server 2019) dans l'OU Domain Controllers du domaine adefi.local.</p></div>
+      <figure class="proof-media">
+        <img src="aduc-s2-dc.png" alt="ADUC adefi.local — Domain Controllers : SRV-AD01 WS2016 et SRV-AD02 WS2019" loading="lazy"/>
+        <figcaption>ADUC · adefi.local · SRV-AD01 (WS 2016) + SRV-AD02 (WS 2019)</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Console DNS — Zones configurées</h3>
-        <p>La console DNS montre les zones de recherche directe et inversée configurées pour le domaine Active Directory, avec les enregistrements des contrôleurs de domaine.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Gestionnaire DNS — Zones du domaine</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Console de gestion DNS (dnsmgmt.msc) avec la zone du domaine ouverte, montrant les enregistrements A des contrôleurs de domaine et les enregistrements SRV AD.</p>
-        <div class="ph-steps"><ol><li>Win+R → <code>dnsmgmt.msc</code></li><li>Développe le serveur DNS → Zones de recherche directe</li><li>Clique sur la zone du domaine (ex. adefi.local)</li><li>Capture les enregistrements DNS visibles</li></ol></div>
-      </div>
+      <div><h3>DNS Manager — Zone adefi.local</h3><p>Zone adefi.local avec enregistrements SOA, NS et A des deux DCs : SRV-AD01 (192.168.1.10), SRV-AD02 (192.168.1.11), SRV-DaTA (192.168.1.20).</p></div>
+      <figure class="proof-media">
+        <img src="dns-zones-adefi.png" alt="DNS Manager — zone adefi.local, enregistrements A SRV-AD01/AD02/DaTA" loading="lazy"/>
+        <figcaption>DNS Manager · adefi.local · SRV-AD01 192.168.1.10 · SRV-AD02 192.168.1.11 · SRV-DaTA 192.168.1.20</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Réplication AD — dcdiag ou repadmin</h3>
-        <p>La commande <code>dcdiag</code> ou <code>repadmin /replsummary</code> vérifie que la réplication entre les deux contrôleurs de domaine fonctionne correctement sans erreurs.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">CMD Windows Server — repadmin /replsummary</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Résultat de <code>repadmin /replsummary</code> ou <code>dcdiag /test:replications</code> montrant "0 échec(s)" pour la réplication entre les contrôleurs de domaine.</p>
-        <div class="ph-steps"><ol><li>Ouvre CMD en tant qu'administrateur sur un DC</li><li>Tape : <code>repadmin /replsummary</code></li><li>Ou : <code>dcdiag /test:replications /v</code></li><li>Capture le résultat avec les statuts de réplication</li></ol></div>
-      </div>
+      <div><h3>Réplication AD — repadmin /replsummary</h3><p>0 erreur sur 5 partenaires dans les deux sens (Source et Destination DSA) : réplication entre SRV-AD01 et SRV-AD02 fonctionnelle.</p></div>
+      <figure class="proof-media">
+        <img src="repadmin-replsummary.png" alt="repadmin /replsummary — SRV-AD01 et SRV-AD02, 0 failures, réplication OK" loading="lazy"/>
+        <figcaption>repadmin /replsummary · SRV-AD01 ↔ SRV-AD02 · 0 erreur de réplication</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- SEMAINE 6 -->
+  <!-- S6 -->
   <section class="card week-card">
-    <div class="week-header">
-      <span class="week-badge">Semaine 6</span>
-      <h2 style="margin:0">Migration de données &amp; sauvegarde Veeam</h2>
-    </div>
-
+    <div class="week-header"><span class="week-badge">Semaine 6</span><h2 style="margin:0">Migration de données &amp; Veeam Backup</h2></div>
     <p class="section-label">Activités principales</p>
     <div class="grid">
-      <div>
-        <p><strong>Migration de données :</strong></p>
-        <ul>
-          <li>Transfert des <strong>rôles FSMO</strong> vers le nouveau serveur.</li>
-          <li>Migration d'environ <strong>182 Go de données</strong> d'entreprise.</li>
-          <li>Montage et formatage d'un <strong>disque 1 To</strong>.</li>
-          <li>Hébergement des données sur le <strong>nouveau serveur Data</strong>.</li>
-        </ul>
-      </div>
-      <div>
-        <p><strong>Services &amp; virtualisation :</strong></p>
-        <ul>
-          <li>Mise en place du <strong>TSE (Terminal Services)</strong>.</li>
-          <li>Configuration <strong>RDP / Bureau à distance</strong>.</li>
-          <li>Mise en place de <strong>Veeam Backup</strong> (sauvegarde complète + réplication VMs).</li>
-          <li>Virtualisation d'un poste avec <strong>OpenBee</strong>.</li>
-        </ul>
-      </div>
+      <div><p><strong>Migration :</strong></p><ul>
+        <li>Transfert des <strong>rôles FSMO</strong> vers SRV-AD02.</li>
+        <li>Migration d'environ <strong>182 Go de données</strong>.</li>
+        <li>Formatage d'un disque 1 To pour le serveur Data.</li>
+      </ul></div>
+      <div><p><strong>Services :</strong></p><ul>
+        <li>Mise en place <strong>TSE et RDP</strong>.</li>
+        <li><strong>Veeam Backup</strong> (sauvegarde + réplication VMs).</li>
+        <li>Virtualisation d'un poste avec <strong>OpenBee</strong>.</li>
+      </ul></div>
     </div>
-
-    <div class="callout warn">
-      <strong>Défi :</strong> Assurer la continuité de service pendant la migration des 182 Go de données. Solution : migration progressive par lots, vérification de l'intégrité à chaque étape, bascule planifiée hors heures de bureau.
-    </div>
-
-    <p class="section-label">Ce que j'ai appris</p>
-    <ul>
-      <li>Migration de données serveur en maintenant la continuité de service.</li>
-      <li>Mise en place de sauvegardes professionnelles avec <strong>Veeam Backup &amp; Replication</strong>.</li>
-      <li>Utilisation de la virtualisation en environnement de production (ESXi + OpenBee).</li>
-    </ul>
-
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
-
+    <div class="callout warn"><strong>Défi :</strong> Continuité de service pendant la migration. Solution : lots progressifs avec vérification d'intégrité, bascule planifiée hors heures de bureau.</div>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
     <div class="proof-row">
-      <div>
-        <h3>Veeam Backup — Jobs de sauvegarde configurés</h3>
-        <p>L'interface Veeam Backup &amp; Replication montre les jobs de sauvegarde créés pour les VMs et les serveurs physiques, avec les planifications et les statuts.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Console Veeam Backup — Liste des jobs</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Interface Veeam Backup &amp; Replication avec la liste des jobs de sauvegarde configurés : nom du job, machines concernées, planification (quotidienne/hebdomadaire) et dernier statut (Success/Warning).</p>
-        <div class="ph-steps"><ol><li>Ouvre la console Veeam Backup &amp; Replication</li><li>Onglet "Jobs" ou "Backup" dans le panneau gauche</li><li>Capture la liste complète des jobs avec leur statut</li><li>Double-clique sur un job pour capturer les détails (machines, rétention, planification)</li></ol></div>
-      </div>
+      <div><h3>Veeam Backup — Jobs configurés</h3><p>Console Veeam : sauvegarde VMs ESXi, sauvegarde agent serveur et réplication VMs avec planifications quotidiennes.</p></div>
+      <figure class="proof-media">
+        <img src="veeam-jobs.png" alt="Veeam Backup & Replication — jobs Backup_VM, Backup_SRV-ADEFI, Replication" loading="lazy"/>
+        <figcaption>Veeam Backup &amp; Replication · Jobs : sauvegarde VMs + serveur + réplication</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Transfert des rôles FSMO — Nouveau serveur</h3>
-        <p>La commande <code>netdom query fsmo</code> confirme que les cinq rôles FSMO ont été transférés vers le nouveau serveur Data lors de la migration.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">CMD — netdom query fsmo</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Résultat de <code>netdom query fsmo</code> sur le nouveau serveur, montrant les 5 rôles FSMO (PDC, RID, Infrastructure, Schema, Domain Naming) avec le nom du nouveau serveur détenteur.</p>
-        <div class="ph-steps"><ol><li>Ouvre CMD en tant qu'administrateur sur le nouveau serveur</li><li>Tape : <code>netdom query fsmo</code></li><li>Capture le résultat complet</li></ol></div>
-      </div>
+      <div><h3>Rôles FSMO — SRV-AD02.adefi.local</h3><p><code>netdom query fsmo</code> : les 5 rôles FSMO (Schema, Naming, PDC, RID, Infrastructure) sont transférés sur SRV-AD02.</p></div>
+      <figure class="proof-media">
+        <img src="fsmo-s2-netdom.png" alt="netdom query fsmo — 5 rôles sur SRV-AD02.adefi.local, commande réussie" loading="lazy"/>
+        <figcaption>netdom query fsmo · 5 rôles FSMO → SRV-AD02.adefi.local</figcaption>
+      </figure>
     </div>
-
     <div class="proof-row">
-      <div>
-        <h3>Nouveau serveur Data — Données migrées</h3>
-        <p>L'Explorateur Windows sur le nouveau serveur montre le disque 1 To formaté avec les données migrées (182 Go) accessibles et partagées sur le réseau.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Explorateur Windows — Disque de données + Partages réseau</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Explorateur Windows sur le serveur Data montrant : (1) le disque 1 To avec l'espace occupé visible, (2) la gestion des partages (fsmgmt.msc) avec les dossiers partagés sur le réseau.</p>
-        <div class="ph-steps"><ol><li>Ouvre l'Explorateur Windows sur le nouveau serveur Data</li><li>Capture le disque 1 To avec la taille utilisée (~182 Go)</li><li>Win+R → <code>fsmgmt.msc</code> pour les partages réseau</li><li>Capture les dossiers partagés accessibles aux utilisateurs</li></ol></div>
-      </div>
+      <div><h3>Serveur Data — Données &amp; partages réseau</h3><p>Disque Données D: avec ~161 Go occupés sur 930 Go, et partages réseau Entreprise, Utilisateurs, Commun accessibles au domaine.</p></div>
+      <figure class="proof-media">
+        <img src="donnees-migrees.png" alt="Windows Server Explorer — disque D: 161 Go, partages Entreprise/Utilisateurs/Commun" loading="lazy"/>
+        <figcaption>Windows Server · Disque D: ~161 Go · Partages : Entreprise, Utilisateurs, Commun</figcaption>
+      </figure>
     </div>
   </section>
 
-  <!-- TABLEAU DE SYNTHESE -->
   <section class="card">
-    <p class="section-label">Synthèse</p>
-    <h2>Compétences acquises — 2ème année</h2>
-    <table>
-      <thead>
-        <tr><th>Domaine</th><th>Compétence</th><th>Niveau atteint</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>Virtualisation</td><td>VMware ESXi, création et gestion de VMs, OpenBee</td><td>Intermédiaire</td></tr>
-        <tr><td>Administration AD</td><td>Windows Server, DC, DNS, DHCP, FSMO, GPO, réplication</td><td>Avancé</td></tr>
-        <tr><td>Sécurité / Accès</td><td>VPN Zyxel (SSL-VPN / L2TP), TSE, RDP, pare-feu Windows</td><td>Intermédiaire</td></tr>
-        <tr><td>Administration Linux</td><td>Gestion utilisateurs, droits sudo, SSH, audit réseau</td><td>Intermédiaire</td></tr>
-        <tr><td>Sauvegarde</td><td>Veeam Backup &amp; Replication, stratégies de sauvegarde</td><td>Intermédiaire</td></tr>
-        <tr><td>Migration serveur</td><td>Migration de données (182 Go), continuité de service, FSMO</td><td>Avancé</td></tr>
-        <tr><td>Messagerie</td><td>Configuration POP/IMAP, Outlook, diagnostic ralentissement</td><td>Intermédiaire</td></tr>
-      </tbody>
-    </table>
+    <p class="section-label">Synthèse</p><h2>Compétences acquises — 2ème année</h2>
+    <table><thead><tr><th>Domaine</th><th>Compétence</th><th>Niveau</th></tr></thead><tbody>
+      <tr><td>Virtualisation</td><td>VMware ESXi, gestion VMs, OpenBee</td><td>Intermédiaire</td></tr>
+      <tr><td>Administration AD</td><td>Windows Server, DC, DNS, DHCP, FSMO, GPO, réplication</td><td>Avancé</td></tr>
+      <tr><td>Sécurité / Accès</td><td>VPN SSL Zyxel, TSE, RDP, droits NTFS</td><td>Intermédiaire</td></tr>
+      <tr><td>Administration Linux</td><td>Gestion utilisateurs, sudo, SSH, Nmap</td><td>Intermédiaire</td></tr>
+      <tr><td>Sauvegarde</td><td>Veeam Backup &amp; Replication</td><td>Intermédiaire</td></tr>
+      <tr><td>Migration serveur</td><td>Migration ~182 Go, continuité de service, FSMO</td><td>Avancé</td></tr>
+      <tr><td>Messagerie</td><td>POP/IMAP, Outlook, diagnostic</td><td>Intermédiaire</td></tr>
+    </tbody></table>
   </section>
 
-  <!-- BTS MAPPING -->
   <div class="bts-map">
     <p class="section-label">Référentiel BTS SIO</p>
-    <h2 style="margin:0 0 8px">Correspondance avec les compétences du BTS</h2>
-    <p style="color:#5f6f86;margin:.65rem 0 0">Ce stage de 2ème année couvre des blocs de compétences avancés du référentiel BTS SIO option SISR :</p>
+    <h2 style="margin:0 0 8px">Correspondance BTS SIO SISR</h2>
     <ul class="chips-list">
       <li class="bts-chip">B1.2 – Mettre en place et exploiter une infrastructure</li>
       <li class="bts-chip">B1.3 – Administration et exploitation avancée</li>
-      <li class="bts-chip">B2.1 – Configuration avancée des équipements réseau</li>
-      <li class="bts-chip">B2.2 – Sécurité de l'infrastructure (VPN, pare-feu)</li>
-      <li class="bts-chip">B2.3 – Maintien en condition opérationnelle (backup)</li>
-      <li class="bts-chip">B3.1 – Support et gestion des utilisateurs AD</li>
+      <li class="bts-chip">B2.1 – Configuration équipements réseau avancée</li>
+      <li class="bts-chip">B2.2 – Sécurité infrastructure (VPN, pare-feu)</li>
+      <li class="bts-chip">B2.3 – Maintien en condition opérationnelle</li>
+      <li class="bts-chip">B3.1 – Support utilisateurs AD</li>
       <li class="bts-chip">B4.1 – Virtualisation des serveurs</li>
     </ul>
   </div>
 
-  <!-- BILAN -->
   <section class="card">
-    <p class="section-label">Conclusion</p>
-    <h2>Bilan du stage de 2ème année</h2>
-    <p>Ce deuxième stage chez Adefi Informatique m'a permis d'aborder des problématiques techniques nettement plus complexes qu'en 1ère année. La virtualisation avec VMware ESXi, le déploiement complet d'un Active Directory avec ses rôles DNS/DHCP, la mise en place de Veeam Backup et la migration de données en production m'ont confronté aux enjeux réels de l'administration systèmes en entreprise.</p>
-    <div class="callout success">
-      <strong>Points forts :</strong> Le déploiement du nouveau contrôleur de domaine avec transfert des rôles FSMO, et la mise en place de Veeam Backup qui protège désormais l'ensemble des VMs du client — deux missions à fort impact opérationnel réalisées en autonomie croissante.
-    </div>
-    <p>Ce stage confirme ma montée en compétences progressive sur les deux années de BTS SIO et consolide mon projet professionnel orienté administration systèmes, réseaux et virtualisation. La confiance accordée par M. Cédric Duval, qui m'a laissé piloter des migrations de production, m'a apporté une expérience et une assurance techniques considérables.</p>
+    <p class="section-label">Conclusion</p><h2>Bilan du stage de 2ème année</h2>
+    <p>Ce deuxième stage chez Adefi Informatique m'a permis d'aborder des problématiques techniques nettement plus complexes : virtualisation avec VMware ESXi, déploiement complet d'un Active Directory avec DNS/DHCP, mise en place de Veeam Backup et migration de données en production.</p>
+    <div class="callout success"><strong>Points forts :</strong> Le déploiement de SRV-AD02 avec transfert des rôles FSMO et la mise en place de Veeam Backup — deux missions à fort impact opérationnel réalisées en autonomie croissante.</div>
+    <p>Ce stage confirme ma montée en compétences et consolide mon projet professionnel orienté administration systèmes, réseaux et virtualisation.</p>
   </section>
 
 </main>

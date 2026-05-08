@@ -5,6 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Compte-rendu de Stage 1ère année – Adefi Informatique</title>
   <link href="stage.css" rel="stylesheet"/>
+  <style>
+    /* Vidéo looping PC Gamer */
+    .stage-video {
+      width: 100%;
+      max-height: 320px;
+      object-fit: contain;
+      border-radius: 14px;
+      border: 1px solid #e4eaf2;
+      box-shadow: 0 12px 28px rgba(15,23,42,.12);
+      background: #0b1020;
+      display: block;
+    }
+    .video-note {
+      font-size: .82rem;
+      color: #6b7280;
+      margin-top: 7px;
+      text-align: center;
+    }
+    .video-note code {
+      background: #f0f2f7;
+      border-radius: 5px;
+      padding: 1px 5px;
+      font-size: .82em;
+      color: #c0405f;
+    }
+  </style>
 </head>
 <body>
 
@@ -89,32 +115,28 @@
       <li>Importance du RAID et des sauvegardes pour les entreprises.</li>
     </ul>
 
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
 
     <div class="proof-row">
       <div>
         <h3>NAS Synology — Interface DSM (RAID SHR)</h3>
-        <p>Cette capture montre le NAS Synology entièrement configuré avec le RAID SHR actif et les disques en bonne santé.</p>
+        <p>Interface DSM du NAS Synology : pool de stockage SHR actif avec 5 disques affichés en statut « Sain ».</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Interface DSM — Gestionnaire de stockage</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Panneau de configuration DSM → Gestionnaire de stockage → Pool de stockage. On doit voir le RAID SHR avec le statut <em>« En bonne santé »</em> et les disques listés avec leur capacité.</p>
-        <div class="ph-steps"><ol><li>Connecte-toi à l'interface web du NAS (ex. 192.168.x.x:5000)</li><li>Panneau de configuration → Gestionnaire de stockage</li><li>Onglet "Pool de stockage" ou "Volume"</li><li>Capture l'écran montrant le RAID SHR actif</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="dsm-raid-shr.png" alt="Interface DSM Synology — Pool de stockage RAID SHR, 5 disques, statut Sain" loading="lazy"/>
+        <figcaption>Synology DSM · Pool SHR · 5 disques HDD · Statut : Sain</figcaption>
+      </figure>
     </div>
 
     <div class="proof-row">
       <div>
         <h3>Gestionnaire de disques Windows — RAID 1 serveur</h3>
-        <p>Preuve de la mise en place du RAID 1 sur le serveur Windows, avec les deux disques en miroir.</p>
+        <p>Volume en miroir (RAID 1) visible dans le gestionnaire de disques Windows Server, les deux disques affichant le statut « Sain ».</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Gestionnaire de disques Windows Server</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Ouvre le Gestionnaire de disques (diskmgmt.msc). On doit voir les deux disques du RAID 1 avec la mention <em>« Miroir »</em> ou <em>« En miroir »</em> et le statut <em>« Sain »</em>.</p>
-        <div class="ph-steps"><ol><li>Win+R → <code>diskmgmt.msc</code></li><li>Localise les volumes en miroir (RAID 1)</li><li>Capture l'écran complet montrant les deux disques</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="diskmgmt-raid1-miroir.png" alt="Gestionnaire de disques Windows — volume Miroir RAID 1 statut Sain" loading="lazy"/>
+        <figcaption>Gestionnaire de disques · Volume Miroir (RAID 1) · Statut : Sain</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -127,7 +149,6 @@
 
     <p class="section-label">Activités principales</p>
     <ul>
-      <li>Étude &amp; utilisation d'<strong>iptables</strong> (pare-feu Linux).</li>
       <li>Configuration d'un <strong>pare-feu matériel</strong>, d'un switch Zyxel et d'un routeur.</li>
       <li>Déploiement d'une <strong>infrastructure réseau complète</strong> dans un bâtiment professionnel.</li>
       <li>Déménagement de la baie informatique et brassage complet des câbles.</li>
@@ -138,32 +159,17 @@
       <strong>Compétences acquises :</strong> Mise en place de VLANs, adresses IP fixes, gestion des conflits réseau (ports téléphonie vs data), techniques de test matériel (alimentation).
     </div>
 
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
-
-    <div class="proof-row">
-      <div>
-        <h3>Règles iptables — Pare-feu Linux</h3>
-        <p>Capture des règles iptables configurées, montrant les chaînes INPUT/OUTPUT/FORWARD et les règles de filtrage mises en place.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Terminal Linux — iptables -L -v</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Terminal Linux affichant la liste des règles iptables avec les compteurs de paquets et les politiques par chaîne.</p>
-        <div class="ph-steps"><ol><li>Ouvre un terminal Linux (ou une VM si plus en stage)</li><li>Tape : <code>sudo iptables -L -v --line-numbers</code></li><li>Capture le résultat montrant les chaînes INPUT, FORWARD, OUTPUT</li></ol></div>
-      </div>
-    </div>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
 
     <div class="proof-row">
       <div>
         <h3>Switch Zyxel — Configuration VLAN</h3>
-        <p>Interface d'administration du switch Zyxel montrant les VLANs configurés pour séparer les flux téléphonie et données.</p>
+        <p>Interface d'administration du switch Zyxel montrant les VLANs configurés pour séparer les flux téléphonie (VOIX), données (Data) et management.</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Interface web du switch Zyxel</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Interface d'administration web du switch → Section VLAN. On doit voir les VLANs créés avec leurs ports assignés (accès ou trunk).</p>
-        <div class="ph-steps"><ol><li>Accède à l'interface web du switch Zyxel (IP de gestion)</li><li>Navigue vers Advanced → VLAN → Static VLAN</li><li>Capture l'écran avec les VLANs et leurs configurations de ports</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="zyxel-vlan.png" alt="Interface web switch Zyxel — VLANs Data, Voix, Management configurés" loading="lazy"/>
+        <figcaption>Zyxel GS1920 · VLANs : Data, VOIX/Téléphonie, Management · Ports assignés</figcaption>
+      </figure>
     </div>
 
     <div class="photo-placeholder">
@@ -203,25 +209,36 @@
       <li>Diagnostic alimentation, RAM, stockage.</li>
     </ul>
 
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
 
     <div class="proof-row">
       <div>
         <h3>VM Fedora — Récupération de données</h3>
-        <p>La machine virtuelle Fedora montée sur VirtualBox/VMware, avec le disque du PC client accessible et les fichiers visibles dans le gestionnaire de fichiers.</p>
+        <p>Machine virtuelle Fedora lancée sous VirtualBox avec le disque du PC client monté et ses fichiers accessibles dans le gestionnaire de fichiers.</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">VM Fedora avec disque client monté</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Fenêtre VirtualBox / VMware avec Fedora démarré, gestionnaire de fichiers ouvert et les fichiers du PC client visibles. Si tu n'as plus accès, reproduis la démarche : monte un disque externe dans une VM Linux et capture le résultat.</p>
-        <div class="ph-steps"><ol><li>Lance VirtualBox / VMware → Ouvre ta VM Linux</li><li>Attache un disque via "Périphériques → USB" ou SATA</li><li>Ouvre le gestionnaire de fichiers Fedora/Nautilus</li><li>Capture avec le disque monté et les fichiers visibles</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="vm-fedora-disque.png" alt="VM Fedora sous VirtualBox — disque client monté, fichiers visibles dans Nautilus" loading="lazy"/>
+        <figcaption>Fedora (VirtualBox) · Disque client « Client_Disk » monté · Fichiers récupérés accessibles</figcaption>
+      </figure>
     </div>
 
-    <div class="photo-placeholder">
-      <div class="ph-icon">📸</div>
-      <div class="ph-title">PC Gamer assemblé — Photo physique</div>
-      <p class="ph-desc"><strong>Quoi capturer :</strong> Photo du PC Gamer monté avec le watercooling en place, câbles gérés proprement, vu de l'intérieur du boîtier. Si tu as la photo prise pendant le stage, intègre-la directement ici.</p>
+    <div class="proof-row">
+      <div>
+        <h3>PC Gamer (2 400 €) — Assemblage avec watercooling</h3>
+        <p>Montage complet du PC haute performance : radiateur, bloc pompe CPU, gestion des câbles et test de démarrage.</p>
+      </div>
+      <div>
+        <video
+          class="stage-video"
+          src="stage-pc-gamer.mp4"
+          autoplay
+          loop
+          muted
+          playsinline>
+          Votre navigateur ne supporte pas la vidéo HTML5.
+        </video>
+        <p class="video-note">📁 Placer le fichier vidéo ici : <code>assets/stage-pc-gamer.mp4</code></p>
+      </div>
     </div>
   </section>
 
@@ -249,19 +266,17 @@
       <li>Diagnostic d'imprimantes et périphériques réseau.</li>
     </ul>
 
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
 
     <div class="proof-row">
       <div>
         <h3>Commandes réseau — <code>arp -a</code> &amp; <code>ipconfig</code></h3>
         <p>Ces commandes permettent d'identifier rapidement les appareils présents sur le réseau et de vérifier la configuration IP des postes en mairie.</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Invite de commandes Windows — arp -a &amp; ipconfig /all</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Une fenêtre CMD affichant d'abord <code>arp -a</code> (table ARP avec adresses MAC et IP des équipements réseau) puis <code>ipconfig /all</code> (configuration IP complète du poste).</p>
-        <div class="ph-steps"><ol><li>Win+R → <code>cmd</code></li><li>Tape <code>arp -a</code> et fais une capture</li><li>Tape <code>ipconfig /all</code> et fais une capture</li><li>Tu peux réaliser cette capture depuis ton propre poste</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="cmd-arp-ipconfig.png" alt="Invite de commandes Windows — arp -a affichant la table ARP et ipconfig /all" loading="lazy"/>
+        <figcaption>CMD Windows · <code>arp -a</code> (table ARP) + <code>ipconfig /all</code> (config IP complète)</figcaption>
+      </figure>
     </div>
 
     <div class="proof-row">
@@ -269,12 +284,10 @@
         <h3>Scan réseau — Inventaire des appareils</h3>
         <p>Outil de scan réseau utilisé pour identifier tous les équipements actifs sur le réseau de la mairie avant d'intervenir.</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Advanced IP Scanner ou Angry IP Scanner</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Interface du logiciel de scan réseau après un scan avec la liste des appareils trouvés (adresses IP, noms, constructeurs). Utilise le logiciel sur ton réseau local pour reproduire la capture.</p>
-        <div class="ph-steps"><ol><li>Télécharge Advanced IP Scanner (gratuit)</li><li>Lance un scan sur ta plage réseau (ex. 192.168.1.1-254)</li><li>Capture la liste des résultats</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="advanced-ip-scanner.png" alt="Advanced IP Scanner — liste des équipements réseau avec IP, noms et constructeurs" loading="lazy"/>
+        <figcaption>Advanced IP Scanner · Équipements détectés : routeur Zyxel, NAS Synology, postes Windows, imprimantes</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -306,19 +319,17 @@
       <li>Dépannage réseau complet en conditions réelles.</li>
     </ul>
 
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
 
     <div class="proof-row">
       <div>
         <h3>Observateur d'événements — Erreurs Power Kernel</h3>
-        <p>Les journaux Windows montrent les erreurs d'arrêt brutal (Power Kernel 41) utilisées pour diagnostiquer les problèmes d'alimentation et de stabilité serveur.</p>
+        <p>Les journaux Windows montrent les erreurs d'arrêt brutal (Kernel-Power ID 41) utilisées pour diagnostiquer les problèmes d'alimentation et de stabilité serveur.</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Observateur d'événements Windows — Kernel-Power</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> L'Observateur d'événements filtré sur les erreurs critiques <em>Kernel-Power ID 41</em> (arrêt brutal inattendu) dans les journaux Système.</p>
-        <div class="ph-steps"><ol><li>Win+R → <code>eventvwr.msc</code></li><li>Journaux Windows → Système</li><li>Filtre → ID événement : 41, Source : Kernel-Power</li><li>Capture un ou plusieurs événements avec le détail visible</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="event-kernel-power.png" alt="Observateur d'événements Windows — erreurs Kernel-Power ID 41 dans les journaux Système" loading="lazy"/>
+        <figcaption>Observateur d'événements · Journaux Système · Erreurs Kernel-Power ID 41 (arrêt brutal inattendu)</figcaption>
+      </figure>
     </div>
 
     <div class="proof-row">
@@ -326,12 +337,10 @@
         <h3>RAID 10 — Gestionnaire de disques</h3>
         <p>Configuration du serveur RAID 10 : 4 disques en miroir de bandes, offrant à la fois performance et tolérance aux pannes.</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Gestionnaire de disques — RAID 10</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Gestionnaire de disques Windows Server avec les 4 disques du RAID 10 visibles, statut "Sain" et type de volume "RAID-5" ou interface du contrôleur RAID matériel (carte RAID HPE/Dell).</p>
-        <div class="ph-steps"><ol><li>Win+R → <code>diskmgmt.msc</code></li><li>Capture les disques en mode RAID avec leurs statuts</li><li>Alternativement : accède à l'interface de gestion du contrôleur RAID matériel (iLO, IDRAC ou BIOS RAID)</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="diskmgmt-raid10.png" alt="Gestionnaire de disques Windows — RAID 10, 4 disques, 2 paires en miroir, statut Sain" loading="lazy"/>
+        <figcaption>Gestionnaire de disques · RAID-10 (R:) · 4 disques · 2 paires en miroir · Tolérance : 2 pannes · Statut : Sain</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -355,13 +364,12 @@
           <li>Migration Active Directory + données</li>
           <li>Transfert des rôles <strong>FSMO</strong> vers le nouveau serveur</li>
           <li>Travail de nuit pour la bascule (zéro downtime)</li>
-          <li>Création d'un script d'intégration automatique au domaine</li>
         </ul>
       </li>
     </ul>
 
     <div class="callout success">
-      <strong>Point fort :</strong> Migration réalisée de nuit pour ne pas interrompre les utilisateurs — transfert des rôles FSMO validé, Active Directory répliqué sur le nouveau serveur, script PowerShell créé pour rejoindre automatiquement le domaine.
+      <strong>Point fort :</strong> Migration réalisée de nuit pour ne pas interrompre les utilisateurs — transfert des rôles FSMO validé, Active Directory répliqué sur le nouveau serveur avec zéro coupure de service.
     </div>
 
     <p class="section-label">Ce que j'ai appris</p>
@@ -369,48 +377,30 @@
       <li>Organisation d'une migration serveur réelle avec contrainte de continuité de service.</li>
       <li>Gestion de l'Active Directory à grande échelle (OUs, GPO, utilisateurs).</li>
       <li>Transfert des rôles FSMO entre contrôleurs de domaine.</li>
-      <li>Automatisation de tâches d'administration avec scripts PowerShell.</li>
     </ul>
 
-    <p class="section-label" style="margin-top:24px">Captures à intégrer</p>
+    <p class="section-label" style="margin-top:24px">Preuves techniques</p>
 
     <div class="proof-row">
       <div>
         <h3>Transfert des rôles FSMO — netdom query fsmo</h3>
         <p>La commande <code>netdom query fsmo</code> confirme que les cinq rôles FSMO ont bien été transférés sur le nouveau contrôleur de domaine après la migration.</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">CMD Windows Server — netdom query fsmo</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Résultat de <code>netdom query fsmo</code> sur le nouveau serveur, montrant les 5 rôles FSMO (PDC, RID Master, Infrastructure Master, Schema Master, Domain Naming Master) pointant vers le nouveau DC.</p>
-        <div class="ph-steps"><ol><li>Ouvre CMD en tant qu'administrateur sur le nouveau serveur</li><li>Tape : <code>netdom query fsmo</code></li><li>Capture le résultat avec les noms des serveurs détenteurs des rôles</li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="fsmo-netdom.png" alt="CMD Windows Server — netdom query fsmo, 5 rôles FSMO sur SRV-AD02" loading="lazy"/>
+        <figcaption>CMD Windows Server · <code>netdom query fsmo</code> · 5 rôles FSMO transférés sur SRV-AD02.mairie.local</figcaption>
+      </figure>
     </div>
 
     <div class="proof-row">
       <div>
         <h3>Active Directory — Les deux contrôleurs de domaine</h3>
-        <p>La console ADUC (Active Directory Users and Computers) montrant l'ancien et le nouveau contrôleur de domaine présents dans le domaine pendant la migration.</p>
+        <p>La console ADUC montrant l'ancien et le nouveau contrôleur de domaine présents dans le domaine pendant la migration.</p>
       </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Console ADUC — Domain Controllers</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Console "Utilisateurs et ordinateurs Active Directory" → OU "Domain Controllers" avec les deux DC listés. Alternativement, le résultat de <code>nltest /dclist:NOM_DOMAINE</code>.</p>
-        <div class="ph-steps"><ol><li>Ouvre "Utilisateurs et ordinateurs Active Directory" (dsa.msc)</li><li>Clique sur "Domain Controllers" dans l'arborescence</li><li>Capture les deux contrôleurs de domaine visibles</li></ol></div>
-      </div>
-    </div>
-
-    <div class="proof-row">
-      <div>
-        <h3>Script PowerShell — Intégration automatique au domaine</h3>
-        <p>Script créé pour automatiser l'intégration des postes dans le domaine Active Directory, évitant les manipulations manuelles répétitives.</p>
-      </div>
-      <div class="photo-placeholder">
-        <div class="ph-icon">📸</div>
-        <div class="ph-title">Script PowerShell — Add-Computer</div>
-        <p class="ph-desc"><strong>Quoi capturer :</strong> Capture du script PowerShell ouvert dans l'ISE ou VS Code, avec le code d'intégration automatique au domaine visible (utilisant <code>Add-Computer</code>, <code>Move-ADObject</code> ou équivalent).</p>
-        <div class="ph-steps"><ol><li>Ouvre PowerShell ISE ou VS Code</li><li>Charge le script d'intégration que tu as créé</li><li>Capture le code avec la syntaxe visible</li><li>Si le script n'est plus disponible, recrée les lignes clés : <code>Add-Computer -DomainName "domaine.local" -Credential (Get-Credential)</code></li></ol></div>
-      </div>
+      <figure class="proof-media">
+        <img src="aduc-domain-controllers.png" alt="Console ADUC — OU Domain Controllers avec SRV-DC1 et SRV-DC2 listés" loading="lazy"/>
+        <figcaption>Active Directory · Domain Controllers · SRV-DC1 et SRV-DC2 (Windows Server 2022 Standard)</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -425,10 +415,9 @@
       <tbody>
         <tr><td>Administration serveur</td><td>Windows Server, Active Directory, migrations, FSMO</td><td>Intermédiaire</td></tr>
         <tr><td>Stockage</td><td>RAID 1, RAID SHR, RAID 10, NAS Synology, gestion disques</td><td>Intermédiaire</td></tr>
-        <tr><td>Réseau</td><td>Switch Zyxel, VLANs, DNS, iptables, routage, pare-feu matériel</td><td>Intermédiaire</td></tr>
+        <tr><td>Réseau</td><td>Switch Zyxel, VLANs, DNS, routage, pare-feu matériel</td><td>Intermédiaire</td></tr>
         <tr><td>Dépannage matériel</td><td>Diagnostic PC/serveur, alimentation, RAM, disques, BSOD</td><td>Avancé</td></tr>
         <tr><td>Systèmes</td><td>Windows 10/11, Ubuntu, Fedora (VM), Synology DSM, TeamViewer</td><td>Intermédiaire</td></tr>
-        <tr><td>Automatisation</td><td>Scripts PowerShell pour l'administration et l'intégration domaine</td><td>Débutant-Intermédiaire</td></tr>
       </tbody>
     </table>
   </section>
@@ -455,7 +444,7 @@
     <h2>Bilan du stage</h2>
     <p>Ce stage m'a permis d'acquérir une vision complète et réaliste du métier de technicien et d'administrateur systèmes/réseaux en prestataire de services. La variété des interventions — du montage matériel à la migration de serveurs d'entreprise en passant par le dépannage réseau en collectivité — m'a confronté à des situations professionnelles authentiques que les cours seuls ne peuvent simuler.</p>
     <div class="callout success">
-      <strong>Point marquant :</strong> La migration nocturne du serveur d'entreprise avec transfert des rôles FSMO et création d'un script d'automatisation. Cette mission, réalisée avec une contrainte de zéro interruption de service, m'a démontré l'importance de la planification, de la rigueur et de la gestion du stress en conditions réelles.
+      <strong>Point marquant :</strong> La migration nocturne du serveur d'entreprise avec transfert des rôles FSMO. Cette mission, réalisée avec une contrainte de zéro interruption de service, m'a démontré l'importance de la planification, de la rigueur et de la gestion du stress en conditions réelles.
     </div>
     <p>Je retiens également la confiance accordée par le tuteur M. Cédric Duval, qui m'a rapidement intégré aux interventions clients et m'a laissé une autonomie croissante au fil des semaines. Ce stage a confirmé et renforcé mon intérêt pour l'administration systèmes et réseaux.</p>
   </section>

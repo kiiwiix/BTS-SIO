@@ -84,4 +84,31 @@
     });
   }
 
+  /* ---- Project cards expand/collapse ---- */
+  document.querySelectorAll('.project-audit-card').forEach(card => {
+    const summary = card.querySelector('.project-summary');
+    if (!summary) return;
+
+    const btn = document.createElement('button');
+    btn.className = 'proj-toggle';
+    btn.setAttribute('aria-expanded', 'false');
+
+    const label = document.createElement('span');
+    label.textContent = 'Voir le détail';
+    const arrow = document.createElement('span');
+    arrow.className = 'proj-toggle__arrow';
+    arrow.setAttribute('aria-hidden', 'true');
+    arrow.textContent = ' ▾';
+    btn.appendChild(label);
+    btn.appendChild(arrow);
+
+    summary.after(btn);
+
+    btn.addEventListener('click', () => {
+      const open = card.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', String(open));
+      label.textContent = open ? 'Réduire' : 'Voir le détail';
+    });
+  });
+
 })();

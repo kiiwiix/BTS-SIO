@@ -386,8 +386,80 @@
     ::-webkit-scrollbar-track { background: transparent; }
     ::-webkit-scrollbar-thumb { background: rgba(201,46,84,.25); border-radius: 999px; }
     ::-webkit-scrollbar-thumb:hover { background: rgba(201,46,84,.42); }
-
     ::selection { background: rgba(201,46,84,.22); }
+
+    /* ── Hero stats row ─────────────────────────────────────── */
+    .hero-stats {
+      display: flex;
+      gap: 20px 28px;
+      flex-wrap: wrap;
+      margin-top: 22px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+    }
+    .hero-stat { display: flex; flex-direction: column; gap: 1px; }
+    .hero-stat strong {
+      font-size: 1.55rem;
+      font-weight: 900;
+      line-height: 1;
+      background: var(--grad);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero-stat span {
+      font-size: .71rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      font-weight: 600;
+    }
+
+    /* ── Article count badge on section header ──────────────── */
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      padding: 12px 20px;
+      border-radius: 14px;
+      background: rgba(201,46,84,.06);
+      border: 1px solid var(--line);
+    }
+    .section-header h2 {
+      font-size: .82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--accent);
+    }
+    .section-header span {
+      font-size: .78rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    /* ── Source chip colors ─────────────────────────────────── */
+    .meta-chip--certfr {
+      background: rgba(59,130,246,.08);
+      border-color: rgba(59,130,246,.18);
+      color: #1d4ed8;
+    }
+    .meta-chip--lemagit {
+      background: rgba(139,92,246,.08);
+      border-color: rgba(139,92,246,.18);
+      color: #6d28d9;
+    }
+    .meta-chip--cisa {
+      background: rgba(245,158,11,.08);
+      border-color: rgba(245,158,11,.18);
+      color: #b45309;
+    }
+    .meta-chip--theme {
+      background: var(--surface2);
+      border-color: rgba(15,23,42,.08);
+    }
   </style>
 </head>
 <body>
@@ -402,6 +474,24 @@
       <div class="eyebrow">🔍 Portfolio BTS SIO — Noé Chami</div>
       <h1>Veille technologique</h1>
       <p>Veille BTS SIO SISR sur l'année scolaire 2025–2026, de septembre à avril. Chaque fiche résume un article, l'analyse dans une perspective SISR et renvoie vers la source d'origine.</p>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <strong>8</strong>
+          <span>Articles analysés</span>
+        </div>
+        <div class="hero-stat">
+          <strong>4</strong>
+          <span>Sources distinctes</span>
+        </div>
+        <div class="hero-stat">
+          <strong>8 mois</strong>
+          <span>Période couverte</span>
+        </div>
+        <div class="hero-stat">
+          <strong>3</strong>
+          <span>Thèmes majeurs</span>
+        </div>
+      </div>
     </div>
     <a class="back-btn" href="index.html">← Retour au portfolio</a>
   </header>
@@ -432,8 +522,8 @@
       </div>
       <div class="meta">
         <span class="meta-chip"><strong>Date :</strong> 25 sept. 2025</span>
-        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
-        <span class="meta-chip">🌐 Réseau / pare-feu</span>
+        <span class="meta-chip meta-chip--certfr"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip meta-chip--theme">🌐 Réseau / pare-feu</span>
       </div>
       <p><strong>Résumé :</strong> le CERT-FR alerte sur plusieurs vulnérabilités affectant le serveur VPN Web de Cisco ASA et Secure Firewall Threat Defense, avec des risques de contournement d'authentification et d'exécution de code.</p>
       <p><strong>Analyse BTS :</strong> cet article illustre l'importance de la veille sécurité sur les équipements réseau exposés, du suivi des correctifs et de la réaction rapide face à une alerte critique touchant des équipements de filtrage.</p>
@@ -447,8 +537,8 @@
       </div>
       <div class="meta">
         <span class="meta-chip"><strong>Date :</strong> 22 oct. 2025</span>
-        <span class="meta-chip"><strong>Source :</strong> LeMagIT</span>
-        <span class="meta-chip">⚔️ Menaces / cybersécurité</span>
+        <span class="meta-chip meta-chip--lemagit"><strong>Source :</strong> LeMagIT</span>
+        <span class="meta-chip meta-chip--theme">⚔️ Menaces / cybersécurité</span>
       </div>
       <p><strong>Résumé :</strong> l'article explique que les menaces hybrides mêlent cyberattaques, déstabilisation informationnelle et enjeux géopolitiques, forçant les organisations à repenser leur posture défensive.</p>
       <p><strong>Analyse BTS :</strong> utile pour montrer qu'un administrateur systèmes et réseaux participe à la résilience globale d'une organisation, au-delà des seules tâches techniques locales.</p>
@@ -462,8 +552,8 @@
       </div>
       <div class="meta">
         <span class="meta-chip"><strong>Date :</strong> 13 nov. 2025</span>
-        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
-        <span class="meta-chip">🦠 Malware / réponse à incident</span>
+        <span class="meta-chip meta-chip--certfr"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip meta-chip--theme">🦠 Malware / réponse à incident</span>
       </div>
       <p><strong>Résumé :</strong> le CERT-FR décrit une opération internationale visant des infrastructures liées à plusieurs malwares et à des activités cybercriminelles persistantes.</p>
       <p><strong>Analyse BTS :</strong> excellent support pour parler d'IOC, de supervision, de remédiation et de coopération internationale dans la lutte contre les campagnes malveillantes persistantes.</p>
@@ -477,8 +567,8 @@
       </div>
       <div class="meta">
         <span class="meta-chip"><strong>Date :</strong> 5 déc. 2025</span>
-        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
-        <span class="meta-chip">💻 Développement / web</span>
+        <span class="meta-chip meta-chip--certfr"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip meta-chip--theme">💻 Développement / web</span>
       </div>
       <p><strong>Résumé :</strong> le CERT-FR signale une vulnérabilité dans React Server Components pouvant permettre une exécution de code arbitraire à distance sur des applications vulnérables.</p>
       <p><strong>Analyse BTS :</strong> intéressant pour relier l'administration des serveurs à la sécurité des frameworks web et à la nécessité de maintenir aussi la couche applicative à jour.</p>
@@ -492,8 +582,8 @@
       </div>
       <div class="meta">
         <span class="meta-chip"><strong>Date :</strong> 14 janv. 2026</span>
-        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
-        <span class="meta-chip">🔐 VPN / Accès distant</span>
+        <span class="meta-chip meta-chip--certfr"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip meta-chip--theme">🔐 VPN / Accès distant</span>
       </div>
       <p><strong>Résumé :</strong> le CERT-FR signale une campagne d'exploitation active ciblant des équipements Ivanti Connect Secure via des vulnérabilités permettant l'exécution de code à distance sans authentification (CVE-2025-0282 et CVE-2025-0283). Des acteurs malveillants déploient des webshells persistants sur les passerelles VPN compromises. L'alerte recommande une mise à jour immédiate et un audit complet des équipements exposés.</p>
       <p><strong>Analyse BTS :</strong> directement en lien avec les compétences SISR : sécurisation des accès distants, gestion des correctifs sur équipements critiques, détection d'intrusion et réponse à incident. Il illustre pourquoi un accès VPN mal maintenu devient un vecteur d'attaque majeur — un point central dans mes travaux de segmentation et de sécurisation réseau.</p>
@@ -507,8 +597,8 @@
       </div>
       <div class="meta">
         <span class="meta-chip"><strong>Date :</strong> 6 fév. 2026</span>
-        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
-        <span class="meta-chip">🔒 VPN SSL / sécurité</span>
+        <span class="meta-chip meta-chip--certfr"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip meta-chip--theme">🔒 VPN SSL / sécurité</span>
       </div>
       <p><strong>Résumé :</strong> le CERT-FR relaie une vulnérabilité affectant les VPN SSL de FortiOS et pouvant porter atteinte à la confidentialité des données transmises.</p>
       <p><strong>Analyse BTS :</strong> cet article illustre pourquoi les accès distants doivent être surveillés, corrigés rapidement et considérés comme des points d'exposition majeurs d'un SI.</p>
@@ -522,8 +612,8 @@
       </div>
       <div class="meta">
         <span class="meta-chip"><strong>Date :</strong> 13 mars 2026</span>
-        <span class="meta-chip"><strong>Source :</strong> CERT-FR</span>
-        <span class="meta-chip">🐧 Linux / systèmes</span>
+        <span class="meta-chip meta-chip--certfr"><strong>Source :</strong> CERT-FR</span>
+        <span class="meta-chip meta-chip--theme">🐧 Linux / systèmes</span>
       </div>
       <p><strong>Résumé :</strong> plusieurs vulnérabilités affectent le noyau Linux d'Ubuntu, avec des impacts potentiels sur la confidentialité, les privilèges et la politique de sécurité du système.</p>
       <p><strong>Analyse BTS :</strong> parfait pour parler de maintenance système, de gestion des mises à jour sur Linux et de l'importance d'une veille régulière sur les serveurs d'infrastructure.</p>
@@ -537,8 +627,8 @@
       </div>
       <div class="meta">
         <span class="meta-chip"><strong>Date :</strong> 7 avr. 2026</span>
-        <span class="meta-chip"><strong>Source :</strong> CISA</span>
-        <span class="meta-chip">🏭 Infrastructures critiques / OT</span>
+        <span class="meta-chip meta-chip--cisa"><strong>Source :</strong> CISA</span>
+        <span class="meta-chip meta-chip--theme">🏭 Infrastructures critiques / OT</span>
       </div>
       <p><strong>Résumé :</strong> la CISA publie une alerte sur des acteurs affiliés à l'Iran ayant exploité des automates programmables (PLC) dans des infrastructures critiques américaines. L'alerte insiste sur l'exposition d'équipements industriels, les accès distants non maîtrisés et la réduction de la surface d'attaque.</p>
       <p><strong>Analyse BTS :</strong> cet article relie directement cybersécurité, segmentation réseau, contrôle des accès distants, supervision et protection d'équipements critiques — des thèmes clés pour un profil SISR.</p>
