@@ -240,6 +240,18 @@
     .impact h3{margin:0 0 8px; font-size:1.1rem}
     .impact ul{margin:0; padding-left:18px; color:var(--muted)}
     .skills-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:18px}
+    /* Tableau de synthèse E6 */
+    .synthese-wrap{overflow-x:auto; margin-top:8px}
+    .synthese-table{width:100%; border-collapse:collapse; font-size:.82rem; min-width:620px}
+    .synthese-table th,.synthese-table td{padding:9px 10px; border:1px solid rgba(255,255,255,.09); text-align:center; vertical-align:middle}
+    .synthese-table th:first-child,.synthese-table td:first-child{text-align:left; min-width:190px; font-weight:500}
+    .synthese-table thead th{background:rgba(226,75,106,.15); color:var(--accent); font-weight:700; font-size:.77rem; letter-spacing:.4px; cursor:help}
+    .synthese-table thead th:first-child{color:var(--text)}
+    .synthese-table tbody tr:hover{background:rgba(255,255,255,.03)}
+    .syn-ok{color:var(--accent2); font-weight:800; font-size:1rem}
+    .syn-legend{margin-top:10px; color:var(--muted); font-size:.79rem}
+    html[data-theme="light"] .synthese-table thead th{background:rgba(226,75,106,.1)}
+    html[data-theme="light"] .synthese-table th,.synthese-table td{border-color:rgba(15,23,42,.12)}
     .skill{background:rgba(10,11,18,.55); border:1px solid rgba(255,255,255,.08); border-radius:16px; padding:18px; display:flex; flex-direction:column; gap:12px; backdrop-filter:blur(10px)}
     .skill h3{margin:0; font-size:1.05rem}
     .skill ul{margin:0; padding-left:18px; color:var(--muted)}
@@ -472,6 +484,7 @@
 <a aria-current="true" href="#apercu">✨ Accueil</a>
 <a href="#experiences">🚀 Expériences</a>
 <a href="#projets">🧩 Projets</a>
+<a href="#synthese">📋 Synthèse E6</a>
 <a href="#certs">🏅 Certifications</a>
 <a href="veille.html" rel="noopener">🔍 Veille</a>
 </nav>
@@ -761,6 +774,77 @@
 </section>
 <!-- Expériences -->
 
+<!-- Tableau de synthèse E6 -->
+<section id="synthese">
+<h2>📋 Tableau de synthèse E6</h2>
+<p class="section-intro">Cartographie des compétences du référentiel BTS SIO SISR couvertes par chaque réalisation professionnelle.</p>
+<div class="synthese-wrap">
+<table class="synthese-table">
+  <thead>
+    <tr>
+      <th scope="col">Réalisation</th>
+      <th scope="col" title="B1.1 – Gérer le patrimoine informatique">B1.1</th>
+      <th scope="col" title="B1.2 – Répondre aux incidents et demandes d'assistance">B1.2</th>
+      <th scope="col" title="B1.4 – Travailler en mode projet">B1.4</th>
+      <th scope="col" title="B1.5 – Mettre à disposition des utilisateurs un service informatique">B1.5</th>
+      <th scope="col" title="B1.6 – Organiser son développement professionnel">B1.6</th>
+      <th scope="col" title="B2.1 – Concevoir une solution d'infrastructure réseau">B2.1</th>
+      <th scope="col" title="B2.2 – Installer l'infrastructure réseau">B2.2</th>
+      <th scope="col" title="B2.3 – Exploiter l'infrastructure réseau">B2.3</th>
+      <th scope="col" title="B2.4 – Garantir la disponibilité, l'intégrité et la confidentialité des données">B2.4</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Stage ADEFI – 1ère année</td>
+      <td class="syn-ok">✓</td><td class="syn-ok">✓</td><td></td><td></td><td class="syn-ok">✓</td>
+      <td></td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td></td>
+    </tr>
+    <tr>
+      <td>Stage ADEFI – 2ème année</td>
+      <td class="syn-ok">✓</td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td class="syn-ok">✓</td>
+      <td class="syn-ok">✓</td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td class="syn-ok">✓</td>
+    </tr>
+    <tr>
+      <td>Stage 807ème Cie – Cybersécurité</td>
+      <td></td><td></td><td class="syn-ok">✓</td><td></td><td class="syn-ok">✓</td>
+      <td></td><td></td><td></td><td class="syn-ok">✓</td>
+    </tr>
+    <tr>
+      <td>Mission 1 GSB – VLAN / Cisco</td>
+      <td></td><td></td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td></td>
+      <td class="syn-ok">✓</td><td class="syn-ok">✓</td><td></td><td></td>
+    </tr>
+    <tr>
+      <td>Mission 2 GSB – Stormshield</td>
+      <td></td><td></td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td></td>
+      <td class="syn-ok">✓</td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td class="syn-ok">✓</td>
+    </tr>
+    <tr>
+      <td>Mission 3 GSB – AD / DNS / DHCP</td>
+      <td class="syn-ok">✓</td><td></td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td></td>
+      <td class="syn-ok">✓</td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td></td>
+    </tr>
+    <tr>
+      <td>Audit Nessus – UnrealIRCd</td>
+      <td></td><td class="syn-ok">✓</td><td class="syn-ok">✓</td><td></td><td></td>
+      <td></td><td></td><td class="syn-ok">✓</td><td class="syn-ok">✓</td>
+    </tr>
+    <tr>
+      <td>Veille technologique (9 articles)</td>
+      <td></td><td></td><td></td><td></td><td class="syn-ok">✓</td>
+      <td></td><td></td><td></td><td class="syn-ok">✓</td>
+    </tr>
+    <tr>
+      <td>Certifications (ANSSI, Cisco, Linux…)</td>
+      <td></td><td></td><td></td><td></td><td class="syn-ok">✓</td>
+      <td></td><td></td><td></td><td></td>
+    </tr>
+  </tbody>
+</table>
+<p class="syn-legend"><strong>B1</strong> Compétences communes BTS SIO &nbsp;·&nbsp; <strong>B2</strong> Compétences SISR &nbsp;·&nbsp; <strong>✓</strong> compétence couverte &nbsp;·&nbsp; Survolez les en-têtes pour le libellé complet</p>
+</div>
+</section>
 <!-- Certifications -->
 <section id="certs">
 <h2>🏅 Certifications</h2>
