@@ -451,6 +451,32 @@ html[data-theme="light"] .skill h3 {
   background-clip: text;
 }
 
+/* Skill tags */
+.skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 4px;
+}
+.skill-tags .tag {
+  font-size: .78rem;
+  padding: 5px 11px;
+  border-radius: 999px;
+  background: rgba(226,75,106,.10);
+  color: var(--text);
+  border: 1px solid rgba(226,75,106,.22);
+  letter-spacing: .4px;
+  transition: background .2s, border-color .2s;
+}
+.skill-tags .tag:hover {
+  background: rgba(226,75,106,.22);
+  border-color: rgba(226,75,106,.5);
+}
+html[data-theme="light"] .skill-tags .tag {
+  background: rgba(226,75,106,.08);
+  border-color: rgba(226,75,106,.3);
+}
+
 /* Skill bars */
 .skill-bar-list {
   display: flex;
