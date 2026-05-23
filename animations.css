@@ -4,15 +4,15 @@
 
 :root {
   --akatsuki-sky-blend:
-    radial-gradient(ellipse at 14% 16%, rgba(242,75,100,.12) 0%, transparent 46%),
-    radial-gradient(ellipse at 86% 8%,  rgba(255,114,138,.09) 0%, transparent 42%),
-    radial-gradient(ellipse at 50% 118%, rgba(123,19,37,.20) 0%, transparent 52%),
-    radial-gradient(ellipse at 32% 54%, rgba(180,40,80,.06) 0%, transparent 36%);
-  --akatsuki-cloud-fill:   rgba(110,14,30,.30);
-  --akatsuki-cloud-edge:   rgba(255,235,242,.28);
-  --akatsuki-cloud-glow:   rgba(242,75,100,.12);
-  --akatsuki-cloud-shadow: rgba(0,0,0,.14);
-  --akatsuki-crow-color:   rgba(255,228,236,.92);
+    radial-gradient(ellipse at 14% 16%, rgba(255,90,130,.32) 0%, transparent 50%),
+    radial-gradient(ellipse at 86% 8%,  rgba(255,145,175,.26) 0%, transparent 46%),
+    radial-gradient(ellipse at 50% 118%, rgba(190,40,80,.42) 0%, transparent 56%),
+    radial-gradient(ellipse at 32% 54%, rgba(255,80,120,.18) 0%, transparent 40%);
+  --akatsuki-cloud-fill:   rgba(220,80,110,.95);
+  --akatsuki-cloud-edge:   rgba(255,235,242,.85);
+  --akatsuki-cloud-glow:   rgba(255,140,170,.55);
+  --akatsuki-cloud-shadow: rgba(0,0,0,.38);
+  --akatsuki-crow-color:   rgba(255,240,246,1);
 }
 
 html[data-theme="light"] {
@@ -32,11 +32,19 @@ html[data-theme="light"] {
 .akatsuki-sky {
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: 0;                    /* au-dessus de .cyber-background (-2), sous .layout (1) */
   pointer-events: none;
   overflow: hidden;
-  opacity: 0.96;
+  opacity: 1;
+  /* Teinte rouge ambiante : sky d'Akatsuki = aube/crépuscule */
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(180,40,75,.25) 0%, transparent 55%),
+    radial-gradient(ellipse at 50% 100%, rgba(140,30,55,.22) 0%, transparent 60%);
 }
+
+/* Mode clair = portfolio sobre/professionnel.
+   Aucun décor animé (nuages, corbeaux, pétales, étoiles filantes). */
+html[data-theme="light"] .akatsuki-sky { display: none !important; }
 
 .akatsuki-sky::before {
   content: "";
@@ -74,8 +82,8 @@ html[data-theme="light"] .akatsuki-sky::after { opacity: 0.18; }
   position: absolute;
   top:  var(--cloud-top,  18%);
   left: var(--cloud-left, 10%);
-  width: 240px;
-  height: 96px;
+  width: 320px;
+  height: 130px;
   border-radius: 999px;
   background: linear-gradient(
     170deg,
@@ -204,8 +212,143 @@ html[data-theme="light"] .akatsuki-sky::after { opacity: 0.18; }
 /* ── Pause state ────────────────────────────────────────── */
 .akatsuki-sky[data-paused="true"] .akatsuki-cloud,
 .akatsuki-sky[data-paused="true"] .akatsuki-crow,
-.akatsuki-sky[data-paused="true"] .akatsuki-crow__wing {
+.akatsuki-sky[data-paused="true"] .akatsuki-crow__wing,
+.akatsuki-sky[data-paused="true"] .akatsuki-petal,
+.akatsuki-sky[data-paused="true"] .akatsuki-shooting-star {
   animation-play-state: paused !important;
+}
+
+/* ── Pétales de sakura ─────────────────────────────────── */
+:root {
+  --sakura-1: rgba(255,182,202,.85);
+  --sakura-2: rgba(255,140,170,.85);
+  --sakura-edge: rgba(255,225,232,.55);
+}
+html[data-theme="light"] {
+  --sakura-1: rgba(232,90,128,.72);
+  --sakura-2: rgba(214,75,98,.74);
+  --sakura-edge: rgba(255,250,252,.60);
+}
+
+.akatsuki-petals {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.akatsuki-petal {
+  position: absolute;
+  top: -6vh;
+  left: var(--petal-left, 50vw);
+  width: 12px;
+  height: 12px;
+  opacity: var(--petal-opacity, 0.3);
+  transform: rotate(var(--petal-tilt, 0deg)) scale(var(--petal-scale, 1));
+  animation:
+    akatsuki-petal-fall var(--petal-duration, 18s) linear infinite,
+    akatsuki-petal-spin var(--petal-spin, 3s) ease-in-out infinite;
+  animation-delay: var(--petal-delay, 0s), var(--petal-delay, 0s);
+  will-change: transform, opacity;
+}
+
+/* Pétale = SVG-like en CSS : deux pseudo-arcs */
+.akatsuki-petal::before,
+.akatsuki-petal::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, var(--sakura-1), var(--sakura-2));
+  border: 0.5px solid var(--sakura-edge);
+  border-radius: 100% 0 80% 0 / 100% 0 80% 0;
+  filter: blur(0.3px);
+  box-shadow: 0 0 6px rgba(255,170,190,.18);
+}
+.akatsuki-petal::after {
+  transform: scale(0.78) rotate(60deg);
+  opacity: 0.7;
+}
+
+@keyframes akatsuki-petal-fall {
+  0%   { transform: translate3d(0, 0, 0)                                   rotate(0deg);   }
+  50%  { transform: translate3d(calc(var(--petal-drift, 0vw) * 0.5), 50vh, 0) rotate(180deg); }
+  100% { transform: translate3d(var(--petal-drift, 0vw), 110vh, 0)         rotate(360deg); }
+}
+
+@keyframes akatsuki-petal-spin {
+  0%,100% { filter: hue-rotate(0deg)   blur(0.3px); }
+  50%     { filter: hue-rotate(-12deg) blur(0.6px); }
+}
+
+/* ── Étoiles filantes ──────────────────────────────────── */
+.akatsuki-stars {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.akatsuki-shooting-star {
+  position: absolute;
+  top:  var(--star-top, 20%);
+  left: var(--star-left, 10vw);
+  width: var(--star-len, 180px);
+  height: 1.2px;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255,235,242,0.0) 5%,
+    rgba(255,235,242,0.55) 60%,
+    rgba(255,205,220,0.95) 90%,
+    rgba(255,255,255,1) 100%);
+  border-radius: 999px;
+  transform-origin: 100% 50%;
+  transform: rotate(var(--star-angle, 24deg)) translate3d(120%, 0, 0);
+  opacity: 0;
+  filter: drop-shadow(0 0 6px rgba(255,210,225,0.85));
+  animation: akatsuki-star-streak var(--star-duration, 1.2s) cubic-bezier(0.4, 0.0, 0.6, 1) forwards;
+  will-change: transform, opacity;
+}
+
+.akatsuki-shooting-star::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 50%;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(255,210,225,0.7) 50%, transparent 70%);
+  transform: translate(50%, -50%);
+  box-shadow: 0 0 12px rgba(255,210,225,0.8);
+}
+
+html[data-theme="light"] .akatsuki-shooting-star {
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(214,75,98,0.0) 5%,
+    rgba(214,75,98,0.45) 60%,
+    rgba(180,50,75,0.85) 90%,
+    rgba(133,26,45,1) 100%);
+  filter: drop-shadow(0 0 6px rgba(214,75,98,0.55));
+}
+html[data-theme="light"] .akatsuki-shooting-star::after {
+  background: radial-gradient(circle, rgba(180,50,75,1) 0%, rgba(214,75,98,0.7) 50%, transparent 70%);
+  box-shadow: 0 0 12px rgba(214,75,98,0.6);
+}
+
+@keyframes akatsuki-star-streak {
+  0%   { transform: rotate(var(--star-angle, 24deg)) translate3d(-30%, 0, 0); opacity: 0;   }
+  18%  { opacity: 1; }
+  100% { transform: rotate(var(--star-angle, 24deg)) translate3d(180%, 0, 0); opacity: 0;   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .akatsuki-petal,
+  .akatsuki-shooting-star { display: none !important; }
+}
+
+@media print {
+  .akatsuki-petals,
+  .akatsuki-stars { display: none !important; }
 }
 
 /* ── Responsive ─────────────────────────────────────────── */

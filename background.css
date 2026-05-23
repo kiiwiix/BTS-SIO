@@ -148,6 +148,11 @@ html[data-theme="light"] {
   filter: blur(0.12px);
 }
 
+/* Mode clair = portfolio sobre : on masque les couches décoratives animées
+   (pluie de code matrix + brume colorée). Seul le fond reste. */
+html[data-theme="light"] .code-rain,
+html[data-theme="light"] .mist-layer { display: none !important; }
+
 /* ── Keyframes brume ───────────────────────────────────── */
 @keyframes mist-drift-1 {
   0%   { transform: translate3d(-7%, -5%, 0) scale(1.04); opacity: 0.38; }

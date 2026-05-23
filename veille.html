@@ -637,17 +637,17 @@
 
     <article class="article-card reveal reveal-delay-3">
       <div class="card-head">
-        <h2>CERT-FR : vulnérabilités critiques dans Windows Server et Active Directory (Patch Tuesday mai 2026)</h2>
+        <h2>CERT-FR : alerte active — vulnérabilité critique dans Microsoft Exchange Server (CVE-2026-42897)</h2>
         <span class="month-badge">Mai 2026</span>
       </div>
       <div class="meta">
-        <span class="meta-chip"><strong>Date :</strong> 13 mai 2026</span>
+        <span class="meta-chip"><strong>Date :</strong> 15 mai 2026</span>
         <span class="meta-chip meta-chip--certfr"><strong>Source :</strong> CERT-FR</span>
-        <span class="meta-chip meta-chip--theme">🪟 Systèmes / Active Directory</span>
+        <span class="meta-chip meta-chip--theme">📧 Messagerie / serveurs Microsoft</span>
       </div>
-      <p><strong>Résumé :</strong> le bulletin Patch Tuesday de mai 2026 corrige plusieurs vulnérabilités dans Windows Server 2019 et 2022, dont des failles dans les services LDAP et Kerberos liés à Active Directory. Certaines permettent une élévation de privilèges ou une exécution de code à distance sans authentification préalable sur un contrôleur de domaine exposé.</p>
-      <p><strong>Analyse BTS :</strong> cet article est directement en lien avec l'infrastructure Active Directory déployée lors de la Mission 3 GSB. Il illustre l'importance d'une veille mensuelle sur les bulletins Microsoft, de l'application rapide des correctifs et de la supervision des services d'authentification dans une architecture SISR — problématiques identiques à celles d'un environnement de production.</p>
-      <a class="source-link" href="https://www.cert.ssi.gouv.fr/avis/CERTFR-2026-AVI-0412/" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
+      <p><strong>Résumé :</strong> le CERT-FR publie une <strong>alerte active</strong> (CERTFR-2026-ALE-005) concernant la <strong>CVE-2026-42897</strong> touchant Microsoft Exchange Server 2016 (CU23), 2019 (CU14 et CU15) et Subscription Edition RTM. La faille permet à un attaquant non authentifié de réaliser une injection de code indirecte à distance (XSS) et un contournement de la politique de sécurité dès qu'un utilisateur ouvre un message piégé dans Outlook Web Access. Microsoft signale que la vulnérabilité est <strong>activement exploitée</strong> ; un service d'atténuation d'urgence est actif par défaut en attendant le correctif définitif.</p>
+      <p><strong>Analyse BTS :</strong> Exchange est un service de messagerie critique souvent intégré à <strong>Active Directory</strong> — donc directement en lien avec la <strong>Mission 3 GSB</strong> et avec les stages ADEFI. L'article illustre trois réflexes d'administrateur SISR : (1) veille active sur les alertes CERT-FR pour détecter les vulnérabilités exploitées en réel, (2) déploiement immédiat des mesures de mitigation avant même que le patch officiel ne soit disponible, (3) limitation de l'exposition de l'interface web OWA (segmentation, reverse-proxy, MFA). C'est exactement le type de processus appris en TP réseau et appliqué en stage.</p>
+      <a class="source-link" href="https://www.cert.ssi.gouv.fr/alerte/CERTFR-2026-ALE-005/" target="_blank" rel="noopener noreferrer">🔗 Lire l'article source</a>
     </article>
 
   </section>
