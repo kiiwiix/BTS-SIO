@@ -328,5 +328,29 @@
   </section>
 
 </main>
+<script>
+(function(){
+  var vids = document.querySelectorAll('video.stage-video');
+  if(!vids.length) return;
+  var tryPlay = function(){
+    var allOk = true;
+    vids.forEach(function(v){
+      if(v.paused){ allOk = false; var p = v.play(); if(p && p.catch) p.catch(function(){}); }
+    });
+    return allOk;
+  };
+  tryPlay();
+  var EVS = ['click','touchstart','keydown','scroll','mousemove','pointerdown'];
+  var onGesture = function(){
+    if(tryPlay()){
+      EVS.forEach(function(e){ document.removeEventListener(e, onGesture, true); });
+    }
+  };
+  EVS.forEach(function(e){ document.addEventListener(e, onGesture, {capture:true, passive:true}); });
+  setTimeout(function(){
+    vids.forEach(function(v){ if(v.paused) v.setAttribute('controls',''); });
+  }, 2500);
+})();
+</script>
 </body>
 </html>
