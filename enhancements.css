@@ -1119,9 +1119,8 @@ html[data-theme="light"] .sidebar { animation: none; }
    STYLE SOBRE — Portfolio BTS jury
    ══════════════════════════════════════════════════════════════ */
 
-/* Effets visuels : actifs en mode sombre, désactivés en mode clair */
-/* (le mode clair masque déjà .code-rain et .mist-layer dans background.css) */
-.akatsuki-sky    { display: none !important; }
+/* Effets visuels : ambiance Akatsuki active (touche fan)
+   En light mode le ciel reste très subtil (cf override animations.css) */
 html[data-theme="light"] .mist-layer      { opacity: 0.05 !important; filter: blur(88px) !important; }
 html[data-theme="light"] .mist-layer--slow,
 html[data-theme="light"] .mist-layer--pulse { opacity: 0.03 !important; }

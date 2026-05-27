@@ -11,9 +11,10 @@
 
   let sky = null;
   let cloudsLayer = null, crowsLayer = null, petalsLayer = null, starsLayer = null;
+  let moonEl = null;
   let crows = [], petals = [], resizeTimer = null;
   let isPaused = document.hidden;
-  let starInterval = null;
+  let starInterval = null, lightningInterval = null;
   let parallaxRAF = null, lastScrollY = window.scrollY;
 
   const rand  = (min, max) => Math.random() * (max - min) + min;
@@ -49,6 +50,16 @@
     crowsLayer  = ensureLayer('akatsuki-crows');
     petalsLayer = ensureLayer('akatsuki-petals');
     starsLayer  = ensureLayer('akatsuki-stars');
+
+    if (!moonEl) {
+      moonEl = sky.querySelector('.akatsuki-moon');
+      if (!moonEl) {
+        moonEl = document.createElement('div');
+        moonEl.className = 'akatsuki-moon';
+        moonEl.setAttribute('aria-hidden', 'true');
+        sky.appendChild(moonEl);
+      }
+    }
   };
 
   /* ─────────────────────────────────────────────────────
@@ -248,6 +259,27 @@
   };
 
   /* ─────────────────────────────────────────────────────
+     ÉCLAIRS — flash rouge dramatique (dark mode uniquement)
+     ───────────────────────────────────────────────────── */
+  const spawnLightning = () => {
+    if (!sky || isPaused || reduceMotion.matches) return;
+    if (doc.getAttribute('data-theme') === 'light') return;
+    const flash = document.createElement('div');
+    flash.className = 'akatsuki-lightning';
+    sky.appendChild(flash);
+    setTimeout(() => flash.remove(), 800);
+  };
+
+  const scheduleLightning = () => {
+    if (lightningInterval) { clearInterval(lightningInterval); lightningInterval = null; }
+    if (reduceMotion.matches) return;
+    /* Éclair rare : toutes les 35-80 s, probabilité 60% */
+    lightningInterval = setInterval(() => {
+      if (!isPaused && Math.random() > 0.4) spawnLightning();
+    }, rand(35000, 80000));
+  };
+
+  /* ─────────────────────────────────────────────────────
      PARALLAXE LÉGÈRE SUR LE SCROLL (nuages uniquement)
      ───────────────────────────────────────────────────── */
   const updateParallax = () => {
@@ -282,6 +314,7 @@
     buildCrows();
     buildPetals();
     scheduleStars();
+    scheduleLightning();
   };
 
   const onResize = () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(rebuild, 150); };

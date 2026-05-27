@@ -42,9 +42,12 @@ html[data-theme="light"] {
     radial-gradient(ellipse at 50% 100%, rgba(140,30,55,.22) 0%, transparent 60%);
 }
 
-/* Mode clair = portfolio sobre/professionnel.
-   Aucun décor animé (nuages, corbeaux, pétales, étoiles filantes). */
-html[data-theme="light"] .akatsuki-sky { display: none !important; }
+/* Mode clair : ambiance Akatsuki visible mais discrète (touche fan, jury-friendly) */
+html[data-theme="light"] .akatsuki-sky {
+  background: transparent;
+  opacity: 0.7;
+}
+html[data-theme="light"] .akatsuki-sky::before { opacity: 0.32; }
 
 .akatsuki-sky::before {
   content: "";
@@ -77,27 +80,20 @@ html[data-theme="light"] .akatsuki-sky::after { opacity: 0.18; }
   inset: 0;
 }
 
-/* ── Nuages ─────────────────────────────────────────────── */
+/* ── Nuages Akatsuki (SVG iconique : rouge bordé blanc) ───── */
 .akatsuki-cloud {
   position: absolute;
   top:  var(--cloud-top,  18%);
   left: var(--cloud-left, 10%);
-  width: 320px;
-  height: 130px;
-  border-radius: 999px;
-  background: linear-gradient(
-    170deg,
-    rgba(255,255,255,.09) 0%,
-    var(--akatsuki-cloud-fill) 55%,
-    rgba(0,0,0,.06) 100%
-  );
-  border: 1px solid var(--akatsuki-cloud-edge);
-  box-shadow:
-    0 12px 28px var(--akatsuki-cloud-shadow),
-    0 0 40px var(--akatsuki-cloud-glow),
-    inset 0 2px 0 rgba(255,255,255,.12),
-    inset 0 -2px 4px rgba(0,0,0,.06);
-  filter: blur(0.3px);
+  width: 160px;
+  height: 100px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 72'><path d='M12 50 C2 50 2 34 14 32 C8 18 26 12 34 22 C34 8 54 6 58 18 C62 6 84 8 84 22 C96 16 110 28 102 38 C114 40 112 56 100 54 C100 62 82 64 76 56 C72 64 56 64 52 56 C46 64 30 62 28 54 C18 60 6 56 12 50 Z' fill='%23b81626' stroke='%23ffffff' stroke-width='3.2' stroke-linejoin='round' stroke-linecap='round'/></svg>");
+  filter:
+    drop-shadow(0 8px 18px var(--akatsuki-cloud-shadow))
+    drop-shadow(0 0 24px var(--akatsuki-cloud-glow));
   opacity: var(--cloud-opacity, 0.24);
   transform: translate3d(0,0,0) scale(var(--cloud-scale, 1));
   animation:
@@ -107,34 +103,10 @@ html[data-theme="light"] .akatsuki-sky::after { opacity: 0.18; }
   will-change: transform, opacity;
 }
 
-/* Bosse principale (au-dessus) */
-.akatsuki-cloud::before {
-  content: "";
-  position: absolute;
-  background: inherit;
-  border: inherit;
-  border-radius: inherit;
-  width: 130px;
-  height: 90px;
-  left: 22px;
-  top: -30px;
-  filter: blur(0.4px);
-  opacity: 0.88;
-}
-
-/* Bosse secondaire */
-.akatsuki-cloud::after {
-  content: "";
-  position: absolute;
-  background: inherit;
-  border: inherit;
-  border-radius: inherit;
-  width: 150px;
-  height: 84px;
-  right: 22px;
-  top: -20px;
-  filter: blur(0.6px);
-  opacity: 0.78;
+/* En light mode, les nuages utilisent une variante plus douce */
+html[data-theme="light"] .akatsuki-cloud {
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 72'><path d='M12 50 C2 50 2 34 14 32 C8 18 26 12 34 22 C34 8 54 6 58 18 C62 6 84 8 84 22 C96 16 110 28 102 38 C114 40 112 56 100 54 C100 62 82 64 76 56 C72 64 56 64 52 56 C46 64 30 62 28 54 C18 60 6 56 12 50 Z' fill='%23c41e3a' stroke='%23ffffff' stroke-width='2.6' stroke-linejoin='round' stroke-linecap='round' opacity='0.92'/></svg>");
+  opacity: calc(var(--cloud-opacity, 0.24) * 0.55);
 }
 
 /* ── Animations nuages ──────────────────────────────────── */
@@ -373,6 +345,98 @@ html[data-theme="light"] .akatsuki-shooting-star::after {
 }
 
 @media print { .akatsuki-sky { display: none; } }
+
+/* ──────────────────────────────────────────────────────────
+   LUNE DE SANG — Tsukuyomi, fixée en haut à droite
+   ────────────────────────────────────────────────────────── */
+.akatsuki-moon {
+  position: absolute;
+  top: 6%;
+  right: 8%;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 34%, rgba(60,8,18,0.0) 28%, rgba(60,8,18,0.45) 60%, transparent 70%),
+    radial-gradient(circle at 50% 50%,
+      #ff5870 0%,
+      #d01f3c 35%,
+      #7d0e1e 70%,
+      #38040e 100%);
+  box-shadow:
+    0 0 60px rgba(255, 40, 80, 0.45),
+    0 0 120px rgba(180, 20, 40, 0.32),
+    inset -8px -10px 22px rgba(0, 0, 0, 0.55),
+    inset 6px 8px 14px rgba(255, 140, 160, 0.22);
+  filter: blur(0.2px);
+  opacity: 0.82;
+  animation: akatsuki-moon-pulse 6s ease-in-out infinite;
+  will-change: opacity, filter;
+}
+
+/* Voile sombre derrière la lune pour la détacher du fond */
+.akatsuki-moon::before {
+  content: "";
+  position: absolute;
+  inset: -40px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(60, 8, 18, 0.35) 0%, transparent 70%);
+  z-index: -1;
+}
+
+html[data-theme="light"] .akatsuki-moon {
+  width: 78px;
+  height: 78px;
+  opacity: 0.62;
+  background:
+    radial-gradient(circle at 36% 34%, rgba(60,8,18,0.0) 30%, rgba(60,8,18,0.22) 65%, transparent 78%),
+    radial-gradient(circle at 50% 50%,
+      #ff6b80 0%,
+      #b81530 38%,
+      #5d0814 80%,
+      #260208 100%);
+  box-shadow:
+    0 0 30px rgba(184, 21, 48, 0.35),
+    inset -6px -8px 18px rgba(0, 0, 0, 0.55);
+}
+
+@keyframes akatsuki-moon-pulse {
+  0%, 100% { opacity: 0.82; filter: blur(0.2px); }
+  50%      { opacity: 1;    filter: blur(0px); }
+}
+
+@media (max-width: 960px) {
+  .akatsuki-moon { width: 78px; height: 78px; top: 4%; right: 6%; }
+}
+@media (max-width: 560px) {
+  .akatsuki-moon { width: 56px; height: 56px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .akatsuki-moon { animation: none; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   ÉCLAIR ROUGE — Flash dramatique occasionnel (dark mode only)
+   ────────────────────────────────────────────────────────── */
+.akatsuki-lightning {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 30% 20%, rgba(255, 60, 90, 0.42) 0%, transparent 35%),
+    radial-gradient(ellipse at 70% 30%, rgba(255, 90, 120, 0.30) 0%, transparent 40%);
+  opacity: 0;
+  animation: akatsuki-lightning-flash 0.6s ease-out forwards;
+  mix-blend-mode: screen;
+}
+@keyframes akatsuki-lightning-flash {
+  0%   { opacity: 0; }
+  8%   { opacity: 1; }
+  18%  { opacity: 0.3; }
+  28%  { opacity: 0.9; }
+  100% { opacity: 0; }
+}
+html[data-theme="light"] .akatsuki-lightning { display: none; }
 
 /* ══════════════════════════════════════════════════════════════
    TERMINAL — Couleurs de sortie améliorées
