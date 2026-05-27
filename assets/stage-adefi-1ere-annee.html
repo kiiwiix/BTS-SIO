@@ -30,6 +30,22 @@
       font-size: .82em;
       color: #c0405f;
     }
+    .video-wrap { position: relative; display: inline-block; width: 100%; }
+    .video-play-btn {
+      position: absolute; left: 50%; top: 50%;
+      transform: translate(-50%, -50%);
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(214, 75, 98, .92);
+      color: #fff; border: 3px solid #fff;
+      cursor: pointer; font-size: 30px; line-height: 1;
+      box-shadow: 0 10px 28px rgba(0,0,0,.4);
+      display: flex; align-items: center; justify-content: center;
+      padding: 0 0 0 6px;
+      transition: transform .15s ease, background .15s ease;
+      z-index: 2;
+    }
+    .video-play-btn:hover { background: rgba(255, 90, 115, 1); transform: translate(-50%, -50%) scale(1.06); }
+    .video-play-btn[hidden] { display: none; }
   </style>
 </head>
 <body>
@@ -223,6 +239,7 @@
         <p>Montage complet du PC haute performance : radiateur, bloc pompe CPU, gestion des câbles et test de démarrage.</p>
       </div>
       <div>
+        <div class="video-wrap">
         <video
           class="stage-video"
           autoplay
@@ -231,9 +248,11 @@
           playsinline
           preload="auto"
           poster="stage-pc-gamer-poster.jpg">
-          <source src="stage-pc-gamer.mp4?v=2" type="video/mp4"/>
-          <source src="stage-pc-gamer.webm?v=2" type="video/webm"/>
+          <source src="stage-pc-gamer.mp4?v=3" type="video/mp4"/>
+          <source src="stage-pc-gamer.webm?v=3" type="video/webm"/>
         </video>
+        <button class="video-play-btn" type="button" aria-label="Lancer la vidéo" hidden>▶</button>
+        </div>
       </div>
     </div>
   </section>
@@ -448,26 +467,26 @@
 </main>
 <script>
 (function(){
-  var vids = document.querySelectorAll('video.stage-video');
-  if(!vids.length) return;
-  var tryPlay = function(){
-    var allOk = true;
-    vids.forEach(function(v){
-      if(v.paused){ allOk = false; var p = v.play(); if(p && p.catch) p.catch(function(){}); }
-    });
-    return allOk;
-  };
-  tryPlay();
-  var EVS = ['click','touchstart','keydown','scroll','mousemove','pointerdown'];
-  var onGesture = function(){
-    if(tryPlay()){
-      EVS.forEach(function(e){ document.removeEventListener(e, onGesture, true); });
-    }
-  };
-  EVS.forEach(function(e){ document.addEventListener(e, onGesture, {capture:true, passive:true}); });
-  setTimeout(function(){
-    vids.forEach(function(v){ if(v.paused) v.setAttribute('controls',''); });
-  }, 2500);
+  document.querySelectorAll('.video-wrap').forEach(function(wrap){
+    var v = wrap.querySelector('video.stage-video');
+    var btn = wrap.querySelector('.video-play-btn');
+    if(!v || !btn) return;
+    var hideBtn = function(){ btn.setAttribute('hidden',''); };
+    var showBtn = function(){ btn.removeAttribute('hidden'); };
+    var attempt = function(){
+      var p = v.play();
+      if(p && p.then) p.then(hideBtn).catch(showBtn);
+      else if(!v.paused) hideBtn(); else showBtn();
+    };
+    attempt();
+    btn.addEventListener('click', function(e){ e.preventDefault(); attempt(); });
+    v.addEventListener('playing', hideBtn);
+    v.addEventListener('pause', function(){ if(!v.ended) showBtn(); });
+    document.addEventListener('click', attempt, { once: true, capture: true });
+    setTimeout(function(){
+      if(v.paused){ v.setAttribute('controls',''); showBtn(); }
+    }, 2000);
+  });
 })();
 </script>
 </body>
