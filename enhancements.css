@@ -1119,19 +1119,14 @@ html[data-theme="light"] .sidebar { animation: none; }
    STYLE SOBRE — Portfolio BTS jury
    ══════════════════════════════════════════════════════════════ */
 
-/* Désactiver les effets lourds */
-.code-rain       { display: none !important; }
+/* Effets visuels : actifs en mode sombre, désactivés en mode clair */
+/* (le mode clair masque déjà .code-rain et .mist-layer dans background.css) */
 .akatsuki-sky    { display: none !important; }
-.mist-layer      { opacity: 0.05 !important; filter: blur(88px) !important; }
-.mist-layer--slow,
-.mist-layer--pulse { opacity: 0.03 !important; }
+html[data-theme="light"] .mist-layer      { opacity: 0.05 !important; filter: blur(88px) !important; }
+html[data-theme="light"] .mist-layer--slow,
+html[data-theme="light"] .mist-layer--pulse { opacity: 0.03 !important; }
 
-/* Fond plus simple et lisible */
-body {
-  background:
-    radial-gradient(circle at 8% 0%, rgba(226,75,106,.08), transparent 22%),
-    var(--bg) !important;
-}
+/* Fond : le cyber-background s'occupe du dark mode, on surcharge seulement le light */
 html[data-theme="light"] body {
   background:
     radial-gradient(circle at 8% 0%, rgba(203,47,88,.07), transparent 20%),

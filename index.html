@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html data-theme="light" lang="fr">
+<html lang="fr">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1" name="viewport"/>
@@ -21,8 +21,10 @@
 <script>
     (function(){
       try{
-        if(localStorage.getItem('preferred-theme')==='dark'){
-          document.documentElement.removeAttribute('data-theme');
+        /* Mode sombre = défaut (pas d'attribut data-theme).
+           On force le mode clair seulement si l'utilisateur l'a choisi. */
+        if(localStorage.getItem('preferred-theme')==='light'){
+          document.documentElement.setAttribute('data-theme','light');
         }
       }catch(e){}
     })();
@@ -31,6 +33,7 @@
 <link href="animations.css" rel="stylesheet"/>
 <link href="style.css" rel="stylesheet"/>
 <link href="enhancements.css" rel="stylesheet"/>
+<link href="premium.css" rel="stylesheet"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Fira+Code:wght@400;500;700&display=swap" rel="stylesheet"/>
@@ -410,6 +413,18 @@
 </style>
 </head>
 <body>
+<div class="preloader" aria-hidden="true">
+  <div class="preloader__logo">NC</div>
+  <div class="preloader__bar"></div>
+  <div class="preloader__label">Chargement du portfolio</div>
+</div>
+<div class="aurora" aria-hidden="true">
+  <div class="aurora__orb aurora__orb--1"></div>
+  <div class="aurora__orb aurora__orb--2"></div>
+  <div class="aurora__orb aurora__orb--3"></div>
+  <div class="aurora__orb aurora__orb--4"></div>
+  <div class="aurora__orb aurora__orb--5"></div>
+</div>
 <div id="scroll-progress" aria-hidden="true"></div>
 <div aria-hidden="true" class="cyber-background">
 <div class="mist-layer"></div>
@@ -433,12 +448,12 @@
 <small>BTS SIO – option SISR</small>
 <p class="subtitle">Administrateur systèmes &amp; réseaux</p>
 </div>
-<button aria-pressed="false" class="theme-toggle" data-theme-toggle="" type="button">
+<button aria-pressed="true" class="theme-toggle" data-theme-toggle="" type="button">
 <svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M12 3v2.5M12 18.5V21M4.22 4.22l1.77 1.77M17.99 17.99l1.79 1.79M3 12h2.5M18.5 12H21M6 18l-1.8 1.8M18 6l1.8-1.8" stroke-linecap="round"></path>
 <circle cx="12" cy="12" r="4.5"></circle>
 </svg>
-<span>Passer en mode sombre</span>
+<span>Passer en mode clair</span>
 </button>
 </div>
 <nav aria-label="Navigation principale" class="nav">
@@ -947,6 +962,7 @@
 <script defer="" src="matrix.js"></script>
 <script defer="" src="terminal.js"></script>
 <script defer="" src="enhancements.js"></script>
+<script defer="" src="premium.js"></script>
 <script>
     (function(){
       const root=document.documentElement;
@@ -969,7 +985,8 @@
       };
       let stored=null;
       try{stored=localStorage.getItem(storageKey);}catch(e){stored=null;}
-      const initial=stored==='dark'?'dark':'light';
+      /* Mode sombre par défaut : light seulement si l'utilisateur l'a explicitement choisi */
+      const initial=stored==='light'?'light':'dark';
       applyTheme(initial);
       toggle.addEventListener('click',()=>{
         const isLight=root.getAttribute('data-theme')==='light';

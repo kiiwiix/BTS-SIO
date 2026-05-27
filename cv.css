@@ -396,3 +396,170 @@ h1 {
   .sidebar::before, .sidebar::after, .main-content::before { display: none; }
   .timeline-item:hover { transform: none; box-shadow: none; }
 }
+
+/* ══════════════════════════════════════════════════════════════
+   CV PREMIUM ENHANCEMENTS — Animations & polish
+   ══════════════════════════════════════════════════════════════ */
+
+:root {
+  --ease-power: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+/* Background plus riche */
+body {
+  background:
+    radial-gradient(circle at 10% 0%, rgba(209, 45, 83, 0.08), transparent 30%),
+    radial-gradient(circle at 90% 100%, rgba(99, 102, 241, 0.06), transparent 32%),
+    linear-gradient(160deg, #f0f4f9 0%, #e7ecf5 100%);
+}
+
+/* Sheet avec hover global subtil */
+.cv-sheet {
+  position: relative;
+  transition: transform 0.5s var(--ease-power), box-shadow 0.5s ease;
+}
+
+/* Photo : halo animé en bordure */
+.photo {
+  position: relative;
+  isolation: isolate;
+}
+.photo::before {
+  content: "";
+  position: absolute;
+  inset: -3px;
+  border-radius: inherit;
+  z-index: -1;
+  background: conic-gradient(from var(--angle, 0deg),
+    var(--accent),
+    var(--accent2),
+    #c084fc,
+    #38bdf8,
+    var(--accent));
+  animation: cv-rotate 8s linear infinite;
+  filter: blur(2px);
+  opacity: 0.7;
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+.photo:hover::before {
+  opacity: 1;
+  filter: blur(0.5px);
+}
+
+@keyframes cv-rotate {
+  to { --angle: 360deg; }
+}
+
+/* Eyebrow badge avec glow */
+.eyebrow {
+  position: relative;
+  overflow: hidden;
+}
+.eyebrow::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(120deg, transparent 30%, rgba(255,255,255,.4) 50%, transparent 70%);
+  transform: translateX(-100%);
+  animation: cv-shimmer 4s ease-in-out infinite 1s;
+}
+@keyframes cv-shimmer {
+  0%, 50% { transform: translateX(-100%); }
+  70% { transform: translateX(100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* Timeline item : effet glow on hover */
+.timeline-item {
+  position: relative;
+}
+.timeline-item::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle 200px at var(--mx, 50%) var(--my, 50%),
+    rgba(209, 45, 83, 0.06),
+    transparent 50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+.timeline-item:hover::after { opacity: 1; }
+.timeline-item > * { position: relative; z-index: 1; }
+.timeline-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 20px 40px rgba(15,23,42,.12) !important;
+}
+
+/* Chips avec hover plus marqué */
+.chip {
+  position: relative;
+  overflow: hidden;
+}
+.chip::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(241,93,129,.4), transparent);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.chip:hover::before { opacity: 1; }
+.chip:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 8px 18px rgba(209,45,83,.28) !important;
+}
+
+/* Badges avec effet de profondeur */
+.badge {
+  position: relative;
+  overflow: hidden;
+}
+.badge:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(0,0,0,.18);
+}
+
+/* H1 plus dramatique */
+h1 {
+  position: relative;
+  display: inline-block;
+}
+h1::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+  width: 64px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--grad);
+  box-shadow: 0 2px 12px rgba(209,45,83,.4);
+}
+
+/* Smooth scroll */
+html { scroll-behavior: smooth; }
+
+/* Print : nettoyer animations */
+@media print {
+  .photo::before,
+  .eyebrow::after { display: none !important; }
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo::before,
+  .eyebrow::after { animation: none !important; }
+}
