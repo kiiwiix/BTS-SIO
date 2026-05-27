@@ -186,10 +186,18 @@
   const refresh = () => { setup(); start(); };
   const onResize = () => { clearTimeout(resizeTimer); resizeTimer = setTimeout(refresh, 120); };
 
-  refresh();
+  /* ── Gating par thème : la pluie est cachée en light mode (display:none).
+       On stoppe carrément le rAF pour rendre cette CPU à la page. */
+  const isLight = () => document.documentElement.getAttribute('data-theme') === 'light';
+  const sync = () => { isLight() ? stop() : refresh(); };
+
+  sync();
   window.addEventListener('resize', onResize, { passive: true });
-  document.addEventListener('visibilitychange', () => document.hidden ? stop() : start());
+  document.addEventListener('visibilitychange', () => (document.hidden || isLight()) ? stop() : start());
   if ('ResizeObserver' in window) { const ro = new ResizeObserver(onResize); ro.observe(canvas); }
   const rml = reduceMotion.addEventListener ? reduceMotion.addEventListener.bind(reduceMotion) : reduceMotion.addListener.bind(reduceMotion);
-  (rml)('change', refresh);
+  (rml)('change', sync);
+
+  const themeObs = new MutationObserver(sync);
+  themeObs.observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
 })();

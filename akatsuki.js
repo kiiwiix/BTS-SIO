@@ -416,23 +416,37 @@
 
   const onVisibility = () => setPaused(document.hidden);
 
-  /* ── Démarrage ────────────────────────────────────────── */
-  ensureSky();
-  rebuild();
-  setPaused(document.hidden);
-  mounted = true;
+  /* ── Gating par thème : en light mode (vue jury), aucun DOM ni rAF.
+       On reconstruit uniquement quand l'utilisateur bascule en dark mode. */
+  const isLight = () => doc.getAttribute('data-theme') === 'light';
 
-  window.addEventListener('resize', onResize, { passive: true });
-  window.addEventListener('scroll', onScroll, { passive: true });
-  document.addEventListener('visibilitychange', onVisibility);
+  const start = () => {
+    if (mounted) return;
+    ensureSky();
+    rebuild();
+    setPaused(document.hidden);
+    mounted = true;
+    window.addEventListener('resize', onResize, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('visibilitychange', onVisibility);
+  };
+
+  if (!isLight()) start();
+
+  const themeObs = new MutationObserver(() => {
+    isLight() ? destroy() : start();
+  });
+  themeObs.observe(doc, { attributes: true, attributeFilter: ['data-theme'] });
+
   const onMQ = reduceMotion.addEventListener
     ? reduceMotion.addEventListener.bind(reduceMotion)
     : reduceMotion.addListener.bind(reduceMotion);
-  onMQ('change', rebuild);
+  onMQ('change', () => { if (mounted) rebuild(); });
 
   // API publique
   window.AkatsukiSky = {
     __mounted: true,
+    start,
     rebuild,
     destroy,
     pause:  () => setPaused(true),
