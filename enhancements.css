@@ -1657,8 +1657,8 @@ html[data-theme="light"] .kbd-hint {
 }
 
 /* ══════════════════════════════════════════════════════════════
-   CURSEUR TSUKUYOMI — Lune de sang Akatsuki (Madara)
-   Sphère rouge en dégradé avec halo et anneau en easing.
+   CURSEUR AKATSUKI — Nuage rouge emblématique
+   SVG nuage rouge bordé blanc, halo rouge doux, légère oscillation.
    ══════════════════════════════════════════════════════════════ */
 @media (hover: hover) and (pointer: fine) {
   html, body { cursor: none; }
@@ -1668,88 +1668,47 @@ html[data-theme="light"] .kbd-hint {
   input[type="url"], input[type="password"], input:not([type]), textarea { cursor: text; }
 }
 
-.tsukuyomi-cursor,
-.tsukuyomi-ring {
+.akatsuki-cursor {
   position: fixed;
   top: 0;
   left: 0;
+  width: 34px;
+  height: 24px;
   pointer-events: none;
   z-index: 99999;
-  border-radius: 50%;
   opacity: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 72'><path d='M12 50 C2 50 2 34 14 32 C8 18 26 12 34 22 C34 8 54 6 58 18 C62 6 84 8 84 22 C96 16 110 28 102 38 C114 40 112 56 100 54 C100 62 82 64 76 56 C72 64 56 64 52 56 C46 64 30 62 28 54 C18 60 6 56 12 50 Z' fill='%23b81626' stroke='%23ffffff' stroke-width='3.2' stroke-linejoin='round' stroke-linecap='round'/></svg>");
+  filter:
+    drop-shadow(0 0 5px rgba(184, 22, 38, 0.55))
+    drop-shadow(0 0 12px rgba(184, 22, 38, 0.25));
+  transition: opacity .25s ease, width .2s ease, height .2s ease, filter .2s ease;
   will-change: transform, opacity;
-  transition: opacity .25s ease, width .2s ease, height .2s ease,
-              box-shadow .2s ease, border-color .2s ease;
+  animation: akatsuki-float 2.6s ease-in-out infinite;
 }
 
-.tsukuyomi-cursor {
-  width: 16px;
-  height: 16px;
-  background:
-    radial-gradient(circle at 38% 36%,
-      #ff5870 0%,
-      #d01f3c 32%,
-      #7d0e1e 68%,
-      #38040e 100%);
-  box-shadow:
-    0 0 14px rgba(255, 40, 80, 0.6),
-    0 0 28px rgba(180, 20, 40, 0.32),
-    inset -1.5px -2px 3px rgba(0, 0, 0, 0.55),
-    inset 1.5px 1.5px 2px rgba(255, 140, 160, 0.28);
+.akatsuki-cursor.is-visible { opacity: 1; }
+
+.akatsuki-cursor.is-active {
+  width: 46px;
+  height: 32px;
+  filter:
+    drop-shadow(0 0 9px rgba(255, 60, 90, 0.78))
+    drop-shadow(0 0 20px rgba(184, 22, 38, 0.48));
 }
 
-.tsukuyomi-ring {
-  width: 38px;
-  height: 38px;
-  border: 1px solid rgba(214, 75, 98, 0.45);
-  box-shadow: 0 0 12px rgba(214, 75, 98, 0.16);
-  background: radial-gradient(circle, rgba(255, 40, 80, 0.06) 0%, transparent 70%);
-}
-
-.tsukuyomi-cursor.is-visible,
-.tsukuyomi-ring.is-visible {
-  opacity: 1;
-}
-
-.tsukuyomi-cursor.is-active {
-  width: 22px;
-  height: 22px;
-  box-shadow:
-    0 0 22px rgba(255, 60, 90, 0.8),
-    0 0 44px rgba(180, 20, 40, 0.45),
-    inset -2px -2px 4px rgba(0, 0, 0, 0.55),
-    inset 2px 2px 3px rgba(255, 150, 170, 0.3);
-}
-
-.tsukuyomi-ring.is-active {
-  width: 54px;
-  height: 54px;
-  border-color: rgba(255, 80, 110, 0.7);
-  box-shadow: 0 0 18px rgba(255, 60, 90, 0.3);
-}
-
-html[data-theme="light"] .tsukuyomi-cursor {
-  background:
-    radial-gradient(circle at 38% 36%,
-      #ff6b80 0%,
-      #b81530 36%,
-      #5d0814 76%,
-      #260208 100%);
-  box-shadow:
-    0 0 12px rgba(184, 21, 48, 0.55),
-    0 0 24px rgba(160, 18, 40, 0.3),
-    inset -1.5px -2px 3px rgba(0, 0, 0, 0.55);
-}
-html[data-theme="light"] .tsukuyomi-ring {
-  border-color: rgba(184, 21, 48, 0.42);
-  background: radial-gradient(circle, rgba(184, 21, 48, 0.06) 0%, transparent 70%);
+@keyframes akatsuki-float {
+  0%, 100% { translate: 0 0; }
+  50%      { translate: 0 -2px; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .tsukuyomi-ring { display: none; }
+  .akatsuki-cursor { animation: none; }
 }
 
 @media (hover: none), (pointer: coarse) {
-  .tsukuyomi-cursor, .tsukuyomi-ring { display: none !important; }
+  .akatsuki-cursor { display: none !important; }
   html, body { cursor: auto !important; }
 }
