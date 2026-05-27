@@ -368,4 +368,83 @@
     } catch (_) { /* ignore */ }
   });
 
+  /* ───────────────────────────────────────────────
+    15. Curseur Tsukuyomi — lune de sang Akatsuki
+     ─────────────────────────────────────────────── */
+  if (!window.matchMedia('(hover: none), (pointer: coarse)').matches) {
+    const moon = document.createElement('div');
+    moon.className = 'tsukuyomi-cursor';
+    moon.setAttribute('aria-hidden', 'true');
+
+    const ring = document.createElement('div');
+    ring.className = 'tsukuyomi-ring';
+    ring.setAttribute('aria-hidden', 'true');
+
+    document.body.appendChild(ring);
+    document.body.appendChild(moon);
+
+    let mx = window.innerWidth / 2;
+    let my = window.innerHeight / 2;
+    let rx = mx;
+    let ry = my;
+    let visible = false;
+
+    const interactiveSelector =
+      'a, button, [role="button"], input[type="button"], input[type="submit"],' +
+      ' input[type="checkbox"], input[type="radio"], summary, label, select,' +
+      ' .theme-toggle, .back-to-top, .nav a';
+
+    const show = () => {
+      if (visible) return;
+      moon.classList.add('is-visible');
+      ring.classList.add('is-visible');
+      visible = true;
+    };
+    const hide = () => {
+      moon.classList.remove('is-visible');
+      ring.classList.remove('is-visible');
+      visible = false;
+    };
+
+    document.addEventListener('mousemove', (e) => {
+      mx = e.clientX;
+      my = e.clientY;
+      moon.style.transform =
+        'translate3d(' + mx + 'px,' + my + 'px,0) translate(-50%,-50%)';
+      show();
+    }, { passive: true });
+
+    document.addEventListener('mouseleave', hide);
+    document.addEventListener('mouseenter', show);
+    window.addEventListener('blur', hide);
+
+    document.addEventListener('mouseover', (e) => {
+      if (e.target.closest && e.target.closest(interactiveSelector)) {
+        moon.classList.add('is-active');
+        ring.classList.add('is-active');
+      }
+    });
+    document.addEventListener('mouseout', (e) => {
+      const from = e.target.closest && e.target.closest(interactiveSelector);
+      const to = e.relatedTarget && e.relatedTarget.closest
+        ? e.relatedTarget.closest(interactiveSelector) : null;
+      if (from && !to) {
+        moon.classList.remove('is-active');
+        ring.classList.remove('is-active');
+      }
+    });
+
+    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduced) {
+      const tick = () => {
+        rx += (mx - rx) * 0.18;
+        ry += (my - ry) * 0.18;
+        ring.style.transform =
+          'translate3d(' + rx + 'px,' + ry + 'px,0) translate(-50%,-50%)';
+        requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }
+  }
+
 })();
