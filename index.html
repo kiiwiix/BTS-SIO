@@ -21,9 +21,9 @@
 <script>
     (function(){
       try{
-        /* Mode sombre = défaut (pas d'attribut data-theme).
-           On force le mode clair seulement si l'utilisateur l'a choisi. */
-        if(localStorage.getItem('preferred-theme')==='light'){
+        /* Mode clair = défaut.
+           On force le mode sombre seulement si l'utilisateur l'a choisi. */
+        if(localStorage.getItem('preferred-theme')!=='dark'){
           document.documentElement.setAttribute('data-theme','light');
         }
       }catch(e){}
@@ -448,7 +448,7 @@
 <small>BTS SIO – option SISR</small>
 <p class="subtitle">Administrateur systèmes &amp; réseaux</p>
 </div>
-<button aria-pressed="true" class="theme-toggle" data-theme-toggle="" type="button">
+<button aria-pressed="false" class="theme-toggle" data-theme-toggle="" type="button">
 <svg aria-hidden="true" fill="none" focusable="false" stroke="currentColor" stroke-width="1.5" viewbox="0 0 24 24">
 <path d="M12 3v2.5M12 18.5V21M4.22 4.22l1.77 1.77M17.99 17.99l1.79 1.79M3 12h2.5M18.5 12H21M6 18l-1.8 1.8M18 6l1.8-1.8" stroke-linecap="round"></path>
 <circle cx="12" cy="12" r="4.5"></circle>
@@ -985,8 +985,8 @@
       };
       let stored=null;
       try{stored=localStorage.getItem(storageKey);}catch(e){stored=null;}
-      /* Mode sombre par défaut : light seulement si l'utilisateur l'a explicitement choisi */
-      const initial=stored==='light'?'light':'dark';
+      /* Mode clair par défaut : dark seulement si l'utilisateur l'a explicitement choisi */
+      const initial=stored==='dark'?'dark':'light';
       applyTheme(initial);
       toggle.addEventListener('click',()=>{
         const isLight=root.getAttribute('data-theme')==='light';
