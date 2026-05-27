@@ -42,12 +42,9 @@ html[data-theme="light"] {
     radial-gradient(ellipse at 50% 100%, rgba(140,30,55,.22) 0%, transparent 60%);
 }
 
-/* Mode clair : ambiance Akatsuki visible mais discrète (touche fan, jury-friendly) */
-html[data-theme="light"] .akatsuki-sky {
-  background: transparent;
-  opacity: 0.7;
-}
-html[data-theme="light"] .akatsuki-sky::before { opacity: 0.32; }
+/* Mode clair = portfolio sobre/professionnel (jury BTS).
+   Aucun décor animé (nuages, lune, corbeaux, pétales, étoiles, éclairs). */
+html[data-theme="light"] .akatsuki-sky { display: none !important; }
 
 .akatsuki-sky::before {
   content: "";
